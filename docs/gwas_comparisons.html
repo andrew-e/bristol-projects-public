@@ -14599,12 +14599,15 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h1 id="132:-Stroke-Progression-+-PQTL">132: Stroke Progression + PQTL<a class="anchor-link" href="#132:-Stroke-Progression-+-PQTL">&#182;</a></h1><p>Reminder, you can run something like:</p>
 <p><code>jupyter nbconvert --to html yourNotebook.ipynb</code></p>
-<h1 id="Manhattan-Plots:">Manhattan Plots:<a class="anchor-link" href="#Manhattan-Plots:">&#182;</a></h1><h2 id="First-AIS-(Existing-Published-GWAS-vs.-our-meta-analysed-GWAS)">First AIS (Existing Published GWAS vs. our meta-analysed GWAS)<a class="anchor-link" href="#First-AIS-(Existing-Published-GWAS-vs.-our-meta-analysed-GWAS)">&#182;</a></h2><p><img src="scratch/results/existing_stroke_gwas.png" alt="image" />
-<img src="scratch/results/meta_analysis/first_ais_metal_metaanalysis_manhattan.png" alt="image" /></p>
+<h1 id="Manhattan-Plots:">Manhattan Plots:<a class="anchor-link" href="#Manhattan-Plots:">&#182;</a></h1><h2 id="First-AIS-(Existing-Published-GWAS-vs.-our-meta-analysed-GWAS)">First AIS (Existing Published GWAS vs. our meta-analysed GWAS)<a class="anchor-link" href="#First-AIS-(Existing-Published-GWAS-vs.-our-meta-analysed-GWAS)">&#182;</a></h2><p><img src="images/existing_stroke_gwas.png" alt="image" />
+<img src="images/first_ais_metal_metaanalysis_manhattan.png" alt="image" /></p>
 <p>Comparing by eye, they align quite well, with the existing stroke GWAS having much better results due to high power. HOWEVER, taking the top hitting 30 SNP results don't match  well with our results.  Therefore, I downloaded the full summary stats, and am looking at the wider range of hits.</p>
-<h2 id="Subsequent-GWASes-(meta-analysed-only)">Subsequent GWASes (meta-analysed only)<a class="anchor-link" href="#Subsequent-GWASes-(meta-analysed-only)">&#182;</a></h2><p><img src="scratch/results/meta_analysis/subsequent_ais_metal_metaanalysis_manhattan.png" alt="image" />
-<img src="scratch/results/meta_analysis/subsequent_mace_metal_metaanalysis_manhattan.png" alt="image" /></p>
-<h2 id="Subsequent-GWASes-(adjusted-for-collider-bias,-then-meta-analysed)">Subsequent GWASes (adjusted for collider bias, then meta-analysed)<a class="anchor-link" href="#Subsequent-GWASes-(adjusted-for-collider-bias,-then-meta-analysed)">&#182;</a></h2><p>add me later</p>
+<h2 id="Subsequent-GWASes-(meta-analysed-only)">Subsequent GWASes (meta-analysed only)<a class="anchor-link" href="#Subsequent-GWASes-(meta-analysed-only)">&#182;</a></h2><p><img src="images/subsequent_ais_metal_metaanalysis_manhattan.png" alt="image" />
+<img src="images/subsequent_mace_metal_metaanalysis_manhattan.png" alt="image" /></p>
+<h2 id="Subsequent-AIS-GWASes-(adjusted-for-collider-bias,-then-meta-analysed)">Subsequent AIS GWASes (adjusted for collider bias, then meta-analysed)<a class="anchor-link" href="#Subsequent-AIS-GWASes-(adjusted-for-collider-bias,-then-meta-analysed)">&#182;</a></h2><p><img src="images/subsequent_ais_metaanalysis_slopehunter1.txt.png" alt="image" />
+<img src="images/subsequent_ais_metaanalysis_dudbridge1.txt.png" alt="image" /></p>
+<h2 id="Subsequent-MACE-GWASes-(adjusted-for-collider-bias,-then-meta-analysed)">Subsequent MACE GWASes (adjusted for collider bias, then meta-analysed)<a class="anchor-link" href="#Subsequent-MACE-GWASes-(adjusted-for-collider-bias,-then-meta-analysed)">&#182;</a></h2><p><img src="images/subsequent_mace_metaanalysis_slopehunter1.txt.png" alt="image" />
+<img src="images/subsequent_mace_metaanalysis_dudbridge1.txt.png" alt="image" /></p>
 
 </div>
 </div>
@@ -14614,21 +14617,21 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[12]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-r"><pre><span></span><span class="nf">source</span><span class="p">(</span><span class="s">&quot;gwas_data_helpers.R&quot;</span><span class="p">)</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span>
-<span class="nf">options</span><span class="p">(</span><span class="n">repr.matrix.max.rows</span><span class="o">=</span><span class="m">600</span><span class="p">,</span><span class="w"> </span><span class="n">repr.matrix.max.cols</span><span class="o">=</span><span class="m">200</span><span class="p">)</span>
 <span class="n">gwas_columns</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;MARKER&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;BETA&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;SE&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;P&quot;</span><span class="p">)</span>
 
-<span class="n">first_ais_metaanalysis</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/meta_analysis/first_ais_metal_metaanalysis.tbl&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">select</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="n">gwas_columns</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;CHR&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;BP&quot;</span><span class="p">))</span>
+<span class="n">first_ais_metaanalysis</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/meta_analysis/first_ais_metal_metaanalysis.tbl&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">select</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gwas_columns</span><span class="p">)</span>
 <span class="n">subsequent_ais_metaanalysis_not_adjusted</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/meta_analysis/subsequent_ais_metal_metaanalysis.tbl&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">select</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gwas_columns</span><span class="p">)</span>
 <span class="n">subsequent_mace_metaanalysis_not_adjusted</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/meta_analysis/subsequent_mace_metal_metaanalysis.tbl&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">select</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gwas_columns</span><span class="p">)</span>
-<span class="n">subsequent_ais_metaanalysis_adjusted</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/subsequent_ais_metaanalysis_slopehunter_clumped1.txt&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">select</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gwas_columns</span><span class="p">)</span>
-<span class="n">subsequent_mace_metaanalysis_adjusted</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/subsequent_mace_metaanalysis_slopehunter_clumped1.txt&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">select</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gwas_columns</span><span class="p">)</span>
-<span class="n">subsequent_ais_metaanalysis_dudbridge</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/subsequent_ais_metaanalysis_dudbridge_clumped1.txt&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">select</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gwas_columns</span><span class="p">)</span>
-<span class="n">subsequent_mace_metaanalysis_dudbridge</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/subsequent_mace_metaanalysis_dudbridge_clumped1.txt&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">select</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gwas_columns</span><span class="p">)</span>
+
+<span class="n">subsequent_ais_metaanalysis_adjusted</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/subsequent_ais_metaanalysis_slopehunter1.txt&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">select</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gwas_columns</span><span class="p">)</span>
+<span class="n">subsequent_mace_metaanalysis_adjusted</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/subsequent_mace_metaanalysis_slopehunter1.txt&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">select</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gwas_columns</span><span class="p">)</span>
+<span class="n">subsequent_ais_metaanalysis_dudbridge</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/subsequent_ais_metaanalysis_dudbridge1.txt&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">select</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gwas_columns</span><span class="p">)</span>
+<span class="n">subsequent_mace_metaanalysis_dudbridge</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/subsequent_mace_metaanalysis_dudbridge1.txt&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">select</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gwas_columns</span><span class="p">)</span>
 
 <span class="n">existing_stroke_gwas</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/data/existing_stroke_gwas.tsv.gz&quot;</span><span class="p">)</span>
 <span class="n">existing_stroke_gwas</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">existing_stroke_gwas</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">dplyr</span><span class="o">::</span><span class="nf">rename</span><span class="p">(</span><span class="s">&quot;CHR&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;chromosome&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;BP&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;base_pair_location&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;P&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;p_value&quot;</span><span class="p">,</span>
@@ -14636,8 +14639,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 <span class="n">existing_stroke_gwas</span><span class="o">$</span><span class="n">MARKER</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">paste</span><span class="p">(</span><span class="n">existing_stroke_gwas</span><span class="o">$</span><span class="n">CHR</span><span class="p">,</span><span class="w"> </span><span class="n">existing_stroke_gwas</span><span class="o">$</span><span class="n">BP</span><span class="p">,</span><span class="w"> </span><span class="n">sep</span><span class="o">=</span><span class="s">&quot;:&quot;</span><span class="p">)</span>
 <span class="n">existing_stroke_gwas</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">convert_odds_ratio_to_beta_estimate</span><span class="p">(</span><span class="n">existing_stroke_gwas</span><span class="p">)</span>
-<span class="n">existing_stroke_gwas_top_hits</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">existing_stroke_gwas</span><span class="p">[</span><span class="n">existing_stroke_gwas</span><span class="o">$</span><span class="n">P</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">5e-8</span><span class="p">,]</span>
-
+<span class="n">existing_stroke_gwas_top_hits</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">existing_stroke_gwas</span><span class="p">[</span><span class="n">existing_stroke_gwas</span><span class="o">$</span><span class="n">P</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">1e-8</span><span class="p">,]</span>
 
 <span class="n">merge_gwases</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">gwas</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">merged_stroke_data_comparison</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">merge</span><span class="p">(</span><span class="n">gwas</span><span class="p">,</span><span class="w"> </span><span class="n">subsequent_ais_metaanalysis_not_adjusted</span><span class="p">,</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;MARKER&quot;</span><span class="p">)</span>
@@ -14668,22 +14670,6 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 </div>
 
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[52]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-r"><pre><span></span><span class="n">first_ais_metaanalysis</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/meta_analysis/first_ais_metal_metaanalysis.tbl&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">select</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="n">gwas_columns</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;CHR&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;BP&quot;</span><span class="p">))</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
@@ -14700,33 +14686,196 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[10]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-r"><pre><span></span><span class="n">merged_existing_gwas</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">merge_gwases</span><span class="p">(</span><span class="n">existing_stroke_gwas_top_hits</span><span class="p">)</span>
 <span class="n">merged_existing_gwas</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">merge</span><span class="p">(</span><span class="n">merged_existing_gwas</span><span class="p">,</span><span class="w"> </span><span class="n">first_ais_metaanalysis</span><span class="p">,</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;MARKER&quot;</span><span class="p">)</span>
 <span class="n">merged_existing_gwas</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">merged_existing_gwas</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">dplyr</span><span class="o">::</span><span class="nf">rename</span><span class="p">(</span><span class="s">&quot;FIRST_BETA&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;BETA&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;FIRST_P&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;P&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;FIRST_SE&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SE&quot;</span><span class="p">)</span>
 
-<span class="n">merged_existing_gwas</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">transform</span><span class="p">(</span><span class="n">merged_existing_gwas</span><span class="p">,</span><span class="w"> </span><span class="n">SUB_AIS_MIN_P_VALUE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">pmin</span><span class="p">(</span><span class="n">SUB_AIS_P</span><span class="p">,</span><span class="w"> </span><span class="n">SUB_AIS_SH_P</span><span class="p">,</span><span class="w"> </span><span class="n">SUB_AIS_DB_P</span><span class="p">))</span>
-<span class="n">merged_existing_gwas</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">transform</span><span class="p">(</span><span class="n">merged_existing_gwas</span><span class="p">,</span><span class="w"> </span><span class="n">SUB_MACE_MIN_P_VALUE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">pmin</span><span class="p">(</span><span class="n">SUB_MACE_P</span><span class="p">,</span><span class="w"> </span><span class="n">SUB_MACE_SH_P</span><span class="p">,</span><span class="w"> </span><span class="n">SUB_MACE_DB_P</span><span class="p">))</span>
+<span class="n">merged_existing_gwas</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">transform</span><span class="p">(</span><span class="n">merged_existing_gwas</span><span class="p">,</span><span class="w"> </span><span class="n">SUB_AIS_MIN_P_VALUE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">pmin</span><span class="p">(</span><span class="n">SUB_AIS_SH_P</span><span class="p">,</span><span class="w"> </span><span class="n">SUB_AIS_DB_P</span><span class="p">))</span>
+<span class="n">merged_existing_gwas</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">transform</span><span class="p">(</span><span class="n">merged_existing_gwas</span><span class="p">,</span><span class="w"> </span><span class="n">SUB_MACE_MIN_P_VALUE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">pmin</span><span class="p">(</span><span class="n">SUB_MACE_SH_P</span><span class="p">,</span><span class="w"> </span><span class="n">SUB_MACE_DB_P</span><span class="p">))</span>
 
-<span class="nf">print</span><span class="p">(</span><span class="s">&quot;Subsequent AIS Top Hits (when filtered by existing incidence GWAS 5e-8)&quot;</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">&quot;Subsequent AIS against the Incidence Top Hits (non corrected)&quot;</span><span class="p">)</span>
+<span class="n">pruned_ais_snps</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">basic_snp_pruning</span><span class="p">(</span><span class="n">merged_existing_gwas</span><span class="p">,</span><span class="w"> </span><span class="n">p_value_column</span><span class="o">=</span><span class="s">&quot;SUB_AIS_P&quot;</span><span class="p">)</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">pruned_ais_snps</span><span class="p">[</span><span class="nf">with</span><span class="p">(</span><span class="n">pruned_ais_snps</span><span class="p">,</span><span class="w"> </span><span class="nf">order</span><span class="p">(</span><span class="n">SUB_AIS_MIN_P_VALUE</span><span class="p">)),</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;MARKER&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;EXISTING_P&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;FIRST_P&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;SUB_AIS_P&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;SUB_AIS_SH_P&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;SUB_AIS_DB_P&quot;</span><span class="p">)])</span>
 
+<span class="nf">print</span><span class="p">(</span><span class="s">&quot;Subsequent AIS against the Incidence Top Hits (corrected)&quot;</span><span class="p">)</span>
 <span class="n">pruned_ais_snps</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">basic_snp_pruning</span><span class="p">(</span><span class="n">merged_existing_gwas</span><span class="p">,</span><span class="w"> </span><span class="n">p_value_column</span><span class="o">=</span><span class="s">&quot;SUB_AIS_MIN_P_VALUE&quot;</span><span class="p">)</span>
-<span class="n">pruned_ais_snps</span><span class="p">[</span><span class="nf">with</span><span class="p">(</span><span class="n">pruned_ais_snps</span><span class="p">,</span><span class="w"> </span><span class="nf">order</span><span class="p">(</span><span class="n">SUB_AIS_MIN_P_VALUE</span><span class="p">)),</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;MARKER&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;EXISTING_P&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;FIRST_P&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;SUB_AIS_P&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;SUB_AIS_SH_P&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;SUB_AIS_DB_P&quot;</span><span class="p">)]</span>
-<span class="nf">print</span><span class="p">(</span><span class="s">&quot;Subsequent MACE Top Hits (when filtered by existing incidence GWAS 5e-8)&quot;</span><span class="p">)</span>
-<span class="n">pruned_mace_snps</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">basic_snp_pruning</span><span class="p">(</span><span class="n">merged_existing_gwas</span><span class="p">,</span><span class="w"> </span><span class="n">p_value_column</span><span class="o">=</span><span class="s">&quot;SUB_AIS_MIN_P_VALUE&quot;</span><span class="p">)</span>
-<span class="n">pruned_mace_snps</span><span class="p">[</span><span class="nf">with</span><span class="p">(</span><span class="n">pruned_mace_snps</span><span class="p">,</span><span class="w"> </span><span class="nf">order</span><span class="p">(</span><span class="n">SUB_MACE_MIN_P_VALUE</span><span class="p">)),</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;MARKER&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;EXISTING_P&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;FIRST_P&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;SUB_MACE_P&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;SUB_MACE_SH_P&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;SUB_MACE_DB_P&quot;</span><span class="p">)]</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">pruned_ais_snps</span><span class="p">[</span><span class="nf">with</span><span class="p">(</span><span class="n">pruned_ais_snps</span><span class="p">,</span><span class="w"> </span><span class="nf">order</span><span class="p">(</span><span class="n">SUB_AIS_MIN_P_VALUE</span><span class="p">)),</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;MARKER&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;EXISTING_P&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;FIRST_P&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;SUB_AIS_P&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;SUB_AIS_SH_P&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;SUB_AIS_DB_P&quot;</span><span class="p">)])</span>
+
+<span class="nf">print</span><span class="p">(</span><span class="s">&quot;Subsequent MACE against the Incidence Top Hits (non corrected)&quot;</span><span class="p">)</span>
+<span class="n">pruned_ais_snps</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">basic_snp_pruning</span><span class="p">(</span><span class="n">merged_existing_gwas</span><span class="p">,</span><span class="w"> </span><span class="n">p_value_column</span><span class="o">=</span><span class="s">&quot;SUB_MACE_P&quot;</span><span class="p">)</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">pruned_ais_snps</span><span class="p">[</span><span class="nf">with</span><span class="p">(</span><span class="n">pruned_ais_snps</span><span class="p">,</span><span class="w"> </span><span class="nf">order</span><span class="p">(</span><span class="n">SUB_MACE_MIN_P_VALUE</span><span class="p">)),</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;MARKER&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;EXISTING_P&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;FIRST_P&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;SUB_AIS_P&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;SUB_AIS_SH_P&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;SUB_AIS_DB_P&quot;</span><span class="p">)])</span>
+
+<span class="nf">print</span><span class="p">(</span><span class="s">&quot;Subsequent MACE against the Incidence Top Hits (corrected)&quot;</span><span class="p">)</span>
+<span class="n">pruned_mace_snps</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">basic_snp_pruning</span><span class="p">(</span><span class="n">merged_existing_gwas</span><span class="p">,</span><span class="w"> </span><span class="n">p_value_column</span><span class="o">=</span><span class="s">&quot;SUB_MACE_MIN_P_VALUE&quot;</span><span class="p">)</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">pruned_mace_snps</span><span class="p">[</span><span class="nf">with</span><span class="p">(</span><span class="n">pruned_mace_snps</span><span class="p">,</span><span class="w"> </span><span class="nf">order</span><span class="p">(</span><span class="n">SUB_MACE_MIN_P_VALUE</span><span class="p">)),</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;MARKER&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;EXISTING_P&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;FIRST_P&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;SUB_MACE_P&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;SUB_MACE_SH_P&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;SUB_MACE_DB_P&quot;</span><span class="p">)])</span>
 </pre></div>
 
      </div>
 </div>
 </div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>[1] &#34;Subsequent AIS against the Incidence Top Hits (non corrected)&#34;
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<table class="dataframe">
+<caption>A data.table: 6 × 6</caption>
+<thead>
+	<tr><th scope=col>MARKER</th><th scope=col>EXISTING_P</th><th scope=col>FIRST_P</th><th scope=col>SUB_AIS_P</th><th scope=col>SUB_AIS_SH_P</th><th scope=col>SUB_AIS_DB_P</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>7:92243719 </td><td>3.114e-09</td><td>3.784e-01</td><td>0.0005098</td><td>0.0004415</td><td>0.0001885</td></tr>
+	<tr><td>9:22124450 </td><td>1.167e-11</td><td>1.181e-05</td><td>0.0004771</td><td>0.0053670</td><td>0.0004495</td></tr>
+	<tr><td>4:155524009</td><td>1.972e-10</td><td>8.933e-02</td><td>0.0002233</td><td>0.0039340</td><td>0.0012800</td></tr>
+	<tr><td>2:203650410</td><td>8.798e-10</td><td>1.216e-01</td><td>0.0036200</td><td>0.0044720</td><td>0.0016570</td></tr>
+	<tr><td>6:49425521 </td><td>1.656e-09</td><td>2.385e-02</td><td>0.0011480</td><td>0.0098700</td><td>0.0022590</td></tr>
+	<tr><td>1:3221083  </td><td>5.952e-10</td><td>3.360e-02</td><td>0.0033070</td><td>0.0062260</td><td>0.0026920</td></tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>[1] &#34;Subsequent AIS against the Incidence Top Hits (corrected)&#34;
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<table class="dataframe">
+<caption>A data.table: 6 × 6</caption>
+<thead>
+	<tr><th scope=col>MARKER</th><th scope=col>EXISTING_P</th><th scope=col>FIRST_P</th><th scope=col>SUB_AIS_P</th><th scope=col>SUB_AIS_SH_P</th><th scope=col>SUB_AIS_DB_P</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>7:92243719 </td><td>3.114e-09</td><td>3.784e-01</td><td>0.0005098</td><td>0.0004415</td><td>0.0001885</td></tr>
+	<tr><td>9:22124450 </td><td>1.167e-11</td><td>1.181e-05</td><td>0.0004771</td><td>0.0053670</td><td>0.0004495</td></tr>
+	<tr><td>4:155524009</td><td>1.972e-10</td><td>8.933e-02</td><td>0.0002233</td><td>0.0039340</td><td>0.0012800</td></tr>
+	<tr><td>2:203650410</td><td>8.798e-10</td><td>1.216e-01</td><td>0.0036200</td><td>0.0044720</td><td>0.0016570</td></tr>
+	<tr><td>6:49425521 </td><td>1.656e-09</td><td>2.385e-02</td><td>0.0011480</td><td>0.0098700</td><td>0.0022590</td></tr>
+	<tr><td>1:3221083  </td><td>5.952e-10</td><td>3.360e-02</td><td>0.0033070</td><td>0.0062260</td><td>0.0026920</td></tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>[1] &#34;Subsequent MACE against the Incidence Top Hits (non corrected)&#34;
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<table class="dataframe">
+<caption>A data.table: 6 × 6</caption>
+<thead>
+	<tr><th scope=col>MARKER</th><th scope=col>EXISTING_P</th><th scope=col>FIRST_P</th><th scope=col>SUB_AIS_P</th><th scope=col>SUB_AIS_SH_P</th><th scope=col>SUB_AIS_DB_P</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>9:22114495  </td><td>1.400e-09</td><td>0.000117</td><td>0.0018450</td><td>0.007047</td><td>0.0008152</td></tr>
+	<tr><td>6:49385182  </td><td>1.904e-09</td><td>0.022680</td><td>0.0018950</td><td>0.011560</td><td>0.0026440</td></tr>
+	<tr><td>12:112849899</td><td>3.996e-09</td><td>0.033770</td><td>0.0732800</td><td>0.504900</td><td>0.3157000</td></tr>
+	<tr><td>4:155524009 </td><td>1.972e-10</td><td>0.089330</td><td>0.0002233</td><td>0.003934</td><td>0.0012800</td></tr>
+	<tr><td>16:87561696 </td><td>2.290e-09</td><td>0.039690</td><td>0.2954000</td><td>0.010800</td><td>0.0293700</td></tr>
+	<tr><td>12:112463296</td><td>7.492e-10</td><td>0.018960</td><td>0.1484000</td><td>0.771300</td><td>0.5111000</td></tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>[1] &#34;Subsequent MACE against the Incidence Top Hits (corrected)&#34;
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<table class="dataframe">
+<caption>A data.table: 6 × 6</caption>
+<thead>
+	<tr><th scope=col>MARKER</th><th scope=col>EXISTING_P</th><th scope=col>FIRST_P</th><th scope=col>SUB_MACE_P</th><th scope=col>SUB_MACE_SH_P</th><th scope=col>SUB_MACE_DB_P</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>9:22115026  </td><td>6.147e-12</td><td>0.0001093</td><td>0.0004201</td><td>0.0002852</td><td>1.377e-05</td></tr>
+	<tr><td>4:155502869 </td><td>4.625e-17</td><td>0.0496200</td><td>0.0226100</td><td>0.0111200</td><td>4.359e-03</td></tr>
+	<tr><td>7:92253972  </td><td>8.081e-09</td><td>0.9222000</td><td>0.0246100</td><td>0.0133500</td><td>1.332e-02</td></tr>
+	<tr><td>6:49345141  </td><td>2.566e-09</td><td>0.0135400</td><td>0.0209500</td><td>0.0242400</td><td>1.617e-02</td></tr>
+	<tr><td>13:110834217</td><td>4.339e-09</td><td>0.0115500</td><td>0.0241400</td><td>0.0264200</td><td>1.994e-02</td></tr>
+	<tr><td>16:87562316 </td><td>2.317e-09</td><td>0.0530700</td><td>0.3454000</td><td>0.0207300</td><td>2.474e-02</td></tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+
+</div>
+
 </div>
 
 </div>
@@ -14750,13 +14899,22 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[8]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-r"><pre><span></span><span class="n">significant_first_ais_comparison</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">first_ais_metaanalysis</span><span class="p">[</span><span class="n">first_ais_metaanalysis</span><span class="o">$</span><span class="n">P</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">5e-8</span><span class="p">,]</span>
+<div class=" highlight hl-r"><pre><span></span><span class="n">significant_first_ais_comparison</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">first_ais_metaanalysis</span><span class="p">[</span><span class="n">first_ais_metaanalysis</span><span class="o">$</span><span class="n">P</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">1e-8</span><span class="p">,]</span>
 <span class="n">significant_first_ais_comparison</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">merge_gwases</span><span class="p">(</span><span class="n">significant_first_ais_comparison</span><span class="p">)</span>
 
-<span class="n">significant_first_ais_comparison</span><span class="p">[,</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;MARKER&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;EXISTING_P&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;SUB_AIS_P&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;SUB_AIS_SH_P&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;SUB_AIS_DB_P&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;SUB_MACE_P&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;SUB_MACE_SH_P&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;SUB_MACE_DB_P&quot;</span><span class="p">)]</span>
+<span class="n">significant_first_ais_comparison</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">transform</span><span class="p">(</span><span class="n">significant_first_ais_comparison</span><span class="p">,</span><span class="w"> </span><span class="n">SUB_AIS_MIN_P_VALUE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">pmin</span><span class="p">(</span><span class="n">SUB_AIS_P</span><span class="p">,</span><span class="w"> </span><span class="n">SUB_AIS_SH_P</span><span class="p">,</span><span class="w"> </span><span class="n">SUB_AIS_DB_P</span><span class="p">))</span>
+<span class="n">significant_first_ais_comparison</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">transform</span><span class="p">(</span><span class="n">significant_first_ais_comparison</span><span class="p">,</span><span class="w"> </span><span class="n">SUB_MACE_MIN_P_VALUE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">pmin</span><span class="p">(</span><span class="n">SUB_MACE_P</span><span class="p">,</span><span class="w"> </span><span class="n">SUB_MACE_SH_P</span><span class="p">,</span><span class="w"> </span><span class="n">SUB_MACE_DB_P</span><span class="p">))</span>
+
+<span class="nf">print</span><span class="p">(</span><span class="s">&quot;Subsequent AIS Top Hits (when filtered by existing incidence GWAS 1e-8)&quot;</span><span class="p">)</span>
+<span class="n">pruned_ais_snps</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">basic_snp_pruning</span><span class="p">(</span><span class="n">significant_first_ais_comparison</span><span class="p">,</span><span class="w"> </span><span class="n">p_value_column</span><span class="o">=</span><span class="s">&quot;SUB_AIS_MIN_P_VALUE&quot;</span><span class="p">)</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">pruned_ais_snps</span><span class="p">[</span><span class="nf">with</span><span class="p">(</span><span class="n">pruned_ais_snps</span><span class="p">,</span><span class="w"> </span><span class="nf">order</span><span class="p">(</span><span class="n">SUB_AIS_MIN_P_VALUE</span><span class="p">)),</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;MARKER&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;EXISTING_P&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;SUB_AIS_P&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;SUB_AIS_SH_P&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;SUB_AIS_DB_P&quot;</span><span class="p">)])</span>
+
+<span class="nf">print</span><span class="p">(</span><span class="s">&quot;Subsequent MACE Top Hits (when filtered by existing incidence GWAS 1e-8)&quot;</span><span class="p">)</span>
+<span class="n">pruned_mace_snps</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">basic_snp_pruning</span><span class="p">(</span><span class="n">significant_first_ais_comparison</span><span class="p">,</span><span class="w"> </span><span class="n">p_value_column</span><span class="o">=</span><span class="s">&quot;SUB_AIS_MIN_P_VALUE&quot;</span><span class="p">)</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">pruned_mace_snps</span><span class="p">[</span><span class="nf">with</span><span class="p">(</span><span class="n">pruned_mace_snps</span><span class="p">,</span><span class="w"> </span><span class="nf">order</span><span class="p">(</span><span class="n">SUB_MACE_MIN_P_VALUE</span><span class="p">)),</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;MARKER&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;EXISTING_P&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;SUB_MACE_P&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;SUB_MACE_SH_P&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;SUB_MACE_DB_P&quot;</span><span class="p">)])</span>
 </pre></div>
 
      </div>
@@ -14770,344 +14928,13 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
-<table class="dataframe">
-<caption>A data.table: 89 × 8</caption>
-<thead>
-	<tr><th scope=col>MARKER</th><th scope=col>EXISTING_P</th><th scope=col>SUB_AIS_P</th><th scope=col>SUB_AIS_SH_P</th><th scope=col>SUB_AIS_DB_P</th><th scope=col>SUB_MACE_P</th><th scope=col>SUB_MACE_SH_P</th><th scope=col>SUB_MACE_DB_P</th></tr>
-	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
-</thead>
-<tbody>
-	<tr><td>14:103199710</td><td>8.858e-09</td><td>0.880900</td><td>0.68320</td><td>0.757100</td><td>8.008e-01</td><td>3.627e-01</td><td>7.063e-01</td></tr>
-	<tr><td>1:182977036 </td><td>1.675e-08</td><td>0.753500</td><td>0.05808</td><td>0.709500</td><td>3.495e-01</td><td>2.426e-04</td><td>1.355e-01</td></tr>
-	<tr><td>1:182978124 </td><td>2.061e-08</td><td>0.857400</td><td>0.08124</td><td>0.829000</td><td>3.733e-01</td><td>2.712e-04</td><td>1.280e-01</td></tr>
-	<tr><td>1:182979308 </td><td>2.205e-08</td><td>0.787500</td><td>0.05734</td><td>0.756600</td><td>3.505e-01</td><td>2.009e-04</td><td>1.140e-01</td></tr>
-	<tr><td>1:182980016 </td><td>2.272e-08</td><td>0.800900</td><td>0.06186</td><td>0.770400</td><td>3.557e-01</td><td>2.160e-04</td><td>1.147e-01</td></tr>
-	<tr><td>1:182982597 </td><td>2.205e-08</td><td>0.787500</td><td>0.05734</td><td>0.756600</td><td>3.505e-01</td><td>2.009e-04</td><td>1.140e-01</td></tr>
-	<tr><td>1:182983635 </td><td>2.205e-08</td><td>0.787500</td><td>0.05734</td><td>0.756600</td><td>3.505e-01</td><td>2.009e-04</td><td>1.140e-01</td></tr>
-	<tr><td>1:182985440 </td><td>2.132e-08</td><td>0.783500</td><td>0.06140</td><td>0.764100</td><td>3.487e-01</td><td>2.167e-04</td><td>1.199e-01</td></tr>
-	<tr><td>1:182986808 </td><td>2.170e-08</td><td>0.872500</td><td>0.12340</td><td>0.744400</td><td>5.272e-01</td><td>3.138e-04</td><td>9.177e-02</td></tr>
-	<tr><td>1:182988321 </td><td>3.121e-08</td><td>0.641100</td><td>0.04244</td><td>0.659100</td><td>2.510e-01</td><td>7.569e-05</td><td>1.057e-01</td></tr>
-	<tr><td>1:182989335 </td><td>1.938e-08</td><td>0.783100</td><td>0.06332</td><td>0.775200</td><td>3.723e-01</td><td>2.535e-04</td><td>1.251e-01</td></tr>
-	<tr><td>1:182989568 </td><td>1.909e-08</td><td>0.781600</td><td>0.06833</td><td>0.735200</td><td>3.247e-01</td><td>3.723e-04</td><td>1.801e-01</td></tr>
-	<tr><td>1:182990263 </td><td>2.217e-08</td><td>0.786300</td><td>0.05668</td><td>0.755500</td><td>3.498e-01</td><td>1.974e-04</td><td>1.118e-01</td></tr>
-	<tr><td>1:182994280 </td><td>2.266e-08</td><td>0.799000</td><td>0.05119</td><td>0.742200</td><td>3.557e-01</td><td>2.018e-04</td><td>1.106e-01</td></tr>
-	<tr><td>1:182994468 </td><td>2.168e-08</td><td>0.800500</td><td>0.05044</td><td>0.740500</td><td>3.630e-01</td><td>2.180e-04</td><td>1.139e-01</td></tr>
-	<tr><td>1:182996422 </td><td>1.892e-08</td><td>0.846400</td><td>0.03991</td><td>0.752600</td><td>3.796e-01</td><td>1.767e-04</td><td>9.552e-02</td></tr>
-	<tr><td>1:183005231 </td><td>4.449e-09</td><td>0.917800</td><td>0.05206</td><td>0.912500</td><td>4.520e-01</td><td>1.301e-04</td><td>9.620e-02</td></tr>
-	<tr><td>1:183006480 </td><td>2.513e-08</td><td>0.739600</td><td>0.02900</td><td>0.688500</td><td>2.917e-01</td><td>6.194e-05</td><td>6.685e-02</td></tr>
-	<tr><td>1:183007691 </td><td>2.743e-08</td><td>0.738500</td><td>0.03032</td><td>0.695800</td><td>2.907e-01</td><td>6.087e-05</td><td>6.515e-02</td></tr>
-	<tr><td>1:183032447 </td><td>2.331e-08</td><td>0.788300</td><td>0.02977</td><td>0.719900</td><td>3.162e-01</td><td>6.810e-05</td><td>6.537e-02</td></tr>
-	<tr><td>1:183065360 </td><td>4.361e-08</td><td>0.838300</td><td>0.02267</td><td>0.779300</td><td>3.233e-01</td><td>5.482e-05</td><td>4.769e-02</td></tr>
-	<tr><td>1:183073109 </td><td>3.497e-08</td><td>0.818600</td><td>0.02225</td><td>0.764000</td><td>2.992e-01</td><td>4.647e-05</td><td>5.030e-02</td></tr>
-	<tr><td>1:183074567 </td><td>4.084e-08</td><td>0.865100</td><td>0.02457</td><td>0.807700</td><td>3.151e-01</td><td>5.144e-05</td><td>4.890e-02</td></tr>
-	<tr><td>1:183077296 </td><td>3.506e-08</td><td>0.801900</td><td>0.02014</td><td>0.755800</td><td>2.967e-01</td><td>3.665e-05</td><td>4.352e-02</td></tr>
-	<tr><td>1:183080924 </td><td>3.635e-08</td><td>0.778800</td><td>0.02151</td><td>0.734500</td><td>2.884e-01</td><td>4.385e-05</td><td>5.164e-02</td></tr>
-	<tr><td>1:183082535 </td><td>3.986e-08</td><td>0.783500</td><td>0.02096</td><td>0.736000</td><td>2.959e-01</td><td>4.602e-05</td><td>5.044e-02</td></tr>
-	<tr><td>1:183085264 </td><td>1.526e-08</td><td>0.648300</td><td>0.08702</td><td>0.677700</td><td>1.747e-01</td><td>2.715e-05</td><td>1.592e-01</td></tr>
-	<tr><td>1:183090391 </td><td>2.991e-08</td><td>0.732200</td><td>0.02130</td><td>0.677900</td><td>2.749e-01</td><td>5.206e-05</td><td>6.074e-02</td></tr>
-	<tr><td>1:183094418 </td><td>2.632e-08</td><td>0.756700</td><td>0.02214</td><td>0.694100</td><td>2.920e-01</td><td>5.794e-05</td><td>6.173e-02</td></tr>
-	<tr><td>1:183096253 </td><td>2.440e-08</td><td>0.730100</td><td>0.02070</td><td>0.674300</td><td>2.773e-01</td><td>5.188e-05</td><td>6.080e-02</td></tr>
-	<tr><td>1:183097605 </td><td>4.436e-08</td><td>0.790000</td><td>0.01666</td><td>0.711100</td><td>3.163e-01</td><td>3.614e-05</td><td>7.553e-02</td></tr>
-	<tr><td>1:183097956 </td><td>2.084e-08</td><td>0.704900</td><td>0.02101</td><td>0.665200</td><td>2.657e-01</td><td>4.717e-05</td><td>6.046e-02</td></tr>
-	<tr><td>1:183098382 </td><td>1.616e-08</td><td>0.725200</td><td>0.01432</td><td>0.603300</td><td>2.898e-01</td><td>7.489e-05</td><td>7.245e-02</td></tr>
-	<tr><td>1:183098697 </td><td>6.978e-09</td><td>0.643100</td><td>0.02465</td><td>0.575900</td><td>2.255e-01</td><td>6.335e-05</td><td>9.676e-02</td></tr>
-	<tr><td>1:183098964 </td><td>1.900e-08</td><td>0.710800</td><td>0.01969</td><td>0.654900</td><td>2.671e-01</td><td>5.076e-05</td><td>6.257e-02</td></tr>
-	<tr><td>1:183101427 </td><td>2.139e-08</td><td>0.672900</td><td>0.02308</td><td>0.649700</td><td>2.108e-01</td><td>5.511e-05</td><td>7.778e-02</td></tr>
-	<tr><td>1:183104340 </td><td>2.535e-08</td><td>0.959200</td><td>0.05900</td><td>0.777100</td><td>4.657e-01</td><td>8.329e-04</td><td>1.663e-01</td></tr>
-	<tr><td>1:183105855 </td><td>2.742e-09</td><td>0.780100</td><td>0.14670</td><td>0.914300</td><td>5.511e-01</td><td>5.065e-04</td><td>1.396e-01</td></tr>
-	<tr><td>1:183105897 </td><td>3.012e-09</td><td>0.833600</td><td>0.22530</td><td>0.905300</td><td>6.369e-01</td><td>2.088e-03</td><td>2.146e-01</td></tr>
-	<tr><td>1:183106623 </td><td>2.659e-09</td><td>0.829800</td><td>0.22940</td><td>0.876200</td><td>6.187e-01</td><td>1.763e-03</td><td>1.998e-01</td></tr>
-	<tr><td>1:183109259 </td><td>2.396e-09</td><td>0.927900</td><td>0.13710</td><td>0.965900</td><td>5.691e-01</td><td>1.395e-03</td><td>2.045e-01</td></tr>
-	<tr><td>1:183109365 </td><td>2.592e-09</td><td>0.875500</td><td>0.22070</td><td>0.919100</td><td>5.893e-01</td><td>1.769e-03</td><td>2.102e-01</td></tr>
-	<tr><td>1:183114864 </td><td>1.126e-10</td><td>0.775200</td><td>0.06926</td><td>0.565600</td><td>4.573e-01</td><td>1.261e-03</td><td>2.686e-01</td></tr>
-	<tr><td>1:183115328 </td><td>8.152e-10</td><td>0.881300</td><td>0.12880</td><td>0.973800</td><td>5.623e-01</td><td>5.938e-04</td><td>1.743e-01</td></tr>
-	<tr><td>2:203644529 </td><td>1.793e-08</td><td>0.004729</td><td>0.07059</td><td>0.008824</td><td>1.618e-01</td><td>3.467e-01</td><td>6.197e-01</td></tr>
-	<tr><td>2:203644533 </td><td>1.793e-08</td><td>0.004729</td><td>0.07059</td><td>0.008824</td><td>1.618e-01</td><td>3.467e-01</td><td>6.197e-01</td></tr>
-	<tr><td>2:203655123 </td><td>4.738e-08</td><td>0.002574</td><td>0.01494</td><td>0.005276</td><td>1.303e-01</td><td>8.050e-01</td><td>8.864e-01</td></tr>
-	<tr><td>2:203710979 </td><td>4.366e-08</td><td>0.013070</td><td>0.03458</td><td>0.019150</td><td>3.295e-01</td><td>4.992e-01</td><td>9.360e-01</td></tr>
-	<tr><td>2:203736202 </td><td>1.484e-08</td><td>0.007509</td><td>0.06086</td><td>0.014950</td><td>2.049e-01</td><td>4.515e-01</td><td>8.522e-01</td></tr>
-	<tr><td>2:203741992 </td><td>1.851e-08</td><td>0.007089</td><td>0.05048</td><td>0.014110</td><td>1.991e-01</td><td>5.047e-01</td><td>8.661e-01</td></tr>
-	<tr><td>2:203743439 </td><td>1.851e-08</td><td>0.007089</td><td>0.05048</td><td>0.014110</td><td>1.991e-01</td><td>5.047e-01</td><td>8.661e-01</td></tr>
-	<tr><td>2:203761156 </td><td>1.682e-08</td><td>0.007142</td><td>0.05237</td><td>0.014970</td><td>1.991e-01</td><td>5.328e-01</td><td>8.905e-01</td></tr>
-	<tr><td>2:203792046 </td><td>3.176e-08</td><td>0.006542</td><td>0.03081</td><td>0.013560</td><td>1.892e-01</td><td>6.678e-01</td><td>9.643e-01</td></tr>
-	<tr><td>2:203798365 </td><td>3.176e-08</td><td>0.006542</td><td>0.03081</td><td>0.013560</td><td>1.892e-01</td><td>6.678e-01</td><td>9.643e-01</td></tr>
-	<tr><td>2:203806437 </td><td>1.950e-08</td><td>0.007432</td><td>0.05007</td><td>0.015630</td><td>2.019e-01</td><td>5.393e-01</td><td>9.321e-01</td></tr>
-	<tr><td>2:203806722 </td><td>2.538e-08</td><td>0.008943</td><td>0.05209</td><td>0.017280</td><td>2.244e-01</td><td>5.113e-01</td><td>9.235e-01</td></tr>
-	<tr><td>2:203814209 </td><td>1.712e-08</td><td>0.007305</td><td>0.04581</td><td>0.014110</td><td>1.825e-01</td><td>5.851e-01</td><td>9.649e-01</td></tr>
-	<tr><td>2:203827690 </td><td>2.113e-08</td><td>0.008229</td><td>0.05899</td><td>0.017090</td><td>2.084e-01</td><td>5.237e-01</td><td>9.270e-01</td></tr>
-	<tr><td>2:203828797 </td><td>2.113e-08</td><td>0.008229</td><td>0.05899</td><td>0.017090</td><td>2.084e-01</td><td>5.237e-01</td><td>9.270e-01</td></tr>
-	<tr><td>2:203851338 </td><td>2.367e-08</td><td>0.007772</td><td>0.04063</td><td>0.015400</td><td>2.081e-01</td><td>5.770e-01</td><td>9.506e-01</td></tr>
-	<tr><td>2:203851687 </td><td>3.275e-08</td><td>0.007796</td><td>0.03508</td><td>0.015470</td><td>2.142e-01</td><td>6.253e-01</td><td>9.735e-01</td></tr>
-	<tr><td>2:203861347 </td><td>2.111e-08</td><td>0.008562</td><td>0.05185</td><td>0.016900</td><td>2.201e-01</td><td>5.194e-01</td><td>9.252e-01</td></tr>
-	<tr><td>2:203865822 </td><td>5.581e-09</td><td>0.010870</td><td>0.07700</td><td>0.025080</td><td>2.267e-01</td><td>5.231e-01</td><td>9.774e-01</td></tr>
-	<tr><td>2:203867212 </td><td>2.532e-08</td><td>0.002505</td><td>0.06940</td><td>0.007311</td><td>1.333e-01</td><td>5.670e-01</td><td>7.434e-01</td></tr>
-	<tr><td>2:203877365 </td><td>1.338e-08</td><td>0.009848</td><td>0.19170</td><td>0.030310</td><td>2.381e-01</td><td>3.010e-01</td><td>7.933e-01</td></tr>
-	<tr><td>2:203884743 </td><td>1.455e-08</td><td>0.008178</td><td>0.07751</td><td>0.018730</td><td>2.527e-01</td><td>4.157e-01</td><td>9.027e-01</td></tr>
-	<tr><td>2:203888355 </td><td>6.357e-09</td><td>0.011190</td><td>0.14450</td><td>0.026710</td><td>3.269e-01</td><td>2.905e-01</td><td>9.259e-01</td></tr>
-	<tr><td>4:89943023  </td><td>1.366e-09</td><td>0.414400</td><td>0.51150</td><td>0.756700</td><td>9.317e-01</td><td>3.509e-01</td><td>1.912e-02</td></tr>
-	<tr><td>4:89946030  </td><td>3.234e-08</td><td>0.064490</td><td>0.03524</td><td>0.361300</td><td>3.373e-01</td><td>5.357e-02</td><td>1.489e-02</td></tr>
-	<tr><td>4:89950103  </td><td>3.259e-08</td><td>0.064680</td><td>0.03495</td><td>0.360600</td><td>3.384e-01</td><td>5.396e-02</td><td>1.495e-02</td></tr>
-	<tr><td>4:89953439  </td><td>3.281e-08</td><td>0.064660</td><td>0.03487</td><td>0.360100</td><td>3.382e-01</td><td>5.404e-02</td><td>1.497e-02</td></tr>
-	<tr><td>4:89962715  </td><td>4.734e-08</td><td>0.066460</td><td>0.03290</td><td>0.354200</td><td>3.251e-01</td><td>5.387e-02</td><td>1.625e-02</td></tr>
-	<tr><td>4:89967837  </td><td>4.946e-08</td><td>0.067070</td><td>0.02770</td><td>0.338500</td><td>3.378e-01</td><td>5.592e-02</td><td>1.547e-02</td></tr>
-	<tr><td>6:1367244   </td><td>2.316e-08</td><td>0.004308</td><td>0.72500</td><td>0.055030</td><td>1.570e-01</td><td>3.313e-01</td><td>5.326e-01</td></tr>
-	<tr><td>6:1375827   </td><td>2.189e-08</td><td>0.002453</td><td>0.83300</td><td>0.034250</td><td>1.637e-01</td><td>2.635e-01</td><td>5.362e-01</td></tr>
-	<tr><td>6:1376204   </td><td>2.788e-08</td><td>0.002291</td><td>0.82360</td><td>0.032190</td><td>1.538e-01</td><td>2.594e-01</td><td>5.133e-01</td></tr>
-	<tr><td>7:92244630  </td><td>7.712e-09</td><td>0.010930</td><td>0.16100</td><td>0.035380</td><td>1.502e-02</td><td>7.503e-01</td><td>5.503e-01</td></tr>
-	<tr><td>7:92254856  </td><td>1.061e-08</td><td>0.042270</td><td>0.21160</td><td>0.052750</td><td>1.145e-01</td><td>2.685e-01</td><td>3.302e-01</td></tr>
-	<tr><td>7:92257602  </td><td>2.963e-09</td><td>0.010990</td><td>0.08762</td><td>0.021230</td><td>3.780e-02</td><td>6.395e-01</td><td>4.943e-01</td></tr>
-	<tr><td>7:92258733  </td><td>2.612e-08</td><td>0.028290</td><td>0.61620</td><td>0.097640</td><td>3.250e-02</td><td>7.142e-01</td><td>3.150e-01</td></tr>
-	<tr><td>7:92263789  </td><td>2.594e-09</td><td>0.020800</td><td>0.06938</td><td>0.026960</td><td>4.732e-02</td><td>6.903e-01</td><td>5.040e-01</td></tr>
-	<tr><td>8:10754275  </td><td>2.697e-08</td><td>0.693400</td><td>0.33790</td><td>0.463700</td><td>2.910e-01</td><td>9.324e-01</td><td>4.911e-01</td></tr>
-	<tr><td>8:10766675  </td><td>3.538e-09</td><td>0.840500</td><td>0.27320</td><td>0.311100</td><td>4.016e-01</td><td>9.075e-01</td><td>2.931e-01</td></tr>
-	<tr><td>8:10773017  </td><td>2.794e-08</td><td>0.731000</td><td>0.04227</td><td>0.152000</td><td>5.931e-01</td><td>4.053e-01</td><td>8.421e-01</td></tr>
-	<tr><td>8:10789935  </td><td>1.268e-08</td><td>0.251900</td><td>0.04126</td><td>0.036080</td><td>5.859e-01</td><td>2.220e-01</td><td>4.364e-01</td></tr>
-	<tr><td>9:22085719  </td><td>6.095e-09</td><td>0.037600</td><td>0.84290</td><td>0.170300</td><td>5.295e-04</td><td>5.081e-01</td><td>5.746e-03</td></tr>
-	<tr><td>9:22099746  </td><td>2.156e-09</td><td>0.001817</td><td>0.20280</td><td>0.002616</td><td>1.748e-06</td><td>7.168e-01</td><td>1.131e-04</td></tr>
-	<tr><td>9:22111584  </td><td>1.282e-08</td><td>0.002558</td><td>0.88640</td><td>0.028250</td><td>7.549e-06</td><td>1.554e-01</td><td>2.259e-05</td></tr>
-	<tr><td>9:22120482  </td><td>2.112e-08</td><td>0.009180</td><td>0.50990</td><td>0.032760</td><td>2.259e-05</td><td>9.425e-01</td><td>2.974e-03</td></tr>
-</tbody>
-</table>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[45]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-r"><pre><span></span><span class="nf">source</span><span class="p">(</span><span class="s">&quot;gwas_data_helpers.R&quot;</span><span class="p">)</span>
-
-<span class="nf">floor</span><span class="p">(</span><span class="m">125000</span><span class="o">/</span><span class="m">2</span><span class="p">)</span>
-<span class="n">testout</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">significant_first_ais_comparison</span>
-<span class="n">testout</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">separate</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">testout</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;MARKER&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">into</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;CHR&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;BP&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">sep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;:&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">remove</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">F</span><span class="p">)</span>
-<span class="n">testout</span><span class="o">$</span><span class="n">BP</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.numeric</span><span class="p">(</span><span class="n">testout</span><span class="o">$</span><span class="n">BP</span><span class="p">)</span>
-<span class="n">testout</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">basic_snp_pruning</span><span class="p">(</span><span class="n">testout</span><span class="p">,</span><span class="w"> </span><span class="n">p_value_column</span><span class="o">=</span><span class="s">&quot;EXISTING_P&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">range</span><span class="o">=</span><span class="m">125000</span><span class="p">)</span>
-<span class="n">testout</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
-62500
-</div>
-
-</div>
 <div class="jp-OutputArea-child">
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>[1] 0
-[1] 89
-[1] 18
-[1] 71
-[1] 24
-[1] 47
-[1] 2
-[1] 45
-[1] 6
-[1] 39
-[1] 9
-[1] 30
-[1] 3
-[1] 27
-[1] 5
-[1] 22
-[1] 2
-[1] 20
-[1] 4
-[1] 16
-[1] 3
-[1] 13
-[1] 3
-[1] 10
-[1] 0
-[1] 10
-[1] 0
-[1] 10
-[1] 0
-[1] 10
-[1] 0
-[1] 10
-[1] 0
-[1] 10
-[1] 0
-[1] 10
-[1] 0
-[1] 10
-[1] 0
-[1] 10
-[1] 0
-[1] 10
-[1] 0
-[1] 10
-[1] 0
-[1] 10
-[1] 0
-[1] 10
-[1] 0
-[1] 10
-[1] 0
-[1] 10
-[1] 0
-[1] 10
-[1] 0
-[1] 10
-[1] 0
-[1] 10
-[1] 0
-[1] 10
-[1] 0
-[1] 10
-[1] 0
-[1] 10
-[1] 0
-[1] 10
-[1] 0
-[1] 10
-[1] 0
-[1] 10
-[1] 0
-[1] 10
-[1] 0
-[1] 10
-[1] 0
-[1] 10
-[1] 0
-[1] 10
-[1] 0
-[1] 10
-[1] 0
-[1] 10
-[1] 0
-[1] 10
-[1] 0
-[1] 10
-[1] 0
-[1] 10
-[1] 0
-[1] 10
-[1] 0
-[1] 10
-[1] 0
-[1] 10
-[1] 0
-[1] 10
-[1] 0
-[1] 10
-[1] 0
-[1] 10
-[1] 0
-[1] 10
-[1] 0
-[1] 10
-[1] 0
-[1] 10
-[1] 0
-[1] 10
-[1] 0
-[1] 10
-[1] 0
-[1] 10
-[1] 0
-[1] 10
-[1] 0
-[1] 10
-[1] 0
-[1] 10
-[1] 0
-[1] 10
-[1] 0
-[1] 10
-[1] 0
-[1] 10
-[1] 0
-[1] 10
-[1] 0
-[1] 10
-[1] 0
-[1] 10
-[1] 0
-[1] 10
-[1] 0
-[1] 10
-[1] 0
-[1] 10
-[1] 0
-[1] 10
-[1] 0
-[1] 10
-[1] 0
-[1] 10
-[1] 0
-[1] 10
-[1] 0
-[1] 10
-[1] 0
-[1] 10
-[1] 0
-[1] 10
-[1] 0
-[1] 10
-[1] 0
-[1] 10
-[1] 0
-[1] 10
-[1] 0
-[1] 10
-[1] 0
-[1] 10
-[1] 0
-[1] 10
-[1] 0
-[1] 10
-[1] 0
-[1] 10
-[1] 0
-[1] 10
-[1] 0
-[1] 10
-[1] 0
-[1] 10
-[1] 0
-[1] 10
-[1] 0
-[1] 10
-[1] 0
-[1] 10
+<pre>[1] &#34;Subsequent AIS Top Hits (when filtered by existing incidence GWAS 1e-8)&#34;
 </pre>
 </div>
 </div>
@@ -15119,22 +14946,54 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
 <table class="dataframe">
-<caption>A data.frame: 10 × 24</caption>
+<caption>A data.table: 6 × 5</caption>
 <thead>
-	<tr><th></th><th scope=col>MARKER</th><th scope=col>CHR</th><th scope=col>BP</th><th scope=col>EXISTING_BETA</th><th scope=col>EXISTING_SE</th><th scope=col>EXISTING_P</th><th scope=col>SUB_AIS_BETA</th><th scope=col>SUB_AIS_SE</th><th scope=col>SUB_AIS_P</th><th scope=col>SUB_AIS_SH_BETA</th><th scope=col>SUB_AIS_SH_SE</th><th scope=col>SUB_AIS_SH_P</th><th scope=col>SUB_AIS_DB_BETA</th><th scope=col>SUB_AIS_DB_SE</th><th scope=col>SUB_AIS_DB_P</th><th scope=col>SUB_MACE_BETA</th><th scope=col>SUB_MACE_SE</th><th scope=col>SUB_MACE_P</th><th scope=col>SUB_MACE_SH_BETA</th><th scope=col>SUB_MACE_SH_SE</th><th scope=col>SUB_MACE_SH_P</th><th scope=col>SUB_MACE_DB_BETA</th><th scope=col>SUB_MACE_DB_SE</th><th scope=col>SUB_MACE_DB_P</th></tr>
-	<tr><th></th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+	<tr><th scope=col>MARKER</th><th scope=col>EXISTING_P</th><th scope=col>SUB_AIS_P</th><th scope=col>SUB_AIS_SH_P</th><th scope=col>SUB_AIS_DB_P</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
 </thead>
 <tbody>
-	<tr><th scope=row>1</th><td>14:103199710</td><td>14</td><td>103199710</td><td> 0.0079</td><td>0.0014</td><td>8.858e-09</td><td> 0.0089</td><td>0.0592</td><td>0.880900</td><td> 0.0257</td><td>0.0629</td><td>0.68320</td><td>-0.0183</td><td>0.0592</td><td>0.757100</td><td> 0.0143</td><td>0.0568</td><td>8.008e-01</td><td> 0.0539</td><td>0.0592</td><td>0.362700</td><td> 0.0214</td><td>0.0569</td><td>0.7063000</td></tr>
-	<tr><th scope=row>43</th><td>1:183114864 </td><td>1 </td><td>183114864</td><td> 0.0378</td><td>0.0059</td><td>1.126e-10</td><td>-0.0031</td><td>0.0108</td><td>0.775200</td><td>-0.0394</td><td>0.0217</td><td>0.06926</td><td>-0.0064</td><td>0.0111</td><td>0.565600</td><td>-0.0082</td><td>0.0110</td><td>4.573e-01</td><td> 0.0734</td><td>0.0227</td><td>0.001261</td><td> 0.0125</td><td>0.0113</td><td>0.2686000</td></tr>
-	<tr><th scope=row>45</th><td>2:203644529 </td><td>2 </td><td>203644529</td><td>-0.0520</td><td>0.0092</td><td>1.793e-08</td><td>-0.0487</td><td>0.0172</td><td>0.004729</td><td>-0.0819</td><td>0.0453</td><td>0.07059</td><td>-0.0463</td><td>0.0177</td><td>0.008824</td><td>-0.0245</td><td>0.0175</td><td>1.618e-01</td><td>-0.0428</td><td>0.0455</td><td>0.346700</td><td>-0.0089</td><td>0.0180</td><td>0.6197000</td></tr>
-	<tr><th scope=row>49</th><td>2:203736202 </td><td>2 </td><td>203736202</td><td>-0.0504</td><td>0.0089</td><td>1.484e-08</td><td>-0.0443</td><td>0.0166</td><td>0.007509</td><td>-0.0875</td><td>0.0467</td><td>0.06086</td><td>-0.0414</td><td>0.0170</td><td>0.014950</td><td>-0.0213</td><td>0.0168</td><td>2.049e-01</td><td>-0.0350</td><td>0.0465</td><td>0.451500</td><td>-0.0032</td><td>0.0172</td><td>0.8522000</td></tr>
-	<tr><th scope=row>63</th><td>2:203865822 </td><td>2 </td><td>203865822</td><td> 0.0521</td><td>0.0089</td><td>5.581e-09</td><td> 0.0424</td><td>0.0167</td><td>0.010870</td><td> 0.0823</td><td>0.0465</td><td>0.07700</td><td> 0.0383</td><td>0.0171</td><td>0.025080</td><td> 0.0205</td><td>0.0169</td><td>2.267e-01</td><td> 0.0297</td><td>0.0465</td><td>0.523100</td><td> 0.0005</td><td>0.0174</td><td>0.9774000</td></tr>
-	<tr><th scope=row>68</th><td>4:89943023  </td><td>4 </td><td> 89943023</td><td> 0.0331</td><td>0.0055</td><td>1.366e-09</td><td> 0.0082</td><td>0.0101</td><td>0.414400</td><td> 0.0133</td><td>0.0202</td><td>0.51150</td><td>-0.0032</td><td>0.0104</td><td>0.756700</td><td>-0.0009</td><td>0.0102</td><td>9.317e-01</td><td>-0.0195</td><td>0.0210</td><td>0.350900</td><td>-0.0247</td><td>0.0105</td><td>0.0191200</td></tr>
-	<tr><th scope=row>75</th><td>6:1375827   </td><td>6 </td><td>  1375827</td><td>-0.0573</td><td>0.0102</td><td>2.189e-08</td><td>-0.0567</td><td>0.0187</td><td>0.002453</td><td>-0.0125</td><td>0.0593</td><td>0.83300</td><td>-0.0407</td><td>0.0192</td><td>0.034250</td><td>-0.0265</td><td>0.0190</td><td>1.637e-01</td><td>-0.0654</td><td>0.0585</td><td>0.263500</td><td>-0.0120</td><td>0.0194</td><td>0.5362000</td></tr>
-	<tr><th scope=row>81</th><td>7:92263789  </td><td>7 </td><td> 92263789</td><td> 0.0376</td><td>0.0063</td><td>2.594e-09</td><td> 0.0271</td><td>0.0117</td><td>0.020800</td><td> 0.0471</td><td>0.0260</td><td>0.06938</td><td> 0.0266</td><td>0.0120</td><td>0.026960</td><td> 0.0236</td><td>0.0119</td><td>4.732e-02</td><td> 0.0106</td><td>0.0265</td><td>0.690300</td><td> 0.0081</td><td>0.0122</td><td>0.5040000</td></tr>
-	<tr><th scope=row>83</th><td>8:10766675  </td><td>8 </td><td> 10766675</td><td>-0.0337</td><td>0.0057</td><td>3.538e-09</td><td>-0.0021</td><td>0.0106</td><td>0.840500</td><td> 0.0241</td><td>0.0220</td><td>0.27320</td><td> 0.0109</td><td>0.0108</td><td>0.311100</td><td>-0.0090</td><td>0.0108</td><td>4.016e-01</td><td> 0.0027</td><td>0.0229</td><td>0.907500</td><td> 0.0115</td><td>0.0110</td><td>0.2931000</td></tr>
-	<tr><th scope=row>87</th><td>9:22099746  </td><td>9 </td><td> 22099746</td><td> 0.0338</td><td>0.0056</td><td>2.156e-09</td><td> 0.0326</td><td>0.0104</td><td>0.001817</td><td> 0.0304</td><td>0.0239</td><td>0.20280</td><td> 0.0324</td><td>0.0108</td><td>0.002616</td><td> 0.0507</td><td>0.0106</td><td>1.748e-06</td><td> 0.0088</td><td>0.0244</td><td>0.716800</td><td> 0.0421</td><td>0.0109</td><td>0.0001131</td></tr>
+	<tr><td>9:22099746 </td><td>2.156e-09</td><td>0.001817</td><td>0.20280</td><td>0.002616</td></tr>
+	<tr><td>2:203865822</td><td>5.581e-09</td><td>0.010870</td><td>0.07700</td><td>0.025080</td></tr>
+	<tr><td>7:92244630 </td><td>7.712e-09</td><td>0.010930</td><td>0.16100</td><td>0.035380</td></tr>
+	<tr><td>7:92257602 </td><td>2.963e-09</td><td>0.010990</td><td>0.08762</td><td>0.021230</td></tr>
+	<tr><td>2:203888355</td><td>6.357e-09</td><td>0.011190</td><td>0.14450</td><td>0.026710</td></tr>
+	<tr><td>7:92263789 </td><td>2.594e-09</td><td>0.020800</td><td>0.06938</td><td>0.026960</td></tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>[1] &#34;Subsequent MACE Top Hits (when filtered by existing incidence GWAS 1e-8)&#34;
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<table class="dataframe">
+<caption>A data.table: 6 × 5</caption>
+<thead>
+	<tr><th scope=col>MARKER</th><th scope=col>EXISTING_P</th><th scope=col>SUB_MACE_P</th><th scope=col>SUB_MACE_SH_P</th><th scope=col>SUB_MACE_DB_P</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>9:22099746 </td><td>2.156e-09</td><td>1.748e-06</td><td>7.168e-01</td><td>0.0001131</td></tr>
+	<tr><td>1:183098697</td><td>6.978e-09</td><td>2.255e-01</td><td>6.335e-05</td><td>0.0967600</td></tr>
+	<tr><td>1:183005231</td><td>4.449e-09</td><td>4.520e-01</td><td>1.301e-04</td><td>0.0962000</td></tr>
+	<tr><td>1:183105855</td><td>2.742e-09</td><td>5.511e-01</td><td>5.065e-04</td><td>0.1396000</td></tr>
+	<tr><td>9:22085719 </td><td>6.095e-09</td><td>5.295e-04</td><td>5.081e-01</td><td>0.0057460</td></tr>
+	<tr><td>1:183115328</td><td>8.152e-10</td><td>5.623e-01</td><td>5.938e-04</td><td>0.1743000</td></tr>
 </tbody>
 </table>
 
@@ -15162,24 +15021,25 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[4]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[35]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-r"><pre><span></span><span class="n">existing_stroke_gwas</span><span class="o">$</span><span class="n">MARKER</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">paste</span><span class="p">(</span><span class="n">existing_stroke_gwas</span><span class="o">$</span><span class="n">CHR</span><span class="p">,</span><span class="w"> </span><span class="n">existing_stroke_gwas</span><span class="o">$</span><span class="n">BP</span><span class="p">,</span><span class="w"> </span><span class="n">sep</span><span class="o">=</span><span class="s">&quot;:&quot;</span><span class="p">)</span>
-<span class="n">existing_stroke_gwas</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">convert_odds_ratio_to_beta_estimate</span><span class="p">(</span><span class="n">existing_stroke_gwas</span><span class="p">)</span>
-
-<span class="n">significant_subsequent_ais_comparison</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">subsequent_ais_metaanalysis_not_adjusted</span><span class="p">[</span><span class="n">subsequent_ais_metaanalysis_not_adjusted</span><span class="o">$</span><span class="n">P</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">5e-6</span><span class="p">,]</span>
+<div class=" highlight hl-r"><pre><span></span><span class="n">significant_subsequent_ais_comparison</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">subsequent_ais_metaanalysis_not_adjusted</span><span class="p">[</span><span class="n">subsequent_ais_metaanalysis_not_adjusted</span><span class="o">$</span><span class="n">P</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">1e-5</span><span class="p">,]</span>
 <span class="n">significant_subsequent_ais_comparison</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">merge_gwases</span><span class="p">(</span><span class="n">significant_subsequent_ais_comparison</span><span class="p">)</span>
 <span class="n">significant_subsequent_ais_comparison</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">merge</span><span class="p">(</span><span class="n">significant_subsequent_ais_comparison</span><span class="p">,</span><span class="w"> </span><span class="n">existing_stroke_gwas</span><span class="p">,</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;MARKER&quot;</span><span class="p">)</span>
 <span class="n">significant_subsequent_ais_comparison</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">significant_subsequent_ais_comparison</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">dplyr</span><span class="o">::</span><span class="nf">rename</span><span class="p">(</span><span class="s">&quot;ORIG_EXISTING_BETA&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;BETA&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ORIG_EXISTING_P&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;P&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ORIG_EXISTING_SE&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SE&quot;</span><span class="p">)</span>
+<span class="n">significant_subsequent_ais_comparison</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">basic_snp_pruning</span><span class="p">(</span><span class="n">significant_subsequent_ais_comparison</span><span class="p">,</span><span class="w"> </span><span class="n">p_value_column</span><span class="o">=</span><span class="s">&quot;SUB_AIS_P&quot;</span><span class="p">)</span>
 
+<span class="nf">print</span><span class="p">(</span><span class="s">&quot;Subsequent AIS Top Hits&quot;</span><span class="p">)</span>
 <span class="n">significant_subsequent_ais_comparison</span><span class="p">[,</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;MARKER&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ORIG_EXISTING_P&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;SUB_AIS_P&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;SUB_AIS_SH_P&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;SUB_AIS_DB_P&quot;</span><span class="p">)]</span>
 
-<span class="n">significant_subsequent_mace_comparison</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">subsequent_mace_metaanalysis_not_adjusted</span><span class="p">[</span><span class="n">subsequent_mace_metaanalysis_not_adjusted</span><span class="o">$</span><span class="n">P</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">5e-6</span><span class="p">,]</span>
+<span class="n">significant_subsequent_mace_comparison</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">subsequent_mace_metaanalysis_not_adjusted</span><span class="p">[</span><span class="n">subsequent_mace_metaanalysis_not_adjusted</span><span class="o">$</span><span class="n">P</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">1e-5</span><span class="p">,]</span>
 <span class="n">significant_subsequent_mace_comparison</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">merge_gwases</span><span class="p">(</span><span class="n">significant_subsequent_mace_comparison</span><span class="p">)</span>
 <span class="n">significant_subsequent_mace_comparison</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">merge</span><span class="p">(</span><span class="n">significant_subsequent_mace_comparison</span><span class="p">,</span><span class="w"> </span><span class="n">existing_stroke_gwas</span><span class="p">,</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;MARKER&quot;</span><span class="p">)</span>
 <span class="n">significant_subsequent_mace_comparison</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">significant_subsequent_mace_comparison</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">dplyr</span><span class="o">::</span><span class="nf">rename</span><span class="p">(</span><span class="s">&quot;ORIG_EXISTING_BETA&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;BETA&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ORIG_EXISTING_P&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;P&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ORIG_EXISTING_SE&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SE&quot;</span><span class="p">)</span>
+<span class="n">significant_subsequent_mace_comparison</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">basic_snp_pruning</span><span class="p">(</span><span class="n">significant_subsequent_mace_comparison</span><span class="p">,</span><span class="w"> </span><span class="n">p_value_column</span><span class="o">=</span><span class="s">&quot;SUB_AIS_P&quot;</span><span class="p">)</span>
 
+<span class="nf">print</span><span class="p">(</span><span class="s">&quot;Subsequent MACE Top Hits&quot;</span><span class="p">)</span>
 <span class="n">significant_subsequent_mace_comparison</span><span class="p">[,</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;MARKER&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ORIG_EXISTING_P&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;SUB_MACE_P&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;SUB_MACE_SH_P&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;SUB_MACE_DB_P&quot;</span><span class="p">)]</span>
 </pre></div>
 
@@ -15202,32 +15062,30 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
 <table class="dataframe">
-<caption>A data.table: 20 × 5</caption>
+<caption>A data.table: 18 × 5</caption>
 <thead>
 	<tr><th scope=col>MARKER</th><th scope=col>ORIG_EXISTING_P</th><th scope=col>SUB_AIS_P</th><th scope=col>SUB_AIS_SH_P</th><th scope=col>SUB_AIS_DB_P</th></tr>
 	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
 </thead>
 <tbody>
-	<tr><td>12:108665953</td><td>0.3038</td><td>4.861e-06</td><td>2.191e-05</td><td>1.646e-05</td></tr>
-	<tr><td>12:108666175</td><td>0.3560</td><td>4.522e-06</td><td>2.042e-05</td><td>1.537e-05</td></tr>
-	<tr><td>14:73294871 </td><td>0.3027</td><td>2.290e-06</td><td>1.666e-05</td><td>6.377e-06</td></tr>
-	<tr><td>14:73295026 </td><td>0.2767</td><td>4.786e-06</td><td>1.445e-04</td><td>7.976e-05</td></tr>
-	<tr><td>14:73301828 </td><td>0.3843</td><td>3.034e-06</td><td>3.100e-05</td><td>1.200e-05</td></tr>
-	<tr><td>14:73301903 </td><td>0.3324</td><td>3.011e-06</td><td>2.754e-05</td><td>1.190e-05</td></tr>
-	<tr><td>14:73303231 </td><td>0.3425</td><td>4.431e-06</td><td>1.333e-04</td><td>7.339e-05</td></tr>
-	<tr><td>16:4411506  </td><td>0.3004</td><td>1.533e-06</td><td>6.215e-03</td><td>3.461e-03</td></tr>
-	<tr><td>16:4417180  </td><td>0.3455</td><td>1.538e-06</td><td>5.352e-03</td><td>3.152e-03</td></tr>
-	<tr><td>16:4417338  </td><td>0.2605</td><td>1.957e-06</td><td>6.415e-03</td><td>3.787e-03</td></tr>
-	<tr><td>16:4417797  </td><td>0.2794</td><td>9.764e-07</td><td>4.465e-03</td><td>2.457e-03</td></tr>
-	<tr><td>16:4419121  </td><td>0.3634</td><td>1.294e-06</td><td>5.012e-03</td><td>2.937e-03</td></tr>
-	<tr><td>2:40793292  </td><td>0.5616</td><td>3.920e-06</td><td>4.134e-04</td><td>1.036e-04</td></tr>
-	<tr><td>3:45347648  </td><td>0.9750</td><td>4.159e-06</td><td>3.490e-05</td><td>3.741e-05</td></tr>
-	<tr><td>3:45446241  </td><td>0.4360</td><td>3.404e-07</td><td>9.911e-07</td><td>6.643e-07</td></tr>
-	<tr><td>3:78659550  </td><td>0.6204</td><td>4.877e-06</td><td>5.893e-05</td><td>7.529e-05</td></tr>
-	<tr><td>3:78660685  </td><td>0.5618</td><td>4.792e-06</td><td>4.922e-05</td><td>6.290e-05</td></tr>
-	<tr><td>3:78661232  </td><td>0.5761</td><td>4.832e-06</td><td>4.776e-05</td><td>6.127e-05</td></tr>
-	<tr><td>5:125697656 </td><td>0.7926</td><td>4.505e-06</td><td>9.200e-06</td><td>5.936e-06</td></tr>
-	<tr><td>5:163208974 </td><td>0.7463</td><td>4.928e-06</td><td>5.228e-05</td><td>2.779e-05</td></tr>
+	<tr><td>10:14083037 </td><td>0.91500</td><td>7.092e-06</td><td>2.319e-04</td><td>4.860e-04</td></tr>
+	<tr><td>10:81136015 </td><td>0.03442</td><td>5.888e-06</td><td>2.592e-05</td><td>1.792e-05</td></tr>
+	<tr><td>12:108666175</td><td>0.35600</td><td>4.522e-06</td><td>2.042e-05</td><td>1.537e-05</td></tr>
+	<tr><td>13:52428066 </td><td>0.01186</td><td>8.997e-06</td><td>1.517e-05</td><td>8.119e-06</td></tr>
+	<tr><td>13:62059558 </td><td>0.92770</td><td>5.973e-06</td><td>3.571e-05</td><td>5.558e-05</td></tr>
+	<tr><td>14:62708880 </td><td>0.13560</td><td>8.852e-06</td><td>5.191e-05</td><td>1.359e-04</td></tr>
+	<tr><td>14:73294871 </td><td>0.30270</td><td>2.290e-06</td><td>1.666e-05</td><td>6.377e-06</td></tr>
+	<tr><td>16:4417797  </td><td>0.27940</td><td>9.764e-07</td><td>4.465e-03</td><td>2.457e-03</td></tr>
+	<tr><td>1:158889221 </td><td>0.06908</td><td>9.732e-06</td><td>5.954e-04</td><td>2.916e-04</td></tr>
+	<tr><td>1:59828482  </td><td>0.87800</td><td>5.960e-06</td><td>2.752e-01</td><td>4.503e-02</td></tr>
+	<tr><td>2:40793292  </td><td>0.56160</td><td>3.920e-06</td><td>4.134e-04</td><td>1.036e-04</td></tr>
+	<tr><td>3:151077260 </td><td>0.26110</td><td>8.259e-06</td><td>2.759e-03</td><td>3.482e-04</td></tr>
+	<tr><td>3:45446241  </td><td>0.43600</td><td>3.404e-07</td><td>9.911e-07</td><td>6.643e-07</td></tr>
+	<tr><td>3:78660685  </td><td>0.56180</td><td>4.792e-06</td><td>4.922e-05</td><td>6.290e-05</td></tr>
+	<tr><td>5:125697656 </td><td>0.79260</td><td>4.505e-06</td><td>9.200e-06</td><td>5.936e-06</td></tr>
+	<tr><td>5:163208974 </td><td>0.74630</td><td>4.928e-06</td><td>5.228e-05</td><td>2.779e-05</td></tr>
+	<tr><td>5:19673122  </td><td>0.84520</td><td>9.499e-06</td><td>1.958e-02</td><td>2.184e-02</td></tr>
+	<tr><td>8:4763664   </td><td>0.80710</td><td>8.088e-06</td><td>9.917e-04</td><td>9.103e-04</td></tr>
 </tbody>
 </table>
 
@@ -15242,32 +15100,29 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
 <table class="dataframe">
-<caption>A data.table: 21 × 5</caption>
+<caption>A data.table: 18 × 5</caption>
 <thead>
 	<tr><th scope=col>MARKER</th><th scope=col>ORIG_EXISTING_P</th><th scope=col>SUB_MACE_P</th><th scope=col>SUB_MACE_SH_P</th><th scope=col>SUB_MACE_DB_P</th></tr>
 	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
 </thead>
 <tbody>
 	<tr><td>13:112784083</td><td>9.792e-01</td><td>1.007e-06</td><td>4.892e-01</td><td>4.212e-01</td></tr>
-	<tr><td>13:62088326 </td><td>5.779e-01</td><td>4.924e-06</td><td>1.859e-03</td><td>3.627e-03</td></tr>
-	<tr><td>16:4411506  </td><td>3.004e-01</td><td>7.825e-07</td><td>6.294e-02</td><td>2.398e-02</td></tr>
-	<tr><td>16:4417180  </td><td>3.455e-01</td><td>5.453e-07</td><td>5.224e-02</td><td>1.999e-02</td></tr>
-	<tr><td>16:4417338  </td><td>2.605e-01</td><td>9.064e-07</td><td>5.906e-02</td><td>2.250e-02</td></tr>
+	<tr><td>13:62079916 </td><td>8.618e-01</td><td>6.969e-06</td><td>3.004e-03</td><td>6.652e-03</td></tr>
 	<tr><td>16:4417797  </td><td>2.794e-01</td><td>4.132e-07</td><td>4.926e-02</td><td>1.706e-02</td></tr>
-	<tr><td>16:4419121  </td><td>3.634e-01</td><td>5.981e-07</td><td>5.355e-02</td><td>1.988e-02</td></tr>
-	<tr><td>16:4422744  </td><td>9.477e-02</td><td>2.474e-06</td><td>6.872e-02</td><td>4.014e-02</td></tr>
 	<tr><td>19:34198233 </td><td>6.495e-02</td><td>4.396e-06</td><td>6.797e-03</td><td>1.849e-02</td></tr>
+	<tr><td>20:8007069  </td><td>6.586e-02</td><td>5.828e-06</td><td>4.147e-01</td><td>3.770e-01</td></tr>
+	<tr><td>3:191782060 </td><td>6.456e-01</td><td>7.844e-06</td><td>4.300e-02</td><td>7.286e-02</td></tr>
+	<tr><td>4:90752646  </td><td>4.713e-01</td><td>8.297e-06</td><td>1.810e-01</td><td>2.051e-01</td></tr>
+	<tr><td>5:40389287  </td><td>5.477e-01</td><td>9.824e-06</td><td>1.079e-01</td><td>1.889e-01</td></tr>
+	<tr><td>6:136685475 </td><td>4.099e-01</td><td>9.218e-06</td><td>7.469e-01</td><td>9.401e-01</td></tr>
+	<tr><td>6:96267666  </td><td>1.237e-03</td><td>9.810e-06</td><td>4.100e-05</td><td>3.465e-05</td></tr>
+	<tr><td>7:150585233 </td><td>3.650e-01</td><td>9.645e-06</td><td>1.232e-01</td><td>1.075e-01</td></tr>
+	<tr><td>7:8719900   </td><td>4.742e-01</td><td>6.386e-06</td><td>4.323e-01</td><td>4.352e-01</td></tr>
 	<tr><td>8:128809367 </td><td>7.534e-01</td><td>3.539e-06</td><td>2.286e-03</td><td>3.458e-03</td></tr>
-	<tr><td>8:128817883 </td><td>6.794e-01</td><td>4.822e-06</td><td>1.513e-03</td><td>2.548e-03</td></tr>
-	<tr><td>8:21399535  </td><td>3.905e-01</td><td>2.469e-06</td><td>7.655e-04</td><td>1.488e-03</td></tr>
-	<tr><td>8:21400565  </td><td>2.956e-01</td><td>1.400e-06</td><td>1.029e-02</td><td>1.620e-02</td></tr>
+	<tr><td>8:19087144  </td><td>5.291e-01</td><td>9.579e-06</td><td>2.983e-02</td><td>6.968e-02</td></tr>
 	<tr><td>8:21401502  </td><td>1.568e-01</td><td>2.136e-06</td><td>4.874e-03</td><td>9.448e-03</td></tr>
-	<tr><td>8:21402079  </td><td>1.995e-01</td><td>2.767e-06</td><td>5.967e-04</td><td>1.055e-03</td></tr>
-	<tr><td>8:4771806   </td><td>7.302e-01</td><td>4.307e-06</td><td>9.309e-05</td><td>3.619e-04</td></tr>
-	<tr><td>9:22114495  </td><td>1.400e-09</td><td>2.360e-06</td><td>2.682e-04</td><td>1.692e-05</td></tr>
+	<tr><td>8:4774617   </td><td>5.256e-01</td><td>8.612e-06</td><td>3.017e-05</td><td>9.009e-05</td></tr>
 	<tr><td>9:22124450  </td><td>1.167e-11</td><td>3.775e-06</td><td>2.481e-03</td><td>1.852e-04</td></tr>
-	<tr><td>9:22124477  </td><td>2.751e-07</td><td>3.802e-06</td><td>2.401e-03</td><td>1.736e-04</td></tr>
-	<tr><td>9:22124630  </td><td>1.600e-11</td><td>3.887e-06</td><td>2.568e-03</td><td>1.916e-04</td></tr>
 	<tr><td>9:97272760  </td><td>3.807e-01</td><td>3.240e-06</td><td>3.587e-01</td><td>7.996e-01</td></tr>
 </tbody>
 </table>
@@ -15280,6 +15135,35 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 </div>
 
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="Forest-Plots-of-Potentially-Interesting-SNPs">Forest Plots of Potentially Interesting SNPs<a class="anchor-link" href="#Forest-Plots-of-Potentially-Interesting-SNPs">&#182;</a></h1><table>
+<thead>
+<tr>
+  <th>.</th>
+  <th>. </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><img src="images/9_22099746.png" alt="image" /></td>
+  <td><img src="images/9_22124450.png" alt="image" /></td>
+</tr>
+<tr>
+  <td><img src="images/1_183098697.png" alt="image" /></td>
+  <td><img src="images/4_155502869.png" alt="image" /></td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
 </div>
 </body>
 
