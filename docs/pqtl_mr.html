@@ -14606,27 +14606,64 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 </div>
 </div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[69]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-r"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">IRdisplay</span><span class="p">)</span>
+<span class="n">pqtl_data</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/data/pqtl/all_biobank_pqtl_cis_instruments.tsv&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">select</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;exposure&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;marker.exposure&quot;</span><span class="p">))</span>
+
+<span class="n">merge_marker_data</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">merge</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="n">pqtl_data</span><span class="p">,</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;exposure&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nf">return</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[11]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[66]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-r"><pre><span></span><span class="n">mr_mace</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">merge_marker_data</span><span class="p">(</span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/mr_subsequent_mace_cis.tsv&quot;</span><span class="p">))</span>
-<span class="n">mr_mace_slopehunter</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">merge_marker_data</span><span class="p">(</span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/mr_subsequent_mace_slopehunter_cis.tsv&quot;</span><span class="p">))</span>
+<div class=" highlight hl-r"><pre><span></span><span class="n">mr_mace</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/mr_subsequent_mace_cis.tsv&quot;</span><span class="p">)</span>
+<span class="n">mr_mace_slopehunter</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/mr_subsequent_mace_slopehunter_cis.tsv&quot;</span><span class="p">)</span>
+<span class="n">mr_mace_dudbridge</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/mr_subsequent_mace_dudbridge_cis.tsv&quot;</span><span class="p">)</span>
 
-<span class="n">mr_ais</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">merge_marker_data</span><span class="p">(</span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/mr_subsequent_ais_cis.tsv&quot;</span><span class="p">))</span>
-<span class="n">mr_ais_slopehunter</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">merge_marker_data</span><span class="p">(</span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/mr_subsequent_ais_slopehunter_cis.tsv&quot;</span><span class="p">))</span>
+<span class="n">mr_ais</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/mr_subsequent_ais_cis.tsv&quot;</span><span class="p">)</span>
+<span class="n">mr_ais_slopehunter</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/mr_subsequent_ais_slopehunter_cis.tsv&quot;</span><span class="p">)</span>
+<span class="n">mr_ais_dudbridge</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/mr_subsequent_ais_dudbridge_cis.tsv&quot;</span><span class="p">)</span>
+
+<span class="n">mr_incidence_ais_all</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/mr_first_ais_all_cis.tsv&quot;</span><span class="p">)</span>
 
 <span class="n">unadjusted</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rbind</span><span class="p">(</span><span class="n">mr_mace</span><span class="p">,</span><span class="w"> </span><span class="n">mr_ais</span><span class="p">)</span>
 <span class="n">slopehunter</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rbind</span><span class="p">(</span><span class="n">mr_mace_slopehunter</span><span class="p">,</span><span class="w"> </span><span class="n">mr_ais_slopehunter</span><span class="p">)</span>
+<span class="n">dudbridge</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rbind</span><span class="p">(</span><span class="n">mr_mace_dudbridge</span><span class="p">,</span><span class="w"> </span><span class="n">mr_ais_dudbridge</span><span class="p">)</span>
 
-<span class="nf">print</span><span class="p">(</span><span class="s">&quot;MR Ordered by adjusted p palue&quot;</span><span class="p">)</span>
-<span class="nf">head</span><span class="p">(</span><span class="n">unadjusted</span><span class="p">[</span><span class="nf">with</span><span class="p">(</span><span class="n">unadjusted</span><span class="p">,</span><span class="w"> </span><span class="nf">order</span><span class="p">(</span><span class="n">pval_adjusted</span><span class="p">)),</span><span class="w"> </span><span class="p">],</span><span class="w"> </span><span class="n">n</span><span class="o">=</span><span class="m">10</span><span class="p">)</span>
-<span class="nf">print</span><span class="p">(</span><span class="s">&quot;MR SlopeHunter Corrected Ordered by adjusted p palue&quot;</span><span class="p">)</span>
-<span class="nf">head</span><span class="p">(</span><span class="n">slopehunter</span><span class="p">[</span><span class="nf">with</span><span class="p">(</span><span class="n">slopehunter</span><span class="p">,</span><span class="w"> </span><span class="nf">order</span><span class="p">(</span><span class="n">pval_adjusted</span><span class="p">)),</span><span class="w"> </span><span class="p">],</span><span class="w"> </span><span class="n">n</span><span class="o">=</span><span class="m">10</span><span class="p">)</span>
+<span class="n">subsequent_mace</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rbind</span><span class="p">(</span><span class="n">mr_mace</span><span class="p">,</span><span class="w"> </span><span class="n">mr_mace_slopehunter</span><span class="p">,</span><span class="w"> </span><span class="n">mr_mace_dudbridge</span><span class="p">)</span>
+<span class="n">subsequent_ais</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rbind</span><span class="p">(</span><span class="n">mr_ais</span><span class="p">,</span><span class="w"> </span><span class="n">mr_ais_slopehunter</span><span class="p">,</span><span class="w"> </span><span class="n">mr_ais_dudbridge</span><span class="p">)</span>
+
+<span class="n">IRdisplay</span><span class="o">::</span><span class="nf">display_markdown</span><span class="p">(</span><span class="s">&quot;### MR Subsequent MACE by adjusted p palue&quot;</span><span class="p">)</span>
+<span class="n">subsequent_mace</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">subsequent_mace</span><span class="p">[</span><span class="nf">with</span><span class="p">(</span><span class="n">subsequent_mace</span><span class="p">,</span><span class="w"> </span><span class="nf">order</span><span class="p">(</span><span class="n">pval_adjusted</span><span class="p">)),</span><span class="w"> </span><span class="p">]</span>
+<span class="nf">merge_marker_data</span><span class="p">(</span><span class="n">subsequent_mace</span><span class="p">[</span><span class="n">subsequent_mace</span><span class="o">$</span><span class="n">pval_adjusted</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">0.1</span><span class="p">,</span><span class="w"> </span><span class="p">])</span>
+
+<span class="n">IRdisplay</span><span class="o">::</span><span class="nf">display_markdown</span><span class="p">(</span><span class="s">&quot;### MR Subsequent AIS Corrected Ordered by adjusted p palue&quot;</span><span class="p">)</span>
+<span class="n">subsequent_ais</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">subsequent_ais</span><span class="p">[</span><span class="nf">with</span><span class="p">(</span><span class="n">subsequent_ais</span><span class="p">,</span><span class="w"> </span><span class="nf">order</span><span class="p">(</span><span class="n">pval_adjusted</span><span class="p">)),</span><span class="w"> </span><span class="p">]</span>
+<span class="nf">merge_marker_data</span><span class="p">(</span><span class="n">subsequent_ais</span><span class="p">[</span><span class="n">subsequent_ais</span><span class="o">$</span><span class="n">pval_adjusted</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">0.1</span><span class="p">,</span><span class="w"> </span><span class="p">])</span>
+
+<span class="n">IRdisplay</span><span class="o">::</span><span class="nf">display_markdown</span><span class="p">(</span><span class="s">&quot;### MR Incident AIS &quot;</span><span class="p">)</span>
+<span class="n">mr_incidence_ais_all</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">mr_incidence_ais_all</span><span class="p">[</span><span class="nf">with</span><span class="p">(</span><span class="n">mr_incidence_ais_all</span><span class="p">,</span><span class="w"> </span><span class="nf">order</span><span class="p">(</span><span class="n">pval_adjusted</span><span class="p">)),</span><span class="w"> </span><span class="p">]</span>
+<span class="nf">merge_marker_data</span><span class="p">(</span><span class="n">mr_incidence_ais_all</span><span class="p">[</span><span class="n">mr_incidence_ais_all</span><span class="o">$</span><span class="n">pval_adjusted</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">0.1</span><span class="p">,</span><span class="w"> </span><span class="p">])</span>
 </pre></div>
 
      </div>
@@ -14645,10 +14682,12 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
 
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>[1] &#34;MR Ordered by adjusted p palue&#34;
-</pre>
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
+<h3 id="MR-Subsequent-MACE-by-adjusted-p-palue">MR Subsequent MACE by adjusted p palue<a class="anchor-link" href="#MR-Subsequent-MACE-by-adjusted-p-palue">&#182;</a></h3>
 </div>
+
 </div>
 <div class="jp-OutputArea-child">
     
@@ -14658,22 +14697,15 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
 <table class="dataframe">
-<caption>A data.table: 10 × 11</caption>
+<caption>A data.table: 3 × 11</caption>
 <thead>
 	<tr><th scope=col>exposure</th><th scope=col>id.exposure</th><th scope=col>id.outcome</th><th scope=col>outcome</th><th scope=col>method</th><th scope=col>nsnp</th><th scope=col>b</th><th scope=col>se</th><th scope=col>pval</th><th scope=col>pval_adjusted</th><th scope=col>marker.exposure</th></tr>
 	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
 </thead>
 <tbody>
-	<tr><td>IL19    </td><td>Ps4kKE</td><td>CfQhdn</td><td>subsequent_mace_cis        </td><td>Wald ratio</td><td>1</td><td>-0.1447038</td><td>0.03404796</td><td>2.137705e-05</td><td>0.02227489</td><td>1:207015957</td></tr>
-	<tr><td>IL19    </td><td>CdHUGk</td><td>DS2SFG</td><td>subsequent_ais_non_adjusted</td><td>Wald ratio</td><td>1</td><td> 0.1364756</td><td>0.03404796</td><td>6.114877e-05</td><td>0.06335013</td><td>1:207015957</td></tr>
-	<tr><td>TNFRSF14</td><td>k6qCMD</td><td>DS2SFG</td><td>subsequent_ais_non_adjusted</td><td>Wald ratio</td><td>1</td><td>-0.3319220</td><td>0.08798982</td><td>1.617644e-04</td><td>0.08379395</td><td>1:2488930  </td></tr>
-	<tr><td>CCL27   </td><td>Qn8W57</td><td>CfQhdn</td><td>subsequent_mace_cis        </td><td>Wald ratio</td><td>1</td><td>-0.2084062</td><td>0.05598065</td><td>1.970052e-04</td><td>0.10263972</td><td>9:34649442 </td></tr>
-	<tr><td>CCL27   </td><td>vPV9eG</td><td>DS2SFG</td><td>subsequent_ais_non_adjusted</td><td>Wald ratio</td><td>1</td><td> 0.1983662</td><td>0.05628489</td><td>4.245642e-04</td><td>0.14661618</td><td>9:34649442 </td></tr>
-	<tr><td>TNFRSF14</td><td>4YPe28</td><td>CfQhdn</td><td>subsequent_mace_cis        </td><td>Wald ratio</td><td>1</td><td> 0.3092712</td><td>0.08798982</td><td>4.400000e-04</td><td>0.15282666</td><td>1:2488930  </td></tr>
-	<tr><td>KRT5    </td><td>6sjfAu</td><td>CfQhdn</td><td>subsequent_mace_cis        </td><td>Wald ratio</td><td>1</td><td> 0.3246600</td><td>0.10098436</td><td>1.304658e-03</td><td>0.33986330</td><td>12:52913029</td></tr>
-	<tr><td>ART3    </td><td>OCeu21</td><td>CfQhdn</td><td>subsequent_mace_cis        </td><td>Wald ratio</td><td>1</td><td> 0.1173722</td><td>0.03862408</td><td>2.374949e-03</td><td>0.41244953</td><td>4:77030398 </td></tr>
-	<tr><td>IL34    </td><td>vK2Jrf</td><td>CfQhdn</td><td>subsequent_mace_cis        </td><td>Wald ratio</td><td>1</td><td>-0.0484618</td><td>0.01584328</td><td>2.222080e-03</td><td>0.41244953</td><td>16:70694000</td></tr>
-	<tr><td>MANF    </td><td>mmVYwc</td><td>DS2SFG</td><td>subsequent_ais_non_adjusted</td><td>Wald ratio</td><td>1</td><td>-0.5079807</td><td>0.16230088</td><td>1.748836e-03</td><td>0.45294853</td><td>3:51547219 </td></tr>
+	<tr><td>CCL27</td><td>Qn8W57</td><td>Y5SY88</td><td>subsequent_mace_slopehunter_cis</td><td>Wald ratio</td><td>1</td><td> 0.2637784</td><td>0.05811035</td><td>5.645012e-06</td><td>0.005882102</td><td>9:34649442 </td></tr>
+	<tr><td>CCL27</td><td>EjTD8O</td><td>zG9C6f</td><td>subsequent_mace_dudbridge_cis  </td><td>Wald ratio</td><td>1</td><td> 0.2491747</td><td>0.05658914</td><td>1.066531e-05</td><td>0.011113248</td><td>9:34649442 </td></tr>
+	<tr><td>IL19 </td><td>Ps4kKE</td><td>CfQhdn</td><td>subsequent_mace_cis            </td><td>Wald ratio</td><td>1</td><td>-0.1447038</td><td>0.03404796</td><td>2.137705e-05</td><td>0.022274888</td><td>1:207015957</td></tr>
 </tbody>
 </table>
 
@@ -14685,10 +14717,12 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
 
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>[1] &#34;MR SlopeHunter Corrected Ordered by adjusted p palue&#34;
-</pre>
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
+<h3 id="MR-Subsequent-AIS-Corrected-Ordered-by-adjusted-p-palue">MR Subsequent AIS Corrected Ordered by adjusted p palue<a class="anchor-link" href="#MR-Subsequent-AIS-Corrected-Ordered-by-adjusted-p-palue">&#182;</a></h3>
 </div>
+
 </div>
 <div class="jp-OutputArea-child">
     
@@ -14698,22 +14732,61 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
 <table class="dataframe">
-<caption>A data.table: 10 × 11</caption>
+<caption>A data.table: 5 × 11</caption>
 <thead>
 	<tr><th scope=col>exposure</th><th scope=col>id.exposure</th><th scope=col>id.outcome</th><th scope=col>outcome</th><th scope=col>method</th><th scope=col>nsnp</th><th scope=col>b</th><th scope=col>se</th><th scope=col>pval</th><th scope=col>pval_adjusted</th><th scope=col>marker.exposure</th></tr>
 	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
 </thead>
 <tbody>
-	<tr><td>CCL27   </td><td>Qn8W57</td><td>Y5SY88</td><td>subsequent_mace_slopehunter_cis</td><td>Wald ratio</td><td>1</td><td> 0.26377839</td><td>0.05811035</td><td>5.645012e-06</td><td>0.005882102</td><td>9:34649442 </td></tr>
-	<tr><td>TNFRSF14</td><td>4YPe28</td><td>kuKFok</td><td>subsequent_ais_slopehunter_cis </td><td>Wald ratio</td><td>1</td><td>-0.35195930</td><td>0.08973220</td><td>8.769673e-05</td><td>0.090941511</td><td>1:2488930  </td></tr>
-	<tr><td>CCL27   </td><td>Qn8W57</td><td>kuKFok</td><td>subsequent_ais_slopehunter_cis </td><td>Wald ratio</td><td>1</td><td> 0.18954318</td><td>0.05780611</td><td>1.041951e-03</td><td>0.540251421</td><td>9:34649442 </td></tr>
-	<tr><td>FUCA1   </td><td>NoctYJ</td><td>kuKFok</td><td>subsequent_ais_slopehunter_cis </td><td>Wald ratio</td><td>1</td><td>-0.09329069</td><td>0.02969535</td><td>1.680315e-03</td><td>0.580828818</td><td>1:24180962 </td></tr>
-	<tr><td>BMP6    </td><td>OWPrT9</td><td>kuKFok</td><td>subsequent_ais_slopehunter_cis </td><td>Wald ratio</td><td>1</td><td>-0.21422993</td><td>0.07884851</td><td>6.588036e-03</td><td>0.691912817</td><td>6:7718260  </td></tr>
-	<tr><td>CELA3A  </td><td>wHcJ6P</td><td>kuKFok</td><td>subsequent_ais_slopehunter_cis </td><td>Wald ratio</td><td>1</td><td> 0.15379857</td><td>0.05971509</td><td>1.000838e-02</td><td>0.691912817</td><td>1:22313371 </td></tr>
-	<tr><td>ELOA    </td><td>2ueIAc</td><td>kuKFok</td><td>subsequent_ais_slopehunter_cis </td><td>Wald ratio</td><td>1</td><td>-0.37656634</td><td>0.13389025</td><td>4.915802e-03</td><td>0.691912817</td><td>1:24050735 </td></tr>
-	<tr><td>FKBP5   </td><td>MZAHWc</td><td>kuKFok</td><td>subsequent_ais_slopehunter_cis </td><td>Wald ratio</td><td>1</td><td>-0.15054608</td><td>0.05538960</td><td>6.568802e-03</td><td>0.691912817</td><td>6:35688619 </td></tr>
-	<tr><td>IL19    </td><td>Ps4kKE</td><td>kuKFok</td><td>subsequent_ais_slopehunter_cis </td><td>Wald ratio</td><td>1</td><td> 0.09164577</td><td>0.03489916</td><td>8.639069e-03</td><td>0.691912817</td><td>1:207015957</td></tr>
-	<tr><td>LEPR    </td><td>CYtAb8</td><td>kuKFok</td><td>subsequent_ais_slopehunter_cis </td><td>Wald ratio</td><td>1</td><td>-0.12733648</td><td>0.04852651</td><td>8.688844e-03</td><td>0.691912817</td><td>1:66073982 </td></tr>
+	<tr><td>CCL27   </td><td>EjTD8O</td><td>zKZ90y</td><td>subsequent_ais_dudbridge_cis  </td><td>Wald ratio</td><td>1</td><td> 0.2224014</td><td>0.05689338</td><td>9.264410e-05</td><td>0.06814543</td><td>9:34649442 </td></tr>
+	<tr><td>IL19    </td><td>CdHUGk</td><td>DS2SFG</td><td>subsequent_ais_non_adjusted   </td><td>Wald ratio</td><td>1</td><td> 0.1364756</td><td>0.03404796</td><td>6.114877e-05</td><td>0.06335013</td><td>1:207015957</td></tr>
+	<tr><td>TNFRSF14</td><td>wLxBak</td><td>zKZ90y</td><td>subsequent_ais_dudbridge_cis  </td><td>Wald ratio</td><td>1</td><td>-0.3397627</td><td>0.08886101</td><td>1.315549e-04</td><td>0.06814543</td><td>1:2488930  </td></tr>
+	<tr><td>TNFRSF14</td><td>k6qCMD</td><td>DS2SFG</td><td>subsequent_ais_non_adjusted   </td><td>Wald ratio</td><td>1</td><td>-0.3319220</td><td>0.08798982</td><td>1.617644e-04</td><td>0.08379395</td><td>1:2488930  </td></tr>
+	<tr><td>TNFRSF14</td><td>4YPe28</td><td>kuKFok</td><td>subsequent_ais_slopehunter_cis</td><td>Wald ratio</td><td>1</td><td>-0.3519593</td><td>0.08973220</td><td>8.769673e-05</td><td>0.09094151</td><td>1:2488930  </td></tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
+<h3 id="MR-Incident-AIS">MR Incident AIS<a class="anchor-link" href="#MR-Incident-AIS">&#182;</a></h3>
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<table class="dataframe">
+<caption>A data.table: 12 × 11</caption>
+<thead>
+	<tr><th scope=col>exposure</th><th scope=col>id.exposure</th><th scope=col>id.outcome</th><th scope=col>outcome</th><th scope=col>method</th><th scope=col>nsnp</th><th scope=col>b</th><th scope=col>se</th><th scope=col>pval</th><th scope=col>pval_adjusted</th><th scope=col>marker.exposure</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>ADAMTS13</td><td>72VNu0</td><td>nZKzKe</td><td>first_ais_all_cis</td><td>Wald ratio</td><td>1</td><td> 0.06102551</td><td>0.016920708</td><td>3.102863e-04</td><td>6.291947e-02</td><td>9:136304114 </td></tr>
+	<tr><td>CD2AP   </td><td>Yg2dsY</td><td>nZKzKe</td><td>first_ais_all_cis</td><td>Wald ratio</td><td>1</td><td> 0.06283090</td><td>0.019179958</td><td>1.053400e-03</td><td>9.540038e-02</td><td>6:47437697  </td></tr>
+	<tr><td>COMT    </td><td>PDofBw</td><td>nZKzKe</td><td>first_ais_all_cis</td><td>Wald ratio</td><td>1</td><td> 0.03792639</td><td>0.011220826</td><td>7.248583e-04</td><td>8.472788e-02</td><td>22:19951271 </td></tr>
+	<tr><td>EGFR    </td><td>WwzMFA</td><td>nZKzKe</td><td>first_ais_all_cis</td><td>Wald ratio</td><td>1</td><td> 0.10218739</td><td>0.030948182</td><td>9.603682e-04</td><td>9.540038e-02</td><td>7:55236796  </td></tr>
+	<tr><td>FGF5    </td><td>yJ0yas</td><td>nZKzKe</td><td>first_ais_all_cis</td><td>Wald ratio</td><td>1</td><td>-0.03865953</td><td>0.008525676</td><td>5.774482e-06</td><td>2.059917e-03</td><td>4:81182554  </td></tr>
+	<tr><td>FURIN   </td><td>40eS07</td><td>nZKzKe</td><td>first_ais_all_cis</td><td>Wald ratio</td><td>1</td><td>-0.10308963</td><td>0.029599992</td><td>4.962756e-04</td><td>7.458313e-02</td><td>15:91425232 </td></tr>
+	<tr><td>KLK1    </td><td>J5kMfe</td><td>nZKzKe</td><td>first_ais_all_cis</td><td>Wald ratio</td><td>1</td><td>-0.03229609</td><td>0.005533247</td><td>5.323376e-09</td><td>5.600191e-06</td><td>19:49206674 </td></tr>
+	<tr><td>LAIR1   </td><td>2Tma5x</td><td>nZKzKe</td><td>first_ais_all_cis</td><td>Wald ratio</td><td>1</td><td>-0.03402950</td><td>0.010041491</td><td>7.017644e-04</td><td>8.472788e-02</td><td>19:54870191 </td></tr>
+	<tr><td>MMP12   </td><td>DbdWkk</td><td>nZKzKe</td><td>first_ais_all_cis</td><td>Wald ratio</td><td>1</td><td> 0.04927279</td><td>0.010874921</td><td>5.874289e-06</td><td>2.059917e-03</td><td>11:102748695</td></tr>
+	<tr><td>PFKFB2  </td><td>mCoHpq</td><td>nZKzKe</td><td>first_ais_all_cis</td><td>Wald ratio</td><td>1</td><td>-0.09722949</td><td>0.027245627</td><td>3.588563e-04</td><td>6.291947e-02</td><td>1:207250631 </td></tr>
+	<tr><td>SH2B3   </td><td>sNpHgf</td><td>nZKzKe</td><td>first_ais_all_cis</td><td>Wald ratio</td><td>1</td><td>-0.26492085</td><td>0.072581055</td><td>2.622403e-04</td><td>6.291947e-02</td><td>12:111911568</td></tr>
+	<tr><td>SNCG    </td><td>rn0mhV</td><td>nZKzKe</td><td>first_ais_all_cis</td><td>Wald ratio</td><td>1</td><td> 0.01850313</td><td>0.005664225</td><td>1.088217e-03</td><td>9.540038e-02</td><td>10:88724619 </td></tr>
 </tbody>
 </table>
 
@@ -14745,17 +14818,24 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[64]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-r"><pre><span></span><span class="n">mr_incidence_ais_all</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">merge_marker_data</span><span class="p">(</span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/mr_first_ais_all_cis.tsv&quot;</span><span class="p">))</span>
-<span class="n">mr_published_ais_all</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">merge_marker_data</span><span class="p">(</span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/mr_published_ais_cis.tsv&quot;</span><span class="p">))</span>
+<div class=" highlight hl-r"><pre><span></span><span class="nf">suppressWarnings</span><span class="p">({</span>
+<span class="w">    </span><span class="n">sig_mr_incidence_ais_all</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">mr_incidence_ais_all</span><span class="p">[</span><span class="n">mr_incidence_ais_all</span><span class="o">$</span><span class="n">pval_adjusted</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">0.05</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
 
-<span class="nf">nrow</span><span class="p">(</span><span class="n">mr_incidence_ais_all</span><span class="p">)</span>
-<span class="nf">nrow</span><span class="p">(</span><span class="n">mr_published_ais_all</span><span class="p">)</span>
+<span class="w">    </span><span class="n">IRdisplay</span><span class="o">::</span><span class="nf">display_markdown</span><span class="p">(</span><span class="s">&quot;### Significant Rows in Subsuequent AIS that are significant in First AIS&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="n">incidence_vs_sub_ais_results</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">merge</span><span class="p">(</span><span class="n">sig_mr_incidence_ais_all</span><span class="p">,</span><span class="w"> </span><span class="n">subsequent_ais</span><span class="p">,</span><span class="w"> </span><span class="n">by</span><span class="o">=</span><span class="s">&quot;id.exposure&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">suffixes</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;.first&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;.sub_ais&quot;</span><span class="p">))</span>
+<span class="w">    </span><span class="n">incidence_vs_sub_ais_results</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">incidence_vs_sub_ais_results</span><span class="p">[</span><span class="n">incidence_vs_sub_ais_results</span><span class="o">$</span><span class="n">pval.sub_ais</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">0.05</span><span class="o">/</span><span class="nf">nrow</span><span class="p">(</span><span class="n">sig_mr_incidence_ais_all</span><span class="p">),</span><span class="w"> </span><span class="p">]</span>
+<span class="w">    </span><span class="n">incidence_vs_sub_ais_results</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="n">IRdisplay</span><span class="o">::</span><span class="nf">display_markdown</span><span class="p">(</span><span class="s">&quot;### Significant Rows in Subsuequent MACE that are significant in First AIS&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="n">incidence_vs_sub_mace_results</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">merge</span><span class="p">(</span><span class="n">sig_mr_incidence_ais_all</span><span class="p">,</span><span class="w"> </span><span class="n">subsequent_mace</span><span class="p">,</span><span class="w"> </span><span class="n">by</span><span class="o">=</span><span class="s">&quot;id.exposure&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">suffixes</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;.first&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;.sub_mace&quot;</span><span class="p">))</span>
+<span class="w">    </span><span class="n">incidence_vs_sub_mace_results</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">incidence_vs_sub_mace_results</span><span class="p">[</span><span class="n">incidence_vs_sub_mace_results</span><span class="o">$</span><span class="n">pval.sub_mace</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">0.05</span><span class="o">/</span><span class="nf">nrow</span><span class="p">(</span><span class="n">sig_mr_incidence_ais_all</span><span class="p">),</span><span class="w"> </span><span class="p">]</span>
+<span class="w">    </span><span class="n">incidence_vs_sub_mace_results</span>
+<span class="p">})</span>
 
-<span class="nf">head</span><span class="p">(</span><span class="n">mr_incidence_ais_all</span><span class="p">[</span><span class="nf">with</span><span class="p">(</span><span class="n">mr_incidence_ais_all</span><span class="p">,</span><span class="w"> </span><span class="nf">order</span><span class="p">(</span><span class="n">pval_adjusted</span><span class="p">)),</span><span class="w"> </span><span class="p">],</span><span class="w"> </span><span class="n">n</span><span class="o">=</span><span class="m">10</span><span class="p">)</span>
-<span class="nf">head</span><span class="p">(</span><span class="n">mr_published_ais_all</span><span class="p">[</span><span class="nf">with</span><span class="p">(</span><span class="n">mr_published_ais_all</span><span class="p">,</span><span class="w"> </span><span class="nf">order</span><span class="p">(</span><span class="n">pval_adjusted</span><span class="p">)),</span><span class="w"> </span><span class="p">],</span><span class="w"> </span><span class="n">n</span><span class="o">=</span><span class="m">100</span><span class="p">)</span>
+<span class="n">IRdisplay</span><span class="o">::</span><span class="nf">display_markdown</span><span class="p">(</span><span class="s">&quot;So, there are very few significant pQTLs for first that also are significant in subsequent states.&quot;</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -14775,8 +14855,9 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 
 
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
-1053
+
+<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
+<h3 id="Significant-Rows-in-Subsuequent-AIS-that-are-significant-in-First-AIS">Significant Rows in Subsuequent AIS that are significant in First AIS<a class="anchor-link" href="#Significant-Rows-in-Subsuequent-AIS-that-are-significant-in-First-AIS">&#182;</a></h3>
 </div>
 
 </div>
@@ -14786,8 +14867,9 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 
 
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
-604
+
+<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
+<h3 id="Significant-Rows-in-Subsuequent-MACE-that-are-significant-in-First-AIS">Significant Rows in Subsuequent MACE that are significant in First AIS<a class="anchor-link" href="#Significant-Rows-in-Subsuequent-MACE-that-are-significant-in-First-AIS">&#182;</a></h3>
 </div>
 
 </div>
@@ -14799,22 +14881,13 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
 <table class="dataframe">
-<caption>A data.table: 10 × 11</caption>
+<caption>A data.table: 1 × 19</caption>
 <thead>
-	<tr><th scope=col>exposure</th><th scope=col>id.exposure</th><th scope=col>id.outcome</th><th scope=col>outcome</th><th scope=col>method</th><th scope=col>nsnp</th><th scope=col>b</th><th scope=col>se</th><th scope=col>pval</th><th scope=col>pval_adjusted</th><th scope=col>marker.exposure</th></tr>
-	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+	<tr><th scope=col>id.exposure</th><th scope=col>id.outcome.first</th><th scope=col>outcome.first</th><th scope=col>exposure.first</th><th scope=col>method.first</th><th scope=col>nsnp.first</th><th scope=col>b.first</th><th scope=col>se.first</th><th scope=col>pval.first</th><th scope=col>pval_adjusted.first</th><th scope=col>id.outcome.sub_mace</th><th scope=col>outcome.sub_mace</th><th scope=col>exposure.sub_mace</th><th scope=col>method.sub_mace</th><th scope=col>nsnp.sub_mace</th><th scope=col>b.sub_mace</th><th scope=col>se.sub_mace</th><th scope=col>pval.sub_mace</th><th scope=col>pval_adjusted.sub_mace</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
 </thead>
 <tbody>
-	<tr><td>KLK1    </td><td>J5kMfe</td><td>nZKzKe</td><td>first_ais_all_cis</td><td>Wald ratio</td><td>1</td><td>-0.03229609</td><td>0.005533247</td><td>5.323376e-09</td><td>5.600191e-06</td><td>19:49206674 </td></tr>
-	<tr><td>FGF5    </td><td>yJ0yas</td><td>nZKzKe</td><td>first_ais_all_cis</td><td>Wald ratio</td><td>1</td><td>-0.03865953</td><td>0.008525676</td><td>5.774482e-06</td><td>2.059917e-03</td><td>4:81182554  </td></tr>
-	<tr><td>MMP12   </td><td>DbdWkk</td><td>nZKzKe</td><td>first_ais_all_cis</td><td>Wald ratio</td><td>1</td><td> 0.04927279</td><td>0.010874921</td><td>5.874289e-06</td><td>2.059917e-03</td><td>11:102748695</td></tr>
-	<tr><td>ADAMTS13</td><td>72VNu0</td><td>nZKzKe</td><td>first_ais_all_cis</td><td>Wald ratio</td><td>1</td><td> 0.06102551</td><td>0.016920708</td><td>3.102863e-04</td><td>6.291947e-02</td><td>9:136304114 </td></tr>
-	<tr><td>PFKFB2  </td><td>mCoHpq</td><td>nZKzKe</td><td>first_ais_all_cis</td><td>Wald ratio</td><td>1</td><td>-0.09722949</td><td>0.027245627</td><td>3.588563e-04</td><td>6.291947e-02</td><td>1:207250631 </td></tr>
-	<tr><td>SH2B3   </td><td>sNpHgf</td><td>nZKzKe</td><td>first_ais_all_cis</td><td>Wald ratio</td><td>1</td><td>-0.26492085</td><td>0.072581055</td><td>2.622403e-04</td><td>6.291947e-02</td><td>12:111911568</td></tr>
-	<tr><td>FURIN   </td><td>40eS07</td><td>nZKzKe</td><td>first_ais_all_cis</td><td>Wald ratio</td><td>1</td><td>-0.10308963</td><td>0.029599992</td><td>4.962756e-04</td><td>7.458313e-02</td><td>15:91425232 </td></tr>
-	<tr><td>COMT    </td><td>PDofBw</td><td>nZKzKe</td><td>first_ais_all_cis</td><td>Wald ratio</td><td>1</td><td> 0.03792639</td><td>0.011220826</td><td>7.248583e-04</td><td>8.472788e-02</td><td>22:19951271 </td></tr>
-	<tr><td>LAIR1   </td><td>2Tma5x</td><td>nZKzKe</td><td>first_ais_all_cis</td><td>Wald ratio</td><td>1</td><td>-0.03402950</td><td>0.010041491</td><td>7.017644e-04</td><td>8.472788e-02</td><td>19:54870191 </td></tr>
-	<tr><td>CD2AP   </td><td>Yg2dsY</td><td>nZKzKe</td><td>first_ais_all_cis</td><td>Wald ratio</td><td>1</td><td> 0.06283090</td><td>0.019179958</td><td>1.053400e-03</td><td>9.540038e-02</td><td>6:47437697  </td></tr>
+	<tr><td>J5kMfe</td><td>nZKzKe</td><td>first_ais_all_cis</td><td>KLK1</td><td>Wald ratio</td><td>1</td><td>-0.03229609</td><td>0.005533247</td><td>5.323376e-09</td><td>5.600191e-06</td><td>CfQhdn</td><td>subsequent_mace_cis</td><td>KLK1</td><td>Wald ratio</td><td>1</td><td>-0.02721454</td><td>0.01106649</td><td>0.01392534</td><td>0.7528585</td></tr>
 </tbody>
 </table>
 
@@ -14827,77 +14900,9 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 
 
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
-<table class="dataframe">
-<caption>A data.table: 100 × 11</caption>
-<thead>
-	<tr><th scope=col>exposure</th><th scope=col>id.exposure</th><th scope=col>id.outcome</th><th scope=col>outcome</th><th scope=col>method</th><th scope=col>nsnp</th><th scope=col>b</th><th scope=col>se</th><th scope=col>pval</th><th scope=col>pval_adjusted</th><th scope=col>marker.exposure</th></tr>
-	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
-</thead>
-<tbody>
-	<tr><td>FGF5   </td><td>SPUJA5</td><td>kEV8XW</td><td>published_ais_cis</td><td>Wald ratio</td><td>1</td><td> 0.06129667</td><td>0.001609658</td><td> 0.000000e+00</td><td> 0.000000e+00</td><td>4:81182554  </td></tr>
-	<tr><td>GRK5   </td><td>nBTbey</td><td>kEV8XW</td><td>published_ais_cis</td><td>Wald ratio</td><td>1</td><td>-0.16458009</td><td>0.004881454</td><td>3.440126e-249</td><td>1.038918e-246</td><td>10:121010256</td></tr>
-	<tr><td>MMP12  </td><td>7m6qwG</td><td>kEV8XW</td><td>published_ais_cis</td><td>Wald ratio</td><td>1</td><td>-0.05813384</td><td>0.002241892</td><td>3.001581e-148</td><td>6.043183e-146</td><td>11:102748695</td></tr>
-	<tr><td>CST6   </td><td>tytsVM</td><td>kEV8XW</td><td>published_ais_cis</td><td>Wald ratio</td><td>1</td><td> 0.07622554</td><td>0.003691613</td><td> 1.011089e-94</td><td> 1.526745e-92</td><td>11:65776305 </td></tr>
-	<tr><td>CGREF1 </td><td>ZSVYCo</td><td>kEV8XW</td><td>published_ais_cis</td><td>Wald ratio</td><td>1</td><td>-0.04172412</td><td>0.002067345</td><td> 1.395928e-90</td><td> 1.686280e-88</td><td>2:27324751  </td></tr>
-	<tr><td>FURIN  </td><td>9MbiNo</td><td>kEV8XW</td><td>published_ais_cis</td><td>Wald ratio</td><td>1</td><td> 0.12656548</td><td>0.006709592</td><td> 2.282199e-79</td><td> 2.297414e-77</td><td>15:91425232 </td></tr>
-	<tr><td>SCARA5 </td><td>ZNIaEp</td><td>kEV8XW</td><td>published_ais_cis</td><td>Wald ratio</td><td>1</td><td>-0.06567047</td><td>0.003621911</td><td> 1.799760e-73</td><td> 1.552936e-71</td><td>8:27805783  </td></tr>
-	<tr><td>VASN   </td><td>rulKCC</td><td>kEV8XW</td><td>published_ais_cis</td><td>Wald ratio</td><td>1</td><td>-0.05927517</td><td>0.003669456</td><td> 1.070091e-58</td><td> 8.079188e-57</td><td>16:4431360  </td></tr>
-	<tr><td>TFPI   </td><td>awXjl2</td><td>kEV8XW</td><td>published_ais_cis</td><td>Wald ratio</td><td>1</td><td>-0.05582197</td><td>0.003488798</td><td> 1.270689e-57</td><td> 8.527738e-56</td><td>2:188343781 </td></tr>
-	<tr><td>ANXA11 </td><td>APLxGe</td><td>kEV8XW</td><td>published_ais_cis</td><td>Wald ratio</td><td>1</td><td>-0.28210671</td><td>0.017987577</td><td> 1.963921e-55</td><td> 1.186209e-53</td><td>10:81919800 </td></tr>
-	<tr><td>NPTXR  </td><td>gB4WnS</td><td>kEV8XW</td><td>published_ais_cis</td><td>Wald ratio</td><td>1</td><td> 0.02168157</td><td>0.001447730</td><td> 1.049752e-50</td><td> 5.764094e-49</td><td>22:39241262 </td></tr>
-	<tr><td>TNFRSF9</td><td>P7UwXw</td><td>kEV8XW</td><td>published_ais_cis</td><td>Wald ratio</td><td>1</td><td> 0.09706345</td><td>0.006527301</td><td> 5.132059e-50</td><td> 2.583136e-48</td><td>1:7994420   </td></tr>
-	<tr><td>SOD1   </td><td>YdOgTL</td><td>kEV8XW</td><td>published_ais_cis</td><td>Wald ratio</td><td>1</td><td>-0.21400381</td><td>0.014431385</td><td> 9.506165e-50</td><td> 4.416711e-48</td><td>21:33126239 </td></tr>
-	<tr><td>MATN3  </td><td>BvWITf</td><td>kEV8XW</td><td>published_ais_cis</td><td>Wald ratio</td><td>1</td><td>-0.03157416</td><td>0.002195019</td><td> 6.478646e-47</td><td> 2.795073e-45</td><td>2:20207619  </td></tr>
-	<tr><td>SSC4D  </td><td>Lguh7J</td><td>kEV8XW</td><td>published_ais_cis</td><td>Wald ratio</td><td>1</td><td> 0.05455386</td><td>0.003830746</td><td> 5.095396e-46</td><td> 2.051746e-44</td><td>7:76039013  </td></tr>
-	<tr><td>USP8   </td><td>tLmgQn</td><td>kEV8XW</td><td>published_ais_cis</td><td>Wald ratio</td><td>1</td><td> 0.24162799</td><td>0.017737054</td><td> 2.931921e-42</td><td> 1.106800e-40</td><td>15:50759428 </td></tr>
-	<tr><td>PPCDC  </td><td>znfpx4</td><td>kEV8XW</td><td>published_ais_cis</td><td>Wald ratio</td><td>1</td><td> 0.02984896</td><td>0.002246237</td><td> 2.702037e-40</td><td> 9.600179e-39</td><td>15:75320306 </td></tr>
-	<tr><td>CLIP2  </td><td>PGCmCM</td><td>kEV8XW</td><td>published_ais_cis</td><td>Wald ratio</td><td>1</td><td> 0.11558544</td><td>0.008711351</td><td> 3.531740e-40</td><td> 1.185095e-38</td><td>7:73696488  </td></tr>
-	<tr><td>TMPRSS5</td><td>fTNCjz</td><td>kEV8XW</td><td>published_ais_cis</td><td>Wald ratio</td><td>1</td><td> 0.01918240</td><td>0.001446465</td><td> 3.867173e-40</td><td> 1.229354e-38</td><td>11:113561421</td></tr>
-	<tr><td>CLEC5A </td><td>wxP54U</td><td>kEV8XW</td><td>published_ais_cis</td><td>Wald ratio</td><td>1</td><td> 0.04927575</td><td>0.003873807</td><td> 4.564531e-37</td><td> 1.378488e-35</td><td>7:141661450 </td></tr>
-	<tr><td>GP6    </td><td>fY4D1K</td><td>kEV8XW</td><td>published_ais_cis</td><td>Wald ratio</td><td>1</td><td> 0.05311171</td><td>0.004204317</td><td> 1.394832e-36</td><td> 4.011803e-35</td><td>19:55539072 </td></tr>
-	<tr><td>ADAM15 </td><td>wqcjzf</td><td>kEV8XW</td><td>published_ais_cis</td><td>Wald ratio</td><td>1</td><td> 0.02262844</td><td>0.001801325</td><td> 3.411048e-36</td><td> 9.364878e-35</td><td>1:155033308 </td></tr>
-	<tr><td>MASP1  </td><td>4rdgD4</td><td>kEV8XW</td><td>published_ais_cis</td><td>Wald ratio</td><td>1</td><td> 0.06745552</td><td>0.005568574</td><td> 8.947024e-34</td><td> 2.349566e-32</td><td>3:186964300 </td></tr>
-	<tr><td>BTN2A1 </td><td>nLXfHq</td><td>kEV8XW</td><td>published_ais_cis</td><td>Wald ratio</td><td>1</td><td> 0.06249625</td><td>0.005170225</td><td> 1.226355e-33</td><td> 3.086326e-32</td><td>6:26498758  </td></tr>
-	<tr><td>CCL24  </td><td>BvMWpe</td><td>kEV8XW</td><td>published_ais_cis</td><td>Wald ratio</td><td>1</td><td> 0.02064845</td><td>0.001709449</td><td> 1.363563e-33</td><td> 3.294368e-32</td><td>7:75460393  </td></tr>
-	<tr><td>P4HB   </td><td>fHATeM</td><td>kEV8XW</td><td>published_ais_cis</td><td>Wald ratio</td><td>1</td><td> 0.22404557</td><td>0.018695585</td><td> 4.316590e-33</td><td> 1.002777e-31</td><td>17:79835930 </td></tr>
-	<tr><td>AARSD1 </td><td>m4NUDG</td><td>kEV8XW</td><td>published_ais_cis</td><td>Wald ratio</td><td>1</td><td>-0.10597599</td><td>0.008945427</td><td> 2.231748e-32</td><td> 4.992502e-31</td><td>17:41140545 </td></tr>
-	<tr><td>MEGF9  </td><td>MVAN1n</td><td>kEV8XW</td><td>published_ais_cis</td><td>Wald ratio</td><td>1</td><td>-0.04010782</td><td>0.003387456</td><td> 2.421582e-32</td><td> 5.223699e-31</td><td>9:123460769 </td></tr>
-	<tr><td>CCL13  </td><td>2SIGN4</td><td>kEV8XW</td><td>published_ais_cis</td><td>Wald ratio</td><td>1</td><td>-0.05479345</td><td>0.004661281</td><td> 6.654393e-32</td><td> 1.385949e-30</td><td>17:32682616 </td></tr>
-	<tr><td>C1QTNF1</td><td>UbZq1R</td><td>kEV8XW</td><td>published_ais_cis</td><td>Wald ratio</td><td>1</td><td>-0.06982740</td><td>0.005944695</td><td> 7.389156e-32</td><td> 1.487683e-30</td><td>17:77018400 </td></tr>
-	<tr><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td></tr>
-	<tr><td>CD27     </td><td>oG7RWf</td><td>kEV8XW</td><td>published_ais_cis</td><td>Wald ratio</td><td>1</td><td> 0.04651050</td><td>0.005017363</td><td>1.863061e-20</td><td>1.584914e-19</td><td>12:6554628  </td></tr>
-	<tr><td>ATXN10   </td><td>be5y5w</td><td>kEV8XW</td><td>published_ais_cis</td><td>Wald ratio</td><td>1</td><td>-0.09651063</td><td>0.010442415</td><td>2.415365e-20</td><td>2.026223e-19</td><td>22:46131238 </td></tr>
-	<tr><td>VMO1     </td><td>J0EV6U</td><td>kEV8XW</td><td>published_ais_cis</td><td>Wald ratio</td><td>1</td><td> 0.01313516</td><td>0.001442352</td><td>8.487055e-20</td><td>7.022166e-19</td><td>17:4690038  </td></tr>
-	<tr><td>IL17RB   </td><td>jTZeLh</td><td>kEV8XW</td><td>published_ais_cis</td><td>Wald ratio</td><td>1</td><td>-0.01318861</td><td>0.001451487</td><td>1.024941e-19</td><td>8.365738e-19</td><td>3:53877149  </td></tr>
-	<tr><td>MILR1    </td><td>YOCgcn</td><td>kEV8XW</td><td>published_ais_cis</td><td>Wald ratio</td><td>1</td><td> 0.03174302</td><td>0.003502023</td><td>1.255286e-19</td><td>1.010924e-18</td><td>17:62464621 </td></tr>
-	<tr><td>IL6ST    </td><td>gvYpKQ</td><td>kEV8XW</td><td>published_ais_cis</td><td>Wald ratio</td><td>1</td><td> 0.05994671</td><td>0.006670136</td><td>2.533119e-19</td><td>2.013163e-18</td><td>5:55263373  </td></tr>
-	<tr><td>GZMA     </td><td>3Wr7lJ</td><td>kEV8XW</td><td>published_ais_cis</td><td>Wald ratio</td><td>1</td><td> 0.15442735</td><td>0.017328489</td><td>5.022848e-19</td><td>3.940000e-18</td><td>5:54489541  </td></tr>
-	<tr><td>PXN      </td><td>mdBpkE</td><td>kEV8XW</td><td>published_ais_cis</td><td>Wald ratio</td><td>1</td><td>-0.01865408</td><td>0.002096569</td><td>5.715520e-19</td><td>4.425864e-18</td><td>12:120661977</td></tr>
-	<tr><td>VSIR     </td><td>BMk4KZ</td><td>kEV8XW</td><td>published_ais_cis</td><td>Wald ratio</td><td>1</td><td>-0.02741613</td><td>0.003099792</td><td>9.193375e-19</td><td>7.028859e-18</td><td>10:73528898 </td></tr>
-	<tr><td>GBP2     </td><td>NzhBhw</td><td>kEV8XW</td><td>published_ais_cis</td><td>Wald ratio</td><td>1</td><td>-0.08394002</td><td>0.009574343</td><td>1.831929e-18</td><td>1.383107e-17</td><td>1:89554224  </td></tr>
-	<tr><td>GPC5     </td><td>kLx8cL</td><td>kEV8XW</td><td>published_ais_cis</td><td>Wald ratio</td><td>1</td><td> 0.01165031</td><td>0.001332189</td><td>2.225371e-18</td><td>1.659412e-17</td><td>13:92417058 </td></tr>
-	<tr><td>CLEC4C   </td><td>x89Pp1</td><td>kEV8XW</td><td>published_ais_cis</td><td>Wald ratio</td><td>1</td><td>-0.01132051</td><td>0.001305034</td><td>4.153853e-18</td><td>3.022804e-17</td><td>12:7904111  </td></tr>
-	<tr><td>SOD2     </td><td>H1ehFt</td><td>kEV8XW</td><td>published_ais_cis</td><td>Wald ratio</td><td>1</td><td> 0.06335003</td><td>0.007303021</td><td>4.153853e-18</td><td>3.022804e-17</td><td>6:160091560 </td></tr>
-	<tr><td>AGXT     </td><td>1ML5J4</td><td>kEV8XW</td><td>published_ais_cis</td><td>Wald ratio</td><td>1</td><td>-0.03549639</td><td>0.004098907</td><td>4.719172e-18</td><td>3.393310e-17</td><td>2:241793545 </td></tr>
-	<tr><td>PVR      </td><td>liKOeh</td><td>kEV8XW</td><td>published_ais_cis</td><td>Wald ratio</td><td>1</td><td>-0.01232830</td><td>0.001431730</td><td>7.256971e-18</td><td>5.156718e-17</td><td>19:45146402 </td></tr>
-	<tr><td>PRDX6    </td><td>ymPl7n</td><td>kEV8XW</td><td>published_ais_cis</td><td>Wald ratio</td><td>1</td><td>-0.06159124</td><td>0.007201237</td><td>1.200650e-17</td><td>8.432471e-17</td><td>1:173458326 </td></tr>
-	<tr><td>LRIG1    </td><td>TsS5zB</td><td>kEV8XW</td><td>published_ais_cis</td><td>Wald ratio</td><td>1</td><td>-0.01133354</td><td>0.001325416</td><td>1.221001e-17</td><td>8.476833e-17</td><td>3:66434643  </td></tr>
-	<tr><td>PLTP     </td><td>ijHu65</td><td>kEV8XW</td><td>published_ais_cis</td><td>Wald ratio</td><td>1</td><td> 0.02337970</td><td>0.002751221</td><td>1.929924e-17</td><td>1.324630e-16</td><td>20:44551855 </td></tr>
-	<tr><td>CNTN1    </td><td>cv3ZgC</td><td>kEV8XW</td><td>published_ais_cis</td><td>Wald ratio</td><td>1</td><td> 0.04752512</td><td>0.005598270</td><td>2.079728e-17</td><td>1.411411e-16</td><td>12:41047351 </td></tr>
-	<tr><td>ADGRG1   </td><td>IkyzQ8</td><td>kEV8XW</td><td>published_ais_cis</td><td>Wald ratio</td><td>1</td><td>-0.14069753</td><td>0.016616129</td><td>2.506572e-17</td><td>1.682188e-16</td><td>16:57682275 </td></tr>
-	<tr><td>FSTL3    </td><td>1z9Stg</td><td>kEV8XW</td><td>published_ais_cis</td><td>Wald ratio</td><td>1</td><td>-0.14211191</td><td>0.016803178</td><td>2.733060e-17</td><td>1.814031e-16</td><td>19:669546   </td></tr>
-	<tr><td>SPP1     </td><td>mcnMDH</td><td>kEV8XW</td><td>published_ais_cis</td><td>Wald ratio</td><td>1</td><td>-0.09155252</td><td>0.010842785</td><td>3.076196e-17</td><td>2.019590e-16</td><td>4:88858885  </td></tr>
-	<tr><td>KRT5     </td><td>6uEBub</td><td>kEV8XW</td><td>published_ais_cis</td><td>Wald ratio</td><td>1</td><td> 0.08399634</td><td>0.009972057</td><td>3.664300e-17</td><td>2.379825e-16</td><td>12:52913029 </td></tr>
-	<tr><td>AKR1C4   </td><td>8t2oOE</td><td>kEV8XW</td><td>published_ais_cis</td><td>Wald ratio</td><td>1</td><td>-0.17757574</td><td>0.021101156</td><td>3.913875e-17</td><td>2.514873e-16</td><td>10:5261159  </td></tr>
-	<tr><td>CPXM1    </td><td>f8AXRl</td><td>kEV8XW</td><td>published_ais_cis</td><td>Wald ratio</td><td>1</td><td> 0.02754920</td><td>0.003286226</td><td>5.149368e-17</td><td>3.273914e-16</td><td>20:2782015  </td></tr>
-	<tr><td>EPS8L2   </td><td>ZPn0yM</td><td>kEV8XW</td><td>published_ais_cis</td><td>Wald ratio</td><td>1</td><td> 0.02736255</td><td>0.003268471</td><td>5.680794e-17</td><td>3.574166e-16</td><td>11:706284   </td></tr>
-	<tr><td>TNFRSF11A</td><td>a9IAcs</td><td>kEV8XW</td><td>published_ais_cis</td><td>Wald ratio</td><td>1</td><td>-0.02364106</td><td>0.002843140</td><td>9.165651e-17</td><td>5.707272e-16</td><td>18:60018329 </td></tr>
-	<tr><td>BTN3A2   </td><td>nOIwBb</td><td>kEV8XW</td><td>published_ais_cis</td><td>Wald ratio</td><td>1</td><td>-0.01479605</td><td>0.001781243</td><td>9.849239e-17</td><td>6.070347e-16</td><td>6:26367833  </td></tr>
-	<tr><td>PIK3IP1  </td><td>fTaoRU</td><td>kEV8XW</td><td>published_ais_cis</td><td>Wald ratio</td><td>1</td><td> 0.02724669</td><td>0.003285289</td><td>1.099221e-16</td><td>6.706360e-16</td><td>22:31541907 </td></tr>
-	<tr><td>GDNF     </td><td>kcrnPf</td><td>kEV8XW</td><td>published_ais_cis</td><td>Wald ratio</td><td>1</td><td>-0.04607333</td><td>0.005558129</td><td>1.138597e-16</td><td>6.877123e-16</td><td>5:37820741  </td></tr>
-</tbody>
-</table>
+
+<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
+<p>So, there are very few significant pQTLs for first that also are significant in subsequent states.</p>
 
 </div>
 
@@ -14914,7 +14919,61 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="MR-for-CIS-and-TRANS-pQTLs">MR for CIS and TRANS pQTLs<a class="anchor-link" href="#MR-for-CIS-and-TRANS-pQTLs">&#182;</a></h2>
+<h2 id="Forest-Plots-of-Interesting-pQTL/SNPs">Forest Plots of Interesting pQTL/SNPs<a class="anchor-link" href="#Forest-Plots-of-Interesting-pQTL/SNPs">&#182;</a></h2><table>
+<thead>
+<tr>
+  <th>Exposure</th>
+  <th>First AIS</th>
+  <th>Subsequent AIS</th>
+  <th>Subsequent MACE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>CCL27</td>
+  <td><img src="scratch/results/plots/forest_plots/first_9_34649442.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/forest_plots/subsequent_ais_9_34649442.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/forest_plots/subsequent_mace_9_34649442.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td>IL19</td>
+  <td><img src="scratch/results/plots/forest_plots/first_1_207015957.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/forest_plots/subsequent_ais_1_207015957.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/forest_plots/subsequent_mace_1_207015957.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td>TNFRSF14</td>
+  <td><img src="scratch/results/plots/forest_plots/first_1_2488930.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/forest_plots/subsequent_ais_1_2488930.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/forest_plots/subsequent_mace_1_2488930.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td>ADAMTS13</td>
+  <td><img src="scratch/results/plots/forest_plots/first_9_136304114.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/forest_plots/subsequent_ais_9_136304114.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/forest_plots/subsequent_mace_9_136304114.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td>KLK1</td>
+  <td><img src="scratch/results/plots/forest_plots/first_19_49206674.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/forest_plots/subsequent_ais_19_49206674.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/forest_plots/subsequent_mace_19_49206674.png" alt="alt" /></td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<hr />
+<h1 id="MR-for-CIS-and-TRANS-pQTLs">MR for CIS and TRANS pQTLs<a class="anchor-link" href="#MR-for-CIS-and-TRANS-pQTLs">&#182;</a></h1>
 </div>
 </div>
 </div>
@@ -14926,12 +14985,11 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[21]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-r"><pre><span></span><span class="n">mr_mace</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">merge_marker_data</span><span class="p">(</span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/mr_subsequent_mace_cis_trans.tsv&quot;</span><span class="p">))</span>
-<span class="n">mr_mace_slopehunter</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">merge_marker_data</span><span class="p">(</span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/mr_subsequent_mace_slopehunter_cis_trans.tsv&quot;</span><span class="p">))</span>
+<div class=" highlight hl-r"><pre><span></span><span class="n">mr_mace</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/mr_subsequent_mace_cis_trans.tsv&quot;</span><span class="p">)</span>
+<span class="n">mr_mace_slopehunter</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/mr_subsequent_mace_slopehunter_cis_trans.tsv&quot;</span><span class="p">)</span>
 
-<span class="n">mr_ais</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">merge_marker_data</span><span class="p">(</span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/mr_subsequent_ais_cis_trans.tsv&quot;</span><span class="p">))</span>
-<span class="n">mr_ais_slopehunter</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">merge_marker_data</span><span class="p">(</span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/mr_subsequent_ais_slopehunter_cis_trans.tsv&quot;</span><span class="p">))</span>
-
+<span class="n">mr_ais</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/mr_subsequent_ais_cis_trans.tsv&quot;</span><span class="p">)</span>
+<span class="n">mr_ais_slopehunter</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/mr_subsequent_ais_slopehunter_cis_trans.tsv&quot;</span><span class="p">)</span>
 
 <span class="n">unadjusted</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rbind</span><span class="p">(</span><span class="n">mr_mace</span><span class="p">,</span><span class="w"> </span><span class="n">mr_ais</span><span class="p">)</span>
 <span class="n">slopehunter</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rbind</span><span class="p">(</span><span class="n">mr_mace_slopehunter</span><span class="p">,</span><span class="w"> </span><span class="n">mr_ais_slopehunter</span><span class="p">)</span>
@@ -15058,15 +15116,13 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[26]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[46]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-r"><pre><span></span><span class="n">mr_incidence_ais_all</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">merge_marker_data</span><span class="p">(</span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/mr_first_ais_all_cis_trans.tsv&quot;</span><span class="p">))</span>
-<span class="n">mr_published_ais_all</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">merge_marker_data</span><span class="p">(</span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/mr_published_ais_cis_trans.tsv&quot;</span><span class="p">))</span>
-<span class="nf">nrow</span><span class="p">(</span><span class="n">mr_incidence_ais_all</span><span class="p">)</span>
-<span class="nf">nrow</span><span class="p">(</span><span class="n">mr_published_ais_all</span><span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span><span class="n">mr_incidence_ais_all</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/mr_first_ais_all_cis_trans.tsv&quot;</span><span class="p">)</span>
+<span class="c1">#mr_published_ais_all &lt;- data.table::fread(&quot;scratch/results/mr/mr_published_ais_cis_trans.tsv&quot;)</span>
 <span class="nf">head</span><span class="p">(</span><span class="n">mr_incidence_ais_all</span><span class="p">[</span><span class="nf">with</span><span class="p">(</span><span class="n">mr_incidence_ais_all</span><span class="p">,</span><span class="w"> </span><span class="nf">order</span><span class="p">(</span><span class="n">pval_adjusted</span><span class="p">)),</span><span class="w"> </span><span class="p">],</span><span class="w"> </span><span class="n">n</span><span class="o">=</span><span class="m">10</span><span class="p">)</span>
-<span class="nf">head</span><span class="p">(</span><span class="n">mr_published_ais_all</span><span class="p">[</span><span class="nf">with</span><span class="p">(</span><span class="n">mr_published_ais_all</span><span class="p">,</span><span class="w"> </span><span class="nf">order</span><span class="p">(</span><span class="n">pval_adjusted</span><span class="p">)),</span><span class="w"> </span><span class="p">],</span><span class="w"> </span><span class="n">n</span><span class="o">=</span><span class="m">100</span><span class="p">)</span>
+<span class="c1">#head(mr_published_ais_all[with(mr_published_ais_all, order(pval_adjusted)), ], n=100)</span>
 </pre></div>
 
      </div>
@@ -15080,28 +15136,6 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
-1153
-</div>
-
-</div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
-1047
-</div>
-
-</div>
 <div class="jp-OutputArea-child">
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
@@ -15132,87 +15166,6 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 
 </div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
-<table class="dataframe">
-<caption>A data.table: 100 × 11</caption>
-<thead>
-	<tr><th scope=col>exposure</th><th scope=col>id.exposure</th><th scope=col>id.outcome</th><th scope=col>outcome</th><th scope=col>method</th><th scope=col>nsnp</th><th scope=col>b</th><th scope=col>se</th><th scope=col>pval</th><th scope=col>pval_adjusted</th><th scope=col>marker.exposure</th></tr>
-	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
-</thead>
-<tbody>
-	<tr><td>FGF5   </td><td>ne1ajz</td><td>4I19gu</td><td>published_ais_cis_trans</td><td>Wald ratio               </td><td>1</td><td> 0.06129667</td><td>0.001609658</td><td> 0.000000e+00</td><td> 0.000000e+00</td><td>4:81182554  </td></tr>
-	<tr><td>GRK5   </td><td>XFSLX1</td><td>4I19gu</td><td>published_ais_cis_trans</td><td>Wald ratio               </td><td>1</td><td>-0.16458009</td><td>0.004881454</td><td>3.440126e-249</td><td>2.098477e-246</td><td>10:121010256</td></tr>
-	<tr><td>REN    </td><td>YGQGhX</td><td>4I19gu</td><td>published_ais_cis_trans</td><td>Wald ratio               </td><td>1</td><td>-0.53172780</td><td>0.018858978</td><td>6.745129e-175</td><td>2.743019e-172</td><td>1:204148649 </td></tr>
-	<tr><td>RAB6A  </td><td>TpH4t6</td><td>4I19gu</td><td>published_ais_cis_trans</td><td>Wald ratio               </td><td>1</td><td> 0.13553851</td><td>0.005514329</td><td>2.101720e-133</td><td>6.410246e-131</td><td>11:73551143 </td></tr>
-	<tr><td>CRIP2  </td><td>aLL0Hy</td><td>4I19gu</td><td>published_ais_cis_trans</td><td>Wald ratio               </td><td>1</td><td> 0.35899368</td><td>0.014910583</td><td>4.414032e-128</td><td>1.077024e-125</td><td>14:105917816</td></tr>
-	<tr><td>IL4R   </td><td>cQbg0t</td><td>4I19gu</td><td>published_ais_cis_trans</td><td>Wald ratio               </td><td>1</td><td>-0.35460656</td><td>0.015396284</td><td>2.230775e-117</td><td>3.401932e-115</td><td>16:27327214 </td></tr>
-	<tr><td>SEMA4C </td><td>2shd64</td><td>4I19gu</td><td>published_ais_cis_trans</td><td>Wald ratio               </td><td>1</td><td>-0.11489615</td><td>0.004988553</td><td>2.230775e-117</td><td>3.401932e-115</td><td>2:96219017  </td></tr>
-	<tr><td>TDGF1  </td><td>AHiy21</td><td>4I19gu</td><td>published_ais_cis_trans</td><td>Wald ratio               </td><td>1</td><td>-0.55620098</td><td>0.024636050</td><td>7.341244e-113</td><td>9.951464e-111</td><td>3:46619238  </td></tr>
-	<tr><td>LGALS4 </td><td>dMxfel</td><td>4I19gu</td><td>published_ais_cis_trans</td><td>Inverse variance weighted</td><td>2</td><td>-0.04466747</td><td>0.002050537</td><td>3.340602e-105</td><td>4.075534e-103</td><td>19:39265229 </td></tr>
-	<tr><td>VAMP5  </td><td>oK8tht</td><td>4I19gu</td><td>published_ais_cis_trans</td><td>Wald ratio               </td><td>1</td><td> 0.36687092</td><td>0.016884347</td><td>1.104342e-104</td><td>1.224816e-102</td><td>2:85801964  </td></tr>
-	<tr><td>MMP3   </td><td>HQ4gt0</td><td>4I19gu</td><td>published_ais_cis_trans</td><td>Inverse variance weighted</td><td>2</td><td> 0.29671990</td><td>0.017821470</td><td> 3.047604e-62</td><td> 2.860059e-60</td><td>11:102713777</td></tr>
-	<tr><td>NMNAT1 </td><td>cN9klH</td><td>4I19gu</td><td>published_ais_cis_trans</td><td>Wald ratio               </td><td>1</td><td>-0.36320324</td><td>0.023000202</td><td> 3.571051e-56</td><td> 2.904455e-54</td><td>1:10020795  </td></tr>
-	<tr><td>ANXA11 </td><td>DqBXXr</td><td>4I19gu</td><td>published_ais_cis_trans</td><td>Wald ratio               </td><td>1</td><td>-0.28210671</td><td>0.017987577</td><td> 1.963921e-55</td><td> 1.497490e-53</td><td>10:81919800 </td></tr>
-	<tr><td>DECR1  </td><td>raJ1BM</td><td>4I19gu</td><td>published_ais_cis_trans</td><td>Wald ratio               </td><td>1</td><td> 0.37473709</td><td>0.024021073</td><td> 7.239918e-55</td><td> 5.195706e-53</td><td>8:91051553  </td></tr>
-	<tr><td>PAG1   </td><td>Jw7qAC</td><td>4I19gu</td><td>published_ais_cis_trans</td><td>Inverse variance weighted</td><td>2</td><td> 0.17894187</td><td>0.011590184</td><td> 8.935490e-54</td><td> 6.056277e-52</td><td>8:82038006  </td></tr>
-	<tr><td>LAIR2  </td><td>bUlJA3</td><td>4I19gu</td><td>published_ais_cis_trans</td><td>Wald ratio               </td><td>1</td><td> 0.30671391</td><td>0.020820395</td><td> 4.051226e-49</td><td> 2.601314e-47</td><td>19:55014172 </td></tr>
-	<tr><td>CA2    </td><td>ocO3xN</td><td>4I19gu</td><td>published_ais_cis_trans</td><td>Wald ratio               </td><td>1</td><td> 0.28113788</td><td>0.021033678</td><td> 9.543562e-41</td><td> 5.552648e-39</td><td>8:86860127  </td></tr>
-	<tr><td>CCL15  </td><td>GIiR4R</td><td>4I19gu</td><td>published_ais_cis_trans</td><td>Wald ratio               </td><td>1</td><td> 0.32823003</td><td>0.024557139</td><td> 9.557836e-41</td><td> 5.552648e-39</td><td>17:34328646 </td></tr>
-	<tr><td>CLIP2  </td><td>2y85CO</td><td>4I19gu</td><td>published_ais_cis_trans</td><td>Wald ratio               </td><td>1</td><td> 0.11558544</td><td>0.008711351</td><td> 3.531740e-40</td><td> 1.958510e-38</td><td>7:73696488  </td></tr>
-	<tr><td>ICAM5  </td><td>snKVX5</td><td>4I19gu</td><td>published_ais_cis_trans</td><td>Inverse variance weighted</td><td>2</td><td>-0.07309869</td><td>0.005660745</td><td> 3.789008e-38</td><td> 2.009822e-36</td><td>19:10400110 </td></tr>
-	<tr><td>GALNT10</td><td>069V5e</td><td>4I19gu</td><td>published_ais_cis_trans</td><td>Wald ratio               </td><td>1</td><td> 0.32122112</td><td>0.025427830</td><td> 1.394832e-36</td><td> 6.302575e-35</td><td>5:153573938 </td></tr>
-	<tr><td>NUCB2  </td><td>Q4XPA0</td><td>4I19gu</td><td>published_ais_cis_trans</td><td>Wald ratio               </td><td>1</td><td> 0.27010027</td><td>0.021381110</td><td> 1.394832e-36</td><td> 6.302575e-35</td><td>11:17305650 </td></tr>
-	<tr><td>S100A4 </td><td>eJ3gAw</td><td>4I19gu</td><td>published_ais_cis_trans</td><td>Wald ratio               </td><td>1</td><td> 0.32772608</td><td>0.025942762</td><td> 1.394832e-36</td><td> 6.302575e-35</td><td>1:153520714 </td></tr>
-	<tr><td>NOTCH1 </td><td>QeCKnL</td><td>4I19gu</td><td>published_ais_cis_trans</td><td>Inverse variance weighted</td><td>2</td><td> 0.20645745</td><td>0.016691719</td><td> 3.852737e-35</td><td> 1.678692e-33</td><td>9:139401234 </td></tr>
-	<tr><td>TXNRD1 </td><td>a8xmVB</td><td>4I19gu</td><td>published_ais_cis_trans</td><td>Inverse variance weighted</td><td>2</td><td> 0.16544548</td><td>0.014310337</td><td> 6.475448e-31</td><td> 2.724154e-29</td><td>12:104707047</td></tr>
-	<tr><td>FETUB  </td><td>gV90hp</td><td>4I19gu</td><td>published_ais_cis_trans</td><td>Wald ratio               </td><td>1</td><td>-0.17556154</td><td>0.015203566</td><td> 7.609455e-31</td><td> 3.094512e-29</td><td>3:186360255 </td></tr>
-	<tr><td>AMN    </td><td>oEk9Bk</td><td>4I19gu</td><td>published_ais_cis_trans</td><td>Wald ratio               </td><td>1</td><td>-0.23357862</td><td>0.020389724</td><td> 2.201707e-30</td><td> 8.664782e-29</td><td>14:103389003</td></tr>
-	<tr><td>DBNL   </td><td>FZfJWx</td><td>4I19gu</td><td>published_ais_cis_trans</td><td>Inverse variance weighted</td><td>2</td><td> 0.15893021</td><td>0.014128378</td><td> 2.342160e-29</td><td> 8.929485e-28</td><td>7:44109802  </td></tr>
-	<tr><td>MIF    </td><td>zfG8oT</td><td>4I19gu</td><td>published_ais_cis_trans</td><td>Inverse variance weighted</td><td>2</td><td> 0.13305991</td><td>0.012125088</td><td> 5.100449e-28</td><td> 1.885620e-26</td><td>22:24250795 </td></tr>
-	<tr><td>PEBP1  </td><td>II0YgR</td><td>4I19gu</td><td>published_ais_cis_trans</td><td>Inverse variance weighted</td><td>2</td><td> 0.14549101</td><td>0.013262139</td><td> 5.303574e-28</td><td> 1.903047e-26</td><td>12:118699679</td></tr>
-	<tr><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td></tr>
-	<tr><td>FKBP1B  </td><td>gl1oy1</td><td>4I19gu</td><td>published_ais_cis_trans</td><td>Wald ratio               </td><td>1</td><td> 0.11052386</td><td>0.012878424</td><td>9.316044e-18</td><td>7.838327e-17</td><td>2:24259188  </td></tr>
-	<tr><td>FXYD5   </td><td>xQ6yiR</td><td>4I19gu</td><td>published_ais_cis_trans</td><td>Wald ratio               </td><td>1</td><td> 0.11554285</td><td>0.013463245</td><td>9.316044e-18</td><td>7.838327e-17</td><td>19:35663250 </td></tr>
-	<tr><td>GRAP2   </td><td>FM18WS</td><td>4I19gu</td><td>published_ais_cis_trans</td><td>Wald ratio               </td><td>1</td><td> 0.16897601</td><td>0.019689365</td><td>9.316044e-18</td><td>7.838327e-17</td><td>22:40342993 </td></tr>
-	<tr><td>NBN     </td><td>alXTno</td><td>4I19gu</td><td>published_ais_cis_trans</td><td>Wald ratio               </td><td>1</td><td> 0.14464254</td><td>0.016853989</td><td>9.316044e-18</td><td>7.838327e-17</td><td>8:91043364  </td></tr>
-	<tr><td>NFKBIE  </td><td>CsFiPE</td><td>4I19gu</td><td>published_ais_cis_trans</td><td>Wald ratio               </td><td>1</td><td> 0.15443613</td><td>0.017995155</td><td>9.316044e-18</td><td>7.838327e-17</td><td>6:44234539  </td></tr>
-	<tr><td>NUDT2   </td><td>c0E4GL</td><td>4I19gu</td><td>published_ais_cis_trans</td><td>Wald ratio               </td><td>1</td><td> 0.17351228</td><td>0.020217939</td><td>9.316044e-18</td><td>7.838327e-17</td><td>9:34336681  </td></tr>
-	<tr><td>PMVK    </td><td>cnt0YY</td><td>4I19gu</td><td>published_ais_cis_trans</td><td>Wald ratio               </td><td>1</td><td> 0.15512415</td><td>0.018075324</td><td>9.316044e-18</td><td>7.838327e-17</td><td>1:154903917 </td></tr>
-	<tr><td>PRKAB1  </td><td>HzAvY7</td><td>4I19gu</td><td>published_ais_cis_trans</td><td>Wald ratio               </td><td>1</td><td> 0.16844097</td><td>0.019627022</td><td>9.316044e-18</td><td>7.838327e-17</td><td>12:120109284</td></tr>
-	<tr><td>PVR     </td><td>c9y2NX</td><td>4I19gu</td><td>published_ais_cis_trans</td><td>Wald ratio               </td><td>1</td><td>-0.01232830</td><td>0.001431730</td><td>7.256971e-18</td><td>7.838327e-17</td><td>19:45146402 </td></tr>
-	<tr><td>QDPR    </td><td>r1XpnD</td><td>4I19gu</td><td>published_ais_cis_trans</td><td>Wald ratio               </td><td>1</td><td> 0.14643625</td><td>0.017062995</td><td>9.316044e-18</td><td>7.838327e-17</td><td>4:17513757  </td></tr>
-	<tr><td>RAD23B  </td><td>GUNFRk</td><td>4I19gu</td><td>published_ais_cis_trans</td><td>Wald ratio               </td><td>1</td><td> 0.17011484</td><td>0.019822063</td><td>9.316044e-18</td><td>7.838327e-17</td><td>9:110049914 </td></tr>
-	<tr><td>RHOC    </td><td>tUBbzv</td><td>4I19gu</td><td>published_ais_cis_trans</td><td>Wald ratio               </td><td>1</td><td> 0.14058699</td><td>0.016381430</td><td>9.316044e-18</td><td>7.838327e-17</td><td>1:113061959 </td></tr>
-	<tr><td>RRM2B   </td><td>KydAOI</td><td>4I19gu</td><td>published_ais_cis_trans</td><td>Wald ratio               </td><td>1</td><td> 0.09849774</td><td>0.011477121</td><td>9.316044e-18</td><td>7.838327e-17</td><td>8:103250839 </td></tr>
-	<tr><td>RWDD1   </td><td>7v49CK</td><td>4I19gu</td><td>published_ais_cis_trans</td><td>Wald ratio               </td><td>1</td><td> 0.12074591</td><td>0.014069514</td><td>9.316044e-18</td><td>7.838327e-17</td><td>6:116892681 </td></tr>
-	<tr><td>SHMT1   </td><td>bTbEyy</td><td>4I19gu</td><td>published_ais_cis_trans</td><td>Wald ratio               </td><td>1</td><td> 0.16597170</td><td>0.019339298</td><td>9.316044e-18</td><td>7.838327e-17</td><td>17:18263957 </td></tr>
-	<tr><td>SIRT2   </td><td>2SCu6W</td><td>4I19gu</td><td>published_ais_cis_trans</td><td>Wald ratio               </td><td>1</td><td> 0.13889669</td><td>0.016184473</td><td>9.316044e-18</td><td>7.838327e-17</td><td>19:39379770 </td></tr>
-	<tr><td>STX8    </td><td>ak9dhv</td><td>4I19gu</td><td>published_ais_cis_trans</td><td>Wald ratio               </td><td>1</td><td> 0.16695869</td><td>0.019454304</td><td>9.316044e-18</td><td>7.838327e-17</td><td>17:9343771  </td></tr>
-	<tr><td>TBCC    </td><td>REO9gO</td><td>4I19gu</td><td>published_ais_cis_trans</td><td>Wald ratio               </td><td>1</td><td> 0.14615633</td><td>0.017030379</td><td>9.316044e-18</td><td>7.838327e-17</td><td>6:42713618  </td></tr>
-	<tr><td>TJAP1   </td><td>s5rnY6</td><td>4I19gu</td><td>published_ais_cis_trans</td><td>Wald ratio               </td><td>1</td><td> 0.13988036</td><td>0.016299092</td><td>9.316044e-18</td><td>7.838327e-17</td><td>6:43515521  </td></tr>
-	<tr><td>WASF1   </td><td>s2Dsp9</td><td>4I19gu</td><td>published_ais_cis_trans</td><td>Wald ratio               </td><td>1</td><td> 0.17823777</td><td>0.020768561</td><td>9.316044e-18</td><td>7.838327e-17</td><td>6:110720209 </td></tr>
-	<tr><td>YES1    </td><td>McXIgm</td><td>4I19gu</td><td>published_ais_cis_trans</td><td>Wald ratio               </td><td>1</td><td> 0.14654596</td><td>0.017075779</td><td>9.316044e-18</td><td>7.838327e-17</td><td>18:707511   </td></tr>
-	<tr><td>ACAA1   </td><td>AIFaBJ</td><td>4I19gu</td><td>published_ais_cis_trans</td><td>Wald ratio               </td><td>1</td><td>-0.12244783</td><td>0.014271913</td><td>9.517294e-18</td><td>7.952807e-17</td><td>3:38170810  </td></tr>
-	<tr><td>PRDX6   </td><td>lURuun</td><td>4I19gu</td><td>published_ais_cis_trans</td><td>Wald ratio               </td><td>1</td><td>-0.06159124</td><td>0.007201237</td><td>1.200650e-17</td><td>9.964577e-17</td><td>1:173458326 </td></tr>
-	<tr><td>TNFSF13B</td><td>WUXlQL</td><td>4I19gu</td><td>published_ais_cis_trans</td><td>Wald ratio               </td><td>1</td><td> 0.08390388</td><td>0.009831147</td><td>1.407680e-17</td><td>1.160385e-16</td><td>13:108960380</td></tr>
-	<tr><td>AKR1C4  </td><td>aJ3yPL</td><td>4I19gu</td><td>published_ais_cis_trans</td><td>Wald ratio               </td><td>1</td><td>-0.17757574</td><td>0.021101156</td><td>3.913875e-17</td><td>3.204649e-16</td><td>10:5261159  </td></tr>
-	<tr><td>GDNF    </td><td>ZT1YW9</td><td>4I19gu</td><td>published_ais_cis_trans</td><td>Wald ratio               </td><td>1</td><td>-0.04607333</td><td>0.005558129</td><td>1.138597e-16</td><td>9.260585e-16</td><td>5:37820741  </td></tr>
-	<tr><td>BTN3A2  </td><td>t49ewL</td><td>4I19gu</td><td>published_ais_cis_trans</td><td>Inverse variance weighted</td><td>2</td><td>-0.01465020</td><td>0.001768995</td><td>1.214776e-16</td><td>9.814743e-16</td><td>6:26367833  </td></tr>
-	<tr><td>SLC39A14</td><td>wjoxkx</td><td>4I19gu</td><td>published_ais_cis_trans</td><td>Wald ratio               </td><td>1</td><td>-0.09319750</td><td>0.011309081</td><td>1.708574e-16</td><td>1.371355e-15</td><td>8:22251868  </td></tr>
-	<tr><td>TACC3   </td><td>JzEQDm</td><td>4I19gu</td><td>published_ais_cis_trans</td><td>Inverse variance weighted</td><td>2</td><td> 0.07384788</td><td>0.009003849</td><td>2.367904e-16</td><td>1.888132e-15</td><td>4:1741533   </td></tr>
-	<tr><td>EFNA1   </td><td>rLqyeD</td><td>4I19gu</td><td>published_ais_cis_trans</td><td>Wald ratio               </td><td>1</td><td>-0.17782850</td><td>0.021792527</td><td>3.348361e-16</td><td>2.652598e-15</td><td>1:155106054 </td></tr>
-</tbody>
-</table>
-
-</div>
-
-</div>
 
 </div>
 
@@ -15226,30 +15179,167 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <hr />
-<h2 id="Code-that-generated-the-above-data">Code that generated the above data<a class="anchor-link" href="#Code-that-generated-the-above-data">&#182;</a></h2><hr />
-
+<h1 id="MR-for-Blood-Pressue-vs-Stroke">MR for Blood Pressue vs Stroke<a class="anchor-link" href="#MR-for-Blood-Pressue-vs-Stroke">&#182;</a></h1>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[59]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-r"><pre><span></span><span class="n">pqtl_data</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/data/pqtl/all_biobank_pqtl_cis_instruments.tsv&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">select</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;exposure&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;marker.exposure&quot;</span><span class="p">))</span>
+<div class=" highlight hl-r"><pre><span></span><span class="n">mr_mace_systolic_</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/mr_systolic_bp_subsequent_mace_cis.tsv&quot;</span><span class="p">)</span>
+<span class="n">mr_mace_systolic_slopehunter</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/mr_systolic_bp_subsequent_mace_slopehunter_cis.tsv&quot;</span><span class="p">)</span>
+<span class="n">mr_mace_diastolic</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/mr_diastolic_bp_subsequent_mace_cis.tsv&quot;</span><span class="p">)</span>
+<span class="n">mr_mace_diastolic_slopehunter</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/mr_diastolic_bp_subsequent_mace_slopehunter_cis.tsv&quot;</span><span class="p">)</span>
 
-<span class="n">merge_marker_data</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">merge</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="n">pqtl_data</span><span class="p">,</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;exposure&quot;</span><span class="p">)</span>
-<span class="w">    </span><span class="nf">return</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
-<span class="p">}</span>
+<span class="n">mr_ais_systolic_</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/mr_systolic_bp_subsequent_ais_cis.tsv&quot;</span><span class="p">)</span>
+<span class="n">mr_ais_systolic_slopehunter</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/mr_systolic_bp_subsequent_ais_slopehunter_cis.tsv&quot;</span><span class="p">)</span>
+<span class="n">mr_ais_diastolic</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/mr_diastolic_bp_subsequent_ais_cis.tsv&quot;</span><span class="p">)</span>
+<span class="n">mr_ais_diastolic_slopehunter</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/mr_diastolic_bp_subsequent_ais_slopehunter_cis.tsv&quot;</span><span class="p">)</span>
+
+<span class="n">subsequent_mace</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rbind</span><span class="p">(</span><span class="n">mr_mace_systolic_</span><span class="p">,</span><span class="w"> </span><span class="n">mr_mace_systolic_slopehunter</span><span class="p">,</span><span class="w"> </span><span class="n">mr_mace_diastolic</span><span class="p">,</span><span class="w"> </span><span class="n">mr_mace_diastolic_slopehunter</span><span class="p">)</span>
+<span class="n">subsequent_ais</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rbind</span><span class="p">(</span><span class="n">mr_ais_systolic_</span><span class="p">,</span><span class="w"> </span><span class="n">mr_ais_systolic_slopehunter</span><span class="p">,</span><span class="w"> </span><span class="n">mr_ais_diastolic</span><span class="p">,</span><span class="w"> </span><span class="n">mr_ais_diastolic_slopehunter</span><span class="p">)</span>
+
+<span class="n">IRdisplay</span><span class="o">::</span><span class="nf">display_markdown</span><span class="p">(</span><span class="s">&quot;### MR Incident AIS on systolic and diastolic BP&quot;</span><span class="p">)</span>
+<span class="n">mr_diastolic_incidence</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/mr_diastolic_bp_first_ais_all_cis.tsv&quot;</span><span class="p">)</span>
+<span class="n">mr_systolic_incidence</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/mr_systolic_bp_first_ais_all_cis.tsv&quot;</span><span class="p">)</span>
+<span class="n">incidence</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rbind</span><span class="p">(</span><span class="n">mr_diastolic_incidence</span><span class="p">,</span><span class="w"> </span><span class="n">mr_systolic_incidence</span><span class="p">)</span>
+<span class="n">incidence</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">incidence</span><span class="p">[</span><span class="nf">with</span><span class="p">(</span><span class="n">incidence</span><span class="p">,</span><span class="w"> </span><span class="nf">order</span><span class="p">(</span><span class="n">pval_adjusted</span><span class="p">)),</span><span class="w"> </span><span class="p">]</span>
+<span class="n">incidence</span>
+
+<span class="n">IRdisplay</span><span class="o">::</span><span class="nf">display_markdown</span><span class="p">(</span><span class="s">&quot;### MR Subsequent MACE on systolic and diastolic BP&quot;</span><span class="p">)</span>
+<span class="n">subsequent_mace</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">subsequent_mace</span><span class="p">[</span><span class="nf">with</span><span class="p">(</span><span class="n">subsequent_mace</span><span class="p">,</span><span class="w"> </span><span class="nf">order</span><span class="p">(</span><span class="n">pval_adjusted</span><span class="p">)),</span><span class="w"> </span><span class="p">]</span>
+<span class="n">subsequent_mace</span>
+
+<span class="n">IRdisplay</span><span class="o">::</span><span class="nf">display_markdown</span><span class="p">(</span><span class="s">&quot;### MR Subsequent AIS on systolic and diastolic BP&quot;</span><span class="p">)</span>
+<span class="n">subsequent_ais</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">subsequent_ais</span><span class="p">[</span><span class="nf">with</span><span class="p">(</span><span class="n">subsequent_ais</span><span class="p">,</span><span class="w"> </span><span class="nf">order</span><span class="p">(</span><span class="n">pval_adjusted</span><span class="p">)),</span><span class="w"> </span><span class="p">]</span>
+<span class="n">subsequent_ais</span>
 </pre></div>
 
      </div>
 </div>
 </div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
+<h3 id="MR-Incident-AIS-on-systolic-and-diastolic-BP">MR Incident AIS on systolic and diastolic BP<a class="anchor-link" href="#MR-Incident-AIS-on-systolic-and-diastolic-BP">&#182;</a></h3>
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<table class="dataframe">
+<caption>A data.table: 2 × 10</caption>
+<thead>
+	<tr><th scope=col>id.exposure</th><th scope=col>id.outcome</th><th scope=col>outcome</th><th scope=col>exposure</th><th scope=col>method</th><th scope=col>nsnp</th><th scope=col>b</th><th scope=col>se</th><th scope=col>pval</th><th scope=col>pval_adjusted</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>ieu-b-38</td><td>uOjD6F</td><td>first_ais_all_cis</td><td>systolic blood pressure || id:ieu-b-38 </td><td>Inverse variance weighted</td><td>437</td><td>-0.01140196</td><td>0.001424509</td><td>1.203093e-15</td><td>1.203093e-15</td></tr>
+	<tr><td>ieu-b-39</td><td>ejJuCJ</td><td>first_ais_all_cis</td><td>diastolic blood pressure || id:ieu-b-39</td><td>Inverse variance weighted</td><td>438</td><td>-0.01686137</td><td>0.002399743</td><td>2.120444e-12</td><td>2.120444e-12</td></tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
+<h3 id="MR-Subsequent-MACE-on-systolic-and-diastolic-BP">MR Subsequent MACE on systolic and diastolic BP<a class="anchor-link" href="#MR-Subsequent-MACE-on-systolic-and-diastolic-BP">&#182;</a></h3>
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<table class="dataframe">
+<caption>A data.table: 4 × 10</caption>
+<thead>
+	<tr><th scope=col>id.exposure</th><th scope=col>id.outcome</th><th scope=col>outcome</th><th scope=col>exposure</th><th scope=col>method</th><th scope=col>nsnp</th><th scope=col>b</th><th scope=col>se</th><th scope=col>pval</th><th scope=col>pval_adjusted</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>ieu-b-38</td><td>kheZHe</td><td>subsequent_mace_cis            </td><td>systolic blood pressure || id:ieu-b-38 </td><td>Inverse variance weighted</td><td>436</td><td>0.0093578040</td><td>0.001975584</td><td>2.171961e-06</td><td>2.171961e-06</td></tr>
+	<tr><td>ieu-b-39</td><td>loRvvq</td><td>subsequent_mace_cis            </td><td>diastolic blood pressure || id:ieu-b-39</td><td>Inverse variance weighted</td><td>439</td><td>0.0127648348</td><td>0.003283612</td><td>1.013081e-04</td><td>1.013081e-04</td></tr>
+	<tr><td>ieu-b-38</td><td>LauPMY</td><td>subsequent_mace_slopehunter_cis</td><td>systolic blood pressure || id:ieu-b-38 </td><td>Inverse variance weighted</td><td>437</td><td>0.0011613651</td><td>0.001957913</td><td>5.530709e-01</td><td>5.530709e-01</td></tr>
+	<tr><td>ieu-b-39</td><td>9u3iJD</td><td>subsequent_mace_slopehunter_cis</td><td>diastolic blood pressure || id:ieu-b-39</td><td>Inverse variance weighted</td><td>438</td><td>0.0008398195</td><td>0.003304182</td><td>7.993653e-01</td><td>7.993653e-01</td></tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
+<h3 id="MR-Subsequent-AIS-on-systolic-and-diastolic-BP">MR Subsequent AIS on systolic and diastolic BP<a class="anchor-link" href="#MR-Subsequent-AIS-on-systolic-and-diastolic-BP">&#182;</a></h3>
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<table class="dataframe">
+<caption>A data.table: 4 × 10</caption>
+<thead>
+	<tr><th scope=col>id.exposure</th><th scope=col>id.outcome</th><th scope=col>outcome</th><th scope=col>exposure</th><th scope=col>method</th><th scope=col>nsnp</th><th scope=col>b</th><th scope=col>se</th><th scope=col>pval</th><th scope=col>pval_adjusted</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>ieu-b-38</td><td>8NqEkU</td><td>subsequent_ais_slopehunter_cis</td><td>systolic blood pressure || id:ieu-b-38 </td><td>Inverse variance weighted</td><td>435</td><td>-0.009824829</td><td>0.002081387</td><td>2.354650e-06</td><td>2.354650e-06</td></tr>
+	<tr><td>ieu-b-39</td><td>vkWAmw</td><td>subsequent_ais_slopehunter_cis</td><td>diastolic blood pressure || id:ieu-b-39</td><td>Inverse variance weighted</td><td>438</td><td>-0.013085545</td><td>0.003533703</td><td>2.130068e-04</td><td>2.130068e-04</td></tr>
+	<tr><td>ieu-b-39</td><td>Kl88Ir</td><td>subsequent_ais_cis            </td><td>diastolic blood pressure || id:ieu-b-39</td><td>Inverse variance weighted</td><td>439</td><td>-0.012144894</td><td>0.003406115</td><td>3.630047e-04</td><td>3.630047e-04</td></tr>
+	<tr><td>ieu-b-38</td><td>GoqQkX</td><td>subsequent_ais_cis            </td><td>systolic blood pressure || id:ieu-b-38 </td><td>Inverse variance weighted</td><td>436</td><td>-0.006862472</td><td>0.002012757</td><td>6.508475e-04</td><td>6.508475e-04</td></tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+
+</div>
+
 </div>
 
 </div>

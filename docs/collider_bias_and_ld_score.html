@@ -14671,11 +14671,266 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="LD-Score-Information">LD Score Information<a class="anchor-link" href="#LD-Score-Information">&#182;</a></h1><p>Will be added later</p>
+<h1 id="LD-Score-Information">LD Score Information<a class="anchor-link" href="#LD-Score-Information">&#182;</a></h1>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[24]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-r"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">IRdisplay</span><span class="p">)</span>
+
+<span class="n">eur_heritability</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/ldsc/eur_heritability.tsv&quot;</span><span class="p">)</span>
+<span class="n">eur_genetic_correlation_summary</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/ldsc/eur_gc_summary.tsv&quot;</span><span class="p">)</span>
+<span class="n">his_heritability</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/ldsc/his_heritability.tsv&quot;</span><span class="p">)</span>
+<span class="n">his_genetic_correlation_summary</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/ldsc/his_gc_summary.tsv&quot;</span><span class="p">)</span>
+<span class="n">afr_heritability</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/ldsc/afr_heritability.tsv&quot;</span><span class="p">)</span>
+<span class="n">afr_genetic_correlation_summary</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/ldsc/afr_gc_summary.tsv&quot;</span><span class="p">)</span>
+
+<span class="n">IRdisplay</span><span class="o">::</span><span class="nf">display_markdown</span><span class="p">(</span><span class="s">&quot;### EUR Heritability Data&quot;</span><span class="p">)</span>
+<span class="n">eur_heritability</span>
+<span class="n">IRdisplay</span><span class="o">::</span><span class="nf">display_markdown</span><span class="p">(</span><span class="s">&quot;### EUR Genetic Correlation Results&quot;</span><span class="p">)</span>
+<span class="n">eur_genetic_correlation_summary</span>
+
+<span class="n">IRdisplay</span><span class="o">::</span><span class="nf">display_markdown</span><span class="p">(</span><span class="s">&quot;### HIS Heritability Data&quot;</span><span class="p">)</span>
+<span class="n">his_heritability</span>
+<span class="n">IRdisplay</span><span class="o">::</span><span class="nf">display_markdown</span><span class="p">(</span><span class="s">&quot;### HIS Genetic Correlation Results&quot;</span><span class="p">)</span>
+<span class="n">his_genetic_correlation_summary</span>
+
+<span class="n">IRdisplay</span><span class="o">::</span><span class="nf">display_markdown</span><span class="p">(</span><span class="s">&quot;### AFR Heritability Data&quot;</span><span class="p">)</span>
+<span class="n">afr_heritability</span>
+<span class="n">IRdisplay</span><span class="o">::</span><span class="nf">display_markdown</span><span class="p">(</span><span class="s">&quot;### AFR Genetic Correlation Results&quot;</span><span class="p">)</span>
+<span class="n">afr_genetic_correlation_summary</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
+<h3 id="EUR-Heritability-Data">EUR Heritability Data<a class="anchor-link" href="#EUR-Heritability-Data">&#182;</a></h3>
+</div>
 
 </div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<table class="dataframe">
+<caption>A data.table: 3 × 9</caption>
+<thead>
+	<tr><th scope=col>type</th><th scope=col>h2</th><th scope=col>h2_se</th><th scope=col>lambda_gc</th><th scope=col>mean_chi</th><th scope=col>intercept</th><th scope=col>intercept_se</th><th scope=col>ratio</th><th scope=col>ratio_se</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>first_ais_eur      </td><td>0.2740</td><td>0.0226</td><td>1.2168</td><td>1.2627</td><td>1.0341</td><td>0.0121</td><td>0.1298</td><td>0.0460</td></tr>
+	<tr><td>subsequent_ais_eur </td><td>0.0362</td><td>0.0316</td><td>1.0195</td><td>1.0224</td><td>1.0104</td><td>0.0079</td><td>0.4659</td><td>0.3524</td></tr>
+	<tr><td>subsequent_mace_eur</td><td>0.0366</td><td>0.0313</td><td>1.0046</td><td>1.0131</td><td>1.0022</td><td>0.0058</td><td>0.1703</td><td>0.4440</td></tr>
+</tbody>
+</table>
+
 </div>
+
 </div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
+<h3 id="EUR-Genetic-Correlation-Results">EUR Genetic Correlation Results<a class="anchor-link" href="#EUR-Genetic-Correlation-Results">&#182;</a></h3>
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<table class="dataframe">
+<caption>A data.table: 2 × 12</caption>
+<thead>
+	<tr><th scope=col>p1</th><th scope=col>p2</th><th scope=col>rg</th><th scope=col>se</th><th scope=col>z</th><th scope=col>p</th><th scope=col>h2_obs</th><th scope=col>h2_obs_se</th><th scope=col>h2_int</th><th scope=col>h2_int_se</th><th scope=col>gcov_int</th><th scope=col>gcov_int_se</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>first_ais_eur.sumstats.gz</td><td>secondary_ais_eur.sumstats.gz </td><td> 1.1510</td><td>0.5336</td><td> 2.1570</td><td>0.0310</td><td>0.0362</td><td>0.0316</td><td>1.0104</td><td>0.0079</td><td>-0.0002</td><td>0.0063</td></tr>
+	<tr><td>first_ais_eur.sumstats.gz</td><td>secondary_mace_eur.sumstats.gz</td><td>-1.1288</td><td>0.4982</td><td>-2.2659</td><td>0.0235</td><td>0.0366</td><td>0.0313</td><td>1.0022</td><td>0.0058</td><td>-0.0024</td><td>0.0049</td></tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
+<h3 id="HIS-Heritability-Data">HIS Heritability Data<a class="anchor-link" href="#HIS-Heritability-Data">&#182;</a></h3>
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<table class="dataframe">
+<caption>A data.table: 3 × 9</caption>
+<thead>
+	<tr><th scope=col>type</th><th scope=col>h2</th><th scope=col>h2_se</th><th scope=col>lambda_gc</th><th scope=col>mean_chi</th><th scope=col>intercept</th><th scope=col>intercept_se</th><th scope=col>ratio</th><th scope=col>ratio_se</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>first_ais_his      </td><td> 0.9962</td><td>0.5814</td><td>1.0375</td><td>1.0433</td><td>1.0287</td><td>0.0083</td><td>0.6614</td><td>0.1908</td></tr>
+	<tr><td>subsequent_ais_his </td><td>-0.0974</td><td>0.5240</td><td>1.0710</td><td>1.0670</td><td>1.0684</td><td>0.0089</td><td>1.0217</td><td>0.1324</td></tr>
+	<tr><td>subsequent_mace_his</td><td> 0.1655</td><td>0.5682</td><td>1.0772</td><td>1.0762</td><td>1.0737</td><td>0.0086</td><td>0.9680</td><td>0.1130</td></tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
+<h3 id="HIS-Genetic-Correlation-Results">HIS Genetic Correlation Results<a class="anchor-link" href="#HIS-Genetic-Correlation-Results">&#182;</a></h3>
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<table class="dataframe">
+<caption>A data.table: 2 × 12</caption>
+<thead>
+	<tr><th scope=col>p1</th><th scope=col>p2</th><th scope=col>rg</th><th scope=col>se</th><th scope=col>z</th><th scope=col>p</th><th scope=col>h2_obs</th><th scope=col>h2_obs_se</th><th scope=col>h2_int</th><th scope=col>h2_int_se</th><th scope=col>gcov_int</th><th scope=col>gcov_int_se</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>first_ais_his.sumstats.gz</td><td>subsequent_ais_his.sumstats.gz </td><td>     NA</td><td>   NA</td><td>     NA</td><td>    NA</td><td>-0.0974</td><td>0.5240</td><td>1.0684</td><td>0.0089</td><td>-0.0077</td><td>0.0055</td></tr>
+	<tr><td>first_ais_his.sumstats.gz</td><td>subsequent_mace_his.sumstats.gz</td><td>-0.4257</td><td>1.377</td><td>-0.3092</td><td>0.7572</td><td> 0.1655</td><td>0.5682</td><td>1.0737</td><td>0.0086</td><td> 0.0095</td><td>0.0055</td></tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
+<h3 id="AFR-Heritability-Data">AFR Heritability Data<a class="anchor-link" href="#AFR-Heritability-Data">&#182;</a></h3>
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<table class="dataframe">
+<caption>A data.table: 3 × 9</caption>
+<thead>
+	<tr><th scope=col>type</th><th scope=col>h2</th><th scope=col>h2_se</th><th scope=col>lambda_gc</th><th scope=col>mean_chi</th><th scope=col>intercept</th><th scope=col>intercept_se</th><th scope=col>ratio</th><th scope=col>ratio_se</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>first_ais_afr      </td><td>0.4420</td><td>1.2340</td><td>1.0741</td><td>1.0768</td><td>1.0733</td><td>0.0164</td><td>0.9545</td><td>0.2134</td></tr>
+	<tr><td>subsequent_ais_afr </td><td>0.5822</td><td>0.9546</td><td>1.0105</td><td>1.0151</td><td>1.0105</td><td>0.0092</td><td>0.6936</td><td>0.6088</td></tr>
+	<tr><td>subsequent_mace_afr</td><td>0.4265</td><td>1.0119</td><td>1.0255</td><td>1.0255</td><td>1.0221</td><td>0.0100</td><td>0.8658</td><td>0.3903</td></tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
+<h3 id="AFR-Genetic-Correlation-Results">AFR Genetic Correlation Results<a class="anchor-link" href="#AFR-Genetic-Correlation-Results">&#182;</a></h3>
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<table class="dataframe">
+<caption>A data.table: 2 × 12</caption>
+<thead>
+	<tr><th scope=col>p1</th><th scope=col>p2</th><th scope=col>rg</th><th scope=col>se</th><th scope=col>z</th><th scope=col>p</th><th scope=col>h2_obs</th><th scope=col>h2_obs_se</th><th scope=col>h2_int</th><th scope=col>h2_int_se</th><th scope=col>gcov_int</th><th scope=col>gcov_int_se</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>first_ais_afr.sumstats.gz</td><td>subsequent_ais_afr.sumstats.gz </td><td>0.1192</td><td>1.5601</td><td>0.0764</td><td>0.9391</td><td>0.5822</td><td>0.9546</td><td>1.0105</td><td>0.0092</td><td> 0.0146</td><td>0.0081</td></tr>
+	<tr><td>first_ais_afr.sumstats.gz</td><td>subsequent_mace_afr.sumstats.gz</td><td>1.5343</td><td>3.4285</td><td>0.4475</td><td>0.6545</td><td>0.4265</td><td>1.0119</td><td>1.0221</td><td>0.0100</td><td>-0.0214</td><td>0.0091</td></tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
 </div>
 </body>
 
