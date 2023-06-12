@@ -14611,7 +14611,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[69]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-r"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">IRdisplay</span><span class="p">)</span>
@@ -14633,10 +14633,10 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[66]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[18]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-r"><pre><span></span><span class="n">mr_mace</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/mr_subsequent_mace_cis.tsv&quot;</span><span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span><span class="n">mr_mace</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/mr_subsequent_mace_cis_updated.tsv&quot;</span><span class="p">)</span>
 <span class="n">mr_mace_slopehunter</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/mr_subsequent_mace_slopehunter_cis.tsv&quot;</span><span class="p">)</span>
 <span class="n">mr_mace_dudbridge</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/mr_subsequent_mace_dudbridge_cis.tsv&quot;</span><span class="p">)</span>
 
@@ -14655,11 +14655,13 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 <span class="n">IRdisplay</span><span class="o">::</span><span class="nf">display_markdown</span><span class="p">(</span><span class="s">&quot;### MR Subsequent MACE by adjusted p palue&quot;</span><span class="p">)</span>
 <span class="n">subsequent_mace</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">subsequent_mace</span><span class="p">[</span><span class="nf">with</span><span class="p">(</span><span class="n">subsequent_mace</span><span class="p">,</span><span class="w"> </span><span class="nf">order</span><span class="p">(</span><span class="n">pval_adjusted</span><span class="p">)),</span><span class="w"> </span><span class="p">]</span>
-<span class="nf">merge_marker_data</span><span class="p">(</span><span class="n">subsequent_mace</span><span class="p">[</span><span class="n">subsequent_mace</span><span class="o">$</span><span class="n">pval_adjusted</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">0.1</span><span class="p">,</span><span class="w"> </span><span class="p">])</span>
+<span class="n">subsequent_mace_subset</span><span class="o">&lt;-</span><span class="nf">merge_marker_data</span><span class="p">(</span><span class="n">subsequent_mace</span><span class="p">[</span><span class="n">subsequent_mace</span><span class="o">$</span><span class="n">pval_adjusted</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">0.1</span><span class="p">,</span><span class="w"> </span><span class="p">])</span>
+<span class="nf">subset</span><span class="p">(</span><span class="n">subsequent_mace</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">exposure</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="n">subsequent_mace_subset</span><span class="o">$</span><span class="n">exposure</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
 
 <span class="n">IRdisplay</span><span class="o">::</span><span class="nf">display_markdown</span><span class="p">(</span><span class="s">&quot;### MR Subsequent AIS Corrected Ordered by adjusted p palue&quot;</span><span class="p">)</span>
 <span class="n">subsequent_ais</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">subsequent_ais</span><span class="p">[</span><span class="nf">with</span><span class="p">(</span><span class="n">subsequent_ais</span><span class="p">,</span><span class="w"> </span><span class="nf">order</span><span class="p">(</span><span class="n">pval_adjusted</span><span class="p">)),</span><span class="w"> </span><span class="p">]</span>
-<span class="nf">merge_marker_data</span><span class="p">(</span><span class="n">subsequent_ais</span><span class="p">[</span><span class="n">subsequent_ais</span><span class="o">$</span><span class="n">pval_adjusted</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">0.1</span><span class="p">,</span><span class="w"> </span><span class="p">])</span>
+<span class="n">subsequent_ais_subset</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">merge_marker_data</span><span class="p">(</span><span class="n">subsequent_ais</span><span class="p">[</span><span class="n">subsequent_ais</span><span class="o">$</span><span class="n">pval_adjusted</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">0.1</span><span class="p">,</span><span class="w"> </span><span class="p">])</span>
+<span class="nf">subset</span><span class="p">(</span><span class="n">subsequent_ais</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">exposure</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="n">subsequent_ais_subset</span><span class="o">$</span><span class="n">exposure</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
 
 <span class="n">IRdisplay</span><span class="o">::</span><span class="nf">display_markdown</span><span class="p">(</span><span class="s">&quot;### MR Incident AIS &quot;</span><span class="p">)</span>
 <span class="n">mr_incidence_ais_all</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">mr_incidence_ais_all</span><span class="p">[</span><span class="nf">with</span><span class="p">(</span><span class="n">mr_incidence_ais_all</span><span class="p">,</span><span class="w"> </span><span class="nf">order</span><span class="p">(</span><span class="n">pval_adjusted</span><span class="p">)),</span><span class="w"> </span><span class="p">]</span>
@@ -14697,15 +14699,18 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
 <table class="dataframe">
-<caption>A data.table: 3 × 11</caption>
+<caption>A data.table: 6 × 10</caption>
 <thead>
-	<tr><th scope=col>exposure</th><th scope=col>id.exposure</th><th scope=col>id.outcome</th><th scope=col>outcome</th><th scope=col>method</th><th scope=col>nsnp</th><th scope=col>b</th><th scope=col>se</th><th scope=col>pval</th><th scope=col>pval_adjusted</th><th scope=col>marker.exposure</th></tr>
-	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+	<tr><th scope=col>id.exposure</th><th scope=col>id.outcome</th><th scope=col>outcome</th><th scope=col>exposure</th><th scope=col>method</th><th scope=col>nsnp</th><th scope=col>b</th><th scope=col>se</th><th scope=col>pval</th><th scope=col>pval_adjusted</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
 </thead>
 <tbody>
-	<tr><td>CCL27</td><td>Qn8W57</td><td>Y5SY88</td><td>subsequent_mace_slopehunter_cis</td><td>Wald ratio</td><td>1</td><td> 0.2637784</td><td>0.05811035</td><td>5.645012e-06</td><td>0.005882102</td><td>9:34649442 </td></tr>
-	<tr><td>CCL27</td><td>EjTD8O</td><td>zG9C6f</td><td>subsequent_mace_dudbridge_cis  </td><td>Wald ratio</td><td>1</td><td> 0.2491747</td><td>0.05658914</td><td>1.066531e-05</td><td>0.011113248</td><td>9:34649442 </td></tr>
-	<tr><td>IL19 </td><td>Ps4kKE</td><td>CfQhdn</td><td>subsequent_mace_cis            </td><td>Wald ratio</td><td>1</td><td>-0.1447038</td><td>0.03404796</td><td>2.137705e-05</td><td>0.022274888</td><td>1:207015957</td></tr>
+	<tr><td>Qn8W57</td><td>Y5SY88</td><td>subsequent_mace_slopehunter_cis</td><td>CCL27</td><td>Wald ratio</td><td>1</td><td>0.26377839</td><td>0.05811035</td><td>5.645012e-06</td><td>0.005882102</td></tr>
+	<tr><td>EjTD8O</td><td>zG9C6f</td><td>subsequent_mace_dudbridge_cis  </td><td>CCL27</td><td>Wald ratio</td><td>1</td><td>0.24917474</td><td>0.05658914</td><td>1.066531e-05</td><td>0.011113248</td></tr>
+	<tr><td>LHYle9</td><td>A8v2Q4</td><td>subsequent_mace_cis            </td><td>IL19 </td><td>Wald ratio</td><td>1</td><td>0.14470384</td><td>0.03404796</td><td>2.137705e-05</td><td>0.022253511</td></tr>
+	<tr><td>aqodcH</td><td>A8v2Q4</td><td>subsequent_mace_cis            </td><td>CCL27</td><td>Wald ratio</td><td>1</td><td>0.20840622</td><td>0.05598065</td><td>1.970052e-04</td><td>0.102541220</td></tr>
+	<tr><td>Kr94zV</td><td>zG9C6f</td><td>subsequent_mace_dudbridge_cis  </td><td>IL19 </td><td>Wald ratio</td><td>1</td><td>0.05731407</td><td>0.03433170</td><td>9.503388e-02</td><td>0.982273961</td></tr>
+	<tr><td>Ps4kKE</td><td>Y5SY88</td><td>subsequent_mace_slopehunter_cis</td><td>IL19 </td><td>Wald ratio</td><td>1</td><td>0.06554233</td><td>0.03518289</td><td>6.247588e-02</td><td>0.989644370</td></tr>
 </tbody>
 </table>
 
@@ -14732,17 +14737,21 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
 <table class="dataframe">
-<caption>A data.table: 5 × 11</caption>
+<caption>A data.table: 9 × 10</caption>
 <thead>
-	<tr><th scope=col>exposure</th><th scope=col>id.exposure</th><th scope=col>id.outcome</th><th scope=col>outcome</th><th scope=col>method</th><th scope=col>nsnp</th><th scope=col>b</th><th scope=col>se</th><th scope=col>pval</th><th scope=col>pval_adjusted</th><th scope=col>marker.exposure</th></tr>
-	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+	<tr><th scope=col>id.exposure</th><th scope=col>id.outcome</th><th scope=col>outcome</th><th scope=col>exposure</th><th scope=col>method</th><th scope=col>nsnp</th><th scope=col>b</th><th scope=col>se</th><th scope=col>pval</th><th scope=col>pval_adjusted</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
 </thead>
 <tbody>
-	<tr><td>CCL27   </td><td>EjTD8O</td><td>zKZ90y</td><td>subsequent_ais_dudbridge_cis  </td><td>Wald ratio</td><td>1</td><td> 0.2224014</td><td>0.05689338</td><td>9.264410e-05</td><td>0.06814543</td><td>9:34649442 </td></tr>
-	<tr><td>IL19    </td><td>CdHUGk</td><td>DS2SFG</td><td>subsequent_ais_non_adjusted   </td><td>Wald ratio</td><td>1</td><td> 0.1364756</td><td>0.03404796</td><td>6.114877e-05</td><td>0.06335013</td><td>1:207015957</td></tr>
-	<tr><td>TNFRSF14</td><td>wLxBak</td><td>zKZ90y</td><td>subsequent_ais_dudbridge_cis  </td><td>Wald ratio</td><td>1</td><td>-0.3397627</td><td>0.08886101</td><td>1.315549e-04</td><td>0.06814543</td><td>1:2488930  </td></tr>
-	<tr><td>TNFRSF14</td><td>k6qCMD</td><td>DS2SFG</td><td>subsequent_ais_non_adjusted   </td><td>Wald ratio</td><td>1</td><td>-0.3319220</td><td>0.08798982</td><td>1.617644e-04</td><td>0.08379395</td><td>1:2488930  </td></tr>
-	<tr><td>TNFRSF14</td><td>4YPe28</td><td>kuKFok</td><td>subsequent_ais_slopehunter_cis</td><td>Wald ratio</td><td>1</td><td>-0.3519593</td><td>0.08973220</td><td>8.769673e-05</td><td>0.09094151</td><td>1:2488930  </td></tr>
+	<tr><td>CdHUGk</td><td>DS2SFG</td><td>subsequent_ais_non_adjusted   </td><td>IL19    </td><td>Wald ratio</td><td>1</td><td> 0.13647558</td><td>0.03404796</td><td>6.114877e-05</td><td>0.06335013</td></tr>
+	<tr><td>EjTD8O</td><td>zKZ90y</td><td>subsequent_ais_dudbridge_cis  </td><td>CCL27   </td><td>Wald ratio</td><td>1</td><td> 0.22240139</td><td>0.05689338</td><td>9.264410e-05</td><td>0.06814543</td></tr>
+	<tr><td>wLxBak</td><td>zKZ90y</td><td>subsequent_ais_dudbridge_cis  </td><td>TNFRSF14</td><td>Wald ratio</td><td>1</td><td>-0.33976269</td><td>0.08886101</td><td>1.315549e-04</td><td>0.06814543</td></tr>
+	<tr><td>k6qCMD</td><td>DS2SFG</td><td>subsequent_ais_non_adjusted   </td><td>TNFRSF14</td><td>Wald ratio</td><td>1</td><td>-0.33192201</td><td>0.08798982</td><td>1.617644e-04</td><td>0.08379395</td></tr>
+	<tr><td>4YPe28</td><td>kuKFok</td><td>subsequent_ais_slopehunter_cis</td><td>TNFRSF14</td><td>Wald ratio</td><td>1</td><td>-0.35195930</td><td>0.08973220</td><td>8.769673e-05</td><td>0.09094151</td></tr>
+	<tr><td>vPV9eG</td><td>DS2SFG</td><td>subsequent_ais_non_adjusted   </td><td>CCL27   </td><td>Wald ratio</td><td>1</td><td> 0.19836622</td><td>0.05628489</td><td>4.245642e-04</td><td>0.14661618</td></tr>
+	<tr><td>Qn8W57</td><td>kuKFok</td><td>subsequent_ais_slopehunter_cis</td><td>CCL27   </td><td>Wald ratio</td><td>1</td><td> 0.18954318</td><td>0.05780611</td><td>1.041951e-03</td><td>0.54025142</td></tr>
+	<tr><td>Ps4kKE</td><td>kuKFok</td><td>subsequent_ais_slopehunter_cis</td><td>IL19    </td><td>Wald ratio</td><td>1</td><td> 0.09164577</td><td>0.03489916</td><td>8.639069e-03</td><td>0.69191282</td></tr>
+	<tr><td>Kr94zV</td><td>zKZ90y</td><td>subsequent_ais_dudbridge_cis  </td><td>IL19    </td><td>Wald ratio</td><td>1</td><td> 0.10469748</td><td>0.03433170</td><td>2.291564e-03</td><td>0.79135351</td></tr>
 </tbody>
 </table>
 
@@ -14982,7 +14991,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[21]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-r"><pre><span></span><span class="n">mr_mace</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/mr_subsequent_mace_cis_trans.tsv&quot;</span><span class="p">)</span>
@@ -14991,13 +15000,18 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <span class="n">mr_ais</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/mr_subsequent_ais_cis_trans.tsv&quot;</span><span class="p">)</span>
 <span class="n">mr_ais_slopehunter</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/mr_subsequent_ais_slopehunter_cis_trans.tsv&quot;</span><span class="p">)</span>
 
-<span class="n">unadjusted</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rbind</span><span class="p">(</span><span class="n">mr_mace</span><span class="p">,</span><span class="w"> </span><span class="n">mr_ais</span><span class="p">)</span>
-<span class="n">slopehunter</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rbind</span><span class="p">(</span><span class="n">mr_mace_slopehunter</span><span class="p">,</span><span class="w"> </span><span class="n">mr_ais_slopehunter</span><span class="p">)</span>
+<span class="n">mace_cis_trans</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rbind</span><span class="p">(</span><span class="n">mr_mace</span><span class="p">,</span><span class="w"> </span><span class="n">mr_mace_slopehunter</span><span class="p">)</span>
+<span class="n">ais_cis_trans</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rbind</span><span class="p">(</span><span class="n">mr_ais</span><span class="p">,</span><span class="w"> </span><span class="n">mr_ais_slopehunter</span><span class="p">)</span>
 
-<span class="nf">print</span><span class="p">(</span><span class="s">&quot;MR Ordered by adjusted p palue&quot;</span><span class="p">)</span>
-<span class="nf">head</span><span class="p">(</span><span class="n">unadjusted</span><span class="p">[</span><span class="nf">with</span><span class="p">(</span><span class="n">unadjusted</span><span class="p">,</span><span class="w"> </span><span class="nf">order</span><span class="p">(</span><span class="n">pval_adjusted</span><span class="p">)),</span><span class="w"> </span><span class="p">],</span><span class="w"> </span><span class="n">n</span><span class="o">=</span><span class="m">10</span><span class="p">)</span>
-<span class="nf">print</span><span class="p">(</span><span class="s">&quot;MR SlopeHunter Corrected Ordered by adjusted p palue&quot;</span><span class="p">)</span>
-<span class="nf">head</span><span class="p">(</span><span class="n">slopehunter</span><span class="p">[</span><span class="nf">with</span><span class="p">(</span><span class="n">slopehunter</span><span class="p">,</span><span class="w"> </span><span class="nf">order</span><span class="p">(</span><span class="n">pval_adjusted</span><span class="p">)),</span><span class="w"> </span><span class="p">],</span><span class="w"> </span><span class="n">n</span><span class="o">=</span><span class="m">10</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">&quot;MR on MACE Ordered by adjusted p palue&quot;</span><span class="p">)</span>
+<span class="n">mace_cis_trans</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">mace_cis_trans</span><span class="p">[</span><span class="nf">with</span><span class="p">(</span><span class="n">mace_cis_trans</span><span class="p">,</span><span class="w"> </span><span class="nf">order</span><span class="p">(</span><span class="n">pval_adjusted</span><span class="p">)),</span><span class="w"> </span><span class="p">]</span>
+<span class="n">mace_cis_trans_subset</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">mace_cis_trans</span><span class="p">[</span><span class="n">mace_cis_trans</span><span class="o">$</span><span class="n">pval_adjusted</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">0.2</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
+<span class="nf">subset</span><span class="p">(</span><span class="n">mace_cis_trans</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">exposure</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="n">mace_cis_trans_subset</span><span class="o">$</span><span class="n">exposure</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
+
+<span class="nf">print</span><span class="p">(</span><span class="s">&quot;MR on AIS Ordered by adjusted p palue&quot;</span><span class="p">)</span>
+<span class="n">ais_cis_trans</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">ais_cis_trans</span><span class="p">[</span><span class="nf">with</span><span class="p">(</span><span class="n">ais_cis_trans</span><span class="p">,</span><span class="w"> </span><span class="nf">order</span><span class="p">(</span><span class="n">pval_adjusted</span><span class="p">)),</span><span class="w"> </span><span class="p">]</span>
+<span class="n">ais_cis_trans_subset</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">ais_cis_trans</span><span class="p">[</span><span class="n">ais_cis_trans</span><span class="o">$</span><span class="n">pval_adjusted</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">0.2</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
+<span class="nf">subset</span><span class="p">(</span><span class="n">ais_cis_trans</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">exposure</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="n">ais_cis_trans_subset</span><span class="o">$</span><span class="n">exposure</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -15017,7 +15031,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>[1] &#34;MR Ordered by adjusted p palue&#34;
+<pre>[1] &#34;MR on MACE Ordered by adjusted p palue&#34;
 </pre>
 </div>
 </div>
@@ -15029,22 +15043,14 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
 <table class="dataframe">
-<caption>A data.table: 10 × 11</caption>
+<caption>A data.table: 2 × 10</caption>
 <thead>
-	<tr><th scope=col>exposure</th><th scope=col>id.exposure</th><th scope=col>id.outcome</th><th scope=col>outcome</th><th scope=col>method</th><th scope=col>nsnp</th><th scope=col>b</th><th scope=col>se</th><th scope=col>pval</th><th scope=col>pval_adjusted</th><th scope=col>marker.exposure</th></tr>
-	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+	<tr><th scope=col>id.exposure</th><th scope=col>id.outcome</th><th scope=col>outcome</th><th scope=col>exposure</th><th scope=col>method</th><th scope=col>nsnp</th><th scope=col>b</th><th scope=col>se</th><th scope=col>pval</th><th scope=col>pval_adjusted</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
 </thead>
 <tbody>
-	<tr><td>IL19    </td><td>ZIkgmY</td><td>2XYtdE</td><td>subsequent_mace_non_adjusted_cis_trans</td><td>Inverse variance weighted</td><td> 5</td><td>-0.09564108</td><td>0.02238422</td><td>1.931193e-05</td><td>0.02630285</td><td>1:207015957</td></tr>
-	<tr><td>CD164   </td><td>1hmyVd</td><td>pxFYtc</td><td>subsequent_ais_non_cis_trans          </td><td>Inverse variance weighted</td><td>10</td><td>-0.14755911</td><td>0.04227295</td><td>4.818876e-04</td><td>0.47503805</td><td>6:109720350</td></tr>
-	<tr><td>GOLM2   </td><td>QunYCV</td><td>pxFYtc</td><td>subsequent_ais_non_cis_trans          </td><td>Inverse variance weighted</td><td> 9</td><td>-0.09150730</td><td>0.02699385</td><td>6.990994e-04</td><td>0.47503805</td><td>15:44670474</td></tr>
-	<tr><td>AMY2B   </td><td>QDHrJB</td><td>2XYtdE</td><td>subsequent_mace_non_adjusted_cis_trans</td><td>Inverse variance weighted</td><td> 9</td><td>-0.07421112</td><td>0.02426595</td><td>2.226402e-03</td><td>0.53628419</td><td>1:104329823</td></tr>
-	<tr><td>CD209   </td><td>nuOKek</td><td>2XYtdE</td><td>subsequent_mace_non_adjusted_cis_trans</td><td>Inverse variance weighted</td><td> 8</td><td> 0.03464615</td><td>0.01147277</td><td>2.528923e-03</td><td>0.53628419</td><td>19:7772173 </td></tr>
-	<tr><td>IL34    </td><td>9gUHlE</td><td>2XYtdE</td><td>subsequent_mace_non_adjusted_cis_trans</td><td>Wald ratio               </td><td> 1</td><td>-0.04846180</td><td>0.01584328</td><td>2.222080e-03</td><td>0.53628419</td><td>16:70694000</td></tr>
-	<tr><td>LGALS4  </td><td>ZWu30i</td><td>2XYtdE</td><td>subsequent_mace_non_adjusted_cis_trans</td><td>Inverse variance weighted</td><td> 4</td><td>-0.05862827</td><td>0.01958393</td><td>2.756233e-03</td><td>0.53628419</td><td>19:39265229</td></tr>
-	<tr><td>TNFRSF14</td><td>pwg9SD</td><td>2XYtdE</td><td>subsequent_mace_non_adjusted_cis_trans</td><td>Inverse variance weighted</td><td> 5</td><td> 0.22313612</td><td>0.06974958</td><td>1.378558e-03</td><td>0.53628419</td><td>1:2488930  </td></tr>
-	<tr><td>IL19    </td><td>ZIkgmY</td><td>pxFYtc</td><td>subsequent_ais_non_cis_trans          </td><td>Inverse variance weighted</td><td> 5</td><td> 0.08204006</td><td>0.02532138</td><td>1.195496e-03</td><td>0.54155982</td><td>1:207015957</td></tr>
-	<tr><td>DCTPP1  </td><td>sHi7ar</td><td>2XYtdE</td><td>subsequent_mace_non_adjusted_cis_trans</td><td>Inverse variance weighted</td><td> 6</td><td> 0.21471418</td><td>0.07280655</td><td>3.186952e-03</td><td>0.54257860</td><td>16:30435601</td></tr>
+	<tr><td>ZIkgmY</td><td>2XYtdE</td><td>subsequent_mace_non_adjusted_cis_trans</td><td>IL19</td><td>Inverse variance weighted</td><td>5</td><td>-0.09564108</td><td>0.02238422</td><td>1.931193e-05</td><td>0.02630285</td></tr>
+	<tr><td>ZIkgmY</td><td>1aGmqs</td><td>subsequent_mace_slopehunter_cis_trans </td><td>IL19</td><td>Inverse variance weighted</td><td>5</td><td> 0.05825868</td><td>0.02153724</td><td>6.830004e-03</td><td>0.99585060</td></tr>
 </tbody>
 </table>
 
@@ -15057,7 +15063,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>[1] &#34;MR SlopeHunter Corrected Ordered by adjusted p palue&#34;
+<pre>[1] &#34;MR on AIS Ordered by adjusted p palue&#34;
 </pre>
 </div>
 </div>
@@ -15069,22 +15075,14 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
 <table class="dataframe">
-<caption>A data.table: 10 × 11</caption>
+<caption>A data.table: 2 × 10</caption>
 <thead>
-	<tr><th scope=col>exposure</th><th scope=col>id.exposure</th><th scope=col>id.outcome</th><th scope=col>outcome</th><th scope=col>method</th><th scope=col>nsnp</th><th scope=col>b</th><th scope=col>se</th><th scope=col>pval</th><th scope=col>pval_adjusted</th><th scope=col>marker.exposure</th></tr>
-	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+	<tr><th scope=col>id.exposure</th><th scope=col>id.outcome</th><th scope=col>outcome</th><th scope=col>exposure</th><th scope=col>method</th><th scope=col>nsnp</th><th scope=col>b</th><th scope=col>se</th><th scope=col>pval</th><th scope=col>pval_adjusted</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
 </thead>
 <tbody>
-	<tr><td>CD164  </td><td>1hmyVd</td><td>nbRraz</td><td>subsequent_ais_slopehunter_cis_trans </td><td>Inverse variance weighted</td><td>10</td><td>-0.181177154</td><td>0.04337580</td><td>2.954853e-05</td><td>0.04015646</td><td>6:109720350</td></tr>
-	<tr><td>LSP1   </td><td>tz1CNL</td><td>1aGmqs</td><td>subsequent_mace_slopehunter_cis_trans</td><td>Inverse variance weighted</td><td> 2</td><td> 0.208592325</td><td>0.06827917</td><td>2.250664e-03</td><td>0.92709644</td><td>11:1874221 </td></tr>
-	<tr><td>PLA2G7 </td><td>i5cJfn</td><td>1aGmqs</td><td>subsequent_mace_slopehunter_cis_trans</td><td>Inverse variance weighted</td><td>10</td><td> 0.096958398</td><td>0.03234728</td><td>2.722750e-03</td><td>0.92709644</td><td>6:46685732 </td></tr>
-	<tr><td>PTGDS  </td><td>F9m2nO</td><td>1aGmqs</td><td>subsequent_mace_slopehunter_cis_trans</td><td>Inverse variance weighted</td><td> 3</td><td>-0.164977519</td><td>0.05205328</td><td>1.527553e-03</td><td>0.92709644</td><td>9:139859013</td></tr>
-	<tr><td>AARSD1 </td><td>xOYgcP</td><td>1aGmqs</td><td>subsequent_mace_slopehunter_cis_trans</td><td>Inverse variance weighted</td><td> 3</td><td>-0.010727417</td><td>0.07310676</td><td>8.833401e-01</td><td>0.99585060</td><td>17:41140545</td></tr>
-	<tr><td>ABHD14B</td><td>fDYKTf</td><td>1aGmqs</td><td>subsequent_mace_slopehunter_cis_trans</td><td>Inverse variance weighted</td><td> 4</td><td> 0.081473329</td><td>0.04151856</td><td>4.972347e-02</td><td>0.99585060</td><td>3:52004097 </td></tr>
-	<tr><td>ACAA1  </td><td>nnlGFU</td><td>1aGmqs</td><td>subsequent_mace_slopehunter_cis_trans</td><td>Inverse variance weighted</td><td> 3</td><td>-0.081162185</td><td>0.16528055</td><td>6.233861e-01</td><td>0.99585060</td><td>3:38170810 </td></tr>
-	<tr><td>ACAN   </td><td>D9ryZ3</td><td>1aGmqs</td><td>subsequent_mace_slopehunter_cis_trans</td><td>Inverse variance weighted</td><td>14</td><td>-0.013893584</td><td>0.04815247</td><td>7.729386e-01</td><td>0.99585060</td><td>15:89252012</td></tr>
-	<tr><td>ACOX1  </td><td>EUsRQL</td><td>1aGmqs</td><td>subsequent_mace_slopehunter_cis_trans</td><td>Wald ratio               </td><td> 1</td><td> 0.080921425</td><td>0.15105333</td><td>5.921560e-01</td><td>0.99585060</td><td>17:73951864</td></tr>
-	<tr><td>ACP5   </td><td>rNFpxR</td><td>1aGmqs</td><td>subsequent_mace_slopehunter_cis_trans</td><td>Inverse variance weighted</td><td>10</td><td>-0.004417015</td><td>0.02904083</td><td>8.791106e-01</td><td>0.99585060</td><td>19:11687351</td></tr>
+	<tr><td>1hmyVd</td><td>nbRraz</td><td>subsequent_ais_slopehunter_cis_trans</td><td>CD164</td><td>Inverse variance weighted</td><td>10</td><td>-0.1811772</td><td>0.04337580</td><td>2.954853e-05</td><td>0.04015646</td></tr>
+	<tr><td>1hmyVd</td><td>pxFYtc</td><td>subsequent_ais_non_cis_trans        </td><td>CD164</td><td>Inverse variance weighted</td><td>10</td><td>-0.1475591</td><td>0.04227295</td><td>4.818876e-04</td><td>0.47503805</td></tr>
 </tbody>
 </table>
 
@@ -15120,9 +15118,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-r"><pre><span></span><span class="n">mr_incidence_ais_all</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/mr_first_ais_all_cis_trans.tsv&quot;</span><span class="p">)</span>
-<span class="c1">#mr_published_ais_all &lt;- data.table::fread(&quot;scratch/results/mr/mr_published_ais_cis_trans.tsv&quot;)</span>
 <span class="nf">head</span><span class="p">(</span><span class="n">mr_incidence_ais_all</span><span class="p">[</span><span class="nf">with</span><span class="p">(</span><span class="n">mr_incidence_ais_all</span><span class="p">,</span><span class="w"> </span><span class="nf">order</span><span class="p">(</span><span class="n">pval_adjusted</span><span class="p">)),</span><span class="w"> </span><span class="p">],</span><span class="w"> </span><span class="n">n</span><span class="o">=</span><span class="m">10</span><span class="p">)</span>
-<span class="c1">#head(mr_published_ais_all[with(mr_published_ais_all, order(pval_adjusted)), ], n=100)</span>
 </pre></div>
 
      </div>
@@ -15188,12 +15184,12 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[59]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[8]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-r"><pre><span></span><span class="n">mr_mace_systolic_</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/mr_systolic_bp_subsequent_mace_cis.tsv&quot;</span><span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span><span class="n">mr_mace_systolic_</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/mr_systolic_bp_subsequent_mace_cis_updated.tsv&quot;</span><span class="p">)</span>
 <span class="n">mr_mace_systolic_slopehunter</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/mr_systolic_bp_subsequent_mace_slopehunter_cis.tsv&quot;</span><span class="p">)</span>
-<span class="n">mr_mace_diastolic</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/mr_diastolic_bp_subsequent_mace_cis.tsv&quot;</span><span class="p">)</span>
+<span class="n">mr_mace_diastolic</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/mr_diastolic_bp_subsequent_mace_cis_updated.tsv&quot;</span><span class="p">)</span>
 <span class="n">mr_mace_diastolic_slopehunter</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/mr_diastolic_bp_subsequent_mace_slopehunter_cis.tsv&quot;</span><span class="p">)</span>
 
 <span class="n">mr_ais_systolic_</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/mr_systolic_bp_subsequent_ais_cis.tsv&quot;</span><span class="p">)</span>
@@ -15291,10 +15287,10 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
 </thead>
 <tbody>
-	<tr><td>ieu-b-38</td><td>kheZHe</td><td>subsequent_mace_cis            </td><td>systolic blood pressure || id:ieu-b-38 </td><td>Inverse variance weighted</td><td>436</td><td>0.0093578040</td><td>0.001975584</td><td>2.171961e-06</td><td>2.171961e-06</td></tr>
-	<tr><td>ieu-b-39</td><td>loRvvq</td><td>subsequent_mace_cis            </td><td>diastolic blood pressure || id:ieu-b-39</td><td>Inverse variance weighted</td><td>439</td><td>0.0127648348</td><td>0.003283612</td><td>1.013081e-04</td><td>1.013081e-04</td></tr>
-	<tr><td>ieu-b-38</td><td>LauPMY</td><td>subsequent_mace_slopehunter_cis</td><td>systolic blood pressure || id:ieu-b-38 </td><td>Inverse variance weighted</td><td>437</td><td>0.0011613651</td><td>0.001957913</td><td>5.530709e-01</td><td>5.530709e-01</td></tr>
-	<tr><td>ieu-b-39</td><td>9u3iJD</td><td>subsequent_mace_slopehunter_cis</td><td>diastolic blood pressure || id:ieu-b-39</td><td>Inverse variance weighted</td><td>438</td><td>0.0008398195</td><td>0.003304182</td><td>7.993653e-01</td><td>7.993653e-01</td></tr>
+	<tr><td>ieu-b-39</td><td>jinx2z</td><td>subsequent_mace_cis            </td><td>diastolic blood pressure || id:ieu-b-39</td><td>Inverse variance weighted</td><td>439</td><td>-0.0104453268</td><td>0.003302275</td><td>0.001561147</td><td>0.001561147</td></tr>
+	<tr><td>ieu-b-38</td><td>2aRLki</td><td>subsequent_mace_cis            </td><td>systolic blood pressure || id:ieu-b-38 </td><td>Inverse variance weighted</td><td>436</td><td>-0.0056616841</td><td>0.002007623</td><td>0.004800967</td><td>0.004800967</td></tr>
+	<tr><td>ieu-b-38</td><td>LauPMY</td><td>subsequent_mace_slopehunter_cis</td><td>systolic blood pressure || id:ieu-b-38 </td><td>Inverse variance weighted</td><td>437</td><td> 0.0011613651</td><td>0.001957913</td><td>0.553070897</td><td>0.553070897</td></tr>
+	<tr><td>ieu-b-39</td><td>9u3iJD</td><td>subsequent_mace_slopehunter_cis</td><td>diastolic blood pressure || id:ieu-b-39</td><td>Inverse variance weighted</td><td>438</td><td> 0.0008398195</td><td>0.003304182</td><td>0.799365254</td><td>0.799365254</td></tr>
 </tbody>
 </table>
 

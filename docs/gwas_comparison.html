@@ -14771,7 +14771,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-r"><pre><span></span><span class="nf">source</span><span class="p">(</span><span class="s">&quot;gwas_data_helpers.R&quot;</span><span class="p">)</span>
@@ -14780,7 +14780,8 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <span class="n">collider_gwas_columns</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;MARKER&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;BETA_SLOPEHUNTER&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;SE_SLOPEHUNTER&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;P_SLOPEHUNTER&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;EAF.prognosis&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;EA.prognosis&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;OA.prognosis&quot;</span><span class="p">)</span>
 
 <span class="n">snps</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="s">&quot;1:45019440&quot;</span><span class="p">,</span><span class="s">&quot;1:100046246&quot;</span><span class="p">,</span><span class="s">&quot;2:204062728&quot;</span><span class="p">,</span><span class="s">&quot;3:14526612&quot;</span><span class="p">,</span><span class="s">&quot;4:89958167&quot;</span><span class="p">,</span><span class="s">&quot;4:111696651&quot;</span><span class="p">,</span>
-<span class="w">             </span><span class="s">&quot;6:1364866&quot;</span><span class="p">,</span><span class="s">&quot;7:19049388&quot;</span><span class="p">,</span><span class="s">&quot;7:92263789&quot;</span><span class="p">,</span><span class="s">&quot;9:22102165&quot;</span><span class="p">,</span><span class="s">&quot;9:106185546&quot;</span><span class="p">,</span><span class="s">&quot;11:102795606&quot;</span><span class="p">,</span><span class="s">&quot;19:45411941&quot;</span><span class="p">,</span><span class="s">&quot;19:49229323&quot;</span><span class="p">)</span>
+<span class="w">             </span><span class="s">&quot;6:1364866&quot;</span><span class="p">,</span><span class="s">&quot;7:19049388&quot;</span><span class="p">,</span><span class="s">&quot;7:92263789&quot;</span><span class="p">,</span><span class="s">&quot;9:22102165&quot;</span><span class="p">,</span><span class="s">&quot;9:106185546&quot;</span><span class="p">,</span><span class="s">&quot;11:102795606&quot;</span><span class="p">,</span><span class="s">&quot;19:45411941&quot;</span><span class="p">,</span><span class="s">&quot;19:49229323&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s">&quot;9:34649442&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;1:207015957&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;1:2488930&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;9:136304114&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;19:49206674&quot;</span><span class="p">)</span>
 
 <span class="c1">#New SNP list of interest to MR results:</span>
 <span class="c1">#snps &lt;- list(CCL27=&quot;9:34649442&quot;, IL19=&quot;1:207015957&quot;, TNFRSF14=&quot;1:2488930&quot;, ADAMTS13=&quot;9:136304114&quot;, KLK1=&quot;19:49206674&quot;)</span>
@@ -14845,17 +14846,187 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 </div>
 
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[27]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-r"><pre><span></span><span class="n">snps</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="s">&quot;1:45019440&quot;</span><span class="p">,</span><span class="s">&quot;1:100046246&quot;</span><span class="p">,</span><span class="s">&quot;2:204062728&quot;</span><span class="p">,</span><span class="s">&quot;3:14526612&quot;</span><span class="p">,</span><span class="s">&quot;4:89958167&quot;</span><span class="p">,</span><span class="s">&quot;4:111696651&quot;</span><span class="p">,</span>
+<span class="w">             </span><span class="s">&quot;6:1364866&quot;</span><span class="p">,</span><span class="s">&quot;7:19049388&quot;</span><span class="p">,</span><span class="s">&quot;7:92263789&quot;</span><span class="p">,</span><span class="s">&quot;9:22102165&quot;</span><span class="p">,</span><span class="s">&quot;9:106185546&quot;</span><span class="p">,</span><span class="s">&quot;11:102795606&quot;</span><span class="p">,</span><span class="s">&quot;19:45411941&quot;</span><span class="p">,</span><span class="s">&quot;19:49229323&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s">&quot;9:34649442&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;1:207015957&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;1:2488930&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;9:136304114&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;19:49206674&quot;</span><span class="p">)</span>
+
+
+
+<span class="n">subsequent_mace_all</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/gwases/subsequent_mace_all.txt&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">select</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gwas_columns</span><span class="p">)</span>
+<span class="n">subsequent_mace_all</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">subset</span><span class="p">(</span><span class="n">subsequent_mace_his</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">MARKER</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="n">snps</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
+
+<span class="n">subsequent_ais_all</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/data/gwases/subsequent_ais_his.txt&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">select</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gwas_columns</span><span class="p">)</span>
+<span class="n">subsequent_ais_all</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">subset</span><span class="p">(</span><span class="n">subsequent_mace_his</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">MARKER</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="n">snps</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>
+Error in data.table::fread(&#34;scratch/results/gwases/subsequent_mace_eur_mvp.txt&#34;, : File &#39;scratch/results/gwases/subsequent_mace_eur_mvp.txt&#39; does not exist or is non-readable. getwd()==&#39;/user/home/wt23152/bristol-projects/132&#39;
+Traceback:
+
+1. data.table::fread(&#34;scratch/results/gwases/subsequent_mace_eur_mvp.txt&#34;, 
+ .     select = gwas_columns)
+2. stop(&#34;File &#39;&#34;, file, &#34;&#39; does not exist or is non-readable. getwd()==&#39;&#34;, 
+ .     getwd(), &#34;&#39;&#34;)</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[38]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-r"><pre><span></span><span class="n">snps</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="s">&quot;1:45019440&quot;</span><span class="p">,</span><span class="s">&quot;1:100046246&quot;</span><span class="p">,</span><span class="s">&quot;2:204062728&quot;</span><span class="p">,</span><span class="s">&quot;3:14526612&quot;</span><span class="p">,</span><span class="s">&quot;4:89958167&quot;</span><span class="p">,</span><span class="s">&quot;4:111696651&quot;</span><span class="p">,</span>
+<span class="w">             </span><span class="s">&quot;6:1364866&quot;</span><span class="p">,</span><span class="s">&quot;7:19049388&quot;</span><span class="p">,</span><span class="s">&quot;7:92263789&quot;</span><span class="p">,</span><span class="s">&quot;9:22102165&quot;</span><span class="p">,</span><span class="s">&quot;9:106185546&quot;</span><span class="p">,</span><span class="s">&quot;11:102795606&quot;</span><span class="p">,</span><span class="s">&quot;19:45411941&quot;</span><span class="p">,</span><span class="s">&quot;19:49229323&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s">&quot;9:34649442&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;1:207015957&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;1:2488930&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;9:136304114&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;19:49206674&quot;</span><span class="p">)</span>
+
+<span class="n">subsequent_mace_eur_mvp</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/data/gwases/subsequent_mace_eur_mvp.txt&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">select</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gwas_columns</span><span class="p">)</span>
+<span class="n">subsequent_mace_eur_mvp</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">subset</span><span class="p">(</span><span class="n">subsequent_mace_eur_mvp</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">MARKER</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="n">snps</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
+
+<span class="n">subsequent_mace_eur_ukb</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/data/gwases/subsequent_mace_eur_ukb.txt&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">select</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gwas_columns</span><span class="p">)</span>
+<span class="n">subsequent_mace_eur_ukb</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">subset</span><span class="p">(</span><span class="n">subsequent_mace_eur_ukb</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">MARKER</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="n">snps</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
+
+<span class="n">subsequent_mace_afr</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/data/gwases/subsequent_mace_afr.txt&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">select</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gwas_columns</span><span class="p">)</span>
+<span class="n">subsequent_mace_afr</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">subset</span><span class="p">(</span><span class="n">subsequent_mace_afr</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">MARKER</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="n">snps</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
+
+<span class="n">subsequent_mace_his</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/data/gwases/subsequent_mace_his.txt&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">select</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gwas_columns</span><span class="p">)</span>
+<span class="n">subsequent_mace_his</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">subset</span><span class="p">(</span><span class="n">subsequent_mace_his</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">MARKER</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="n">snps</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[50]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-r"><pre><span></span><span class="n">snps</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="s">&quot;1:45019440&quot;</span><span class="p">,</span><span class="s">&quot;1:100046246&quot;</span><span class="p">,</span><span class="s">&quot;2:204062728&quot;</span><span class="p">,</span><span class="s">&quot;3:14526612&quot;</span><span class="p">,</span><span class="s">&quot;4:89958167&quot;</span><span class="p">,</span><span class="s">&quot;4:111696651&quot;</span><span class="p">,</span>
+<span class="w">             </span><span class="s">&quot;6:1364866&quot;</span><span class="p">,</span><span class="s">&quot;7:19049388&quot;</span><span class="p">,</span><span class="s">&quot;7:92263789&quot;</span><span class="p">,</span><span class="s">&quot;9:22102165&quot;</span><span class="p">,</span><span class="s">&quot;9:106185546&quot;</span><span class="p">,</span><span class="s">&quot;11:102795606&quot;</span><span class="p">,</span><span class="s">&quot;19:45411941&quot;</span><span class="p">,</span><span class="s">&quot;19:49229323&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s">&quot;9:34649442&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;1:207015957&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;1:2488930&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;9:136304114&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;19:49206674&quot;</span><span class="p">)</span>
+<span class="n">subsequent_mace_eur_meta_again</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/data/gwases/subsequent_mace_eur1txt&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">select</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gwas_columns</span><span class="p">)</span>
+<span class="n">subsequent_mace_eur_meta_again</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">subset</span><span class="p">(</span><span class="n">subsequent_mace_eur_meta_again</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">MARKER</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="n">snps</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
+
+<span class="n">subsequent_mace_all_meta_again</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/gwases/subsequent_mace_all_updated1txt&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">select</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gwas_columns</span><span class="p">)</span>
+<span class="n">subsequent_mace_all_meta_again</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">subset</span><span class="p">(</span><span class="n">subsequent_mace_eur_meta_again</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">MARKER</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="n">snps</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
+
+<span class="n">subsequent_mace_eur_sh_again</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/gwases/subsequent_mace_eur_collider_corrected_new.txt&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">select</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">collider_gwas_columns</span><span class="p">)</span>
+<span class="n">subsequent_mace_eur_sh_again</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">subset</span><span class="p">(</span><span class="n">subsequent_mace_eur_sh_again</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">MARKER</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="n">snps</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[52]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-r"><pre><span></span><span class="n">subsequent_mace_eur_sh_again</span><span class="p">[</span><span class="n">subsequent_mace_eur_sh_again</span><span class="o">$</span><span class="n">MARKER</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;7:19049388&quot;</span><span class="p">]</span>
+<span class="nf">nrow</span><span class="p">(</span><span class="n">subsequent_mace_eur_sh_again</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<table class="dataframe">
+<caption>A data.table: 1 × 7</caption>
+<thead>
+	<tr><th scope=col>MARKER</th><th scope=col>BETA_SLOPEHUNTER</th><th scope=col>SE_SLOPEHUNTER</th><th scope=col>P_SLOPEHUNTER</th><th scope=col>EAF.prognosis</th><th scope=col>EA.prognosis</th><th scope=col>OA.prognosis</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>7:19049388</td><td>0.007637508</td><td>0.01700425</td><td>0.6533213</td><td>0.8296</td><td>A</td><td>G</td></tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+19
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[55]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-r"><pre><span></span><span class="nf">source</span><span class="p">(</span><span class="s">&quot;gwas_data_helpers.R&quot;</span><span class="p">)</span>
 <span class="n">snps</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="s">&quot;1:45019440&quot;</span><span class="p">,</span><span class="s">&quot;1:100046246&quot;</span><span class="p">,</span><span class="s">&quot;2:204062728&quot;</span><span class="p">,</span><span class="s">&quot;3:14526612&quot;</span><span class="p">,</span><span class="s">&quot;4:89958167&quot;</span><span class="p">,</span><span class="s">&quot;4:111696651&quot;</span><span class="p">,</span>
-<span class="w">             </span><span class="s">&quot;6:1364866&quot;</span><span class="p">,</span><span class="s">&quot;7:19049388&quot;</span><span class="p">,</span><span class="s">&quot;7:92263789&quot;</span><span class="p">,</span><span class="s">&quot;9:22102165&quot;</span><span class="p">,</span><span class="s">&quot;9:106185546&quot;</span><span class="p">,</span><span class="s">&quot;11:102795606&quot;</span><span class="p">,</span><span class="s">&quot;19:45411941&quot;</span><span class="p">,</span><span class="s">&quot;19:49229323&quot;</span><span class="p">)</span>
+<span class="w">             </span><span class="s">&quot;6:1364866&quot;</span><span class="p">,</span><span class="s">&quot;7:19049388&quot;</span><span class="p">,</span><span class="s">&quot;7:92263789&quot;</span><span class="p">,</span><span class="s">&quot;9:22102165&quot;</span><span class="p">,</span><span class="s">&quot;9:106185546&quot;</span><span class="p">,</span><span class="s">&quot;11:102795606&quot;</span><span class="p">,</span><span class="s">&quot;19:45411941&quot;</span><span class="p">,</span><span class="s">&quot;19:49229323&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s">&quot;9:34649442&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;1:207015957&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;1:2488930&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;9:136304114&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;19:49206674&quot;</span><span class="p">)</span>
 <span class="c1">#snps &lt;- list(CCL27=&quot;9:34649442&quot;, IL19=&quot;1:207015957&quot;, TNFRSF14=&quot;1:2488930&quot;, ADAMTS13=&quot;9:136304114&quot;, KLK1=&quot;19:49206674&quot;)</span>
 
 <span class="n">first_gwases</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">first_eur_mvp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">first_ais_eur_mvp</span><span class="p">,</span>
@@ -14870,10 +15041,11 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <span class="n">sub_ais_gwases</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span>
 <span class="w">               </span><span class="n">sub_ais_afr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">subsequent_ais_afr</span><span class="p">,</span>
 <span class="w">               </span><span class="n">sub_ais_afr_sh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">subsequent_ais_afr_sh</span><span class="p">,</span>
-<span class="w">               </span><span class="n">sub_ais_his</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">subsequent_ais_afr</span><span class="p">,</span>
-<span class="w">               </span><span class="n">sub_ais_his_sh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">subsequent_ais_afr_sh</span><span class="p">,</span>
+<span class="w">               </span><span class="n">sub_ais_his</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">subsequent_ais_his</span><span class="p">,</span>
+<span class="w">               </span><span class="n">sub_ais_his_sh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">subsequent_ais_his_sh</span><span class="p">,</span>
 <span class="w">               </span><span class="n">sub_ais_eur</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">subsequent_ais_eur_meta</span><span class="p">,</span>
 <span class="w">               </span><span class="n">sub_ais_eur_sh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">subsequent_ais_eur_meta_sh</span><span class="p">,</span>
+<span class="w">               </span><span class="n">sub_ais_all</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">subsequent_ais_all</span><span class="p">,</span>
 <span class="w">               </span><span class="n">sub_ais_all_sh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">subsequent_ais_all_meta_sh</span>
 <span class="p">)</span>
 <span class="nf">forest_plot_same_snp_different_gwases</span><span class="p">(</span><span class="n">sub_ais_gwases</span><span class="p">,</span><span class="w"> </span><span class="n">snps</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="o">=</span><span class="s">&quot;subsequent_ais&quot;</span><span class="p">)</span>
@@ -14881,10 +15053,11 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <span class="n">sub_mace_gwases</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span>
 <span class="w">               </span><span class="n">sub_mace_afr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">subsequent_mace_afr</span><span class="p">,</span>
 <span class="w">               </span><span class="n">sub_mace_afr_sh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">subsequent_mace_afr_sh</span><span class="p">,</span>
-<span class="w">               </span><span class="n">sub_mace_his</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">subsequent_mace_afr</span><span class="p">,</span>
-<span class="w">               </span><span class="n">sub_mace_his_sh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">subsequent_mace_afr_sh</span><span class="p">,</span>
-<span class="w">               </span><span class="n">sub_mace_eur_meta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">subsequent_mace_eur_meta</span><span class="p">,</span>
+<span class="w">               </span><span class="n">sub_mace_his</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">subsequent_mace_his</span><span class="p">,</span>
+<span class="w">               </span><span class="n">sub_mace_his_sh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">subsequent_mace_his_sh</span><span class="p">,</span>
+<span class="w">               </span><span class="n">sub_mace_eur_meta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">subsequent_mace_eur_meta_again</span><span class="p">,</span>
 <span class="w">               </span><span class="n">sub_mace_eur_sh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">subsequent_mace_eur_meta_sh</span><span class="p">,</span>
+<span class="w">               </span><span class="n">sub_mace_all</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">subsequent_mace_all_meta_again</span><span class="p">,</span>
 <span class="w">               </span><span class="n">sub_mace_all_sh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">subsequent_mace_all_meta_sh</span>
 <span class="p">)</span>
 <span class="nf">forest_plot_same_snp_different_gwases</span><span class="p">(</span><span class="n">sub_mace_gwases</span><span class="p">,</span><span class="w"> </span><span class="n">snps</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="o">=</span><span class="s">&quot;subsequent_mace&quot;</span><span class="p">)</span>
@@ -14893,6 +15066,2800 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
      </div>
 </div>
 </div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>       MARKER        BETA       SE        P        EAF EA NONEA
+1: 1:45019440 -0.00493483 0.077402 0.949165 0.00610848  A     T
+Empty data.table (0 rows and 7 cols): MARKER,BETA,SE,P,EAF,EA...
+       MARKER       BETA        SE        P       EAF EA NONEA
+1: 1:45019440 -0.0364651 0.0279225 0.191572 0.0680669  A     T
+       MARKER     BETA       SE       P       EAF EA NONEA
+1: 1:45019440 0.031788 0.095633 0.73959 0.0227936  T     A
+[1] &#34;flipping beta&#34;
+       MARKER    BETA     SE      P    EAF EA NONEA
+1: 1:45019440 -0.0328 0.0253 0.1958 0.1252  a     t
+Empty data.table (0 rows and 13 cols): CHR,BP,effect_allele_frequency,BETA,standard_error,P...
+                       SNP EA        EAF        BETA        SE     P
+1  first_eur_mvp (P=0.949)  A 0.00610848 -0.00493483 0.0774020 0.949
+2      first_afr (P=0.192)  A 0.06806690 -0.03646510 0.0279225 0.192
+3       first_his (P=0.74)  T 0.02279360 -0.03178800 0.0956330 0.740
+4 first_all_meta (P=0.196)  a 0.12520000 -0.03280000 0.0253000 0.196
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>Saving 6.67 x 6.67 in image
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>        MARKER      BETA         SE           P      EAF EA NONEA
+1: 1:100046246 0.0354119 0.00640226 3.18127e-08 0.486717  T     G
+        MARKER       BETA        SE     P    EAF EA NONEA
+1: 1:100046246 -0.0005401 0.0003008 0.073 0.4891  T     G
+        MARKER       BETA        SE        P      EAF EA NONEA
+1: 1:100046246 -0.0240087 0.0181321 0.185471 0.140514  T     G
+        MARKER       BETA        SE        P    EAF EA NONEA
+1: 1:100046246 -0.0117444 0.0246606 0.633903 0.2841  G     T
+[1] &#34;flipping beta&#34;
+        MARKER   BETA     SE         P    EAF EA NONEA
+1: 1:100046246 0.0289 0.0054 6.573e-08 0.4714  t     g
+   CHR        BP effect_allele_frequency    BETA standard_error         P
+1:   1 100046246                  0.5423 -0.0218         0.0061 0.0003666
+          OR        LB        UB effect_allele other_allele      MARKER
+1: 0.9784359 0.9668074 0.9902043             T            G 1:100046246
+            SE
+1: 0.001185123
+                           SNP   EA      EAF       BETA          SE        P
+1   first_eur_mvp (P=3.18e-08)    T 0.486717  0.0354119 0.006402260 3.18e-08
+2      first_eur_ukb (P=0.073)    T 0.489100 -0.0005401 0.000300800 7.30e-02
+3          first_afr (P=0.185)    T 0.140514 -0.0240087 0.018132100 1.85e-01
+4          first_his (P=0.634)    G 0.284100  0.0117444 0.024660600 6.34e-01
+5  first_all_meta (P=6.57e-08)    t 0.471400  0.0289000 0.005400000 6.57e-08
+6 first_published (P=0.000367) &lt;NA&gt;       NA -0.0218000 0.001185123 3.67e-04
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>Saving 6.67 x 6.67 in image
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>        MARKER       BETA         SE           P      EAF EA NONEA
+1: 2:204062728 -0.0533078 0.00964016 3.20664e-08 0.122511  A     T
+        MARKER      BETA        SE    P    EAF EA NONEA
+1: 2:204062728 0.0009137 0.0004652 0.05 0.8777  A     T
+        MARKER       BETA        SE          P      EAF EA NONEA
+1: 2:204062728 -0.0840811 0.0307044 0.00617376 0.041858  A     T
+        MARKER      BETA        SE        P       EAF EA NONEA
+1: 2:204062728 0.0106502 0.0367607 0.772033 0.0960231  T     A
+[1] &#34;flipping beta&#34;
+        MARKER    BETA     SE         P    EAF EA NONEA
+1: 2:204062728 -0.0519 0.0082 2.024e-10 0.1553  a     t
+Empty data.table (0 rows and 13 cols): CHR,BP,effect_allele_frequency,BETA,standard_error,P...
+                          SNP EA       EAF       BETA         SE        P
+1  first_eur_mvp (P=3.21e-08)  A 0.1225110 -0.0533078 0.00964016 3.21e-08
+2      first_eur_ukb (P=0.05)  A 0.8777000  0.0009137 0.00046520 5.00e-02
+3       first_afr (P=0.00617)  A 0.0418580 -0.0840811 0.03070440 6.17e-03
+4         first_his (P=0.772)  T 0.0960231 -0.0106502 0.03676070 7.72e-01
+5 first_all_meta (P=2.02e-10)  a 0.1553000 -0.0519000 0.00820000 2.02e-10
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>Saving 6.67 x 6.67 in image
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>       MARKER        BETA         SE        P      EAF EA NONEA
+1: 3:14526612 -0.00209136 0.00760143 0.783219 0.533316 AT     A
+Empty data.table (0 rows and 7 cols): MARKER,BETA,SE,P,EAF,EA...
+       MARKER       BETA      SE        P     EAF EA NONEA
+1: 3:14526612 -0.0258233 0.01585 0.103265 0.30674 AT     A
+       MARKER       BETA       SE        P   EAF EA NONEA
+1: 3:14526612 -0.0106724 0.026058 0.682125 0.429  A    AT
+[1] &#34;flipping beta&#34;
+       MARKER   BETA    SE     P    EAF EA NONEA
+1: 3:14526612 0.0058 0.006 0.334 0.4918  a    at
+[1] &#34;flipping beta&#34;
+Empty data.table (0 rows and 13 cols): CHR,BP,effect_allele_frequency,BETA,standard_error,P...
+                       SNP EA      EAF        BETA         SE     P
+1  first_eur_mvp (P=0.783) AT 0.533316 -0.00209136 0.00760143 0.783
+2      first_afr (P=0.103) AT 0.306740 -0.02582330 0.01585000 0.103
+3      first_his (P=0.682)  A 0.429000  0.01067240 0.02605800 0.682
+4 first_all_meta (P=0.334)  a 0.491800 -0.00580000 0.00600000 0.334
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>Saving 6.67 x 6.67 in image
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>       MARKER       BETA         SE           P      EAF EA NONEA
+1: 4:89958167 -0.0408535 0.00626233 6.85962e-11 0.502105  A     G
+       MARKER     BETA        SE    P    EAF EA NONEA
+1: 4:89958167 0.000123 0.0003007 0.68 0.5108  A     G
+       MARKER       BETA        SE        P      EAF EA NONEA
+1: 4:89958167 -0.0107329 0.0120071 0.371386 0.476749  A     G
+       MARKER        BETA        SE        P      EAF EA NONEA
+1: 4:89958167 0.000140328 0.0223875 0.994999 0.397658  G     A
+[1] &#34;flipping beta&#34;
+       MARKER    BETA    SE         P    EAF EA NONEA
+1: 4:89958167 -0.0288 0.005 7.879e-09 0.5008  a     g
+   CHR       BP effect_allele_frequency   BETA standard_error      P       OR
+1:   4 89958167                  0.5766 0.0053         0.0056 0.3408 1.005314
+          LB       UB effect_allele other_allele     MARKER          SE
+1: 0.9943401 1.016409             A            G 4:89958167 0.001104166
+                          SNP   EA      EAF         BETA          SE        P
+1  first_eur_mvp (P=6.86e-11)    A 0.502105 -0.040853500 0.006262330 6.86e-11
+2      first_eur_ukb (P=0.68)    A 0.510800  0.000123000 0.000300700 6.80e-01
+3         first_afr (P=0.371)    A 0.476749 -0.010732900 0.012007100 3.71e-01
+4         first_his (P=0.995)    G 0.397658 -0.000140328 0.022387500 9.95e-01
+5 first_all_meta (P=7.88e-09)    a 0.500800 -0.028800000 0.005000000 7.88e-09
+6   first_published (P=0.341) &lt;NA&gt;       NA  0.005300000 0.001104166 3.41e-01
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>Saving 6.67 x 6.67 in image
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>        MARKER      BETA         SE          P      EAF EA NONEA
+1: 4:111696651 0.0242429 0.00789284 0.00212985 0.204207  A     T
+        MARKER      BETA        SE     P    EAF EA NONEA
+1: 4:111696651 -0.001976 0.0003797 2e-07 0.8034  A     T
+        MARKER      BETA        SE         P      EAF EA NONEA
+1: 4:111696651 0.0220634 0.0133602 0.0986507 0.298605  A     T
+        MARKER      BETA        SE        P     EAF EA NONEA
+1: 4:111696651 0.0071978 0.0232426 0.756803 0.36228  T     A
+[1] &#34;flipping beta&#34;
+        MARKER   BETA     SE         P    EAF EA NONEA
+1: 4:111696651 0.0313 0.0061 2.492e-07 0.2522  a     t
+   CHR        BP effect_allele_frequency    BETA standard_error         P
+1:   4 111696651                  0.6183 -0.0497         0.0061 2.834e-16
+          OR        LB        UB effect_allele other_allele      MARKER
+1: 0.9515148 0.9402063 0.9629594             A            T 4:111696651
+            SE
+1: 0.001166509
+                           SNP   EA      EAF       BETA          SE        P
+1    first_eur_mvp (P=0.00213)    A 0.204207  0.0242429 0.007892840 2.13e-03
+2      first_eur_ukb (P=2e-07)    A 0.803400 -0.0019760 0.000379700 2.00e-07
+3         first_afr (P=0.0987)    A 0.298605  0.0220634 0.013360200 9.87e-02
+4          first_his (P=0.757)    T 0.362280 -0.0071978 0.023242600 7.57e-01
+5  first_all_meta (P=2.49e-07)    a 0.252200  0.0313000 0.006100000 2.49e-07
+6 first_published (P=2.83e-16) &lt;NA&gt;       NA -0.0497000 0.001166509 2.83e-16
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>Saving 6.67 x 6.67 in image
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>      MARKER      BETA        SE           P      EAF EA NONEA
+1: 6:1364866 0.0575463 0.0104748 3.93423e-08 0.103995  T     C
+      MARKER      BETA        SE       P    EAF EA NONEA
+1: 6:1364866 -0.001994 0.0004867 4.2e-05 0.8928  T     C
+      MARKER    BETA        SE         P       EAF EA NONEA
+1: 6:1364866 0.10067 0.0421693 0.0169738 0.0237908  T     C
+      MARKER      BETA        SE         P      EAF EA NONEA
+1: 6:1364866 0.0899016 0.0359916 0.0124951 0.114847  C     T
+[1] &#34;flipping beta&#34;
+      MARKER   BETA     SE         P    EAF EA NONEA
+1: 6:1364866 0.0557 0.0089 3.496e-10 0.1486  t     c
+   CHR      BP effect_allele_frequency    BETA standard_error         P
+1:   6 1364866                  0.8847 -0.0727         0.0104 2.487e-12
+          OR       LB        UB effect_allele other_allele    MARKER
+1: 0.9298798 0.911117 0.9490289             T            C 6:1364866
+            SE
+1: 0.001962074
+                           SNP   EA       EAF       BETA          SE        P
+1   first_eur_mvp (P=3.93e-08)    T 0.1039950  0.0575463 0.010474800 3.93e-08
+2    first_eur_ukb (P=4.2e-05)    T 0.8928000 -0.0019940 0.000486700 4.20e-05
+3          first_afr (P=0.017)    T 0.0237908  0.1006700 0.042169300 1.70e-02
+4         first_his (P=0.0125)    C 0.1148470 -0.0899016 0.035991600 1.25e-02
+5   first_all_meta (P=3.5e-10)    t 0.1486000  0.0557000 0.008900000 3.50e-10
+6 first_published (P=2.49e-12) &lt;NA&gt;        NA -0.0727000 0.001962074 2.49e-12
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>Saving 6.67 x 6.67 in image
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>       MARKER      BETA         SE           P      EAF EA NONEA
+1: 7:19049388 0.0512382 0.00864931 3.14275e-09 0.166046  G     A
+       MARKER      BETA        SE     P    EAF EA NONEA
+1: 7:19049388 -0.001147 0.0004177 0.006 0.8463  G     A
+       MARKER      BETA        SE         P      EAF EA NONEA
+1: 7:19049388 0.0281241 0.0151165 0.0628145 0.207577  G     A
+       MARKER      BETA        SE       P      EAF EA NONEA
+1: 7:19049388 0.0116087 0.0263961 0.66009 0.233513  A     G
+[1] &#34;flipping beta&#34;
+       MARKER    BETA     SE         P    EAF EA NONEA
+1: 7:19049388 -0.0435 0.0067 9.155e-11 0.7886  a     g
+[1] &#34;flipping beta&#34;
+   CHR       BP effect_allele_frequency  BETA standard_error         P       OR
+1:   7 19049388                  0.2423 0.041         0.0063 6.024e-11 1.041852
+         LB       UB effect_allele other_allele     MARKER          SE
+1: 1.029066 1.054797             A            G 7:19049388 0.001265348
+                           SNP   EA      EAF       BETA          SE        P
+1   first_eur_mvp (P=3.14e-09)    G 0.166046  0.0512382 0.008649310 3.14e-09
+2      first_eur_ukb (P=0.006)    G 0.846300 -0.0011470 0.000417700 6.00e-03
+3         first_afr (P=0.0628)    G 0.207577  0.0281241 0.015116500 6.28e-02
+4           first_his (P=0.66)    A 0.233513 -0.0116087 0.026396100 6.60e-01
+5  first_all_meta (P=9.16e-11)    a 0.788600  0.0435000 0.006700000 9.16e-11
+6 first_published (P=6.02e-11) &lt;NA&gt;       NA  0.0410000 0.001265348 6.02e-11
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>Saving 6.67 x 6.67 in image
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>       MARKER       BETA         SE           P      EAF EA NONEA
+1: 7:92263789 -0.0417553 0.00709341 3.94457e-09 0.274616  C    CT
+Empty data.table (0 rows and 7 cols): MARKER,BETA,SE,P,EAF,EA...
+       MARKER       BETA        SE         P      EAF EA NONEA
+1: 7:92263789 -0.0315168 0.0171319 0.0658188 0.154796  C    CT
+       MARKER        BETA        SE        P      EAF EA NONEA
+1: 7:92263789 -0.00374026 0.0232304 0.872088 0.329066 CT     C
+[1] &#34;flipping beta&#34;
+       MARKER  BETA     SE         P    EAF EA NONEA
+1: 7:92263789 0.033 0.0058 1.392e-08 0.7153 ct     c
+[1] &#34;flipping beta&#34;
+Empty data.table (0 rows and 13 cols): CHR,BP,effect_allele_frequency,BETA,standard_error,P...
+                          SNP EA      EAF        BETA         SE        P
+1  first_eur_mvp (P=3.94e-09)  C 0.274616 -0.04175530 0.00709341 3.94e-09
+2        first_afr (P=0.0658)  C 0.154796 -0.03151680 0.01713190 6.58e-02
+3         first_his (P=0.872) CT 0.329066  0.00374026 0.02323040 8.72e-01
+4 first_all_meta (P=1.39e-08) ct 0.715300 -0.03300000 0.00580000 1.39e-08
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>Saving 6.67 x 6.67 in image
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>       MARKER      BETA         SE           P      EAF EA NONEA
+1: 9:22102165 0.0395692 0.00630452 3.46673e-10 0.493453  C     T
+       MARKER      BETA       SE       P    EAF EA NONEA
+1: 9:22102165 -0.001447 0.000301 1.5e-06 0.5086  C     T
+       MARKER       BETA       SE        P      EAF EA NONEA
+1: 9:22102165 0.00480003 0.014509 0.740773 0.722217  C     T
+       MARKER      BETA        SE          P      EAF EA NONEA
+1: 9:22102165 0.0617629 0.0219891 0.00497279 0.517184  T     C
+[1] &#34;flipping beta&#34;
+       MARKER    BETA     SE         P    EAF EA NONEA
+1: 9:22102165 -0.0331 0.0051 1.222e-10 0.4787  t     c
+[1] &#34;flipping beta&#34;
+   CHR       BP effect_allele_frequency   BETA standard_error         P
+1:   9 22102165                  0.5286 0.0355         0.0053 2.147e-11
+         OR      LB       UB effect_allele other_allele     MARKER          SE
+1: 1.036138 1.02543 1.046957             T            C 9:22102165 0.001061557
+                           SNP   EA      EAF        BETA          SE        P
+1   first_eur_mvp (P=3.47e-10)    C 0.493453  0.03956920 0.006304520 3.47e-10
+2    first_eur_ukb (P=1.5e-06)    C 0.508600 -0.00144700 0.000301000 1.50e-06
+3          first_afr (P=0.741)    C 0.722217  0.00480003 0.014509000 7.41e-01
+4        first_his (P=0.00497)    T 0.517184 -0.06176290 0.021989100 4.97e-03
+5  first_all_meta (P=1.22e-10)    t 0.478700  0.03310000 0.005100000 1.22e-10
+6 first_published (P=2.15e-11) &lt;NA&gt;       NA  0.03550000 0.001061557 2.15e-11
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>Saving 6.67 x 6.67 in image
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>        MARKER        BETA         SE        P      EAF EA NONEA
+1: 9:106185546 -0.00515031 0.00917871 0.574718 0.169461  C     A
+        MARKER      BETA        SE    P    EAF EA NONEA
+1: 9:106185546 0.0003998 0.0003993 0.32 0.8193  C     A
+        MARKER       BETA        SE         P       EAF EA NONEA
+1: 9:106185546 -0.0693586 0.0389846 0.0752194 0.0353389  C     A
+        MARKER       BETA        SE         P      EAF EA NONEA
+1: 9:106185546 -0.0693557 0.0383544 0.0705619 0.107871  A     C
+[1] &#34;flipping beta&#34;
+        MARKER   BETA     SE    P    EAF EA NONEA
+1: 9:106185546 0.0073 0.0078 0.35 0.8039  a     c
+[1] &#34;flipping beta&#34;
+   CHR        BP effect_allele_frequency  BETA standard_error      P     OR
+1:   9 106185546                  0.1528 1e-04         0.0084 0.9872 1.0001
+          LB       UB effect_allele other_allele      MARKER          SE
+1: 0.9837692 1.016702             A            C 9:106185546 0.001651621
+                        SNP   EA       EAF        BETA          SE      P
+1   first_eur_mvp (P=0.575)    C 0.1694610 -0.00515031 0.009178710 0.5750
+2    first_eur_ukb (P=0.32)    C 0.8193000  0.00039980 0.000399300 0.3200
+3      first_afr (P=0.0752)    C 0.0353389 -0.06935860 0.038984600 0.0752
+4      first_his (P=0.0706)    A 0.1078710  0.06935570 0.038354400 0.0706
+5   first_all_meta (P=0.35)    a 0.8039000 -0.00730000 0.007800000 0.3500
+6 first_published (P=0.987) &lt;NA&gt;        NA  0.00010000 0.001651621 0.9870
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>Saving 6.67 x 6.67 in image
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>         MARKER       BETA         SE           P      EAF EA NONEA
+1: 11:102795606 -0.0437989 0.00759065 7.92173e-09 0.218917  G     A
+         MARKER      BETA        SE     P    EAF EA NONEA
+1: 11:102795606 0.0008017 0.0003672 0.029 0.7833  G     A
+         MARKER       BETA        SE         P       EAF EA NONEA
+1: 11:102795606 -0.0591574 0.0287279 0.0394721 0.0478122  G     A
+         MARKER       BETA        SE        P      EAF EA NONEA
+1: 11:102795606 -0.0338887 0.0247768 0.171387 0.256205  A     G
+[1] &#34;flipping beta&#34;
+         MARKER   BETA     SE         P    EAF EA NONEA
+1: 11:102795606 0.0391 0.0064 1.232e-09 0.7546  a     g
+[1] &#34;flipping beta&#34;
+   CHR        BP effect_allele_frequency    BETA standard_error         P
+1:  11 102795606                  0.2209 -0.0339         0.0071 1.663e-06
+          OR        LB        UB effect_allele other_allele       MARKER
+1: 0.9666682 0.9533092 0.9802144             A            G 11:102795606
+            SE
+1: 0.001370067
+                           SNP   EA       EAF       BETA          SE        P
+1   first_eur_mvp (P=7.92e-09)    G 0.2189170 -0.0437989 0.007590650 7.92e-09
+2      first_eur_ukb (P=0.029)    G 0.7833000  0.0008017 0.000367200 2.90e-02
+3         first_afr (P=0.0395)    G 0.0478122 -0.0591574 0.028727900 3.95e-02
+4          first_his (P=0.171)    A 0.2562050  0.0338887 0.024776800 1.71e-01
+5  first_all_meta (P=1.23e-09)    a 0.7546000 -0.0391000 0.006400000 1.23e-09
+6 first_published (P=1.66e-06) &lt;NA&gt;        NA -0.0339000 0.001370067 1.66e-06
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>Saving 6.67 x 6.67 in image
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>        MARKER      BETA         SE           P      EAF EA NONEA
+1: 19:45411941 0.0554826 0.00893321 5.27072e-10 0.140109  T     C
+        MARKER       BETA        SE     P    EAF EA NONEA
+1: 19:45411941 -0.0009912 0.0004167 0.017 0.8459  T     C
+        MARKER      BETA        SE          P      EAF EA NONEA
+1: 19:45411941 0.0380526 0.0144946 0.00865725 0.216265  T     C
+        MARKER      BETA       SE        P      EAF EA NONEA
+1: 19:45411941 0.0229473 0.033801 0.497206 0.113614  C     T
+[1] &#34;flipping beta&#34;
+        MARKER   BETA     SE         P  EAF EA NONEA
+1: 19:45411941 0.0488 0.0069 1.238e-12 0.19  t     c
+   CHR       BP effect_allele_frequency   BETA standard_error      P        OR
+1:  19 45411941                  0.8542 -6e-04         0.0091 0.9495 0.9994002
+          LB       UB effect_allele other_allele      MARKER          SE
+1: 0.9817329 1.017385             T            C 19:45411941 0.001788574
+                          SNP   EA      EAF       BETA          SE        P
+1  first_eur_mvp (P=5.27e-10)    T 0.140109  0.0554826 0.008933210 5.27e-10
+2     first_eur_ukb (P=0.017)    T 0.845900 -0.0009912 0.000416700 1.70e-02
+3       first_afr (P=0.00866)    T 0.216265  0.0380526 0.014494600 8.66e-03
+4         first_his (P=0.497)    C 0.113614 -0.0229473 0.033801000 4.97e-01
+5 first_all_meta (P=1.24e-12)    t 0.190000  0.0488000 0.006900000 1.24e-12
+6    first_published (P=0.95) &lt;NA&gt;       NA -0.0006000 0.001788574 9.50e-01
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>Saving 6.67 x 6.67 in image
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>        MARKER      BETA         SE           P      EAF EA NONEA
+1: 19:49229323 0.0399416 0.00626727 1.85306e-10 0.532159  G     A
+        MARKER       BETA        SE   P    EAF EA NONEA
+1: 19:49229323 -0.0004915 0.0003031 0.1 0.4469  G     A
+        MARKER        BETA        SE        P      EAF EA NONEA
+1: 19:49229323 -0.00194806 0.0125717 0.876856 0.589275  G     A
+        MARKER       BETA        SE        P      EAF EA NONEA
+1: 19:49229323 -0.0367102 0.0226019 0.104331 0.389643  A     G
+[1] &#34;flipping beta&#34;
+        MARKER    BETA    SE         P    EAF EA NONEA
+1: 19:49229323 -0.0312 0.005 5.628e-10 0.4518  a     g
+[1] &#34;flipping beta&#34;
+   CHR       BP effect_allele_frequency   BETA standard_error         P
+1:  19 49229323                  0.4747 0.0237         0.0062 0.0001463
+         OR       LB       UB effect_allele other_allele      MARKER
+1: 1.023983 1.011615 1.036502             A            G 19:49229323
+            SE
+1: 0.001234339
+                           SNP   EA      EAF        BETA          SE        P
+1   first_eur_mvp (P=1.85e-10)    G 0.532159  0.03994160 0.006267270 1.85e-10
+2        first_eur_ukb (P=0.1)    G 0.446900 -0.00049150 0.000303100 1.00e-01
+3          first_afr (P=0.877)    G 0.589275 -0.00194806 0.012571700 8.77e-01
+4          first_his (P=0.104)    A 0.389643  0.03671020 0.022601900 1.04e-01
+5  first_all_meta (P=5.63e-10)    a 0.451800  0.03120000 0.005000000 5.63e-10
+6 first_published (P=0.000146) &lt;NA&gt;       NA  0.02370000 0.001234339 1.46e-04
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>Saving 6.67 x 6.67 in image
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>       MARKER       BETA        SE         P       EAF EA NONEA
+1: 9:34649442 -0.0197812 0.0106314 0.0627957 0.0932734  A     G
+       MARKER       BETA        SE    P    EAF EA NONEA
+1: 9:34649442 -0.0001229 0.0005107 0.81 0.9043  A     G
+       MARKER      BETA        SE        P       EAF EA NONEA
+1: 9:34649442 0.0272625 0.0386462 0.480537 0.0244288  A     G
+       MARKER      BETA        SE        P      EAF EA NONEA
+1: 9:34649442 0.0266032 0.0417016 0.523511 0.069172  G     A
+[1] &#34;flipping beta&#34;
+       MARKER    BETA     SE       P    EAF EA NONEA
+1: 9:34649442 -0.0158 0.0091 0.08139 0.1296  a     g
+   CHR       BP effect_allele_frequency    BETA standard_error      P        OR
+1:   9 34649442                  0.9039 -0.0128          0.013 0.3253 0.9872816
+          LB       UB effect_allele other_allele     MARKER          SE
+1: 0.9624434 1.012761             A            G 9:34649442 0.002538146
+                        SNP   EA       EAF       BETA          SE      P
+1  first_eur_mvp (P=0.0628)    A 0.0932734 -0.0197812 0.010631400 0.0628
+2    first_eur_ukb (P=0.81)    A 0.9043000 -0.0001229 0.000510700 0.8100
+3       first_afr (P=0.481)    A 0.0244288  0.0272625 0.038646200 0.4810
+4       first_his (P=0.524)    G 0.0691720 -0.0266032 0.041701600 0.5240
+5 first_all_meta (P=0.0814)    a 0.1296000 -0.0158000 0.009100000 0.0814
+6 first_published (P=0.325) &lt;NA&gt;        NA -0.0128000 0.002538146 0.3250
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>Saving 6.67 x 6.67 in image
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>        MARKER      BETA         SE        P      EAF EA NONEA
+1: 1:207015957 0.0101443 0.00747972 0.175022 0.779235  T     C
+        MARKER      BETA        SE    P    EAF EA NONEA
+1: 1:207015957 0.0001084 0.0003628 0.77 0.2202  T     C
+        MARKER        BETA       SE        P      EAF EA NONEA
+1: 1:207015957 -0.00527306 0.015504 0.733773 0.819641  T     C
+        MARKER        BETA        SE        P      EAF EA NONEA
+1: 1:207015957 -0.00115685 0.0228127 0.959556 0.670737  C     T
+[1] &#34;flipping beta&#34;
+        MARKER   BETA    SE      P    EAF EA NONEA
+1: 1:207015957 0.0065 0.006 0.2744 0.7544  t     c
+   CHR        BP effect_allele_frequency   BETA standard_error       P       OR
+1:   1 207015957                  0.4015 0.0131         0.0062 0.03501 1.013186
+         LB       UB effect_allele other_allele      MARKER         SE
+1: 1.000948 1.025574             T            C 1:207015957 0.00122753
+                        SNP   EA      EAF        BETA         SE     P
+1   first_eur_mvp (P=0.175)    T 0.779235  0.01014430 0.00747972 0.175
+2    first_eur_ukb (P=0.77)    T 0.220200  0.00010840 0.00036280 0.770
+3       first_afr (P=0.734)    T 0.819641 -0.00527306 0.01550400 0.734
+4        first_his (P=0.96)    C 0.670737  0.00115685 0.02281270 0.960
+5  first_all_meta (P=0.274)    t 0.754400  0.00650000 0.00600000 0.274
+6 first_published (P=0.035) &lt;NA&gt;       NA  0.01310000 0.00122753 0.035
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>Saving 6.67 x 6.67 in image
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>      MARKER       BETA         SE        P      EAF EA NONEA
+1: 1:2488930 0.00731241 0.00625042 0.242038 0.481438  G     A
+      MARKER     BETA        SE    P    EAF EA NONEA
+1: 1:2488930 0.000241 0.0003006 0.42 0.5057  G     A
+      MARKER        BETA        SE       P      EAF EA NONEA
+1: 1:2488930 -0.00268374 0.0132058 0.83896 0.688823  G     A
+      MARKER        BETA        SE        P      EAF EA NONEA
+1: 1:2488930 -0.00282652 0.0214875 0.895346 0.518688  A     G
+[1] &#34;flipping beta&#34;
+      MARKER    BETA    SE      P    EAF EA NONEA
+1: 1:2488930 -0.0017 0.005 0.7324 0.4864  a     g
+[1] &#34;flipping beta&#34;
+   CHR      BP effect_allele_frequency   BETA standard_error      P       OR
+1:   1 2488930                  0.4976 0.0047         0.0054 0.3848 1.004711
+          LB       UB effect_allele other_allele    MARKER          SE
+1: 0.9941333 1.015401             A            G 1:2488930 0.001064392
+                        SNP   EA      EAF        BETA          SE     P
+1   first_eur_mvp (P=0.242)    G 0.481438  0.00731241 0.006250420 0.242
+2    first_eur_ukb (P=0.42)    G 0.505700  0.00024100 0.000300600 0.420
+3       first_afr (P=0.839)    G 0.688823 -0.00268374 0.013205800 0.839
+4       first_his (P=0.895)    A 0.518688  0.00282652 0.021487500 0.895
+5  first_all_meta (P=0.732)    a 0.486400  0.00170000 0.005000000 0.732
+6 first_published (P=0.385) &lt;NA&gt;       NA  0.00470000 0.001064392 0.385
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>Saving 6.67 x 6.67 in image
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>        MARKER      BETA        SE         P       EAF EA NONEA
+1: 9:136304114 0.0592967 0.0291851 0.0421794 0.0143801  A     G
+        MARKER      BETA       SE      P    EAF EA NONEA
+1: 9:136304114 -0.003419 0.001158 0.0032 0.9827  A     G
+        MARKER     BETA       SE        P        EAF EA NONEA
+1: 9:136304114 0.115237 0.134068 0.390042 0.00263179  A     G
+        MARKER       BETA       SE        P        EAF EA NONEA
+1: 9:136304114 -0.0674838 0.134977 0.617099 0.00771006  G     A
+[1] &#34;flipping beta&#34;
+        MARKER  BETA     SE         P    EAF EA NONEA
+1: 9:136304114 0.088 0.0244 0.0003097 0.0467  a     g
+Empty data.table (0 rows and 13 cols): CHR,BP,effect_allele_frequency,BETA,standard_error,P...
+                         SNP EA        EAF       BETA        SE       P
+1   first_eur_mvp (P=0.0422)  A 0.01438010  0.0592967 0.0291851 0.04220
+2   first_eur_ukb (P=0.0032)  A 0.98270000 -0.0034190 0.0011580 0.00320
+3         first_afr (P=0.39)  A 0.00263179  0.1152370 0.1340680 0.39000
+4        first_his (P=0.617)  G 0.00771006  0.0674838 0.1349770 0.61700
+5 first_all_meta (P=0.00031)  a 0.04670000  0.0880000 0.0244000 0.00031
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>Saving 6.67 x 6.67 in image
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>        MARKER      BETA         SE           P      EAF EA NONEA
+1: 19:49206674 0.0339833 0.00620254 4.27908e-08 0.486504  G     A
+        MARKER       BETA        SE    P    EAF EA NONEA
+1: 19:49206674 -0.0002707 0.0003018 0.37 0.4922  G     A
+        MARKER      BETA        SE         P      EAF EA NONEA
+1: 19:49206674 0.0226227 0.0118549 0.0563534 0.499436  G     A
+        MARKER       BETA        SE        P      EAF EA NONEA
+1: 19:49206674 -0.0176847 0.0225935 0.433783 0.357828  A     G
+[1] &#34;flipping beta&#34;
+        MARKER    BETA     SE         P    EAF EA NONEA
+1: 19:49206674 -0.0286 0.0049 7.213e-09 0.5008  a     g
+[1] &#34;flipping beta&#34;
+   CHR       BP effect_allele_frequency   BETA standard_error        P       OR
+1:  19 49206674                  0.4343 0.0226         0.0077 0.003307 1.022857
+         LB       UB effect_allele other_allele      MARKER          SE
+1: 1.007536 1.038411             A            G 19:49206674 0.001532084
+                          SNP   EA      EAF       BETA          SE        P
+1  first_eur_mvp (P=4.28e-08)    G 0.486504  0.0339833 0.006202540 4.28e-08
+2      first_eur_ukb (P=0.37)    G 0.492200 -0.0002707 0.000301800 3.70e-01
+3        first_afr (P=0.0564)    G 0.499436  0.0226227 0.011854900 5.64e-02
+4         first_his (P=0.434)    A 0.357828  0.0176847 0.022593500 4.34e-01
+5 first_all_meta (P=7.21e-09)    a 0.500800  0.0286000 0.004900000 7.21e-09
+6 first_published (P=0.00331) &lt;NA&gt;       NA  0.0226000 0.001532084 3.31e-03
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>Saving 6.67 x 6.67 in image
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>       MARKER      BETA        SE          P       EAF EA NONEA
+1: 1:45019440 -0.246819 0.0519699 2.0415e-06 0.0667283  A     T
+       MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 1:45019440       -0.2320897     0.05331323  1.340891e-05     0.0667283
+   EA.prognosis OA.prognosis
+1:            A            T
+       MARKER    BETA       SE        P       EAF EA NONEA
+1: 1:45019440 0.19828 0.183637 0.280259 0.0221229  A     T
+       MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 1:45019440        0.2108741       0.187698     0.2612356     0.0221229
+   EA.prognosis OA.prognosis
+1:            T            A
+[1] &#34;flipping beta&#34;
+       MARKER     BETA       SE        P        EAF EA NONEA
+1: 1:45019440 0.206676 0.142633 0.147337 0.00602637  A     T
+       MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 1:45019440        0.2047681      0.1461906     0.1613059    0.00602637
+   EA.prognosis OA.prognosis
+1:            A            T
+       MARKER     BETA       SE        P       EAF EA NONEA
+1: 1:45019440 0.174663 0.185799 0.347186 0.0221229  T     A
+[1] &#34;flipping beta&#34;
+       MARKER    BETA     SE         P    EAF EA NONEA
+1: 1:45019440 -0.1828 0.0484 0.0001584 0.1217  a     t
+                          SNP EA        EAF       BETA         SE        P
+1    sub_ais_afr (P=2.04e-06)  A 0.06672830 -0.2468190 0.05196990 2.04e-06
+2 sub_ais_afr_sh (P=1.34e-05)  A 0.06672830 -0.2320897 0.05331323 1.34e-05
+3        sub_ais_his (P=0.28)  A 0.02212290  0.1982800 0.18363700 2.80e-01
+4    sub_ais_his_sh (P=0.261)  T 0.02212290 -0.2108741 0.18769796 2.61e-01
+5       sub_ais_eur (P=0.147)  A 0.00602637  0.2066760 0.14263300 1.47e-01
+6    sub_ais_eur_sh (P=0.161)  A 0.00602637  0.2047681 0.14619055 1.61e-01
+7       sub_ais_all (P=0.347)  T 0.02212290 -0.1746630 0.18579900 3.47e-01
+8 sub_ais_all_sh (P=0.000158)  a 0.12170000 -0.1828000 0.04840000 1.58e-04
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>Saving 6.67 x 6.67 in image
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>        MARKER       BETA        SE        P      EAF EA NONEA
+1: 1:100046246 -0.0189355 0.0336489 0.573614 0.137858  T     G
+        MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 1:100046246     -0.009237718     0.03452525     0.7890349      0.137858
+   EA.prognosis OA.prognosis
+1:            T            G
+        MARKER       BETA       SE      P     EAF EA NONEA
+1: 1:100046246 -0.0337933 0.047391 0.4758 0.28663  T     G
+        MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 1:100046246      -0.03844631     0.04844259     0.4274011       0.28663
+   EA.prognosis OA.prognosis
+1:            G            T
+[1] &#34;flipping beta&#34;
+        MARKER      BETA        SE     P      EAF EA NONEA
+1: 1:100046246 0.0168246 0.0118309 0.155 0.494407  T     G
+        MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 1:100046246       0.03053037     0.01305009    0.01931084      0.494407
+   EA.prognosis OA.prognosis
+1:            T            G
+        MARKER       BETA        SE        P     EAF EA NONEA
+1: 1:100046246 -0.0343692 0.0479719 0.473717 0.28663  G     T
+[1] &#34;flipping beta&#34;
+        MARKER   BETA     SE       P    EAF EA NONEA
+1: 1:100046246 0.0263 0.0118 0.02613 0.4636  t     g
+                        SNP EA      EAF         BETA         SE      P
+1     sub_ais_afr (P=0.574)  T 0.137858 -0.018935500 0.03364890 0.5740
+2  sub_ais_afr_sh (P=0.789)  T 0.137858 -0.009237718 0.03452525 0.7890
+3     sub_ais_his (P=0.476)  T 0.286630 -0.033793300 0.04739100 0.4760
+4  sub_ais_his_sh (P=0.427)  G 0.286630  0.038446308 0.04844259 0.4270
+5     sub_ais_eur (P=0.155)  T 0.494407  0.016824600 0.01183090 0.1550
+6 sub_ais_eur_sh (P=0.0193)  T 0.494407  0.030530365 0.01305009 0.0193
+7     sub_ais_all (P=0.474)  G 0.286630  0.034369200 0.04797190 0.4740
+8 sub_ais_all_sh (P=0.0261)  t 0.463600  0.026300000 0.01180000 0.0261
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>Saving 6.67 x 6.67 in image
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>        MARKER       BETA       SE        P       EAF EA NONEA
+1: 2:204062728 -0.0864159 0.057895 0.135534 0.0393343  A     T
+        MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 2:204062728       -0.0524532     0.05966297     0.3793153     0.0393343
+   EA.prognosis OA.prognosis
+1:            A            T
+        MARKER      BETA        SE        P       EAF EA NONEA
+1: 2:204062728 0.0153692 0.0693764 0.824677 0.0965399  A     T
+        MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 2:204062728        0.0195887     0.07096228     0.7825144     0.0965399
+   EA.prognosis OA.prognosis
+1:            T            A
+[1] &#34;flipping beta&#34;
+        MARKER       BETA        SE        P      EAF EA NONEA
+1: 2:204062728 -0.0380877 0.0179133 0.033485 0.118325  A     T
+        MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 2:204062728      -0.05821804     0.01966876   0.003077144      0.118325
+   EA.prognosis OA.prognosis
+1:            A            T
+        MARKER       BETA        SE        P       EAF EA NONEA
+1: 2:204062728 -0.0107337 0.0702591 0.878578 0.0965399  T     A
+[1] &#34;flipping beta&#34;
+        MARKER    BETA     SE        P    EAF EA NONEA
+1: 2:204062728 -0.0552 0.0181 0.002251 0.1657  a     t
+                         SNP EA       EAF        BETA         SE       P
+1      sub_ais_afr (P=0.136)  A 0.0393343 -0.08641590 0.05789500 0.13600
+2   sub_ais_afr_sh (P=0.379)  A 0.0393343 -0.05245320 0.05966297 0.37900
+3      sub_ais_his (P=0.825)  A 0.0965399  0.01536920 0.06937640 0.82500
+4   sub_ais_his_sh (P=0.783)  T 0.0965399 -0.01958870 0.07096228 0.78300
+5     sub_ais_eur (P=0.0335)  A 0.1183250 -0.03808770 0.01791330 0.03350
+6 sub_ais_eur_sh (P=0.00308)  A 0.1183250 -0.05821804 0.01966876 0.00308
+7      sub_ais_all (P=0.879)  T 0.0965399  0.01073370 0.07025910 0.87900
+8 sub_ais_all_sh (P=0.00225)  a 0.1657000 -0.05520000 0.01810000 0.00225
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>Saving 6.67 x 6.67 in image
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>       MARKER       BETA        SE        P      EAF EA NONEA
+1: 3:14526612 0.00996706 0.0296031 0.736351 0.303881 AT     A
+       MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 3:14526612       0.02039781     0.03038951     0.5020853      0.303881
+   EA.prognosis OA.prognosis
+1:           AT            A
+       MARKER     BETA        SE         P     EAF EA NONEA
+1: 3:14526612 0.118418 0.0496625 0.0171045 0.42766 AT     A
+       MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 3:14526612        0.1141897     0.05077992    0.02453047       0.42766
+   EA.prognosis OA.prognosis
+1:            A           AT
+[1] &#34;flipping beta&#34;
+       MARKER       BETA        SE           P     EAF EA NONEA
+1: 3:14526612 -0.0578311 0.0140092 3.65814e-05 0.53363 AT     A
+       MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 3:14526612       0.05911602     0.01429688  3.551261e-05       0.46637
+   EA.prognosis OA.prognosis
+1:            A           AT
+[1] &#34;flipping beta&#34;
+       MARKER     BETA        SE        P     EAF EA NONEA
+1: 3:14526612 0.101665 0.0502409 0.043016 0.42766  A    AT
+[1] &#34;flipping beta&#34;
+       MARKER   BETA     SE         P    EAF EA NONEA
+1: 3:14526612 0.0489 0.0125 9.463e-05 0.4973  a    at
+[1] &#34;flipping beta&#34;
+                          SNP EA      EAF        BETA         SE        P
+1       sub_ais_afr (P=0.736) AT 0.303881  0.00996706 0.02960310 7.36e-01
+2    sub_ais_afr_sh (P=0.502) AT 0.303881  0.02039781 0.03038951 5.02e-01
+3      sub_ais_his (P=0.0171) AT 0.427660  0.11841800 0.04966250 1.71e-02
+4   sub_ais_his_sh (P=0.0245)  A 0.427660 -0.11418971 0.05077992 2.45e-02
+5    sub_ais_eur (P=3.66e-05) AT 0.533630 -0.05783110 0.01400920 3.66e-05
+6 sub_ais_eur_sh (P=3.55e-05)  A 0.466370 -0.05911602 0.01429688 3.55e-05
+7       sub_ais_all (P=0.043)  A 0.427660 -0.10166500 0.05024090 4.30e-02
+8 sub_ais_all_sh (P=9.46e-05)  a 0.497300 -0.04890000 0.01250000 9.46e-05
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>Saving 6.67 x 6.67 in image
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>       MARKER       BETA        SE        P     EAF EA NONEA
+1: 4:89958167 -0.0327289 0.0222001 0.140409 0.47382  A     G
+       MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 4:89958167      -0.02839358     0.02276215     0.2122497       0.47382
+   EA.prognosis OA.prognosis
+1:            A            G
+       MARKER       BETA        SE       P      EAF EA NONEA
+1: 4:89958167 -0.0635895 0.0426803 0.13625 0.404747  A     G
+       MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 4:89958167       -0.0635339     0.04363317     0.1453672      0.404747
+   EA.prognosis OA.prognosis
+1:            G            A
+[1] &#34;flipping beta&#34;
+       MARKER       BETA       SE       P     EAF EA NONEA
+1: 4:89958167 0.00328032 0.011507 0.77559 0.49337  A     G
+       MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 4:89958167      -0.01019182     0.01270923     0.4225974       0.49337
+   EA.prognosis OA.prognosis
+1:            A            G
+       MARKER       BETA       SE        P      EAF EA NONEA
+1: 4:89958167 -0.0491506 0.043172 0.254919 0.404747  G     A
+[1] &#34;flipping beta&#34;
+       MARKER    BETA     SE      P    EAF EA NONEA
+1: 4:89958167 -0.0098 0.0108 0.3633 0.5008  a     g
+                       SNP EA      EAF        BETA         SE     P
+1     sub_ais_afr (P=0.14)  A 0.473820 -0.03272890 0.02220010 0.140
+2 sub_ais_afr_sh (P=0.212)  A 0.473820 -0.02839358 0.02276215 0.212
+3    sub_ais_his (P=0.136)  A 0.404747 -0.06358950 0.04268030 0.136
+4 sub_ais_his_sh (P=0.145)  G 0.404747  0.06353390 0.04363317 0.145
+5    sub_ais_eur (P=0.776)  A 0.493370  0.00328032 0.01150700 0.776
+6 sub_ais_eur_sh (P=0.423)  A 0.493370 -0.01019182 0.01270923 0.423
+7    sub_ais_all (P=0.255)  G 0.404747  0.04915060 0.04317200 0.255
+8 sub_ais_all_sh (P=0.363)  a 0.500800 -0.00980000 0.01080000 0.363
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>Saving 6.67 x 6.67 in image
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>        MARKER      BETA        SE        P      EAF EA NONEA
+1: 4:111696651 0.0318266 0.0247516 0.198499 0.302413  A     T
+        MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 4:111696651       0.02291458     0.02542145     0.3673822      0.302413
+   EA.prognosis OA.prognosis
+1:            A            T
+        MARKER       BETA        SE        P      EAF EA NONEA
+1: 4:111696651 -0.0122209 0.0443228 0.782761 0.359442  A     T
+        MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 4:111696651     -0.009369207     0.04531587     0.8362025      0.359442
+   EA.prognosis OA.prognosis
+1:            T            A
+[1] &#34;flipping beta&#34;
+        MARKER      BETA        SE         P      EAF EA NONEA
+1: 4:111696651 0.0300948 0.0144992 0.0379289 0.206164  A     T
+        MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 4:111696651       0.04469611     0.01570834   0.004435914      0.206164
+   EA.prognosis OA.prognosis
+1:            A            T
+        MARKER       BETA        SE        P      EAF EA NONEA
+1: 4:111696651 -0.0460612 0.0449042 0.305002 0.359442  T     A
+[1] &#34;flipping beta&#34;
+        MARKER   BETA     SE        P    EAF EA NONEA
+1: 4:111696651 0.0363 0.0128 0.004587 0.2619  a     t
+                         SNP EA      EAF         BETA         SE       P
+1      sub_ais_afr (P=0.198)  A 0.302413  0.031826600 0.02475160 0.19800
+2   sub_ais_afr_sh (P=0.367)  A 0.302413  0.022914579 0.02542145 0.36700
+3      sub_ais_his (P=0.783)  A 0.359442 -0.012220900 0.04432280 0.78300
+4   sub_ais_his_sh (P=0.836)  T 0.359442  0.009369207 0.04531587 0.83600
+5     sub_ais_eur (P=0.0379)  A 0.206164  0.030094800 0.01449920 0.03790
+6 sub_ais_eur_sh (P=0.00444)  A 0.206164  0.044696112 0.01570834 0.00444
+7      sub_ais_all (P=0.305)  T 0.359442  0.046061200 0.04490420 0.30500
+8 sub_ais_all_sh (P=0.00459)  a 0.261900  0.036300000 0.01280000 0.00459
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>Saving 6.67 x 6.67 in image
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>      MARKER       BETA        SE        P       EAF EA NONEA
+1: 6:1364866 -0.0523167 0.0752335 0.486811 0.0254846  T     C
+      MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 6:1364866      -0.09298012     0.07765649     0.2311796     0.0254846
+   EA.prognosis OA.prognosis
+1:            T            C
+      MARKER      BETA        SE        P      EAF EA NONEA
+1: 6:1364866 0.0966494 0.0668664 0.148343 0.120426  T     C
+      MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 6:1364866        0.1322675     0.06885719    0.05474489      0.120426
+   EA.prognosis OA.prognosis
+1:            C            T
+[1] &#34;flipping beta&#34;
+      MARKER      BETA        SE          P      EAF EA NONEA
+1: 6:1364866 0.0620265 0.0190885 0.00115638 0.108237  T     C
+      MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 6:1364866       0.08671245     0.02142938  5.200502e-05      0.108237
+   EA.prognosis OA.prognosis
+1:            T            C
+      MARKER      BETA        SE        P      EAF EA NONEA
+1: 6:1364866 0.0632996 0.0676368 0.349337 0.120426  C     T
+[1] &#34;flipping beta&#34;
+      MARKER  BETA     SE        P    EAF EA NONEA
+1: 6:1364866 0.057 0.0198 0.003988 0.1638  t     c
+                         SNP EA       EAF        BETA         SE        P
+1      sub_ais_afr (P=0.487)  T 0.0254846 -0.05231670 0.07523350 0.487000
+2   sub_ais_afr_sh (P=0.231)  T 0.0254846 -0.09298012 0.07765649 0.231000
+3      sub_ais_his (P=0.148)  T 0.1204260  0.09664940 0.06686640 0.148000
+4  sub_ais_his_sh (P=0.0547)  C 0.1204260 -0.13226747 0.06885719 0.054700
+5    sub_ais_eur (P=0.00116)  T 0.1082370  0.06202650 0.01908850 0.001160
+6 sub_ais_eur_sh (P=5.2e-05)  T 0.1082370  0.08671245 0.02142938 0.000052
+7      sub_ais_all (P=0.349)  C 0.1204260 -0.06329960 0.06763680 0.349000
+8 sub_ais_all_sh (P=0.00399)  t 0.1638000  0.05700000 0.01980000 0.003990
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>Saving 6.67 x 6.67 in image
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>       MARKER      BETA        SE        P      EAF EA NONEA
+1: 7:19049388 0.0129143 0.0280067 0.644715 0.211336  G     A
+       MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 7:19049388      0.001554193     0.02878422     0.9569395      0.211336
+   EA.prognosis OA.prognosis
+1:            G            A
+       MARKER      BETA        SE        P      EAF EA NONEA
+1: 7:19049388 0.0260423 0.0503201 0.604784 0.234612  G     A
+       MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 7:19049388       0.03064155     0.05145297     0.5514924      0.234612
+   EA.prognosis OA.prognosis
+1:            A            G
+[1] &#34;flipping beta&#34;
+       MARKER       BETA        SE        P      EAF EA NONEA
+1: 7:19049388 0.00705254 0.0158807 0.656972 0.170983  G     A
+       MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 7:19049388      -0.02745544     0.01780644     0.1231022      0.829017
+   EA.prognosis OA.prognosis
+1:            A            G
+[1] &#34;flipping beta&#34;
+       MARKER      BETA        SE         P      EAF EA NONEA
+1: 7:19049388 0.0895943 0.0509225 0.0785055 0.234612  A     G
+[1] &#34;flipping beta&#34;
+       MARKER    BETA     SE     P   EAF EA NONEA
+1: 7:19049388 -0.0162 0.0145 0.264 0.777  a     g
+[1] &#34;flipping beta&#34;
+                       SNP EA      EAF         BETA         SE      P
+1    sub_ais_afr (P=0.645)  G 0.211336  0.012914300 0.02800670 0.6450
+2 sub_ais_afr_sh (P=0.957)  G 0.211336  0.001554193 0.02878422 0.9570
+3    sub_ais_his (P=0.605)  G 0.234612  0.026042300 0.05032010 0.6050
+4 sub_ais_his_sh (P=0.551)  A 0.234612 -0.030641545 0.05145297 0.5510
+5    sub_ais_eur (P=0.657)  G 0.170983  0.007052540 0.01588070 0.6570
+6 sub_ais_eur_sh (P=0.123)  A 0.829017  0.027455441 0.01780644 0.1230
+7   sub_ais_all (P=0.0785)  A 0.234612 -0.089594300 0.05092250 0.0785
+8 sub_ais_all_sh (P=0.264)  a 0.777000  0.016200000 0.01450000 0.2640
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>Saving 6.67 x 6.67 in image
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>       MARKER       BETA        SE         P      EAF EA NONEA
+1: 7:92263789 -0.0575182 0.0321044 0.0731981 0.151278  C    CT
+       MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 7:92263789      -0.04478769     0.03297356     0.1743713      0.151278
+   EA.prognosis OA.prognosis
+1:            C           CT
+       MARKER      BETA        SE        P      EAF EA NONEA
+1: 7:92263789 0.0258991 0.0440677 0.556725 0.328633  C    CT
+       MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 7:92263789       0.02441725     0.04506236     0.5879187      0.328633
+   EA.prognosis OA.prognosis
+1:           CT            C
+[1] &#34;flipping beta&#34;
+       MARKER       BETA        SE         P      EAF EA NONEA
+1: 7:92263789 -0.0266828 0.0131241 0.0420417 0.268232  C    CT
+       MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 7:92263789       0.04066112     0.01431148    0.00449505      0.731768
+   EA.prognosis OA.prognosis
+1:           CT            C
+[1] &#34;flipping beta&#34;
+       MARKER      BETA        SE        P      EAF EA NONEA
+1: 7:92263789 0.0259197 0.0445821 0.560977 0.328633 CT     C
+[1] &#34;flipping beta&#34;
+       MARKER BETA     SE        P    EAF EA NONEA
+1: 7:92263789 0.04 0.0126 0.001509 0.7128 ct     c
+[1] &#34;flipping beta&#34;
+                         SNP EA      EAF        BETA         SE       P
+1     sub_ais_afr (P=0.0732)  C 0.151278 -0.05751820 0.03210440 0.07320
+2   sub_ais_afr_sh (P=0.174)  C 0.151278 -0.04478769 0.03297356 0.17400
+3      sub_ais_his (P=0.557)  C 0.328633  0.02589910 0.04406770 0.55700
+4   sub_ais_his_sh (P=0.588) CT 0.328633 -0.02441725 0.04506236 0.58800
+5      sub_ais_eur (P=0.042)  C 0.268232 -0.02668280 0.01312410 0.04200
+6  sub_ais_eur_sh (P=0.0045) CT 0.731768 -0.04066112 0.01431148 0.00450
+7      sub_ais_all (P=0.561) CT 0.328633 -0.02591970 0.04458210 0.56100
+8 sub_ais_all_sh (P=0.00151) ct 0.712800 -0.04000000 0.01260000 0.00151
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>Saving 6.67 x 6.67 in image
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>       MARKER       BETA        SE        P      EAF EA NONEA
+1: 9:22102165 -0.0211456 0.0268882 0.431616 0.723168  C     T
+       MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 9:22102165      -0.02308447     0.02754807     0.4020474      0.723168
+   EA.prognosis OA.prognosis
+1:            C            T
+       MARKER       BETA        SE        P      EAF EA NONEA
+1: 9:22102165 -0.0111747 0.0415311 0.787878 0.532624  C     T
+       MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 9:22102165       0.01329511     0.04279457     0.7560493      0.532624
+   EA.prognosis OA.prognosis
+1:            T            C
+[1] &#34;flipping beta&#34;
+       MARKER      BETA        SE          P      EAF EA NONEA
+1: 9:22102165 0.0364012 0.0116321 0.00175174 0.500134  C     T
+       MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 9:22102165      -0.05345553     0.01337589  6.431017e-05      0.499866
+   EA.prognosis OA.prognosis
+1:            T            C
+[1] &#34;flipping beta&#34;
+       MARKER       BETA        SE        P      EAF EA NONEA
+1: 9:22102165 -0.0227247 0.0419293 0.587836 0.532624  T     C
+[1] &#34;flipping beta&#34;
+       MARKER   BETA     SE        P    EAF EA NONEA
+1: 9:22102165 -0.035 0.0116 0.002491 0.4671  t     c
+[1] &#34;flipping beta&#34;
+                          SNP EA      EAF        BETA         SE        P
+1       sub_ais_afr (P=0.432)  C 0.723168 -0.02114560 0.02688820 4.32e-01
+2    sub_ais_afr_sh (P=0.402)  C 0.723168 -0.02308447 0.02754807 4.02e-01
+3       sub_ais_his (P=0.788)  C 0.532624 -0.01117470 0.04153110 7.88e-01
+4    sub_ais_his_sh (P=0.756)  T 0.532624 -0.01329511 0.04279457 7.56e-01
+5     sub_ais_eur (P=0.00175)  C 0.500134  0.03640120 0.01163210 1.75e-03
+6 sub_ais_eur_sh (P=6.43e-05)  T 0.499866  0.05345553 0.01337589 6.43e-05
+7       sub_ais_all (P=0.588)  T 0.532624  0.02272470 0.04192930 5.88e-01
+8  sub_ais_all_sh (P=0.00249)  t 0.467100  0.03500000 0.01160000 2.49e-03
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>Saving 6.67 x 6.67 in image
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>        MARKER     BETA        SE           P       EAF EA NONEA
+1: 9:106185546 0.418427 0.0760578 3.76704e-08 0.0338681  C     A
+        MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 9:106185546        0.4464429     0.07794508  1.018258e-08     0.0338681
+   EA.prognosis OA.prognosis
+1:            C            A
+        MARKER       BETA        SE        P      EAF EA NONEA
+1: 9:106185546 -0.0485112 0.0751969 0.518848 0.105006  C     A
+        MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 9:106185546       -0.0759892     0.07700823     0.3237567      0.105006
+   EA.prognosis OA.prognosis
+1:            A            C
+[1] &#34;flipping beta&#34;
+        MARKER        BETA        SE        P      EAF EA NONEA
+1: 9:106185546 -0.00549611 0.0169211 0.745327 0.169442  C     A
+        MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 9:106185546      0.008611057       0.017287     0.6183973      0.830558
+   EA.prognosis OA.prognosis
+1:            A            C
+[1] &#34;flipping beta&#34;
+        MARKER       BETA        SE        P      EAF EA NONEA
+1: 9:106185546 -0.0685949 0.0761486 0.367693 0.105006  A     C
+[1] &#34;flipping beta&#34;
+        MARKER    BETA     SE      P    EAF EA NONEA
+1: 9:106185546 -0.0156 0.0165 0.3433 0.8012  a     c
+[1] &#34;flipping beta&#34;
+                          SNP EA       EAF         BETA         SE        P
+1    sub_ais_afr (P=3.77e-08)  C 0.0338681  0.418427000 0.07605780 3.77e-08
+2 sub_ais_afr_sh (P=1.02e-08)  C 0.0338681  0.446442869 0.07794508 1.02e-08
+3       sub_ais_his (P=0.519)  C 0.1050060 -0.048511200 0.07519690 5.19e-01
+4    sub_ais_his_sh (P=0.324)  A 0.1050060  0.075989201 0.07700823 3.24e-01
+5       sub_ais_eur (P=0.745)  C 0.1694420 -0.005496110 0.01692110 7.45e-01
+6    sub_ais_eur_sh (P=0.618)  A 0.8305580 -0.008611057 0.01728700 6.18e-01
+7       sub_ais_all (P=0.368)  A 0.1050060  0.068594900 0.07614860 3.68e-01
+8    sub_ais_all_sh (P=0.343)  a 0.8012000  0.015600000 0.01650000 3.43e-01
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>Saving 6.67 x 6.67 in image
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>         MARKER      BETA        SE        P      EAF EA NONEA
+1: 11:102795606 0.0357353 0.0545479 0.512392 0.045682  G     A
+         MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 11:102795606       0.05963062     0.05602932      0.287204      0.045682
+   EA.prognosis OA.prognosis
+1:            G            A
+         MARKER       BETA        SE        P      EAF EA NONEA
+1: 11:102795606 -0.0266511 0.0483854 0.581764 0.253405  G     A
+         MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 11:102795606      -0.04007745     0.04949821     0.4181272      0.253405
+   EA.prognosis OA.prognosis
+1:            A            G
+[1] &#34;flipping beta&#34;
+         MARKER       BETA        SE         P      EAF EA NONEA
+1: 11:102795606 -0.0258181 0.0140507 0.0661363 0.212594  G     A
+         MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 11:102795606       0.04279456     0.01559732   0.006074862      0.787406
+   EA.prognosis OA.prognosis
+1:            A            G
+[1] &#34;flipping beta&#34;
+         MARKER       BETA        SE        P      EAF EA NONEA
+1: 11:102795606 -0.0723072 0.0491371 0.141145 0.253405  A     G
+[1] &#34;flipping beta&#34;
+         MARKER   BETA     SE       P    EAF EA NONEA
+1: 11:102795606 0.0291 0.0144 0.04329 0.7484  a     g
+[1] &#34;flipping beta&#34;
+                         SNP EA      EAF        BETA         SE       P
+1      sub_ais_afr (P=0.512)  G 0.045682  0.03573530 0.05454790 0.51200
+2   sub_ais_afr_sh (P=0.287)  G 0.045682  0.05963062 0.05602932 0.28700
+3      sub_ais_his (P=0.582)  G 0.253405 -0.02665110 0.04838540 0.58200
+4   sub_ais_his_sh (P=0.418)  A 0.253405  0.04007745 0.04949821 0.41800
+5     sub_ais_eur (P=0.0661)  G 0.212594 -0.02581810 0.01405070 0.06610
+6 sub_ais_eur_sh (P=0.00607)  A 0.787406 -0.04279456 0.01559732 0.00607
+7      sub_ais_all (P=0.141)  A 0.253405  0.07230720 0.04913710 0.14100
+8  sub_ais_all_sh (P=0.0433)  a 0.748400 -0.02910000 0.01440000 0.04330
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>Saving 6.67 x 6.67 in image
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>        MARKER       BETA       SE        P      EAF EA NONEA
+1: 19:45411941 0.00671516 0.026718 0.801555 0.218174  T     C
+        MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 19:45411941     -0.008655344     0.02755556     0.7534411      0.218174
+   EA.prognosis OA.prognosis
+1:            T            C
+        MARKER       BETA        SE        P      EAF EA NONEA
+1: 19:45411941 -0.0614166 0.0653487 0.347305 0.113086  T     C
+        MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 19:45411941      -0.05232512     0.06679587     0.4334166      0.113086
+   EA.prognosis OA.prognosis
+1:            C            T
+[1] &#34;flipping beta&#34;
+        MARKER       BETA        SE        P      EAF EA NONEA
+1: 19:45411941 -0.0204779 0.0163772 0.211158 0.143359  T     C
+        MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 19:45411941      0.001365663     0.01848208     0.9410969      0.143359
+   EA.prognosis OA.prognosis
+1:            T            C
+        MARKER       BETA       SE        P      EAF EA NONEA
+1: 19:45411941 -0.0508394 0.066048 0.441458 0.113086  C     T
+[1] &#34;flipping beta&#34;
+        MARKER  BETA    SE      P    EAF EA NONEA
+1: 19:45411941 0.001 0.015 0.9484 0.2017  t     c
+                       SNP EA      EAF         BETA         SE     P
+1    sub_ais_afr (P=0.802)  T 0.218174  0.006715160 0.02671800 0.802
+2 sub_ais_afr_sh (P=0.753)  T 0.218174 -0.008655344 0.02755556 0.753
+3    sub_ais_his (P=0.347)  T 0.113086 -0.061416600 0.06534870 0.347
+4 sub_ais_his_sh (P=0.433)  C 0.113086  0.052325120 0.06679587 0.433
+5    sub_ais_eur (P=0.211)  T 0.143359 -0.020477900 0.01637720 0.211
+6 sub_ais_eur_sh (P=0.941)  T 0.143359  0.001365663 0.01848208 0.941
+7    sub_ais_all (P=0.441)  C 0.113086  0.050839400 0.06604800 0.441
+8 sub_ais_all_sh (P=0.948)  t 0.201700  0.001000000 0.01500000 0.948
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>Saving 6.67 x 6.67 in image
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>        MARKER       BETA       SE        P      EAF EA NONEA
+1: 19:49229323 -0.0384027 0.023398 0.100738 0.589012  G     A
+        MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 19:49229323      -0.03761582     0.02396548      0.116512      0.589012
+   EA.prognosis OA.prognosis
+1:            G            A
+        MARKER      BETA        SE        P      EAF EA NONEA
+1: 19:49229323 0.0826459 0.0434263 0.057023 0.384829  G     A
+        MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 19:49229323        0.0681017      0.0444891     0.1258311      0.384829
+   EA.prognosis OA.prognosis
+1:            A            G
+[1] &#34;flipping beta&#34;
+        MARKER      BETA       SE         P      EAF EA NONEA
+1: 19:49229323 -0.019821 0.011565 0.0865506 0.541195  G     A
+        MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 19:49229323      0.005180751     0.01293642     0.6888046      0.458805
+   EA.prognosis OA.prognosis
+1:            A            G
+[1] &#34;flipping beta&#34;
+        MARKER      BETA       SE         P      EAF EA NONEA
+1: 19:49229323 0.0816613 0.043972 0.0632936 0.384829  A     G
+[1] &#34;flipping beta&#34;
+        MARKER   BETA    SE     P    EAF EA NONEA
+1: 19:49229323 0.0159 0.011 0.149 0.4481  a     g
+[1] &#34;flipping beta&#34;
+                       SNP EA      EAF         BETA         SE      P
+1    sub_ais_afr (P=0.101)  G 0.589012 -0.038402700 0.02339800 0.1010
+2 sub_ais_afr_sh (P=0.117)  G 0.589012 -0.037615824 0.02396548 0.1170
+3    sub_ais_his (P=0.057)  G 0.384829  0.082645900 0.04342630 0.0570
+4 sub_ais_his_sh (P=0.126)  A 0.384829 -0.068101704 0.04448910 0.1260
+5   sub_ais_eur (P=0.0866)  G 0.541195 -0.019821000 0.01156500 0.0866
+6 sub_ais_eur_sh (P=0.689)  A 0.458805 -0.005180751 0.01293642 0.6890
+7   sub_ais_all (P=0.0633)  A 0.384829 -0.081661300 0.04397200 0.0633
+8 sub_ais_all_sh (P=0.149)  a 0.448100 -0.015900000 0.01100000 0.1490
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>Saving 6.67 x 6.67 in image
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>       MARKER     BETA        SE        P       EAF EA NONEA
+1: 9:34649442 0.027188 0.0706377 0.700316 0.0250962  A     G
+       MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 9:34649442       0.01617592     0.07244616     0.8233161     0.0250962
+   EA.prognosis OA.prognosis
+1:            A            G
+       MARKER       BETA        SE        P       EAF EA NONEA
+1: 9:34649442 -0.0407241 0.0781986 0.602521 0.0712177  A     G
+       MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 9:34649442      -0.03018419     0.08003396     0.7060679     0.0712177
+   EA.prognosis OA.prognosis
+1:            G            A
+[1] &#34;flipping beta&#34;
+       MARKER      BETA        SE           P       EAF EA NONEA
+1: 9:34649442 0.0750138 0.0197859 0.000149879 0.0919336  A     G
+       MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 9:34649442       0.06804411       0.020338   0.000820861     0.0919336
+   EA.prognosis OA.prognosis
+1:            A            G
+       MARKER       BETA        SE       P       EAF EA NONEA
+1: 9:34649442 -0.0491505 0.0792599 0.53518 0.0712177  G     A
+[1] &#34;flipping beta&#34;
+       MARKER   BETA    SE        P    EAF EA NONEA
+1: 9:34649442 0.0623 0.019 0.001049 0.1362  a     g
+                          SNP EA       EAF        BETA         SE        P
+1         sub_ais_afr (P=0.7)  A 0.0250962  0.02718800 0.07063770 0.700000
+2    sub_ais_afr_sh (P=0.823)  A 0.0250962  0.01617592 0.07244616 0.823000
+3       sub_ais_his (P=0.603)  A 0.0712177 -0.04072410 0.07819860 0.603000
+4    sub_ais_his_sh (P=0.706)  G 0.0712177  0.03018419 0.08003396 0.706000
+5     sub_ais_eur (P=0.00015)  A 0.0919336  0.07501380 0.01978590 0.000150
+6 sub_ais_eur_sh (P=0.000821)  A 0.0919336  0.06804411 0.02033800 0.000821
+7       sub_ais_all (P=0.535)  G 0.0712177  0.04915050 0.07925990 0.535000
+8  sub_ais_all_sh (P=0.00105)  a 0.1362000  0.06230000 0.01900000 0.001050
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>Saving 6.67 x 6.67 in image
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>        MARKER       BETA        SE         P      EAF EA NONEA
+1: 1:207015957 -0.0512188 0.0288065 0.0753998 0.819573  T     C
+        MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 1:207015957      -0.04908886     0.02951002    0.09621955      0.819573
+   EA.prognosis OA.prognosis
+1:            T            C
+        MARKER       BETA        SE         P      EAF EA NONEA
+1: 1:207015957 -0.0823567 0.0434468 0.0580163 0.671211  T     C
+        MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 1:207015957      -0.08281503     0.04441883    0.06226379      0.671211
+   EA.prognosis OA.prognosis
+1:            C            T
+[1] &#34;flipping beta&#34;
+        MARKER       BETA        SE          P      EAF EA NONEA
+1: 1:207015957 -0.0438826 0.0138808 0.00157022 0.781112  T     C
+        MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 1:207015957      -0.04026147     0.01422388   0.004646727      0.781112
+   EA.prognosis OA.prognosis
+1:            T            C
+        MARKER       BETA        SE        P      EAF EA NONEA
+1: 1:207015957 -0.0643076 0.0439548 0.143457 0.671211  C     T
+[1] &#34;flipping beta&#34;
+        MARKER    BETA     SE       P    EAF EA NONEA
+1: 1:207015957 -0.0323 0.0123 0.00861 0.7518  t     c
+                         SNP EA      EAF        BETA         SE       P
+1     sub_ais_afr (P=0.0754)  T 0.819573 -0.05121880 0.02880650 0.07540
+2  sub_ais_afr_sh (P=0.0962)  T 0.819573 -0.04908886 0.02951002 0.09620
+3      sub_ais_his (P=0.058)  T 0.671211 -0.08235670 0.04344680 0.05800
+4  sub_ais_his_sh (P=0.0623)  C 0.671211  0.08281503 0.04441883 0.06230
+5    sub_ais_eur (P=0.00157)  T 0.781112 -0.04388260 0.01388080 0.00157
+6 sub_ais_eur_sh (P=0.00465)  T 0.781112 -0.04026147 0.01422388 0.00465
+7      sub_ais_all (P=0.143)  C 0.671211  0.06430760 0.04395480 0.14300
+8 sub_ais_all_sh (P=0.00861)  t 0.751800 -0.03230000 0.01230000 0.00861
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>Saving 6.67 x 6.67 in image
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>      MARKER     BETA        SE        P      EAF EA NONEA
+1: 1:2488930 0.026656 0.0243713 0.274066 0.688923  G     A
+      MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 1:2488930       0.02774004     0.02497275     0.2666491      0.688923
+   EA.prognosis OA.prognosis
+1:            G            A
+      MARKER       BETA       SE       P      EAF EA NONEA
+1: 1:2488930 -0.0106216 0.041344 0.79725 0.514947  G     A
+      MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 1:2488930      -0.01174144     0.04225102     0.7810913      0.514947
+   EA.prognosis OA.prognosis
+1:            A            G
+[1] &#34;flipping beta&#34;
+      MARKER      BETA        SE           P      EAF EA NONEA
+1: 1:2488930 0.0444375 0.0115347 0.000116918 0.483273  G     A
+      MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 1:2488930      -0.04541092      0.0117707  0.0001143366      0.516727
+   EA.prognosis OA.prognosis
+1:            A            G
+[1] &#34;flipping beta&#34;
+      MARKER        BETA        SE        P      EAF EA NONEA
+1: 1:2488930 -0.00883655 0.0418083 0.832607 0.514947  A     G
+[1] &#34;flipping beta&#34;
+      MARKER    BETA     SE         P    EAF EA NONEA
+1: 1:2488930 -0.0404 0.0103 9.188e-05 0.4813  a     g
+[1] &#34;flipping beta&#34;
+                          SNP EA      EAF        BETA         SE        P
+1       sub_ais_afr (P=0.274)  G 0.688923  0.02665600 0.02437130 2.74e-01
+2    sub_ais_afr_sh (P=0.267)  G 0.688923  0.02774004 0.02497275 2.67e-01
+3       sub_ais_his (P=0.797)  G 0.514947 -0.01062160 0.04134400 7.97e-01
+4    sub_ais_his_sh (P=0.781)  A 0.514947  0.01174144 0.04225102 7.81e-01
+5    sub_ais_eur (P=0.000117)  G 0.483273  0.04443750 0.01153470 1.17e-04
+6 sub_ais_eur_sh (P=0.000114)  A 0.516727  0.04541092 0.01177070 1.14e-04
+7       sub_ais_all (P=0.833)  A 0.514947  0.00883655 0.04180830 8.33e-01
+8 sub_ais_all_sh (P=9.19e-05)  a 0.481300  0.04040000 0.01030000 9.19e-05
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>Saving 6.67 x 6.67 in image
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>        MARKER       BETA       SE        P        EAF EA NONEA
+1: 9:136304114 -0.0526128 0.233841 0.821984 0.00279329  A     G
+        MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 9:136304114      -0.09916023      0.2404682     0.6800733    0.00279329
+   EA.prognosis OA.prognosis
+1:            A            G
+        MARKER     BETA       SE         P        EAF EA NONEA
+1: 9:136304114 0.596817 0.263336 0.0234283 0.00785297  A     G
+        MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 9:136304114        0.5700806      0.2690129     0.0340772    0.00785297
+   EA.prognosis OA.prognosis
+1:            G            A
+[1] &#34;flipping beta&#34;
+        MARKER        BETA       SE        P       EAF EA NONEA
+1: 9:136304114 -0.00773867 0.052605 0.883046 0.0150447  A     G
+        MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 9:136304114       0.02644787     0.05504426     0.6308835     0.0150447
+   EA.prognosis OA.prognosis
+1:            A            G
+        MARKER     BETA       SE        P        EAF EA NONEA
+1: 9:136304114 0.649702 0.264491 0.014033 0.00785297  G     A
+[1] &#34;flipping beta&#34;
+        MARKER    BETA     SE      P    EAF EA NONEA
+1: 9:136304114 -0.0024 0.0526 0.9638 0.0519  a     g
+                        SNP EA        EAF        BETA         SE      P
+1     sub_ais_afr (P=0.822)  A 0.00279329 -0.05261280 0.23384100 0.8220
+2   sub_ais_afr_sh (P=0.68)  A 0.00279329 -0.09916023 0.24046821 0.6800
+3    sub_ais_his (P=0.0234)  A 0.00785297  0.59681700 0.26333600 0.0234
+4 sub_ais_his_sh (P=0.0341)  G 0.00785297 -0.57008063 0.26901293 0.0341
+5     sub_ais_eur (P=0.883)  A 0.01504470 -0.00773867 0.05260500 0.8830
+6  sub_ais_eur_sh (P=0.631)  A 0.01504470  0.02644787 0.05504426 0.6310
+7     sub_ais_all (P=0.014)  G 0.00785297 -0.64970200 0.26449100 0.0140
+8  sub_ais_all_sh (P=0.964)  a 0.05190000 -0.00240000 0.05260000 0.9640
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>Saving 6.67 x 6.67 in image
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>        MARKER       BETA        SE         P      EAF EA NONEA
+1: 19:49206674 -0.0370958 0.0220636 0.0927022 0.503719  G     A
+        MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 19:49206674      -0.04623374     0.02267444    0.04144762      0.503719
+   EA.prognosis OA.prognosis
+1:            G            A
+        MARKER      BETA        SE        P      EAF EA NONEA
+1: 19:49206674 0.0382676 0.0433702 0.377588 0.356562  G     A
+        MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 19:49206674       0.03126111     0.04435053     0.4808947      0.356562
+   EA.prognosis OA.prognosis
+1:            A            G
+[1] &#34;flipping beta&#34;
+        MARKER       BETA        SE        P      EAF EA NONEA
+1: 19:49206674 -0.0155559 0.0114128 0.172877 0.494655  G     A
+        MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 19:49206674      0.003641229      0.0124175     0.7693435      0.505345
+   EA.prognosis OA.prognosis
+1:            A            G
+[1] &#34;flipping beta&#34;
+        MARKER       BETA        SE       P      EAF EA NONEA
+1: 19:49206674 0.00993693 0.0439259 0.82103 0.356562  A     G
+[1] &#34;flipping beta&#34;
+        MARKER   BETA     SE     P   EAF EA NONEA
+1: 19:49206674 0.0145 0.0106 0.171 0.499  a     g
+[1] &#34;flipping beta&#34;
+                        SNP EA      EAF         BETA         SE      P
+1    sub_ais_afr (P=0.0927)  G 0.503719 -0.037095800 0.02206360 0.0927
+2 sub_ais_afr_sh (P=0.0414)  G 0.503719 -0.046233738 0.02267444 0.0414
+3     sub_ais_his (P=0.378)  G 0.356562  0.038267600 0.04337020 0.3780
+4  sub_ais_his_sh (P=0.481)  A 0.356562 -0.031261107 0.04435053 0.4810
+5     sub_ais_eur (P=0.173)  G 0.494655 -0.015555900 0.01141280 0.1730
+6  sub_ais_eur_sh (P=0.769)  A 0.505345 -0.003641229 0.01241750 0.7690
+7     sub_ais_all (P=0.821)  A 0.356562 -0.009936930 0.04392590 0.8210
+8  sub_ais_all_sh (P=0.171)  a 0.499000 -0.014500000 0.01060000 0.1710
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>Saving 6.67 x 6.67 in image
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>       MARKER      BETA        SE           P       EAF EA NONEA
+1: 1:45019440 -0.283425 0.0527219 7.62219e-08 0.0667283  A     T
+       MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 1:45019440        0.2582365     0.05671749  5.287822e-06     0.9332717
+   EA.prognosis OA.prognosis
+1:            A            T
+       MARKER     BETA       SE        P       EAF EA NONEA
+1: 1:45019440 0.174663 0.185799 0.347186 0.0221229  A     T
+       MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 1:45019440        0.1807905      0.1872395     0.3342659     0.0221229
+   EA.prognosis OA.prognosis
+1:            T            A
+[1] &#34;flipping beta&#34;
+       MARKER   BETA     SE      P   EAF EA NONEA
+1: 1:45019440 0.1239 0.1448 0.3922 0.006  a     t
+       MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 1:45019440        0.1265125      0.1507458     0.4013327         0.006
+   EA.prognosis OA.prognosis
+1:            A            T
+       MARKER   BETA     SE      P   EAF EA NONEA
+1: 1:45019440 0.1239 0.1448 0.3922 0.006  a     t
+       MARKER   BETA     SE         P    EAF EA NONEA
+1: 1:45019440 0.2105 0.0511 3.776e-05 0.1286  a     t
+                           SNP EA       EAF       BETA         SE        P
+1    sub_mace_afr (P=7.62e-08)  A 0.0667283 -0.2834250 0.05272190 7.62e-08
+2 sub_mace_afr_sh (P=5.29e-06)  A 0.9332717  0.2582365 0.05671749 5.29e-06
+3       sub_mace_his (P=0.347)  A 0.0221229  0.1746630 0.18579900 3.47e-01
+4    sub_mace_his_sh (P=0.334)  T 0.0221229 -0.1807905 0.18723953 3.34e-01
+5  sub_mace_eur_meta (P=0.392)  a 0.0060000  0.1239000 0.14480000 3.92e-01
+6    sub_mace_eur_sh (P=0.401)  A 0.0060000  0.1265125 0.15074585 4.01e-01
+7       sub_mace_all (P=0.392)  a 0.0060000  0.1239000 0.14480000 3.92e-01
+8 sub_mace_all_sh (P=3.78e-05)  a 0.1286000  0.2105000 0.05110000 3.78e-05
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>Saving 6.67 x 6.67 in image
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>        MARKER      BETA        SE        P      EAF EA NONEA
+1: 1:100046246 0.0285673 0.0344702 0.407243 0.137858  T     G
+        MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 1:100046246      -0.04515143     0.03705499     0.2230348      0.862142
+   EA.prognosis OA.prognosis
+1:            T            G
+        MARKER       BETA        SE        P     EAF EA NONEA
+1: 1:100046246 -0.0343692 0.0479719 0.473717 0.28663  T     G
+        MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 1:100046246      -0.03663305     0.04835713     0.4487191       0.28663
+   EA.prognosis OA.prognosis
+1:            G            T
+[1] &#34;flipping beta&#34;
+        MARKER   BETA     SE      P    EAF EA NONEA
+1: 1:100046246 0.0169 0.0117 0.1469 0.4936  t     g
+        MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 1:100046246     -0.001867181     0.01256791      0.881895        0.4936
+   EA.prognosis OA.prognosis
+1:            T            G
+        MARKER   BETA     SE      P    EAF EA NONEA
+1: 1:100046246 0.0169 0.0117 0.1469 0.4936  t     g
+        MARKER    BETA     SE      P    EAF EA NONEA
+1: 1:100046246 -0.0039 0.0116 0.7372 0.4701  t     g
+                          SNP EA      EAF         BETA         SE     P
+1      sub_mace_afr (P=0.407)  T 0.137858  0.028567300 0.03447020 0.407
+2   sub_mace_afr_sh (P=0.223)  T 0.862142 -0.045151431 0.03705499 0.223
+3      sub_mace_his (P=0.474)  T 0.286630 -0.034369200 0.04797190 0.474
+4   sub_mace_his_sh (P=0.449)  G 0.286630  0.036633051 0.04835713 0.449
+5 sub_mace_eur_meta (P=0.147)  t 0.493600  0.016900000 0.01170000 0.147
+6   sub_mace_eur_sh (P=0.882)  T 0.493600 -0.001867181 0.01256791 0.882
+7      sub_mace_all (P=0.147)  t 0.493600  0.016900000 0.01170000 0.147
+8   sub_mace_all_sh (P=0.737)  t 0.470100 -0.003900000 0.01160000 0.737
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>Saving 6.67 x 6.67 in image
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>        MARKER       BETA       SE       P       EAF EA NONEA
+1: 2:204062728 -0.0418532 0.059254 0.47998 0.0393343  A     T
+        MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 2:204062728      -0.01622625     0.06487502      0.802498     0.9606657
+   EA.prognosis OA.prognosis
+1:            A            T
+        MARKER       BETA        SE        P       EAF EA NONEA
+1: 2:204062728 -0.0107337 0.0702591 0.878578 0.0965399  A     T
+        MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 2:204062728     -0.008680767     0.07081698     0.9024395     0.0965399
+   EA.prognosis OA.prognosis
+1:            T            A
+[1] &#34;flipping beta&#34;
+        MARKER    BETA     SE      P    EAF EA NONEA
+1: 2:204062728 -0.0163 0.0177 0.3582 0.1183  a     t
+        MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 2:204062728        0.0112643     0.01896421     0.5525278        0.1183
+   EA.prognosis OA.prognosis
+1:            A            T
+        MARKER    BETA     SE      P    EAF EA NONEA
+1: 2:204062728 -0.0163 0.0177 0.3582 0.1183  a     t
+        MARKER   BETA     SE      P   EAF EA NONEA
+1: 2:204062728 0.0091 0.0176 0.6068 0.165  a     t
+                          SNP EA       EAF         BETA         SE     P
+1       sub_mace_afr (P=0.48)  A 0.0393343 -0.041853200 0.05925400 0.480
+2   sub_mace_afr_sh (P=0.802)  A 0.9606657 -0.016226246 0.06487502 0.802
+3      sub_mace_his (P=0.879)  A 0.0965399 -0.010733700 0.07025910 0.879
+4   sub_mace_his_sh (P=0.902)  T 0.0965399  0.008680767 0.07081698 0.902
+5 sub_mace_eur_meta (P=0.358)  a 0.1183000 -0.016300000 0.01770000 0.358
+6   sub_mace_eur_sh (P=0.553)  A 0.1183000  0.011264297 0.01896421 0.553
+7      sub_mace_all (P=0.358)  a 0.1183000 -0.016300000 0.01770000 0.358
+8   sub_mace_all_sh (P=0.607)  a 0.1650000  0.009100000 0.01760000 0.607
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>Saving 6.67 x 6.67 in image
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>       MARKER      BETA        SE        P      EAF EA NONEA
+1: 3:14526612 0.0256435 0.0302646 0.396822 0.303881 AT     A
+       MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 3:14526612      -0.04348108     0.03262238     0.1825776      0.696119
+   EA.prognosis OA.prognosis
+1:           AT            A
+       MARKER     BETA        SE        P     EAF EA NONEA
+1: 3:14526612 0.101665 0.0502409 0.043016 0.42766 AT     A
+       MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 3:14526612       0.09960779     0.05064387    0.04920303       0.42766
+   EA.prognosis OA.prognosis
+1:            A           AT
+[1] &#34;flipping beta&#34;
+       MARKER   BETA     SE         P    EAF EA NONEA
+1: 3:14526612 0.0791 0.0142 2.698e-08 0.4664  a    at
+[1] &#34;flipping beta&#34;
+       MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 3:14526612       0.07734058     0.01467312  1.357537e-07        0.4664
+   EA.prognosis OA.prognosis
+1:            A           AT
+[1] &#34;flipping beta&#34;
+       MARKER   BETA     SE         P    EAF EA NONEA
+1: 3:14526612 0.0791 0.0142 2.698e-08 0.4664  a    at
+[1] &#34;flipping beta&#34;
+       MARKER   BETA     SE         P    EAF EA NONEA
+1: 3:14526612 0.0735 0.0129 1.358e-08 0.4942  a    at
+[1] &#34;flipping beta&#34;
+                            SNP EA      EAF        BETA         SE        P
+1        sub_mace_afr (P=0.397) AT 0.303881  0.02564350 0.03026460 3.97e-01
+2     sub_mace_afr_sh (P=0.183) AT 0.696119 -0.04348108 0.03262238 1.83e-01
+3        sub_mace_his (P=0.043) AT 0.427660  0.10166500 0.05024090 4.30e-02
+4    sub_mace_his_sh (P=0.0492)  A 0.427660 -0.09960779 0.05064387 4.92e-02
+5 sub_mace_eur_meta (P=2.7e-08)  a 0.466400 -0.07910000 0.01420000 2.70e-08
+6  sub_mace_eur_sh (P=1.36e-07)  A 0.466400 -0.07734058 0.01467312 1.36e-07
+7      sub_mace_all (P=2.7e-08)  a 0.466400 -0.07910000 0.01420000 2.70e-08
+8  sub_mace_all_sh (P=1.36e-08)  a 0.494200 -0.07350000 0.01290000 1.36e-08
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>Saving 6.67 x 6.67 in image
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>       MARKER       BETA        SE        P     EAF EA NONEA
+1: 4:89958167 -0.0361539 0.0227015 0.111255 0.47382  A     G
+       MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 4:89958167       0.02874009      0.0243346     0.2375875       0.52618
+   EA.prognosis OA.prognosis
+1:            A            G
+       MARKER       BETA       SE        P      EAF EA NONEA
+1: 4:89958167 -0.0491506 0.043172 0.254919 0.404747  A     G
+       MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 4:89958167      -0.04912355     0.04349936     0.2587739      0.404747
+   EA.prognosis OA.prognosis
+1:            G            A
+[1] &#34;flipping beta&#34;
+       MARKER  BETA     SE      P    EAF EA NONEA
+1: 4:89958167 0.016 0.0114 0.1583 0.4929  a     g
+       MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 4:89958167       0.03444729     0.01224643   0.004910569        0.4929
+   EA.prognosis OA.prognosis
+1:            A            G
+       MARKER  BETA     SE      P    EAF EA NONEA
+1: 4:89958167 0.016 0.0114 0.1583 0.4929  a     g
+       MARKER   BETA     SE        P    EAF EA NONEA
+1: 4:89958167 0.0342 0.0106 0.001251 0.5014  a     g
+                          SNP EA      EAF        BETA         SE       P
+1      sub_mace_afr (P=0.111)  A 0.473820 -0.03615390 0.02270150 0.11100
+2   sub_mace_afr_sh (P=0.238)  A 0.526180  0.02874009 0.02433460 0.23800
+3      sub_mace_his (P=0.255)  A 0.404747 -0.04915060 0.04317200 0.25500
+4   sub_mace_his_sh (P=0.259)  G 0.404747  0.04912355 0.04349936 0.25900
+5 sub_mace_eur_meta (P=0.158)  a 0.492900  0.01600000 0.01140000 0.15800
+6 sub_mace_eur_sh (P=0.00491)  A 0.492900  0.03444729 0.01224643 0.00491
+7      sub_mace_all (P=0.158)  a 0.492900  0.01600000 0.01140000 0.15800
+8 sub_mace_all_sh (P=0.00125)  a 0.501400  0.03420000 0.01060000 0.00125
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>Saving 6.67 x 6.67 in image
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>        MARKER      BETA        SE        P      EAF EA NONEA
+1: 4:111696651 0.0271111 0.0253121 0.284135 0.302413  A     T
+        MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 4:111696651      -0.01187069      0.0273213     0.6639364      0.697587
+   EA.prognosis OA.prognosis
+1:            A            T
+        MARKER       BETA        SE        P      EAF EA NONEA
+1: 4:111696651 -0.0460612 0.0449042 0.305002 0.359442  A     T
+        MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 4:111696651      -0.04467375     0.04525457     0.3235614      0.359442
+   EA.prognosis OA.prognosis
+1:            T            A
+[1] &#34;flipping beta&#34;
+        MARKER   BETA     SE      P    EAF EA NONEA
+1: 4:111696651 0.0136 0.0143 0.3408 0.2064  a     t
+        MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 4:111696651     -0.006393446     0.01523094     0.6746558        0.2064
+   EA.prognosis OA.prognosis
+1:            A            T
+        MARKER   BETA     SE      P    EAF EA NONEA
+1: 4:111696651 0.0136 0.0143 0.3408 0.2064  a     t
+        MARKER    BETA     SE      P    EAF EA NONEA
+1: 4:111696651 -0.0035 0.0128 0.7823 0.2583  a     t
+                          SNP EA      EAF         BETA         SE     P
+1      sub_mace_afr (P=0.284)  A 0.302413  0.027111100 0.02531210 0.284
+2   sub_mace_afr_sh (P=0.664)  A 0.697587 -0.011870695 0.02732130 0.664
+3      sub_mace_his (P=0.305)  A 0.359442 -0.046061200 0.04490420 0.305
+4   sub_mace_his_sh (P=0.324)  T 0.359442  0.044673752 0.04525457 0.324
+5 sub_mace_eur_meta (P=0.341)  a 0.206400  0.013600000 0.01430000 0.341
+6   sub_mace_eur_sh (P=0.675)  A 0.206400 -0.006393446 0.01523094 0.675
+7      sub_mace_all (P=0.341)  a 0.206400  0.013600000 0.01430000 0.341
+8   sub_mace_all_sh (P=0.782)  a 0.258300 -0.003500000 0.01280000 0.782
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>Saving 6.67 x 6.67 in image
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>      MARKER       BETA        SE        P       EAF EA NONEA
+1: 6:1364866 -0.0584667 0.0770326 0.447861 0.0254846  T     C
+      MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 6:1364866         0.128005     0.08456403     0.1301006     0.9745154
+   EA.prognosis OA.prognosis
+1:            T            C
+      MARKER      BETA        SE        P      EAF EA NONEA
+1: 6:1364866 0.0632996 0.0676368 0.349337 0.120426  T     C
+      MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 6:1364866       0.08062904     0.06932014     0.2447726      0.120426
+   EA.prognosis OA.prognosis
+1:            C            T
+[1] &#34;flipping beta&#34;
+      MARKER   BETA     SE      P    EAF EA NONEA
+1: 6:1364866 0.0284 0.0187 0.1298 0.1087  t     c
+      MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 6:1364866     -0.005402252     0.02029595     0.7901053        0.1087
+   EA.prognosis OA.prognosis
+1:            T            C
+      MARKER   BETA     SE      P    EAF EA NONEA
+1: 6:1364866 0.0284 0.0187 0.1298 0.1087  t     c
+      MARKER    BETA    SE      P    EAF EA NONEA
+1: 6:1364866 -0.0043 0.019 0.8199 0.1591  t     c
+                         SNP EA       EAF         BETA         SE     P
+1     sub_mace_afr (P=0.448)  T 0.0254846 -0.058466700 0.07703260 0.448
+2   sub_mace_afr_sh (P=0.13)  T 0.9745154  0.128005012 0.08456403 0.130
+3     sub_mace_his (P=0.349)  T 0.1204260  0.063299600 0.06763680 0.349
+4  sub_mace_his_sh (P=0.245)  C 0.1204260 -0.080629037 0.06932014 0.245
+5 sub_mace_eur_meta (P=0.13)  t 0.1087000  0.028400000 0.01870000 0.130
+6   sub_mace_eur_sh (P=0.79)  T 0.1087000 -0.005402252 0.02029595 0.790
+7      sub_mace_all (P=0.13)  t 0.1087000  0.028400000 0.01870000 0.130
+8   sub_mace_all_sh (P=0.82)  t 0.1591000 -0.004300000 0.01900000 0.820
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>Saving 6.67 x 6.67 in image
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>       MARKER       BETA        SE        P      EAF EA NONEA
+1: 7:19049388 0.00890408 0.0286308 0.755804 0.211336  G     A
+       MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 7:19049388       0.01052278     0.03098864     0.7341811      0.788664
+   EA.prognosis OA.prognosis
+1:            G            A
+       MARKER      BETA        SE         P      EAF EA NONEA
+1: 7:19049388 0.0895943 0.0509225 0.0785055 0.234612  G     A
+       MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 7:19049388       0.09183199     0.05133385     0.0736282      0.234612
+   EA.prognosis OA.prognosis
+1:            A            G
+[1] &#34;flipping beta&#34;
+       MARKER    BETA     SE      P    EAF EA NONEA
+1: 7:19049388 -0.0203 0.0157 0.1959 0.8296  a     g
+[1] &#34;flipping beta&#34;
+       MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 7:19049388      0.007637508     0.01700425     0.6533213        0.8296
+   EA.prognosis OA.prognosis
+1:            A            G
+[1] &#34;flipping beta&#34;
+       MARKER    BETA     SE      P    EAF EA NONEA
+1: 7:19049388 -0.0203 0.0157 0.1959 0.8296  a     g
+[1] &#34;flipping beta&#34;
+       MARKER   BETA     SE      P  EAF EA NONEA
+1: 7:19049388 0.0103 0.0143 0.4714 0.78  a     g
+[1] &#34;flipping beta&#34;
+                          SNP EA      EAF         BETA         SE      P
+1      sub_mace_afr (P=0.756)  G 0.211336  0.008904080 0.02863080 0.7560
+2   sub_mace_afr_sh (P=0.734)  G 0.788664  0.010522785 0.03098864 0.7340
+3     sub_mace_his (P=0.0785)  G 0.234612  0.089594300 0.05092250 0.0785
+4  sub_mace_his_sh (P=0.0736)  A 0.234612 -0.091831994 0.05133385 0.0736
+5 sub_mace_eur_meta (P=0.196)  a 0.829600  0.020300000 0.01570000 0.1960
+6   sub_mace_eur_sh (P=0.653)  A 0.829600 -0.007637508 0.01700425 0.6530
+7      sub_mace_all (P=0.196)  a 0.829600  0.020300000 0.01570000 0.1960
+8   sub_mace_all_sh (P=0.471)  a 0.780000 -0.010300000 0.01430000 0.4710
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>Saving 6.67 x 6.67 in image
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>       MARKER       BETA        SE         P      EAF EA NONEA
+1: 7:92263789 -0.0597967 0.0328197 0.0684589 0.151278  C    CT
+       MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 7:92263789       0.03802631     0.03545403      0.283472      0.848722
+   EA.prognosis OA.prognosis
+1:            C           CT
+       MARKER      BETA        SE        P      EAF EA NONEA
+1: 7:92263789 0.0259197 0.0445821 0.560977 0.328633  C    CT
+       MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 7:92263789       0.02519873     0.04492643     0.5748734      0.328633
+   EA.prognosis OA.prognosis
+1:           CT            C
+[1] &#34;flipping beta&#34;
+       MARKER   BETA     SE       P    EAF EA NONEA
+1: 7:92263789 0.0221 0.0133 0.09787 0.7318 ct     c
+[1] &#34;flipping beta&#34;
+       MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 7:92263789      0.002959608     0.01416153     0.8344566        0.7318
+   EA.prognosis OA.prognosis
+1:           CT            C
+[1] &#34;flipping beta&#34;
+       MARKER   BETA     SE       P    EAF EA NONEA
+1: 7:92263789 0.0221 0.0133 0.09787 0.7318 ct     c
+[1] &#34;flipping beta&#34;
+       MARKER   BETA     SE      P    EAF EA NONEA
+1: 7:92263789 -5e-04 0.0126 0.9697 0.7102 ct     c
+[1] &#34;flipping beta&#34;
+                           SNP EA      EAF         BETA         SE      P
+1      sub_mace_afr (P=0.0685)  C 0.151278 -0.059796700 0.03281970 0.0685
+2    sub_mace_afr_sh (P=0.283)  C 0.848722  0.038026311 0.03545403 0.2830
+3       sub_mace_his (P=0.561)  C 0.328633  0.025919700 0.04458210 0.5610
+4    sub_mace_his_sh (P=0.575) CT 0.328633 -0.025198727 0.04492643 0.5750
+5 sub_mace_eur_meta (P=0.0979) ct 0.731800 -0.022100000 0.01330000 0.0979
+6    sub_mace_eur_sh (P=0.834) CT 0.731800 -0.002959608 0.01416153 0.8340
+7      sub_mace_all (P=0.0979) ct 0.731800 -0.022100000 0.01330000 0.0979
+8     sub_mace_all_sh (P=0.97) ct 0.710200  0.000500000 0.01260000 0.9700
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>Saving 6.67 x 6.67 in image
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>       MARKER        BETA        SE        P      EAF EA NONEA
+1: 9:22102165 -0.00978552 0.0275027 0.721988 0.723168  C     T
+       MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 9:22102165       0.01310117     0.02939504      0.655819      0.276832
+   EA.prognosis OA.prognosis
+1:            C            T
+       MARKER       BETA        SE        P      EAF EA NONEA
+1: 9:22102165 -0.0227247 0.0419293 0.587836 0.532624  C     T
+       MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 9:22102165      -0.01081928     0.04312353     0.8018988      0.532624
+   EA.prognosis OA.prognosis
+1:            T            C
+[1] &#34;flipping beta&#34;
+       MARKER    BETA     SE         P    EAF EA NONEA
+1: 9:22102165 -0.0486 0.0115 2.257e-05 0.5001  t     c
+[1] &#34;flipping beta&#34;
+       MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 9:22102165      -0.02524766     0.01261404     0.0453329        0.5001
+   EA.prognosis OA.prognosis
+1:            T            C
+[1] &#34;flipping beta&#34;
+       MARKER    BETA     SE         P    EAF EA NONEA
+1: 9:22102165 -0.0486 0.0115 2.257e-05 0.5001  t     c
+[1] &#34;flipping beta&#34;
+       MARKER    BETA     SE       P    EAF EA NONEA
+1: 9:22102165 -0.0225 0.0112 0.04431 0.4744  t     c
+[1] &#34;flipping beta&#34;
+                             SNP EA      EAF        BETA         SE        P
+1         sub_mace_afr (P=0.722)  C 0.723168 -0.00978552 0.02750270 7.22e-01
+2      sub_mace_afr_sh (P=0.656)  C 0.276832  0.01310117 0.02939504 6.56e-01
+3         sub_mace_his (P=0.588)  C 0.532624 -0.02272470 0.04192930 5.88e-01
+4      sub_mace_his_sh (P=0.802)  T 0.532624  0.01081928 0.04312353 8.02e-01
+5 sub_mace_eur_meta (P=2.26e-05)  t 0.500100  0.04860000 0.01150000 2.26e-05
+6     sub_mace_eur_sh (P=0.0453)  T 0.500100  0.02524766 0.01261404 4.53e-02
+7      sub_mace_all (P=2.26e-05)  t 0.500100  0.04860000 0.01150000 2.26e-05
+8     sub_mace_all_sh (P=0.0443)  t 0.474400  0.02250000 0.01120000 4.43e-02
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>Saving 6.67 x 6.67 in image
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>        MARKER     BETA        SE           P       EAF EA NONEA
+1: 9:106185546 0.381147 0.0787224 1.28763e-06 0.0338681  C     A
+        MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 9:106185546       -0.4290568     0.08436965  3.667743e-07     0.9661319
+   EA.prognosis OA.prognosis
+1:            C            A
+        MARKER       BETA        SE        P      EAF EA NONEA
+1: 9:106185546 -0.0685949 0.0761486 0.367693 0.105006  C     A
+        MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 9:106185546      -0.08196391     0.07730104     0.2889986      0.105006
+   EA.prognosis OA.prognosis
+1:            A            C
+[1] &#34;flipping beta&#34;
+        MARKER   BETA     SE      P    EAF EA NONEA
+1: 9:106185546 0.0021 0.0166 0.8995 0.8299  a     c
+[1] &#34;flipping beta&#34;
+        MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 9:106185546     -0.002165268     0.01718666     0.8997435        0.8299
+   EA.prognosis OA.prognosis
+1:            A            C
+[1] &#34;flipping beta&#34;
+        MARKER   BETA     SE      P    EAF EA NONEA
+1: 9:106185546 0.0021 0.0166 0.8995 0.8299  a     c
+[1] &#34;flipping beta&#34;
+        MARKER   BETA     SE      P    EAF EA NONEA
+1: 9:106185546 0.0106 0.0165 0.5186 0.8007  a     c
+[1] &#34;flipping beta&#34;
+                           SNP EA       EAF         BETA         SE        P
+1    sub_mace_afr (P=1.29e-06)  C 0.0338681  0.381147000 0.07872240 1.29e-06
+2 sub_mace_afr_sh (P=3.67e-07)  C 0.9661319 -0.429056804 0.08436965 3.67e-07
+3       sub_mace_his (P=0.368)  C 0.1050060 -0.068594900 0.07614860 3.68e-01
+4    sub_mace_his_sh (P=0.289)  A 0.1050060  0.081963908 0.07730104 2.89e-01
+5    sub_mace_eur_meta (P=0.9)  a 0.8299000 -0.002100000 0.01660000 9.00e-01
+6      sub_mace_eur_sh (P=0.9)  A 0.8299000  0.002165268 0.01718666 9.00e-01
+7         sub_mace_all (P=0.9)  a 0.8299000 -0.002100000 0.01660000 9.00e-01
+8    sub_mace_all_sh (P=0.519)  a 0.8007000 -0.010600000 0.01650000 5.19e-01
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>Saving 6.67 x 6.67 in image
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>         MARKER       BETA        SE        P      EAF EA NONEA
+1: 11:102795606 0.00419027 0.0558319 0.940174 0.045682  G     A
+         MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 11:102795606      -0.04505354     0.06037213      0.455508      0.954318
+   EA.prognosis OA.prognosis
+1:            G            A
+         MARKER       BETA        SE        P      EAF EA NONEA
+1: 11:102795606 -0.0723072 0.0491371 0.141145 0.253405  G     A
+         MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 11:102795606      -0.07883959     0.04971464      0.112775      0.253405
+   EA.prognosis OA.prognosis
+1:            A            G
+[1] &#34;flipping beta&#34;
+         MARKER   BETA     SE      P    EAF EA NONEA
+1: 11:102795606 0.0187 0.0139 0.1785 0.7876  a     g
+[1] &#34;flipping beta&#34;
+         MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 11:102795606     -0.004545713     0.01497834     0.7615196        0.7876
+   EA.prognosis OA.prognosis
+1:            A            G
+[1] &#34;flipping beta&#34;
+         MARKER   BETA     SE      P    EAF EA NONEA
+1: 11:102795606 0.0187 0.0139 0.1785 0.7876  a     g
+[1] &#34;flipping beta&#34;
+         MARKER    BETA    SE      P    EAF EA NONEA
+1: 11:102795606 -0.0077 0.014 0.5787 0.7492  a     g
+[1] &#34;flipping beta&#34;
+                          SNP EA      EAF         BETA         SE     P
+1       sub_mace_afr (P=0.94)  G 0.045682  0.004190270 0.05583190 0.940
+2   sub_mace_afr_sh (P=0.456)  G 0.954318 -0.045053544 0.06037213 0.456
+3      sub_mace_his (P=0.141)  G 0.253405 -0.072307200 0.04913710 0.141
+4   sub_mace_his_sh (P=0.113)  A 0.253405  0.078839588 0.04971464 0.113
+5 sub_mace_eur_meta (P=0.178)  a 0.787600 -0.018700000 0.01390000 0.178
+6   sub_mace_eur_sh (P=0.762)  A 0.787600  0.004545713 0.01497834 0.762
+7      sub_mace_all (P=0.178)  a 0.787600 -0.018700000 0.01390000 0.178
+8   sub_mace_all_sh (P=0.579)  a 0.749200  0.007700000 0.01400000 0.579
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>Saving 6.67 x 6.67 in image
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>        MARKER      BETA        SE        P      EAF EA NONEA
+1: 19:45411941 0.0132944 0.0273089 0.626389 0.218174  T     C
+        MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 19:45411941       0.01299063     0.02995532     0.6645305      0.781826
+   EA.prognosis OA.prognosis
+1:            T            C
+        MARKER       BETA       SE        P      EAF EA NONEA
+1: 19:45411941 -0.0508394 0.066048 0.441458 0.113086  T     C
+        MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 19:45411941      -0.04641608     0.06661273     0.4859249      0.113086
+   EA.prognosis OA.prognosis
+1:            C            T
+[1] &#34;flipping beta&#34;
+        MARKER    BETA     SE      P    EAF EA NONEA
+1: 19:45411941 -0.0089 0.0161 0.5815 0.1444  t     c
+        MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 19:45411941       -0.0388102     0.01750482    0.02661523        0.1444
+   EA.prognosis OA.prognosis
+1:            T            C
+        MARKER    BETA     SE      P    EAF EA NONEA
+1: 19:45411941 -0.0089 0.0161 0.5815 0.1444  t     c
+        MARKER    BETA     SE      P   EAF EA NONEA
+1: 19:45411941 -0.0221 0.0147 0.1338 0.197  t     c
+                          SNP EA      EAF        BETA         SE      P
+1      sub_mace_afr (P=0.626)  T 0.218174  0.01329440 0.02730890 0.6260
+2   sub_mace_afr_sh (P=0.665)  T 0.781826  0.01299063 0.02995532 0.6650
+3      sub_mace_his (P=0.441)  T 0.113086 -0.05083940 0.06604800 0.4410
+4   sub_mace_his_sh (P=0.486)  C 0.113086  0.04641608 0.06661273 0.4860
+5 sub_mace_eur_meta (P=0.582)  t 0.144400 -0.00890000 0.01610000 0.5820
+6  sub_mace_eur_sh (P=0.0266)  T 0.144400 -0.03881020 0.01750482 0.0266
+7      sub_mace_all (P=0.582)  t 0.144400 -0.00890000 0.01610000 0.5820
+8   sub_mace_all_sh (P=0.134)  t 0.197000 -0.02210000 0.01470000 0.1340
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>Saving 6.67 x 6.67 in image
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>        MARKER       BETA       SE         P      EAF EA NONEA
+1: 19:49229323 -0.0404412 0.023935 0.0911003 0.589012  G     A
+        MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 19:49229323       0.03909557     0.02555979     0.1261224      0.410988
+   EA.prognosis OA.prognosis
+1:            G            A
+        MARKER      BETA       SE         P      EAF EA NONEA
+1: 19:49229323 0.0816613 0.043972 0.0632936 0.384829  G     A
+        MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 19:49229323       0.07458504     0.04459449    0.09442244      0.384829
+   EA.prognosis OA.prognosis
+1:            A            G
+[1] &#34;flipping beta&#34;
+        MARKER   BETA     SE       P    EAF EA NONEA
+1: 19:49229323 0.0217 0.0114 0.05722 0.4644  a     g
+[1] &#34;flipping beta&#34;
+        MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 19:49229323       0.04174676     0.01233952  0.0007165267        0.4644
+   EA.prognosis OA.prognosis
+1:            A            G
+[1] &#34;flipping beta&#34;
+        MARKER   BETA     SE       P    EAF EA NONEA
+1: 19:49229323 0.0217 0.0114 0.05722 0.4644  a     g
+[1] &#34;flipping beta&#34;
+        MARKER   BETA     SE        P    EAF EA NONEA
+1: 19:49229323 0.0293 0.0108 0.006619 0.4502  a     g
+[1] &#34;flipping beta&#34;
+                           SNP EA      EAF        BETA         SE        P
+1      sub_mace_afr (P=0.0911)  G 0.589012 -0.04044120 0.02393500 0.091100
+2    sub_mace_afr_sh (P=0.126)  G 0.410988  0.03909557 0.02555979 0.126000
+3      sub_mace_his (P=0.0633)  G 0.384829  0.08166130 0.04397200 0.063300
+4   sub_mace_his_sh (P=0.0944)  A 0.384829 -0.07458504 0.04459449 0.094400
+5 sub_mace_eur_meta (P=0.0572)  a 0.464400 -0.02170000 0.01140000 0.057200
+6 sub_mace_eur_sh (P=0.000717)  A 0.464400 -0.04174676 0.01233952 0.000717
+7      sub_mace_all (P=0.0572)  a 0.464400 -0.02170000 0.01140000 0.057200
+8  sub_mace_all_sh (P=0.00662)  a 0.450200 -0.02930000 0.01080000 0.006620
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>Saving 6.67 x 6.67 in image
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>       MARKER       BETA        SE        P       EAF EA NONEA
+1: 9:34649442 -0.0275851 0.0724312 0.703318 0.0250962  A     G
+       MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 9:34649442       0.04641681      0.0776409     0.5499469     0.9749038
+   EA.prognosis OA.prognosis
+1:            A            G
+       MARKER       BETA        SE       P       EAF EA NONEA
+1: 9:34649442 -0.0491505 0.0792599 0.53518 0.0712177  A     G
+       MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 9:34649442      -0.04402247     0.07996462     0.5819598     0.0712177
+   EA.prognosis OA.prognosis
+1:            G            A
+[1] &#34;flipping beta&#34;
+       MARKER   BETA     SE         P    EAF EA NONEA
+1: 9:34649442 0.0827 0.0196 2.457e-05 0.0921  a     g
+       MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 9:34649442       0.09224354     0.02034908  5.813629e-06        0.0921
+   EA.prognosis OA.prognosis
+1:            A            G
+       MARKER   BETA     SE         P    EAF EA NONEA
+1: 9:34649442 0.0827 0.0196 2.457e-05 0.0921  a     g
+       MARKER   BETA     SE         P    EAF EA NONEA
+1: 9:34649442 0.0867 0.0191 5.717e-06 0.1373  a     g
+                             SNP EA       EAF        BETA         SE        P
+1         sub_mace_afr (P=0.703)  A 0.0250962 -0.02758510 0.07243120 7.03e-01
+2       sub_mace_afr_sh (P=0.55)  A 0.9749038  0.04641681 0.07764090 5.50e-01
+3         sub_mace_his (P=0.535)  A 0.0712177 -0.04915050 0.07925990 5.35e-01
+4      sub_mace_his_sh (P=0.582)  G 0.0712177  0.04402247 0.07996462 5.82e-01
+5 sub_mace_eur_meta (P=2.46e-05)  a 0.0921000  0.08270000 0.01960000 2.46e-05
+6   sub_mace_eur_sh (P=5.81e-06)  A 0.0921000  0.09224354 0.02034908 5.81e-06
+7      sub_mace_all (P=2.46e-05)  a 0.0921000  0.08270000 0.01960000 2.46e-05
+8   sub_mace_all_sh (P=5.72e-06)  a 0.1373000  0.08670000 0.01910000 5.72e-06
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>Saving 6.67 x 6.67 in image
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>        MARKER       BETA        SE         P      EAF EA NONEA
+1: 1:207015957 -0.0705366 0.0294845 0.0167417 0.819573  T     C
+        MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 1:207015957       0.06689421      0.0315012    0.03370825      0.180427
+   EA.prognosis OA.prognosis
+1:            T            C
+        MARKER       BETA        SE        P      EAF EA NONEA
+1: 1:207015957 -0.0643076 0.0439548 0.143457 0.671211  T     C
+        MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 1:207015957      -0.06453059     0.04428894     0.1451064      0.671211
+   EA.prognosis OA.prognosis
+1:            C            T
+[1] &#34;flipping beta&#34;
+        MARKER    BETA     SE         P   EAF EA NONEA
+1: 1:207015957 -0.0455 0.0137 0.0009098 0.751  t     c
+        MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 1:207015957      -0.05045837     0.01421385  0.0003853114         0.751
+   EA.prognosis OA.prognosis
+1:            T            C
+        MARKER    BETA     SE         P   EAF EA NONEA
+1: 1:207015957 -0.0455 0.0137 0.0009098 0.751  t     c
+        MARKER    BETA     SE       P    EAF EA NONEA
+1: 1:207015957 -0.0231 0.0124 0.06313 0.7501  t     c
+                            SNP EA      EAF        BETA         SE        P
+1       sub_mace_afr (P=0.0167)  T 0.819573 -0.07053660 0.02948450 0.016700
+2    sub_mace_afr_sh (P=0.0337)  T 0.180427  0.06689421 0.03150120 0.033700
+3        sub_mace_his (P=0.143)  T 0.671211 -0.06430760 0.04395480 0.143000
+4     sub_mace_his_sh (P=0.145)  C 0.671211  0.06453059 0.04428894 0.145000
+5 sub_mace_eur_meta (P=0.00091)  t 0.751000 -0.04550000 0.01370000 0.000910
+6  sub_mace_eur_sh (P=0.000385)  T 0.751000 -0.05045837 0.01421385 0.000385
+7      sub_mace_all (P=0.00091)  t 0.751000 -0.04550000 0.01370000 0.000910
+8    sub_mace_all_sh (P=0.0631)  t 0.750100 -0.02310000 0.01240000 0.063100
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>Saving 6.67 x 6.67 in image
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>      MARKER      BETA        SE        P      EAF EA NONEA
+1: 1:2488930 0.0237282 0.0249312 0.341224 0.688923  G     A
+      MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 1:2488930      -0.02558201     0.02665321     0.3371511      0.311077
+   EA.prognosis OA.prognosis
+1:            G            A
+      MARKER        BETA        SE        P      EAF EA NONEA
+1: 1:2488930 -0.00883655 0.0418083 0.832607 0.514947  G     A
+      MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 1:2488930      -0.00938139     0.04212156      0.823752      0.514947
+   EA.prognosis OA.prognosis
+1:            A            G
+[1] &#34;flipping beta&#34;
+      MARKER    BETA     SE        P    EAF EA NONEA
+1: 1:2488930 -0.0412 0.0114 0.000296 0.5163  a     g
+[1] &#34;flipping beta&#34;
+      MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 1:2488930       -0.0398671     0.01179891  0.0007278137        0.5163
+   EA.prognosis OA.prognosis
+1:            A            G
+[1] &#34;flipping beta&#34;
+      MARKER    BETA     SE        P    EAF EA NONEA
+1: 1:2488930 -0.0412 0.0114 0.000296 0.5163  a     g
+[1] &#34;flipping beta&#34;
+      MARKER    BETA     SE        P    EAF EA NONEA
+1: 1:2488930 -0.0279 0.0105 0.007541 0.4848  a     g
+[1] &#34;flipping beta&#34;
+                             SNP EA      EAF        BETA         SE        P
+1         sub_mace_afr (P=0.341)  G 0.688923  0.02372820 0.02493120 0.341000
+2      sub_mace_afr_sh (P=0.337)  G 0.311077 -0.02558201 0.02665321 0.337000
+3         sub_mace_his (P=0.833)  G 0.514947 -0.00883655 0.04180830 0.833000
+4      sub_mace_his_sh (P=0.824)  A 0.514947  0.00938139 0.04212156 0.824000
+5 sub_mace_eur_meta (P=0.000296)  a 0.516300  0.04120000 0.01140000 0.000296
+6   sub_mace_eur_sh (P=0.000728)  A 0.516300  0.03986710 0.01179891 0.000728
+7      sub_mace_all (P=0.000296)  a 0.516300  0.04120000 0.01140000 0.000296
+8    sub_mace_all_sh (P=0.00754)  a 0.484800  0.02790000 0.01050000 0.007540
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>Saving 6.67 x 6.67 in image
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>        MARKER      BETA       SE        P        EAF EA NONEA
+1: 9:136304114 0.0169346 0.239261 0.943574 0.00279329  A     G
+        MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 9:136304114       0.06266594      0.2584358      0.808407     0.9972067
+   EA.prognosis OA.prognosis
+1:            A            G
+        MARKER     BETA       SE        P        EAF EA NONEA
+1: 9:136304114 0.649702 0.264491 0.014033 0.00785297  A     G
+        MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 9:136304114        0.6366938      0.2665997    0.01693106    0.00785297
+   EA.prognosis OA.prognosis
+1:            G            A
+[1] &#34;flipping beta&#34;
+        MARKER    BETA     SE      P    EAF EA NONEA
+1: 9:136304114 -0.0344 0.0509 0.4985 0.0155  a     g
+        MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 9:136304114      -0.08121132     0.05336854     0.1280823        0.0155
+   EA.prognosis OA.prognosis
+1:            A            G
+        MARKER    BETA     SE      P    EAF EA NONEA
+1: 9:136304114 -0.0344 0.0509 0.4985 0.0155  a     g
+        MARKER    BETA     SE       P    EAF EA NONEA
+1: 9:136304114 -0.0961 0.0513 0.06096 0.0508  a     g
+                          SNP EA        EAF        BETA         SE      P
+1      sub_mace_afr (P=0.944)  A 0.00279329  0.01693460 0.23926100 0.9440
+2   sub_mace_afr_sh (P=0.808)  A 0.99720671  0.06266594 0.25843583 0.8080
+3      sub_mace_his (P=0.014)  A 0.00785297  0.64970200 0.26449100 0.0140
+4  sub_mace_his_sh (P=0.0169)  G 0.00785297 -0.63669382 0.26659971 0.0169
+5 sub_mace_eur_meta (P=0.498)  a 0.01550000 -0.03440000 0.05090000 0.4980
+6   sub_mace_eur_sh (P=0.128)  A 0.01550000 -0.08121132 0.05336854 0.1280
+7      sub_mace_all (P=0.498)  a 0.01550000 -0.03440000 0.05090000 0.4980
+8   sub_mace_all_sh (P=0.061)  a 0.05080000 -0.09610000 0.05130000 0.0610
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>Saving 6.67 x 6.67 in image
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>        MARKER     BETA        SE        P      EAF EA NONEA
+1: 19:49206674 -0.03539 0.0225652 0.116802 0.503719  G     A
+        MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 19:49206674       0.05101674     0.02442187    0.03670975      0.496281
+   EA.prognosis OA.prognosis
+1:            G            A
+        MARKER       BETA        SE       P      EAF EA NONEA
+1: 19:49206674 0.00993693 0.0439259 0.82103 0.356562  G     A
+        MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 19:49206674      0.006528026     0.04432228     0.8829067      0.356562
+   EA.prognosis OA.prognosis
+1:            A            G
+[1] &#34;flipping beta&#34;
+        MARKER   BETA     SE       P    EAF EA NONEA
+1: 19:49206674 0.0235 0.0113 0.03722 0.5058  a     g
+[1] &#34;flipping beta&#34;
+        MARKER BETA_SLOPEHUNTER SE_SLOPEHUNTER P_SLOPEHUNTER EAF.prognosis
+1: 19:49206674       0.03981465     0.01205606  0.0009584072        0.5058
+   EA.prognosis OA.prognosis
+1:            A            G
+[1] &#34;flipping beta&#34;
+        MARKER   BETA     SE       P    EAF EA NONEA
+1: 19:49206674 0.0235 0.0113 0.03722 0.5058  a     g
+[1] &#34;flipping beta&#34;
+        MARKER   BETA     SE       P    EAF EA NONEA
+1: 19:49206674 0.0211 0.0105 0.04406 0.4994  a     g
+[1] &#34;flipping beta&#34;
+                           SNP EA      EAF         BETA         SE        P
+1       sub_mace_afr (P=0.117)  G 0.503719 -0.035390000 0.02256520 0.117000
+2   sub_mace_afr_sh (P=0.0367)  G 0.496281  0.051016745 0.02442187 0.036700
+3       sub_mace_his (P=0.821)  G 0.356562  0.009936930 0.04392590 0.821000
+4    sub_mace_his_sh (P=0.883)  A 0.356562 -0.006528026 0.04432228 0.883000
+5 sub_mace_eur_meta (P=0.0372)  a 0.505800 -0.023500000 0.01130000 0.037200
+6 sub_mace_eur_sh (P=0.000958)  A 0.505800 -0.039814652 0.01205606 0.000958
+7      sub_mace_all (P=0.0372)  a 0.505800 -0.023500000 0.01130000 0.037200
+8   sub_mace_all_sh (P=0.0441)  a 0.499400 -0.021100000 0.01050000 0.044100
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>Saving 6.67 x 6.67 in image
+</pre>
+</div>
+</div>
+
+</div>
+
 </div>
 
 </div>
