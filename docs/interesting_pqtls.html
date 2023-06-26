@@ -14679,11 +14679,14 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[18]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[25]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-r"><pre><span></span><span class="n">interesting_exposures</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/interesting_exposures.tsv&quot;</span><span class="p">)</span>
-<span class="n">interesting_exposures</span>
+<span class="n">first_exposures</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/interesting_exposures_first.tsv&quot;</span><span class="p">)</span>
+
+<span class="n">coloc</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">merge</span><span class="p">(</span><span class="n">first_exposures</span><span class="p">[,</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;exposure&quot;</span><span class="p">)],</span><span class="w"> </span><span class="n">interesting_exposures</span><span class="p">,</span><span class="w"> </span><span class="n">by</span><span class="o">=</span><span class="s">&quot;exposure&quot;</span><span class="p">)</span>
+<span class="n">coloc</span><span class="p">[</span><span class="nf">with</span><span class="p">(</span><span class="n">coloc</span><span class="p">,</span><span class="w"> </span><span class="nf">order</span><span class="p">(</span><span class="n">existing.coloc.h4</span><span class="p">,</span><span class="w"> </span><span class="n">decreasing</span><span class="o">=</span><span class="bp">T</span><span class="p">)),]</span>
 </pre></div>
 
      </div>
@@ -14705,34 +14708,25 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
 <table class="dataframe">
-<caption>A data.table: 22 × 6</caption>
+<caption>A data.table: 13 × 6</caption>
 <thead>
 	<tr><th scope=col>exposure</th><th scope=col>MARKER</th><th scope=col>f.statistic</th><th scope=col>existing.coloc.h4</th><th scope=col>subsequent_ais.coloc.h4</th><th scope=col>subsequent_mace.coloc.h4</th></tr>
 	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
 </thead>
 <tbody>
-	<tr><td>ADAMTS13</td><td>9:136304114_A_G  </td><td>1409.08914</td><td>1.202038e-03</td><td>       NA</td><td>       NA</td></tr>
-	<tr><td>CCL27   </td><td>9:34649442_A_G   </td><td> 754.09042</td><td>3.072698e-03</td><td>0.7145173</td><td>0.6109275</td></tr>
-	<tr><td>CD2AP   </td><td>6:47437697_A_AC  </td><td>1397.00601</td><td>2.218587e-03</td><td>       NA</td><td>       NA</td></tr>
-	<tr><td>CDKN1A  </td><td>6:36650565_C_G   </td><td> 337.94186</td><td>2.822073e-01</td><td>       NA</td><td>       NA</td></tr>
-	<tr><td>CGREF1  </td><td>2:27324751_G_T   </td><td>1409.08914</td><td>5.856482e-01</td><td>       NA</td><td>       NA</td></tr>
-	<tr><td>COMT    </td><td>22:19951271_A_G  </td><td>1409.08914</td><td>3.216185e-01</td><td>       NA</td><td>       NA</td></tr>
-	<tr><td>CST6    </td><td>11:65776305_A_G  </td><td> 650.98451</td><td>7.677659e-01</td><td>       NA</td><td>       NA</td></tr>
-	<tr><td>EGFR    </td><td>7:55236796_C_T   </td><td> 563.73562</td><td>1.328083e-03</td><td>       NA</td><td>       NA</td></tr>
-	<tr><td>FGF5    </td><td>4:81182554_C_T   </td><td>1409.08914</td><td>9.498096e-01</td><td>       NA</td><td>       NA</td></tr>
-	<tr><td>FURIN   </td><td>15:91425232_C_T  </td><td> 641.21820</td><td>9.461463e-01</td><td>       NA</td><td>       NA</td></tr>
-	<tr><td>GRK5    </td><td>10:121010256_A_G </td><td>1213.23950</td><td>9.999992e-01</td><td>       NA</td><td>       NA</td></tr>
-	<tr><td>IL19    </td><td>1:207015957_C_T  </td><td>1409.08914</td><td>4.266549e-02</td><td>0.6332451</td><td>0.7886322</td></tr>
-	<tr><td>KLK1    </td><td>19:49206674_A_G  </td><td>1409.08914</td><td>6.561444e-01</td><td>       NA</td><td>       NA</td></tr>
-	<tr><td>LAIR1   </td><td>19:54870191_A_T  </td><td>1409.08914</td><td>6.332710e-03</td><td>       NA</td><td>       NA</td></tr>
-	<tr><td>MMP12   </td><td>11:102748695_A_G </td><td>1409.08914</td><td>9.240407e-01</td><td>       NA</td><td>       NA</td></tr>
-	<tr><td>PFKFB2  </td><td>1:207250631_A_G  </td><td> 654.30897</td><td>1.483445e-03</td><td>       NA</td><td>       NA</td></tr>
-	<tr><td>SCARA5  </td><td>8:27805783_C_T   </td><td>1409.08914</td><td>5.716651e-01</td><td>       NA</td><td>       NA</td></tr>
-	<tr><td>SH2B3   </td><td>12:111911568_G_GA</td><td>  77.85586</td><td>4.583426e-09</td><td>       NA</td><td>       NA</td></tr>
-	<tr><td>SNCG    </td><td>10:88724619_C_T  </td><td>1409.08914</td><td>1.591943e-03</td><td>       NA</td><td>       NA</td></tr>
-	<tr><td>TNFRSF14</td><td>1:2488930_A_G    </td><td> 247.73885</td><td>1.567964e-03</td><td>0.8125648</td><td>0.7187281</td></tr>
-	<tr><td>VASN    </td><td>16:4431360_A_G   </td><td>1409.08914</td><td>5.308423e-01</td><td>       NA</td><td>       NA</td></tr>
-	<tr><td>WARS    </td><td>14:100842637_C_G </td><td> 928.28549</td><td>3.528532e-01</td><td>       NA</td><td>       NA</td></tr>
+	<tr><td>GRK5    </td><td>10:121010256_A_G</td><td>1213.2395</td><td>0.999999153</td><td>       NA</td><td>       NA</td></tr>
+	<tr><td>FGF5    </td><td>4:81182554_C_T  </td><td>1409.0891</td><td>0.949809624</td><td>       NA</td><td>       NA</td></tr>
+	<tr><td>FURIN   </td><td>15:91425232_C_T </td><td> 641.2182</td><td>0.946146338</td><td>       NA</td><td>       NA</td></tr>
+	<tr><td>MMP12   </td><td>11:102748695_A_G</td><td>1409.0891</td><td>0.924040684</td><td>       NA</td><td>       NA</td></tr>
+	<tr><td>CST6    </td><td>11:65776305_A_G </td><td> 650.9845</td><td>0.767765861</td><td>       NA</td><td>       NA</td></tr>
+	<tr><td>KLK1    </td><td>19:49206674_A_G </td><td>1409.0891</td><td>0.656144375</td><td>       NA</td><td>       NA</td></tr>
+	<tr><td>CGREF1  </td><td>2:27324751_G_T  </td><td>1409.0891</td><td>0.585648221</td><td>       NA</td><td>       NA</td></tr>
+	<tr><td>SCARA5  </td><td>8:27805783_C_T  </td><td>1409.0891</td><td>0.571665146</td><td>       NA</td><td>       NA</td></tr>
+	<tr><td>COMT    </td><td>22:19951271_A_G </td><td>1409.0891</td><td>0.321618528</td><td>       NA</td><td>       NA</td></tr>
+	<tr><td>IL19    </td><td>1:207015957_C_T </td><td>1409.0891</td><td>0.042665492</td><td>0.6332451</td><td>0.7886322</td></tr>
+	<tr><td>CCL27   </td><td>9:34649442_A_G  </td><td> 754.0904</td><td>0.003072698</td><td>0.7145173</td><td>0.6109275</td></tr>
+	<tr><td>TNFRSF14</td><td>1:2488930_A_G   </td><td> 247.7388</td><td>0.001567964</td><td>0.8125648</td><td>0.7187281</td></tr>
+	<tr><td>PFKFB2  </td><td>1:207250631_A_G </td><td> 654.3090</td><td>0.001483445</td><td>       NA</td><td>       NA</td></tr>
 </tbody>
 </table>
 
