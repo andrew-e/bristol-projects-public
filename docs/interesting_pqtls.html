@@ -14639,23 +14639,23 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <tbody>
 <tr>
   <td><img src="scratch/results/plots/forest_plots/SCARA5_mr.png" alt="alt" /></td>
-  <td><img src="scratch/results/plots/forest_plots/PFKFB2_mr.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/forest_plots/FURIN_mr.png" alt="alt" /></td>
 </tr>
 <tr>
   <td><img src="scratch/results/plots/forest_plots/MMP12_mr.png" alt="alt" /></td>
-  <td><img src="scratch/results/plots/forest_plots/KLK1_mr.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/forest_plots/GRK5_mr.png" alt="alt" /></td>
 </tr>
 <tr>
-  <td><img src="scratch/results/plots/forest_plots/GRK5_mr.png" alt="alt" /></td>
-  <td><img src="scratch/results/plots/forest_plots/FURIN_mr.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/forest_plots/KLK1_mr.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/forest_plots/PFKFB2_mr.png" alt="alt" /></td>
 </tr>
 <tr>
   <td><img src="scratch/results/plots/forest_plots/CST6_mr.png" alt="alt" /></td>
   <td><img src="scratch/results/plots/forest_plots/FGF5_mr.png" alt="alt" /></td>
 </tr>
 <tr>
-  <td><img src="scratch/results/plots/forest_plots/COMT_mr.png" alt="alt" /></td>
   <td><img src="scratch/results/plots/forest_plots/CGREF1_mr.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/forest_plots/COMT_mr.png" alt="alt" /></td>
 </tr>
 </tbody>
 </table>
@@ -14765,7 +14765,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <span class="n">all_together</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rbind</span><span class="p">(</span><span class="n">mr_incidence_ais_remix</span><span class="p">,</span><span class="w"> </span><span class="n">mr_published_ais_remix</span><span class="p">,</span><span class="w"> </span><span class="n">mr_mace</span><span class="p">,</span><span class="w"> </span><span class="n">mr_mace_dudbridge</span><span class="p">,</span>
 <span class="w">                      </span><span class="n">mr_mace_slopehunter</span><span class="p">,</span><span class="w"> </span><span class="n">mr_ais</span><span class="p">,</span><span class="w"> </span><span class="n">mr_ais_dudbridge</span><span class="p">,</span><span class="w"> </span><span class="n">mr_ais_slopehunter_remix</span><span class="p">)</span>
 
-<span class="n">just_incidence</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rbind</span><span class="p">(</span><span class="n">mr_incidence_ais_remix</span><span class="p">,</span><span class="w"> </span><span class="n">mr_published_ais_remix</span><span class="p">)</span>
+<span class="n">just_incidence</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rbind</span><span class="p">(</span><span class="n">mr_incidence_ais_remix</span><span class="p">,</span><span class="w"> </span><span class="n">mr_published_ais_remix</span><span class="p">,</span><span class="w"> </span><span class="n">mr_mace</span><span class="p">,</span><span class="w"> </span><span class="n">mr_ais</span><span class="p">)</span>
 
 <span class="nf">for </span><span class="p">(</span><span class="n">pqtl</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">subsequent_pqtls</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">pqtl_rows</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">all_together</span><span class="p">[</span><span class="n">all_together</span><span class="o">$</span><span class="n">exposure</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">pqtl</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
@@ -14774,8 +14774,88 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 <span class="nf">for </span><span class="p">(</span><span class="n">pqtl</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">incidence_pqtls</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">pqtl_rows</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">just_incidence</span><span class="p">[</span><span class="n">just_incidence</span><span class="o">$</span><span class="n">exposure</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">pqtl</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
+<span class="w">    </span><span class="n">pqtl_rows</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">pqtl_rows</span><span class="p">[</span><span class="nf">with</span><span class="p">(</span><span class="n">pqtl_rows</span><span class="p">,</span><span class="w"> </span><span class="nf">order</span><span class="p">(</span><span class="n">outcome</span><span class="p">)),</span><span class="w"> </span><span class="p">]</span>
 <span class="w">    </span><span class="nf">create_forest_plot_mr_results</span><span class="p">(</span><span class="n">pqtl_rows</span><span class="p">,</span><span class="w"> </span><span class="nf">paste0</span><span class="p">(</span><span class="n">pqtl</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;_mr&quot;</span><span class="p">),</span><span class="w"> </span><span class="nf">paste</span><span class="p">(</span><span class="s">&quot;Comparing MR for&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">pqtl</span><span class="p">))</span>
 <span class="p">}</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-r"><pre><span></span><span class="c1">#Comparing different data sets!</span>
+<span class="nf">source</span><span class="p">(</span><span class="s">&quot;gwas_data_helpers.R&quot;</span><span class="p">)</span>
+<span class="n">incidence_pqtls</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;FGF5&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ADAMTS13&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;CD2AP&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;CGREF1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;COMT&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;CST6&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;EGFR&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;FURIN&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;GRK5&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;KLK1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;LAIR1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;MMP12&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;PFKFB2&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;SCARA5&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;SH2B3&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;SNCG&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;VASN&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;WARS&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;CDKN1A&quot;</span><span class="p">)</span>
+<span class="n">subsequent_pqtls</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;CCL27&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;IL19&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;TNFRSF14&quot;</span><span class="p">)</span>
+
+
+
+<span class="c1">#UKB PQTLs</span>
+<span class="n">ukb_published_ais</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/mr_published_ais_cis_remix.tsv&quot;</span><span class="p">)</span>
+<span class="n">ukb_first_ais</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/mr_first_ais_all_cis.tsv&quot;</span><span class="p">)</span>
+<span class="n">ukb_mr_mace</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/mr_subsequent_mace_cis_updated.tsv&quot;</span><span class="p">)</span>
+<span class="n">ukb_mr_mace_slopehunter</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/mr_subsequent_mace_slopehunter_cis.tsv&quot;</span><span class="p">)</span>
+<span class="n">ukb_mr_ais</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/mr_subsequent_ais_cis_remix.tsv&quot;</span><span class="p">)</span>
+<span class="n">ukb_mr_ais_slopehunter</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/mr_subsequent_ais_sh_cis_remix.tsv&quot;</span><span class="p">)</span>
+
+<span class="c1">#ARIC pQTLS</span>
+<span class="n">aric_first_ais</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/aric/first_ais_eur.tsv&quot;</span><span class="p">)</span>
+
+<span class="n">aric_mr_mace_eur</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/aric/mr_subsequent_mace_eur.tsv&quot;</span><span class="p">)</span>
+<span class="n">aric_mr_mace_eur_slopehunter</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/aric/mr_subsequent_mace_eur_slopehunter.tsv&quot;</span><span class="p">)</span>
+<span class="n">aric_mr_ais_eur</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/aric/mr_subsequent_ais_eur.tsv&quot;</span><span class="p">)</span>
+<span class="n">aric_mr_ais_eur_slopehunter</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/aric/mr_subsequent_ais_eur_slopehunter.tsv&quot;</span><span class="p">)</span>
+
+
+<span class="n">all_together</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rbind</span><span class="p">(</span><span class="n">ukb_mr_mace</span><span class="p">,</span><span class="w"> </span><span class="n">ukb_mr_mace_slopehunter</span><span class="p">,</span><span class="w"> </span><span class="n">ukb_mr_ais</span><span class="p">,</span><span class="w"> </span><span class="n">ukb_mr_ais_slopehunter</span><span class="p">,</span>
+<span class="w">                      </span><span class="n">aric_mr_mace_eur</span><span class="p">,</span><span class="w"> </span><span class="n">aric_mr_mace_eur_slopehunter</span><span class="p">,</span><span class="w"> </span><span class="n">aric_mr_ais_eur</span><span class="p">,</span><span class="w"> </span><span class="n">aric_mr_ais_eur_slopehunter</span><span class="p">)</span>
+
+<span class="n">just_incidence</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rbind</span><span class="p">(</span><span class="n">aric_first_ais</span><span class="p">,</span><span class="w"> </span><span class="n">ukb_first_ais</span><span class="p">)</span>
+
+<span class="nf">for </span><span class="p">(</span><span class="n">pqtl</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">incidence_pqtls</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">pqtl_rows</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">just_incidence</span><span class="p">[</span><span class="n">just_incidence</span><span class="o">$</span><span class="n">exposure</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">pqtl</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
+<span class="w">    </span><span class="nf">create_forest_plot_mr_results</span><span class="p">(</span><span class="n">pqtl_rows</span><span class="p">,</span><span class="w"> </span><span class="nf">paste0</span><span class="p">(</span><span class="n">pqtl</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;_compare_pqtl_mr&quot;</span><span class="p">),</span><span class="w"> </span><span class="nf">paste</span><span class="p">(</span><span class="s">&quot;Comparing pQTL Datasets for&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">pqtl</span><span class="p">))</span>
+<span class="p">}</span>
+
+<span class="nf">for </span><span class="p">(</span><span class="n">pqtl</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">subsequent_pqtls</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">pqtl_rows</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">all_together</span><span class="p">[</span><span class="n">all_together</span><span class="o">$</span><span class="n">exposure</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">pqtl</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
+<span class="w">    </span><span class="nf">create_forest_plot_mr_results</span><span class="p">(</span><span class="n">pqtl_rows</span><span class="p">,</span><span class="w"> </span><span class="nf">paste0</span><span class="p">(</span><span class="n">pqtl</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;_compare_pqtl_mr&quot;</span><span class="p">),</span><span class="w"> </span><span class="nf">paste</span><span class="p">(</span><span class="s">&quot;Comparing pQTL Datasets for&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">pqtl</span><span class="p">))</span>
+<span class="p">}</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-r"><pre><span></span><span class="c1">## Comparing pQTLs data sets across subsequent</span>
+
+<span class="n">CCL27</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">IL19</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">TNFRSF14</span>
+<span class="o">-</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">-</span>
+<span class="o">!</span><span class="p">[</span><span class="n">alt</span><span class="p">](</span><span class="n">scratch</span><span class="o">/</span><span class="n">results</span><span class="o">/</span><span class="n">plots</span><span class="o">/</span><span class="n">forest_plots</span><span class="o">/</span><span class="n">CCL27_compare_pqtl_mr.png</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">!</span><span class="p">[</span><span class="n">alt</span><span class="p">](</span><span class="n">scratch</span><span class="o">/</span><span class="n">results</span><span class="o">/</span><span class="n">plots</span><span class="o">/</span><span class="n">forest_plots</span><span class="o">/</span><span class="n">IL19_compare_pqtl_mr.png</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">!</span><span class="p">[</span><span class="n">alt</span><span class="p">](</span><span class="n">scratch</span><span class="o">/</span><span class="n">results</span><span class="o">/</span><span class="n">plots</span><span class="o">/</span><span class="n">forest_plots</span><span class="o">/</span><span class="n">TNFRSF14_compare_pqtl_mr.png</span><span class="p">)</span>
+
+
+<span class="n">.</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">.</span>
+<span class="o">-</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">-</span><span class="w"> </span>
+<span class="o">!</span><span class="p">[</span><span class="n">alt</span><span class="p">](</span><span class="n">scratch</span><span class="o">/</span><span class="n">results</span><span class="o">/</span><span class="n">plots</span><span class="o">/</span><span class="n">forest_plots</span><span class="o">/</span><span class="n">EGFR_compare_pqtl_mr.png</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">!</span><span class="p">[</span><span class="n">alt</span><span class="p">](</span><span class="n">scratch</span><span class="o">/</span><span class="n">results</span><span class="o">/</span><span class="n">plots</span><span class="o">/</span><span class="n">forest_plots</span><span class="o">/</span><span class="n">SCARA5_mr.png</span><span class="p">)</span>
+<span class="o">!</span><span class="p">[</span><span class="n">alt</span><span class="p">](</span><span class="n">scratch</span><span class="o">/</span><span class="n">results</span><span class="o">/</span><span class="n">plots</span><span class="o">/</span><span class="n">forest_plots</span><span class="o">/</span><span class="n">VASN_compare_pqtl_mr.png</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">!</span><span class="p">[</span><span class="n">alt</span><span class="p">](</span><span class="n">scratch</span><span class="o">/</span><span class="n">results</span><span class="o">/</span><span class="n">plots</span><span class="o">/</span><span class="n">forest_plots</span><span class="o">/</span><span class="n">WARS_mr.png</span><span class="p">)</span>
 </pre></div>
 
      </div>
