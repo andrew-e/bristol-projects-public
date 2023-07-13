@@ -14599,10 +14599,11 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h1 id="Results-from-Running-MR-on-pQTL-data">Results from Running MR on pQTL data<a class="anchor-link" href="#Results-from-Running-MR-on-pQTL-data">&#182;</a></h1><p>Below are results from</p>
 <ul>
+<li>pQTL -&gt; published AIS</li>
 <li>pQTL -&gt; Subsequent MACE (original, slopehunter adjusted)</li>
 <li>pQTL -&gt; Subsequent AIS (original, slopehunter adjusted)</li>
 </ul>
-<h2 id="MR-for-CIS-ONLY-pQTLs-in-AFR">MR for CIS ONLY pQTLs in AFR<a class="anchor-link" href="#MR-for-CIS-ONLY-pQTLs-in-AFR">&#182;</a></h2>
+
 </div>
 </div>
 </div>
@@ -14611,10 +14612,12 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[9]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-r"><pre><span></span><span class="nf">source</span><span class="p">(</span><span class="s">&quot;gwas_data_helpers.R&quot;</span><span class="p">)</span>
+
+<span class="n">IRdisplay</span><span class="o">::</span><span class="nf">display_markdown</span><span class="p">(</span><span class="s">&quot;## MR for CIS ONLY pQTLs in AFR&quot;</span><span class="p">)</span>
 
 <span class="n">mr_mace_afr</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/aric/mr_subsequent_mace_afr.tsv&quot;</span><span class="p">)</span>
 <span class="n">mr_mace_afr_slopehunter</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/aric/mr_subsequent_mace_afr_slopehunter.tsv&quot;</span><span class="p">)</span>
@@ -14625,29 +14628,23 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <span class="n">mr_ais_afr_dudbridge</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/aric/mr_subsequent_ais_afr_dudbridge.tsv&quot;</span><span class="p">)</span>
 
 <span class="n">mr_incidence_ais</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/aric/first_ais_afr.tsv&quot;</span><span class="p">)</span>
-<span class="c1">#mr_publised_incidence_ais &lt;- data.table::fread(&quot;scratch/results/mr/aric/mr_published_ais_cis.tsv&quot;)</span>
+<span class="n">mr_publised_incidence_ais</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/aric/published_ais_eur.tsv&quot;</span><span class="p">)</span>
 
 <span class="n">subsequent_mace</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rbind</span><span class="p">(</span><span class="n">mr_mace_afr</span><span class="p">,</span><span class="w"> </span><span class="n">mr_mace_afr_slopehunter</span><span class="p">,</span><span class="w"> </span><span class="n">mr_mace_afr_dudbridge</span><span class="p">)</span>
 <span class="n">subsequent_ais</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rbind</span><span class="p">(</span><span class="n">mr_ais_afr</span><span class="p">,</span><span class="w"> </span><span class="n">mr_ais_afr_slopehunter</span><span class="p">,</span><span class="w"> </span><span class="n">mr_ais_afr_dudbridge</span><span class="p">)</span>
+<span class="n">incidence_ais</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rbind</span><span class="p">(</span><span class="n">mr_incidence_ais</span><span class="p">,</span><span class="w"> </span><span class="n">mr_publised_incidence_ais</span><span class="p">)</span>
 
 <span class="n">IRdisplay</span><span class="o">::</span><span class="nf">display_markdown</span><span class="p">(</span><span class="s">&quot;### MR Subsequent MACE by adjusted p palue&quot;</span><span class="p">)</span>
 <span class="n">subsequent_mace</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">subsequent_mace</span><span class="p">[</span><span class="nf">with</span><span class="p">(</span><span class="n">subsequent_mace</span><span class="p">,</span><span class="w"> </span><span class="nf">order</span><span class="p">(</span><span class="n">pval_adjusted</span><span class="p">)),</span><span class="w"> </span><span class="p">]</span>
 <span class="nf">head</span><span class="p">(</span><span class="n">subsequent_mace</span><span class="p">)</span>
-<span class="c1">#subsequent_mace_subset&lt;-subsequent_mace[subsequent_mace$pval_adjusted &lt; 0.8, ]</span>
-<span class="c1">#subset(subsequent_mace, (exposure %in% subsequent_mace_subset$exposure) == TRUE)</span>
-<span class="c1">#create_forest_plot_mr_results(subset(subsequent_mace, (exposure %in% subsequent_mace_subset$exposure) == TRUE), &quot;mr_sub_mace&quot;,  &quot;mr_sub_mace&quot;)</span>
 
 <span class="n">IRdisplay</span><span class="o">::</span><span class="nf">display_markdown</span><span class="p">(</span><span class="s">&quot;### MR Subsequent AIS Corrected Ordered by adjusted p palue&quot;</span><span class="p">)</span>
 <span class="n">subsequent_ais</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">subsequent_ais</span><span class="p">[</span><span class="nf">with</span><span class="p">(</span><span class="n">subsequent_ais</span><span class="p">,</span><span class="w"> </span><span class="nf">order</span><span class="p">(</span><span class="n">pval_adjusted</span><span class="p">)),</span><span class="w"> </span><span class="p">]</span>
 <span class="nf">head</span><span class="p">(</span><span class="n">subsequent_ais</span><span class="p">)</span>
-<span class="c1">#subsequent_ais_subset &lt;- subsequent_ais[subsequent_ais$pval_adjusted &lt; 0.8, ]</span>
-<span class="c1">#subset(subsequent_ais, (exposure %in% subsequent_ais_subset$exposure) == TRUE)</span>
-<span class="c1">#create_forest_plot_mr_results(subset(subsequent_ais, (exposure %in% subsequent_ais_subset$exposure) == TRUE), &quot;mr_sub_ais&quot;,  &quot;mr_sub_ais&quot;)</span>
 
 <span class="n">IRdisplay</span><span class="o">::</span><span class="nf">display_markdown</span><span class="p">(</span><span class="s">&quot;### MR Incident AIS&quot;</span><span class="p">)</span>
-<span class="n">incidence_ais</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">mr_incidence_ais</span><span class="p">[</span><span class="nf">with</span><span class="p">(</span><span class="n">mr_incidence_ais</span><span class="p">,</span><span class="w"> </span><span class="nf">order</span><span class="p">(</span><span class="n">pval_adjusted</span><span class="p">)),</span><span class="w"> </span><span class="p">]</span>
+<span class="n">incidence_ais</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">incidence_ais</span><span class="p">[</span><span class="nf">with</span><span class="p">(</span><span class="n">incidence_ais</span><span class="p">,</span><span class="w"> </span><span class="nf">order</span><span class="p">(</span><span class="n">pval_adjusted</span><span class="p">)),</span><span class="w"> </span><span class="p">]</span>
 <span class="nf">head</span><span class="p">(</span><span class="n">incidence_ais</span><span class="p">)</span>
-<span class="c1">#incidence_ais[incidence_ais$pval_adjusted &lt; 0.05, ]</span>
 </pre></div>
 
      </div>
@@ -14661,6 +14658,18 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
+<h2 id="MR-for-CIS-ONLY-pQTLs-in-AFR">MR for CIS ONLY pQTLs in AFR<a class="anchor-link" href="#MR-for-CIS-ONLY-pQTLs-in-AFR">&#182;</a></h2>
+</div>
+
+</div>
 <div class="jp-OutputArea-child">
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
@@ -14687,12 +14696,12 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
 </thead>
 <tbody>
-	<tr><td>0t0iBD</td><td>15dGIn</td><td>subsequent_mace</td><td>SERPINA5</td><td>Wald ratio               </td><td>1</td><td>-0.11100901</td><td>0.10844554</td><td>0.3060062</td><td>0.8322271</td></tr>
-	<tr><td>0ujRjS</td><td>15dGIn</td><td>subsequent_mace</td><td>FAM177A1</td><td>Wald ratio               </td><td>1</td><td> 0.04476413</td><td>0.03119697</td><td>0.1513192</td><td>0.8322271</td></tr>
-	<tr><td>1T94QZ</td><td>15dGIn</td><td>subsequent_mace</td><td>LEFTY2  </td><td>Wald ratio               </td><td>1</td><td> 0.11597316</td><td>0.08480861</td><td>0.1714783</td><td>0.8322271</td></tr>
-	<tr><td>1XICrM</td><td>15dGIn</td><td>subsequent_mace</td><td>GSTM1   </td><td>Wald ratio               </td><td>1</td><td> 0.13924181</td><td>0.10676478</td><td>0.1921680</td><td>0.8322271</td></tr>
-	<tr><td>2UYnnp</td><td>15dGIn</td><td>subsequent_mace</td><td>PSG3    </td><td>Wald ratio               </td><td>1</td><td>-0.07100647</td><td>0.06874337</td><td>0.3016409</td><td>0.8322271</td></tr>
-	<tr><td>2zVXye</td><td>15dGIn</td><td>subsequent_mace</td><td>THG1L   </td><td>Inverse variance weighted</td><td>2</td><td>-0.03262634</td><td>0.03022825</td><td>0.2804394</td><td>0.8322271</td></tr>
+	<tr><td>0t0iBD</td><td>15dGIn</td><td>aric_subsequent_mace</td><td>SERPINA5</td><td>Wald ratio               </td><td>1</td><td>-0.11100901</td><td>0.10844554</td><td>0.3060062</td><td>0.8322271</td></tr>
+	<tr><td>0ujRjS</td><td>15dGIn</td><td>aric_subsequent_mace</td><td>FAM177A1</td><td>Wald ratio               </td><td>1</td><td> 0.04476413</td><td>0.03119697</td><td>0.1513192</td><td>0.8322271</td></tr>
+	<tr><td>1T94QZ</td><td>15dGIn</td><td>aric_subsequent_mace</td><td>LEFTY2  </td><td>Wald ratio               </td><td>1</td><td> 0.11597316</td><td>0.08480861</td><td>0.1714783</td><td>0.8322271</td></tr>
+	<tr><td>1XICrM</td><td>15dGIn</td><td>aric_subsequent_mace</td><td>GSTM1   </td><td>Wald ratio               </td><td>1</td><td> 0.13924181</td><td>0.10676478</td><td>0.1921680</td><td>0.8322271</td></tr>
+	<tr><td>2UYnnp</td><td>15dGIn</td><td>aric_subsequent_mace</td><td>PSG3    </td><td>Wald ratio               </td><td>1</td><td>-0.07100647</td><td>0.06874337</td><td>0.3016409</td><td>0.8322271</td></tr>
+	<tr><td>2zVXye</td><td>15dGIn</td><td>aric_subsequent_mace</td><td>THG1L   </td><td>Inverse variance weighted</td><td>2</td><td>-0.03262634</td><td>0.03022825</td><td>0.2804394</td><td>0.8322271</td></tr>
 </tbody>
 </table>
 
@@ -14725,12 +14734,12 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
 </thead>
 <tbody>
-	<tr><td>9NT4kd</td><td>zb8l1H</td><td>subsequent_ais_dudbridge</td><td>IL6R </td><td>Wald ratio</td><td>1</td><td> 0.4015853</td><td>0.14013710</td><td>0.004161413</td><td>0.3925599</td></tr>
-	<tr><td>gSDjDs</td><td>zb8l1H</td><td>subsequent_ais_dudbridge</td><td>BAG1 </td><td>Wald ratio</td><td>1</td><td> 0.2196227</td><td>0.07309956</td><td>0.002660770</td><td>0.3925599</td></tr>
-	<tr><td>mcL58H</td><td>zb8l1H</td><td>subsequent_ais_dudbridge</td><td>RAB1A</td><td>Wald ratio</td><td>1</td><td>-0.3735150</td><td>0.12966619</td><td>0.003969334</td><td>0.3925599</td></tr>
-	<tr><td>9NT4kd</td><td>qgq8PS</td><td>subsequent_ais          </td><td>IL6R </td><td>Wald ratio</td><td>1</td><td> 0.3933163</td><td>0.13943474</td><td>0.004790534</td><td>0.4519070</td></tr>
-	<tr><td>gSDjDs</td><td>qgq8PS</td><td>subsequent_ais          </td><td>BAG1 </td><td>Wald ratio</td><td>1</td><td> 0.2248141</td><td>0.07272038</td><td>0.001991565</td><td>0.4519070</td></tr>
-	<tr><td>mcL58H</td><td>qgq8PS</td><td>subsequent_ais          </td><td>RAB1A</td><td>Wald ratio</td><td>1</td><td>-0.3768847</td><td>0.12907893</td><td>0.003502555</td><td>0.4519070</td></tr>
+	<tr><td>9NT4kd</td><td>zb8l1H</td><td>aric_subsequent_ais_dudbridge</td><td>IL6R </td><td>Wald ratio</td><td>1</td><td> 0.4015853</td><td>0.14013710</td><td>0.004161413</td><td>0.3925599</td></tr>
+	<tr><td>gSDjDs</td><td>zb8l1H</td><td>aric_subsequent_ais_dudbridge</td><td>BAG1 </td><td>Wald ratio</td><td>1</td><td> 0.2196227</td><td>0.07309956</td><td>0.002660770</td><td>0.3925599</td></tr>
+	<tr><td>mcL58H</td><td>zb8l1H</td><td>aric_subsequent_ais_dudbridge</td><td>RAB1A</td><td>Wald ratio</td><td>1</td><td>-0.3735150</td><td>0.12966619</td><td>0.003969334</td><td>0.3925599</td></tr>
+	<tr><td>9NT4kd</td><td>qgq8PS</td><td>aric_subsequent_ais          </td><td>IL6R </td><td>Wald ratio</td><td>1</td><td> 0.3933163</td><td>0.13943474</td><td>0.004790534</td><td>0.4519070</td></tr>
+	<tr><td>gSDjDs</td><td>qgq8PS</td><td>aric_subsequent_ais          </td><td>BAG1 </td><td>Wald ratio</td><td>1</td><td> 0.2248141</td><td>0.07272038</td><td>0.001991565</td><td>0.4519070</td></tr>
+	<tr><td>mcL58H</td><td>qgq8PS</td><td>aric_subsequent_ais          </td><td>RAB1A</td><td>Wald ratio</td><td>1</td><td>-0.3768847</td><td>0.12907893</td><td>0.003502555</td><td>0.4519070</td></tr>
 </tbody>
 </table>
 
@@ -14763,12 +14772,12 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
 </thead>
 <tbody>
-	<tr><td>5SS6n7</td><td>aVNJjg</td><td>first_ais_afr</td><td>TMEM106B</td><td>Wald ratio</td><td>1</td><td>0.1394282</td><td>0.03935664</td><td>0.0003960747</td><td>0.05604457</td></tr>
-	<tr><td>uDVscO</td><td>aVNJjg</td><td>first_ais_afr</td><td>AIP     </td><td>Wald ratio</td><td>1</td><td>0.1184836</td><td>0.03315743</td><td>0.0003524225</td><td>0.05604457</td></tr>
-	<tr><td>79gURB</td><td>aVNJjg</td><td>first_ais_afr</td><td>PRKCA   </td><td>Wald ratio</td><td>1</td><td>0.2097085</td><td>0.06739070</td><td>0.0018593061</td><td>0.13154591</td></tr>
-	<tr><td>chH4L4</td><td>aVNJjg</td><td>first_ais_afr</td><td>RTN4R   </td><td>Wald ratio</td><td>1</td><td>0.2000089</td><td>0.06418550</td><td>0.0018325521</td><td>0.13154591</td></tr>
-	<tr><td>OXSh7S</td><td>aVNJjg</td><td>first_ais_afr</td><td>KLK10   </td><td>Wald ratio</td><td>1</td><td>0.1112823</td><td>0.03690196</td><td>0.0025645472</td><td>0.14515337</td></tr>
-	<tr><td>53N1cO</td><td>aVNJjg</td><td>first_ais_afr</td><td>GGA1    </td><td>Wald ratio</td><td>1</td><td>0.1184381</td><td>0.05305244</td><td>0.0255837878</td><td>0.51715800</td></tr>
+	<tr><td>whMpIs</td><td>vQwiMS</td><td>aric_published_ais_eur</td><td>MMP12   </td><td>Inverse variance weighted</td><td>2</td><td>-0.06682287</td><td>0.01426005</td><td>2.785699e-06</td><td>0.003615837</td></tr>
+	<tr><td>WrR2Ox</td><td>vQwiMS</td><td>aric_published_ais_eur</td><td>TMEM106B</td><td>Wald ratio               </td><td>1</td><td>-0.08205328</td><td>0.02061054</td><td>6.858782e-05</td><td>0.044513497</td></tr>
+	<tr><td>WYdhGU</td><td>vQwiMS</td><td>aric_published_ais_eur</td><td>CST6    </td><td>Wald ratio               </td><td>1</td><td> 0.06842552</td><td>0.01783603</td><td>1.248695e-04</td><td>0.054026861</td></tr>
+	<tr><td>5SS6n7</td><td>aVNJjg</td><td>aric_first_ais_afr    </td><td>TMEM106B</td><td>Wald ratio               </td><td>1</td><td> 0.13942820</td><td>0.03935664</td><td>3.960747e-04</td><td>0.056044570</td></tr>
+	<tr><td>uDVscO</td><td>aVNJjg</td><td>aric_first_ais_afr    </td><td>AIP     </td><td>Wald ratio               </td><td>1</td><td> 0.11848360</td><td>0.03315743</td><td>3.524225e-04</td><td>0.056044570</td></tr>
+	<tr><td>O9IWbf</td><td>vQwiMS</td><td>aric_published_ais_eur</td><td>MDK     </td><td>Wald ratio               </td><td>1</td><td>-0.18825957</td><td>0.05091718</td><td>2.178461e-04</td><td>0.056552840</td></tr>
 </tbody>
 </table>
 
@@ -14796,12 +14805,10 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[11]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-r"><pre><span></span><span class="nf">source</span><span class="p">(</span><span class="s">&quot;gwas_data_helpers.R&quot;</span><span class="p">)</span>
-
-<span class="n">mr_mace_afr</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/aric/mr_subsequent_mace_afr.tsv&quot;</span><span class="p">)</span>
 
 <span class="n">mr_mace_eur</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/aric/mr_subsequent_mace_eur.tsv&quot;</span><span class="p">)</span>
 <span class="n">mr_mace_eur_slopehunter</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/aric/mr_subsequent_mace_eur_slopehunter.tsv&quot;</span><span class="p">)</span>
@@ -14812,7 +14819,6 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <span class="n">mr_ais_eur_dudbridge</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/aric/mr_subsequent_ais_eur_dudbridge.tsv&quot;</span><span class="p">)</span>
 
 <span class="n">mr_incidence_ais</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/aric/first_ais_eur.tsv&quot;</span><span class="p">)</span>
-<span class="c1">#mr_publised_incidence_ais &lt;- data.table::fread(&quot;scratch/results/mr/aric/mr_published_ais_cis.tsv&quot;)</span>
 
 <span class="n">subsequent_mace</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rbind</span><span class="p">(</span><span class="n">mr_mace_eur</span><span class="p">,</span><span class="w"> </span><span class="n">mr_mace_eur_slopehunter</span><span class="p">,</span><span class="w"> </span><span class="n">mr_mace_eur_dudbridge</span><span class="p">)</span>
 <span class="n">subsequent_ais</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rbind</span><span class="p">(</span><span class="n">mr_ais_eur</span><span class="p">,</span><span class="w"> </span><span class="n">mr_ais_eur_slopehunter</span><span class="p">,</span><span class="w"> </span><span class="n">mr_ais_eur_dudbridge</span><span class="p">)</span>
@@ -14821,21 +14827,13 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <span class="n">subsequent_mace</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">subsequent_mace</span><span class="p">[</span><span class="nf">with</span><span class="p">(</span><span class="n">subsequent_mace</span><span class="p">,</span><span class="w"> </span><span class="nf">order</span><span class="p">(</span><span class="n">pval_adjusted</span><span class="p">)),</span><span class="w"> </span><span class="p">]</span>
 <span class="nf">head</span><span class="p">(</span><span class="n">subsequent_mace</span><span class="p">)</span>
 
-<span class="c1">#subsequent_mace_subset&lt;-subsequent_mace[subsequent_mace$pval_adjusted &lt; 0.8, ]</span>
-<span class="c1">#subset(subsequent_mace, (exposure %in% subsequent_mace_subset$exposure) == TRUE)</span>
-<span class="c1">#create_forest_plot_mr_results(subset(subsequent_mace, (exposure %in% subsequent_mace_subset$exposure) == TRUE), &quot;mr_sub_mace&quot;,  &quot;mr_sub_mace&quot;)</span>
-
 <span class="n">IRdisplay</span><span class="o">::</span><span class="nf">display_markdown</span><span class="p">(</span><span class="s">&quot;### MR Subsequent AIS Corrected Ordered by adjusted p palue&quot;</span><span class="p">)</span>
 <span class="n">subsequent_ais</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">subsequent_ais</span><span class="p">[</span><span class="nf">with</span><span class="p">(</span><span class="n">subsequent_ais</span><span class="p">,</span><span class="w"> </span><span class="nf">order</span><span class="p">(</span><span class="n">pval_adjusted</span><span class="p">)),</span><span class="w"> </span><span class="p">]</span>
 <span class="nf">head</span><span class="p">(</span><span class="n">subsequent_ais</span><span class="p">)</span>
-<span class="c1">#subsequent_ais_subset &lt;- subsequent_ais[subsequent_ais$pval_adjusted &lt; 0.8, ]</span>
-<span class="c1">#subset(subsequent_ais, (exposure %in% subsequent_ais_subset$exposure) == TRUE)</span>
-<span class="c1">#create_forest_plot_mr_results(subset(subsequent_ais, (exposure %in% subsequent_ais_subset$exposure) == TRUE), &quot;mr_sub_ais&quot;,  &quot;mr_sub_ais&quot;)</span>
 
 <span class="n">IRdisplay</span><span class="o">::</span><span class="nf">display_markdown</span><span class="p">(</span><span class="s">&quot;### MR Incident AIS&quot;</span><span class="p">)</span>
 <span class="n">incidence_ais</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">mr_incidence_ais</span><span class="p">[</span><span class="nf">with</span><span class="p">(</span><span class="n">mr_incidence_ais</span><span class="p">,</span><span class="w"> </span><span class="nf">order</span><span class="p">(</span><span class="n">pval_adjusted</span><span class="p">)),</span><span class="w"> </span><span class="p">]</span>
 <span class="nf">head</span><span class="p">(</span><span class="n">incidence_ais</span><span class="p">)</span>
-<span class="c1">#incidence_ais[incidence_ais$pval_adjusted &lt; 0.05, ]</span>
 </pre></div>
 
      </div>
@@ -14875,12 +14873,12 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
 </thead>
 <tbody>
-	<tr><td>EEqV0G</td><td>XBUpOA</td><td>subsequent_mace_dudbridge</td><td>PTGDS </td><td>Wald ratio               </td><td>1</td><td>-0.11914615</td><td>0.04458586</td><td>0.007533651</td><td>0.625293</td></tr>
-	<tr><td>GXF3Lk</td><td>XBUpOA</td><td>subsequent_mace_dudbridge</td><td>PRKCB </td><td>Inverse variance weighted</td><td>2</td><td> 0.11846856</td><td>0.04012342</td><td>0.003151066</td><td>0.625293</td></tr>
-	<tr><td>IQIaiP</td><td>XBUpOA</td><td>subsequent_mace_dudbridge</td><td>SORD  </td><td>Wald ratio               </td><td>1</td><td>-0.19328709</td><td>0.06825921</td><td>0.004630659</td><td>0.625293</td></tr>
-	<tr><td>vRt9IX</td><td>XBUpOA</td><td>subsequent_mace_dudbridge</td><td>CTRB2 </td><td>Wald ratio               </td><td>1</td><td>-0.05159030</td><td>0.01912558</td><td>0.006987271</td><td>0.625293</td></tr>
-	<tr><td>ytOSBx</td><td>XBUpOA</td><td>subsequent_mace_dudbridge</td><td>HS6ST1</td><td>Wald ratio               </td><td>1</td><td> 0.13224850</td><td>0.04818197</td><td>0.006055304</td><td>0.625293</td></tr>
-	<tr><td>ZcCSEA</td><td>XBUpOA</td><td>subsequent_mace_dudbridge</td><td>ART3  </td><td>Wald ratio               </td><td>1</td><td>-0.09190914</td><td>0.03433270</td><td>0.007428138</td><td>0.625293</td></tr>
+	<tr><td>EEqV0G</td><td>XBUpOA</td><td>aric_subsequent_mace_dudbridge</td><td>PTGDS </td><td>Wald ratio               </td><td>1</td><td>-0.11914615</td><td>0.04458586</td><td>0.007533651</td><td>0.625293</td></tr>
+	<tr><td>GXF3Lk</td><td>XBUpOA</td><td>aric_subsequent_mace_dudbridge</td><td>PRKCB </td><td>Inverse variance weighted</td><td>2</td><td> 0.11846856</td><td>0.04012342</td><td>0.003151066</td><td>0.625293</td></tr>
+	<tr><td>IQIaiP</td><td>XBUpOA</td><td>aric_subsequent_mace_dudbridge</td><td>SORD  </td><td>Wald ratio               </td><td>1</td><td>-0.19328709</td><td>0.06825921</td><td>0.004630659</td><td>0.625293</td></tr>
+	<tr><td>vRt9IX</td><td>XBUpOA</td><td>aric_subsequent_mace_dudbridge</td><td>CTRB2 </td><td>Wald ratio               </td><td>1</td><td>-0.05159030</td><td>0.01912558</td><td>0.006987271</td><td>0.625293</td></tr>
+	<tr><td>ytOSBx</td><td>XBUpOA</td><td>aric_subsequent_mace_dudbridge</td><td>HS6ST1</td><td>Wald ratio               </td><td>1</td><td> 0.13224850</td><td>0.04818197</td><td>0.006055304</td><td>0.625293</td></tr>
+	<tr><td>ZcCSEA</td><td>XBUpOA</td><td>aric_subsequent_mace_dudbridge</td><td>ART3  </td><td>Wald ratio               </td><td>1</td><td>-0.09190914</td><td>0.03433270</td><td>0.007428138</td><td>0.625293</td></tr>
 </tbody>
 </table>
 
@@ -14913,12 +14911,12 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
 </thead>
 <tbody>
-	<tr><td>B57Ufk</td><td>ycYJ0t</td><td>subsequent_ais_dudbridge</td><td>LRP11</td><td>Wald ratio</td><td>1</td><td> 0.40436388</td><td>0.13234976</td><td>0.002248602</td><td>0.5018748</td></tr>
-	<tr><td>DsTUeC</td><td>ycYJ0t</td><td>subsequent_ais_dudbridge</td><td>TRIL </td><td>Wald ratio</td><td>1</td><td> 0.18683105</td><td>0.05913468</td><td>0.001580856</td><td>0.5018748</td></tr>
-	<tr><td>H0l2NU</td><td>ycYJ0t</td><td>subsequent_ais_dudbridge</td><td>FN1  </td><td>Wald ratio</td><td>1</td><td> 0.14483966</td><td>0.05025553</td><td>0.003950793</td><td>0.5018748</td></tr>
-	<tr><td>IQIaiP</td><td>ycYJ0t</td><td>subsequent_ais_dudbridge</td><td>SORD </td><td>Wald ratio</td><td>1</td><td>-0.18633732</td><td>0.06914364</td><td>0.007040327</td><td>0.5018748</td></tr>
-	<tr><td>kyJ7zE</td><td>ycYJ0t</td><td>subsequent_ais_dudbridge</td><td>TPST1</td><td>Wald ratio</td><td>1</td><td> 0.09080936</td><td>0.03360473</td><td>0.006886590</td><td>0.5018748</td></tr>
-	<tr><td>U9fSZN</td><td>ycYJ0t</td><td>subsequent_ais_dudbridge</td><td>GPX7 </td><td>Wald ratio</td><td>1</td><td>-0.06080393</td><td>0.02228955</td><td>0.006373657</td><td>0.5018748</td></tr>
+	<tr><td>B57Ufk</td><td>ycYJ0t</td><td>aric_subsequent_ais_dudbridge</td><td>LRP11</td><td>Wald ratio</td><td>1</td><td> 0.40436388</td><td>0.13234976</td><td>0.002248602</td><td>0.5018748</td></tr>
+	<tr><td>DsTUeC</td><td>ycYJ0t</td><td>aric_subsequent_ais_dudbridge</td><td>TRIL </td><td>Wald ratio</td><td>1</td><td> 0.18683105</td><td>0.05913468</td><td>0.001580856</td><td>0.5018748</td></tr>
+	<tr><td>H0l2NU</td><td>ycYJ0t</td><td>aric_subsequent_ais_dudbridge</td><td>FN1  </td><td>Wald ratio</td><td>1</td><td> 0.14483966</td><td>0.05025553</td><td>0.003950793</td><td>0.5018748</td></tr>
+	<tr><td>IQIaiP</td><td>ycYJ0t</td><td>aric_subsequent_ais_dudbridge</td><td>SORD </td><td>Wald ratio</td><td>1</td><td>-0.18633732</td><td>0.06914364</td><td>0.007040327</td><td>0.5018748</td></tr>
+	<tr><td>kyJ7zE</td><td>ycYJ0t</td><td>aric_subsequent_ais_dudbridge</td><td>TPST1</td><td>Wald ratio</td><td>1</td><td> 0.09080936</td><td>0.03360473</td><td>0.006886590</td><td>0.5018748</td></tr>
+	<tr><td>U9fSZN</td><td>ycYJ0t</td><td>aric_subsequent_ais_dudbridge</td><td>GPX7 </td><td>Wald ratio</td><td>1</td><td>-0.06080393</td><td>0.02228955</td><td>0.006373657</td><td>0.5018748</td></tr>
 </tbody>
 </table>
 
@@ -14951,12 +14949,12 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
 </thead>
 <tbody>
-	<tr><td>bzcJKQ</td><td>H21to3</td><td>first_ais_eur</td><td>MRVI1 </td><td>Wald ratio</td><td>1</td><td> 0.12886418</td><td>0.027447605</td><td>2.667173e-06</td><td>0.001336254</td></tr>
-	<tr><td>icFaLa</td><td>H21to3</td><td>first_ais_eur</td><td>MMP1  </td><td>Wald ratio</td><td>1</td><td> 0.07209176</td><td>0.018750323</td><td>1.206372e-04</td><td>0.030219626</td></tr>
-	<tr><td>WKHrKr</td><td>H21to3</td><td>first_ais_eur</td><td>SMTN  </td><td>Wald ratio</td><td>1</td><td>-0.18514416</td><td>0.050637719</td><td>2.559318e-04</td><td>0.042740605</td></tr>
-	<tr><td>Jnyyvp</td><td>H21to3</td><td>first_ais_eur</td><td>MMP13 </td><td>Wald ratio</td><td>1</td><td>-0.16348117</td><td>0.045955536</td><td>3.745763e-04</td><td>0.046915685</td></tr>
-	<tr><td>JROYJp</td><td>H21to3</td><td>first_ais_eur</td><td>SWAP70</td><td>Wald ratio</td><td>1</td><td>-0.03153810</td><td>0.009397718</td><td>7.909796e-04</td><td>0.075314286</td></tr>
-	<tr><td>XucHte</td><td>H21to3</td><td>first_ais_eur</td><td>GSTM3 </td><td>Wald ratio</td><td>1</td><td> 0.04425074</td><td>0.013330766</td><td>9.019675e-04</td><td>0.075314286</td></tr>
+	<tr><td>bzcJKQ</td><td>H21to3</td><td>aric_first_ais_eur</td><td>MRVI1 </td><td>Wald ratio</td><td>1</td><td> 0.12886418</td><td>0.027447605</td><td>2.667173e-06</td><td>0.001336254</td></tr>
+	<tr><td>icFaLa</td><td>H21to3</td><td>aric_first_ais_eur</td><td>MMP1  </td><td>Wald ratio</td><td>1</td><td> 0.07209176</td><td>0.018750323</td><td>1.206372e-04</td><td>0.030219626</td></tr>
+	<tr><td>WKHrKr</td><td>H21to3</td><td>aric_first_ais_eur</td><td>SMTN  </td><td>Wald ratio</td><td>1</td><td>-0.18514416</td><td>0.050637719</td><td>2.559318e-04</td><td>0.042740605</td></tr>
+	<tr><td>Jnyyvp</td><td>H21to3</td><td>aric_first_ais_eur</td><td>MMP13 </td><td>Wald ratio</td><td>1</td><td>-0.16348117</td><td>0.045955536</td><td>3.745763e-04</td><td>0.046915685</td></tr>
+	<tr><td>JROYJp</td><td>H21to3</td><td>aric_first_ais_eur</td><td>SWAP70</td><td>Wald ratio</td><td>1</td><td>-0.03153810</td><td>0.009397718</td><td>7.909796e-04</td><td>0.075314286</td></tr>
+	<tr><td>XucHte</td><td>H21to3</td><td>aric_first_ais_eur</td><td>GSTM3 </td><td>Wald ratio</td><td>1</td><td> 0.04425074</td><td>0.013330766</td><td>9.019675e-04</td><td>0.075314286</td></tr>
 </tbody>
 </table>
 
