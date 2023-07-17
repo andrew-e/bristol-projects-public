@@ -14670,7 +14670,72 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Colocilisation-and-F-statistic-Information">Colocilisation and F-statistic Information<a class="anchor-link" href="#Colocilisation-and-F-statistic-Information">&#182;</a></h3>
+<h2 id="Further-Breakdown-of-Interesting-pQTLs-in-Subsequent-states.">Further Breakdown of Interesting pQTLs in Subsequent states.<a class="anchor-link" href="#Further-Breakdown-of-Interesting-pQTLs-in-Subsequent-states.">&#182;</a></h2><p>This is to show that the interesting pQTL data isn't just coming from one ancestry, but is a cumulative shared effect</p>
+<table>
+<thead>
+<tr>
+  <th>Exposure</th>
+  <th>Subsequent AIS</th>
+  <th>Subsequent MACE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>CCL27</td>
+  <td><img src="scratch/results/plots/forest_plots/subsequent_ais_9_34649442.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/forest_plots/subsequent_mace_9_34649442.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td>IL19</td>
+  <td><img src="scratch/results/plots/forest_plots/subsequent_ais_1_207015957.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/forest_plots/subsequent_mace_1_207015957.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td>TNFRSF14</td>
+  <td><img src="scratch/results/plots/forest_plots/subsequent_ais_1_2488930.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/forest_plots/subsequent_mace_1_2488930.png" alt="alt" /></td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Comparison-of-Different-pQTL-Data-sets-for-each-pQTL-of-Interest">Comparison of Different pQTL Data sets for each pQTL of Interest<a class="anchor-link" href="#Comparison-of-Different-pQTL-Data-sets-for-each-pQTL-of-Interest">&#182;</a></h3><table>
+<thead>
+<tr>
+  <th>Incidence</th>
+  <th>Subsequent MACE</th>
+  <th>Subsequent AIS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><img src="scratch/results/plots/forest_plots/incidence_pqtl_comparison.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/forest_plots/sub_mace_pqtl_comparison.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/forest_plots/sub_ais_pqtl_comparison.png" alt="alt" /></td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Colocilisation">Colocilisation<a class="anchor-link" href="#Colocilisation">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -14679,14 +14744,19 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[25]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[22]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-r"><pre><span></span><span class="n">interesting_exposures</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/interesting_exposures.tsv&quot;</span><span class="p">)</span>
-<span class="n">first_exposures</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/interesting_exposures_first.tsv&quot;</span><span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span><span class="n">incidence_exposures</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/coloc/incidence_coloc_analysis.tsv&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">select</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;exposure&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;incidence.coloc.h4&quot;</span><span class="p">))</span>
 
-<span class="n">coloc</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">merge</span><span class="p">(</span><span class="n">first_exposures</span><span class="p">[,</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;exposure&quot;</span><span class="p">)],</span><span class="w"> </span><span class="n">interesting_exposures</span><span class="p">,</span><span class="w"> </span><span class="n">by</span><span class="o">=</span><span class="s">&quot;exposure&quot;</span><span class="p">)</span>
-<span class="n">coloc</span><span class="p">[</span><span class="nf">with</span><span class="p">(</span><span class="n">coloc</span><span class="p">,</span><span class="w"> </span><span class="nf">order</span><span class="p">(</span><span class="n">existing.coloc.h4</span><span class="p">,</span><span class="w"> </span><span class="n">decreasing</span><span class="o">=</span><span class="bp">T</span><span class="p">)),]</span>
+<span class="n">subsequent</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/coloc/subsequent_coloc_analysis_non_adjusted.tsv&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">select</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;exposure&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;subsequent_ais.coloc.h4&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;subsequent_mace.coloc.h4&quot;</span><span class="p">))</span>
+<span class="n">subsequent_sh</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/coloc/subsequent_coloc_analysis_slopehunter.tsv&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">select</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;exposure&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;subsequent_ais_sh.coloc.h4&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;subsequent_mace_sh.coloc.h4&quot;</span><span class="p">))</span>
+
+<span class="n">subsequent</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">merge</span><span class="p">(</span><span class="n">subsequent</span><span class="p">,</span><span class="w"> </span><span class="n">subsequent_sh</span><span class="p">,</span><span class="w"> </span><span class="n">by</span><span class="o">=</span><span class="s">&quot;exposure&quot;</span><span class="p">)</span>
+<span class="n">subsequent</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">merge</span><span class="p">(</span><span class="n">subsequent</span><span class="p">,</span><span class="w"> </span><span class="n">incidence_exposures</span><span class="p">,</span><span class="w"> </span><span class="n">by</span><span class="o">=</span><span class="s">&quot;exposure&quot;</span><span class="p">)</span>
+<span class="n">incidence_exposures</span><span class="o">$</span><span class="n">incidence.coloc.h4</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">format</span><span class="p">(</span><span class="n">incidence_exposures</span><span class="o">$</span><span class="n">incidence.coloc.h4</span><span class="p">,</span><span class="w"> </span><span class="n">scientific</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span>
+<span class="n">incidence_exposures</span><span class="p">[</span><span class="nf">with</span><span class="p">(</span><span class="n">incidence_exposures</span><span class="p">,</span><span class="w"> </span><span class="nf">order</span><span class="p">(</span><span class="n">incidence.coloc.h4</span><span class="p">,</span><span class="w"> </span><span class="n">decreasing</span><span class="o">=</span><span class="bp">T</span><span class="p">)),</span><span class="w"> </span><span class="p">]</span>
+<span class="n">subsequent</span>
 </pre></div>
 
      </div>
@@ -14708,25 +14778,48 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
 <table class="dataframe">
-<caption>A data.table: 13 × 6</caption>
+<caption>A data.table: 13 × 2</caption>
 <thead>
-	<tr><th scope=col>exposure</th><th scope=col>MARKER</th><th scope=col>f.statistic</th><th scope=col>existing.coloc.h4</th><th scope=col>subsequent_ais.coloc.h4</th><th scope=col>subsequent_mace.coloc.h4</th></tr>
-	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+	<tr><th scope=col>exposure</th><th scope=col>incidence.coloc.h4</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
 </thead>
 <tbody>
-	<tr><td>GRK5    </td><td>10:121010256_A_G</td><td>1213.2395</td><td>0.999999153</td><td>       NA</td><td>       NA</td></tr>
-	<tr><td>FGF5    </td><td>4:81182554_C_T  </td><td>1409.0891</td><td>0.949809624</td><td>       NA</td><td>       NA</td></tr>
-	<tr><td>FURIN   </td><td>15:91425232_C_T </td><td> 641.2182</td><td>0.946146338</td><td>       NA</td><td>       NA</td></tr>
-	<tr><td>MMP12   </td><td>11:102748695_A_G</td><td>1409.0891</td><td>0.924040684</td><td>       NA</td><td>       NA</td></tr>
-	<tr><td>CST6    </td><td>11:65776305_A_G </td><td> 650.9845</td><td>0.767765861</td><td>       NA</td><td>       NA</td></tr>
-	<tr><td>KLK1    </td><td>19:49206674_A_G </td><td>1409.0891</td><td>0.656144375</td><td>       NA</td><td>       NA</td></tr>
-	<tr><td>CGREF1  </td><td>2:27324751_G_T  </td><td>1409.0891</td><td>0.585648221</td><td>       NA</td><td>       NA</td></tr>
-	<tr><td>SCARA5  </td><td>8:27805783_C_T  </td><td>1409.0891</td><td>0.571665146</td><td>       NA</td><td>       NA</td></tr>
-	<tr><td>COMT    </td><td>22:19951271_A_G </td><td>1409.0891</td><td>0.321618528</td><td>       NA</td><td>       NA</td></tr>
-	<tr><td>IL19    </td><td>1:207015957_C_T </td><td>1409.0891</td><td>0.042665492</td><td>0.6332451</td><td>0.7886322</td></tr>
-	<tr><td>CCL27   </td><td>9:34649442_A_G  </td><td> 754.0904</td><td>0.003072698</td><td>0.7145173</td><td>0.6109275</td></tr>
-	<tr><td>TNFRSF14</td><td>1:2488930_A_G   </td><td> 247.7388</td><td>0.001567964</td><td>0.8125648</td><td>0.7187281</td></tr>
-	<tr><td>PFKFB2  </td><td>1:207250631_A_G </td><td> 654.3090</td><td>0.001483445</td><td>       NA</td><td>       NA</td></tr>
+	<tr><td>GRK5    </td><td>0.999999642</td></tr>
+	<tr><td>FURIN   </td><td>0.950720177</td></tr>
+	<tr><td>FGF5    </td><td>0.949809624</td></tr>
+	<tr><td>MMP12   </td><td>0.888244567</td></tr>
+	<tr><td>CST6    </td><td>0.858120641</td></tr>
+	<tr><td>SCARA5  </td><td>0.765744118</td></tr>
+	<tr><td>IL19    </td><td>0.051339790</td></tr>
+	<tr><td>COMT    </td><td>0.023811206</td></tr>
+	<tr><td>CGREF1  </td><td>0.009706695</td></tr>
+	<tr><td>CCL27   </td><td>0.007844209</td></tr>
+	<tr><td>TNFRSF14</td><td>0.004096936</td></tr>
+	<tr><td>PFKFB2  </td><td>0.003866395</td></tr>
+	<tr><td>KLK1    </td><td>         NA</td></tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<table class="dataframe">
+<caption>A data.table: 3 × 6</caption>
+<thead>
+	<tr><th scope=col>exposure</th><th scope=col>subsequent_ais.coloc.h4</th><th scope=col>subsequent_mace.coloc.h4</th><th scope=col>subsequent_ais_sh.coloc.h4</th><th scope=col>subsequent_mace_sh.coloc.h4</th><th scope=col>incidence.coloc.h4</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>CCL27   </td><td>0.7908463</td><td>0.6831721</td><td>0.57998750</td><td>0.4718510</td><td>0.007844209</td></tr>
+	<tr><td>IL19    </td><td>0.2742251</td><td>0.5956402</td><td>0.03211194</td><td>0.3289294</td><td>0.051339790</td></tr>
+	<tr><td>TNFRSF14</td><td>0.8609059</td><td>0.7665866</td><td>0.89135563</td><td>0.8135350</td><td>0.004096936</td></tr>
 </tbody>
 </table>
 
@@ -14745,34 +14838,74 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Further-Breakdown-of-Interesting-pQTLs-in-Subsequent-states.">Further Breakdown of Interesting pQTLs in Subsequent states.<a class="anchor-link" href="#Further-Breakdown-of-Interesting-pQTLs-in-Subsequent-states.">&#182;</a></h2><p>This is to show that the interesting pQTL data isn't just coming from one ancestry subset of</p>
 <table>
 <thead>
 <tr>
-  <th>Exposure</th>
-  <th>First AIS</th>
-  <th>Subsequent AIS</th>
-  <th>Subsequent MACE</th>
+  <th>Subsequent Unadjusted</th>
+  <th>Subsequent SlopeHunter</th>
+  <th>Subsequent Incidence</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-  <td>CCL27</td>
-  <td><img src="scratch/results/plots/forest_plots/first_9_34649442.png" alt="alt" /></td>
-  <td><img src="scratch/results/plots/forest_plots/subsequent_ais_9_34649442.png" alt="alt" /></td>
-  <td><img src="scratch/results/plots/forest_plots/subsequent_mace_9_34649442.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/coloc/CCL27_pqtl_vs_subsequent_mace.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/coloc/CCL27_pqtl_vs_subsequent_mace_sh.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/coloc/CCL27_pqtl_vs_incidence.png" alt="alt" /></td>
 </tr>
 <tr>
-  <td>IL19</td>
-  <td><img src="scratch/results/plots/forest_plots/first_1_207015957.png" alt="alt" /></td>
-  <td><img src="scratch/results/plots/forest_plots/subsequent_ais_1_207015957.png" alt="alt" /></td>
-  <td><img src="scratch/results/plots/forest_plots/subsequent_mace_1_207015957.png" alt="alt" /></td>
+  <td>coloc h4 = 68%</td>
+  <td>coloc h4 = 47%</td>
+  <td>coloc h4 = 0.7%</td>
 </tr>
 <tr>
-  <td>TNFRSF14</td>
-  <td><img src="scratch/results/plots/forest_plots/first_1_2488930.png" alt="alt" /></td>
-  <td><img src="scratch/results/plots/forest_plots/subsequent_ais_1_2488930.png" alt="alt" /></td>
-  <td><img src="scratch/results/plots/forest_plots/subsequent_mace_1_2488930.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/coloc/IL19_pqtl_vs_subsequent_mace.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/coloc/IL19_pqtl_vs_subsequent_mace_sh.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/coloc/IL19_pqtl_vs_incidence.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td>coloc h4 = 59%</td>
+  <td>coloc h4 = 32%</td>
+  <td>coloc h4 = 5%</td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/coloc/TNFRSF14_pqtl_vs_subsequent_mace.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/coloc/TNFRSF14_pqtl_vs_subsequent_mace_sh.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/coloc/TNFRSF14_pqtl_vs_incidence.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td>coloc h4 = 86%</td>
+  <td>coloc h4 = 89%</td>
+  <td>coloc h4 = 0.4%</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Interesting-pQTLs-for-incidence-states">Interesting pQTLs for incidence states<a class="anchor-link" href="#Interesting-pQTLs-for-incidence-states">&#182;</a></h2><table>
+<thead>
+<tr>
+  <th>.</th>
+  <th>.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><img src="scratch/results/plots/coloc/SCARA5_pqtl_vs_incidence.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/coloc/FURIN_pqtl_vs_incidence.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/coloc/MMP12_pqtl_vs_incidence.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/coloc/GRK5_pqtl_vs_incidence.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/coloc/CST6_pqtl_vs_incidence.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/coloc/PFKFB2_pqtl_vs_incidence.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/coloc/KLK1_pqtl_vs_incidence.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/coloc/FGF5_pqtl_vs_incidence.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/coloc/CGREF1_pqtl_vs_incidence.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/coloc/COMT_pqtl_vs_incidence.png" alt="alt" /></td>
 </tr>
 </tbody>
 </table>
@@ -14851,6 +14984,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 <span class="c1">#ARIC pQTLS</span>
 <span class="n">aric_first_ais</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/aric/first_ais_eur.tsv&quot;</span><span class="p">)</span>
+<span class="n">aric_published_ais</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/aric/published_ais_eur.tsv&quot;</span><span class="p">)</span>
 
 <span class="n">aric_mr_mace_eur</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/aric/mr_subsequent_mace_eur.tsv&quot;</span><span class="p">)</span>
 <span class="n">aric_mr_mace_eur_slopehunter</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/aric/mr_subsequent_mace_eur_slopehunter.tsv&quot;</span><span class="p">)</span>
@@ -14879,30 +15013,42 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 </div>
 
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[26]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-r"><pre><span></span><span class="c1">## Comparing pQTLs data sets across subsequent</span>
-
-<span class="n">CCL27</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">IL19</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">TNFRSF14</span>
-<span class="o">-</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">-</span>
-<span class="o">!</span><span class="p">[</span><span class="n">alt</span><span class="p">](</span><span class="n">scratch</span><span class="o">/</span><span class="n">results</span><span class="o">/</span><span class="n">plots</span><span class="o">/</span><span class="n">forest_plots</span><span class="o">/</span><span class="n">CCL27_compare_pqtl_mr.png</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">!</span><span class="p">[</span><span class="n">alt</span><span class="p">](</span><span class="n">scratch</span><span class="o">/</span><span class="n">results</span><span class="o">/</span><span class="n">plots</span><span class="o">/</span><span class="n">forest_plots</span><span class="o">/</span><span class="n">IL19_compare_pqtl_mr.png</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">!</span><span class="p">[</span><span class="n">alt</span><span class="p">](</span><span class="n">scratch</span><span class="o">/</span><span class="n">results</span><span class="o">/</span><span class="n">plots</span><span class="o">/</span><span class="n">forest_plots</span><span class="o">/</span><span class="n">TNFRSF14_compare_pqtl_mr.png</span><span class="p">)</span>
-
-
-<span class="n">.</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">.</span>
-<span class="o">-</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">-</span><span class="w"> </span>
-<span class="o">!</span><span class="p">[</span><span class="n">alt</span><span class="p">](</span><span class="n">scratch</span><span class="o">/</span><span class="n">results</span><span class="o">/</span><span class="n">plots</span><span class="o">/</span><span class="n">forest_plots</span><span class="o">/</span><span class="n">EGFR_compare_pqtl_mr.png</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">!</span><span class="p">[</span><span class="n">alt</span><span class="p">](</span><span class="n">scratch</span><span class="o">/</span><span class="n">results</span><span class="o">/</span><span class="n">plots</span><span class="o">/</span><span class="n">forest_plots</span><span class="o">/</span><span class="n">SCARA5_mr.png</span><span class="p">)</span>
-<span class="o">!</span><span class="p">[</span><span class="n">alt</span><span class="p">](</span><span class="n">scratch</span><span class="o">/</span><span class="n">results</span><span class="o">/</span><span class="n">plots</span><span class="o">/</span><span class="n">forest_plots</span><span class="o">/</span><span class="n">VASN_compare_pqtl_mr.png</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">!</span><span class="p">[</span><span class="n">alt</span><span class="p">](</span><span class="n">scratch</span><span class="o">/</span><span class="n">results</span><span class="o">/</span><span class="n">plots</span><span class="o">/</span><span class="n">forest_plots</span><span class="o">/</span><span class="n">WARS_mr.png</span><span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span><span class="nf">list.files</span><span class="p">(</span><span class="n">pattern</span><span class="o">=</span><span class="s">&quot;scratch\\/data\\/pqtl\\/*.bed&quot;</span><span class="p">)</span>
 </pre></div>
 
      </div>
 </div>
 </div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+
+</div>
+
+</div>
+
+</div>
+
 </div>
 
 </div>
