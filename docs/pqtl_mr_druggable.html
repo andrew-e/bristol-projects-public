@@ -3,7 +3,7 @@
 <head><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>index</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>pqtl_mr_druggable</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 
 
 
@@ -14555,24 +14555,343 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 }
 </style>
 
-<h1>
-Stroke Progression Project
-</h1>
+<!-- Load mathjax -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS_CHTML-full,Safe"> </script>
+    <!-- MathJax configuration -->
+    <script type="text/x-mathjax-config">
+    init_mathjax = function() {
+        if (window.MathJax) {
+        // MathJax loaded
+            MathJax.Hub.Config({
+                TeX: {
+                    equationNumbers: {
+                    autoNumber: "AMS",
+                    useLabelIds: true
+                    }
+                },
+                tex2jax: {
+                    inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                    displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+                    processEscapes: true,
+                    processEnvironments: true
+                },
+                displayAlign: 'center',
+                CommonHTML: {
+                    linebreaks: {
+                    automatic: true
+                    }
+                }
+            });
 
-<h3>
-<a href="gwas_comparisons.html">GWAS Plots and SNP Identification for MR</a> 
-<br/>
-<a href="gwas_comparison.html">Some Forest Plots of Interesting SNPs</a> 
-<br/>
-<a href="collider_bias_and_ld_score.html">Collider Bias and LD Scores</a> 
-<br/>
-<a href="pqtl_mr_all_datasets.html">Comparing MR Results Across 4 pQTL Datasets</a> 
-<br/>
-<a href="pqtl_mr.html">MR on UKBB pQTL Data</a> 
-<br/>
-<a href="pqtl_mr_aric.html">MR on ARIC pQTL Data</a> 
-<br/>
-<a href="interesting_pqtls.html">Investigating Interesting pQTLS</a> 
-<br/>
-<a href="pqtl_mr_druggable.htm">Filtering pQTL results on druggable targets from open targets</a> 
-</h3>
+            MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+        }
+    }
+    init_mathjax();
+    </script>
+    <!-- End of mathjax configuration --></head>
+<body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
+
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="Results-from-Running-MR-on-pQTL-data">Results from Running MR on pQTL data<a class="anchor-link" href="#Results-from-Running-MR-on-pQTL-data">&#182;</a></h1><p>Below are results from</p>
+<ul>
+<li>pQTL -&gt; Subsequent MACE (original, slopehunter adjusted)</li>
+<li>pQTL -&gt; Subsequent AIS (original, slopehunter adjusted)</li>
+</ul>
+<h2 id="MR-for-CIS-ONLY-pQTLs">MR for CIS ONLY pQTLs<a class="anchor-link" href="#MR-for-CIS-ONLY-pQTLs">&#182;</a></h2>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-r"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">IRdisplay</span><span class="p">)</span>
+<span class="n">pqtl_data</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/data/pqtl/all_biobank_pqtl_cis_instruments.tsv&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">select</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;exposure&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;marker.exposure&quot;</span><span class="p">))</span>
+
+<span class="n">merge_marker_data</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">merge</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="n">pqtl_data</span><span class="p">,</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;exposure&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nf">return</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[5]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-r"><pre><span></span><span class="nf">source</span><span class="p">(</span><span class="s">&quot;gwas_data_helpers.R&quot;</span><span class="p">)</span>
+
+<span class="n">mr_mace</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/mr_subsequent_mace_cis_updated.tsv&quot;</span><span class="p">)</span>
+<span class="n">mr_mace_remix</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/mr_subsequent_mace_cis_remix.tsv&quot;</span><span class="p">)</span>
+<span class="n">mr_mace_slopehunter</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/mr_subsequent_mace_slopehunter_cis.tsv&quot;</span><span class="p">)</span>
+<span class="n">mr_mace_slopehunter_remix</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/mr_subsequent_mace_sh_cis_remix.tsv&quot;</span><span class="p">)</span>
+<span class="n">mr_mace_dudbridge</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/mr_subsequent_mace_dudbridge_cis.tsv&quot;</span><span class="p">)</span>
+
+<span class="n">mr_ais</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/mr_subsequent_ais_cis.tsv&quot;</span><span class="p">)</span>
+<span class="n">mr_ais_remix</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/mr_subsequent_ais_cis_remix.tsv&quot;</span><span class="p">)</span>
+<span class="n">mr_ais_slopehunter</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/mr_subsequent_ais_slopehunter_cis.tsv&quot;</span><span class="p">)</span>
+<span class="n">mr_ais_slopehunter_remix</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/mr_subsequent_ais_sh_cis_remix.tsv&quot;</span><span class="p">)</span>
+<span class="n">mr_ais_dudbridge</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/mr_subsequent_ais_dudbridge_cis.tsv&quot;</span><span class="p">)</span>
+
+<span class="n">mr_incidence_ais</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/mr_first_ais_all_cis.tsv&quot;</span><span class="p">)</span>
+<span class="n">mr_publised_incidence_ais</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/mr_published_ais_cis.tsv&quot;</span><span class="p">)</span>
+<span class="n">mr_incidence_ais_remix</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/mr_first_ais_cis_remix.tsv&quot;</span><span class="p">)</span>
+<span class="n">mr_published_ais_remix</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/mr_published_ais_cis_remix.tsv&quot;</span><span class="p">)</span>
+
+
+<span class="n">unadjusted</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rbind</span><span class="p">(</span><span class="n">mr_mace</span><span class="p">,</span><span class="w"> </span><span class="n">mr_ais</span><span class="p">)</span>
+<span class="n">slopehunter</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rbind</span><span class="p">(</span><span class="n">mr_mace_slopehunter</span><span class="p">,</span><span class="w"> </span><span class="n">mr_ais_slopehunter</span><span class="p">)</span>
+<span class="n">dudbridge</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rbind</span><span class="p">(</span><span class="n">mr_mace_dudbridge</span><span class="p">,</span><span class="w"> </span><span class="n">mr_ais_dudbridge</span><span class="p">)</span>
+
+<span class="n">to_save</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rbind</span><span class="p">(</span><span class="n">mr_mace</span><span class="p">,</span><span class="w"> </span><span class="n">mr_ais</span><span class="p">,</span><span class="w"> </span><span class="n">mr_mace_slopehunter</span><span class="p">,</span><span class="w"> </span><span class="n">mr_ais_slopehunter</span><span class="p">,</span><span class="w"> </span><span class="n">mr_publised_incidence_ais</span><span class="p">)</span>
+<span class="n">to_save</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">merge_marker_data</span><span class="p">(</span><span class="n">to_save</span><span class="p">)</span>
+<span class="n">to_save</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">to_save</span><span class="p">[</span><span class="nf">with</span><span class="p">(</span><span class="n">to_save</span><span class="p">,</span><span class="w"> </span><span class="nf">order</span><span class="p">(</span><span class="n">marker.exposure</span><span class="p">)),</span><span class="w"> </span><span class="p">]</span>
+<span class="n">data.table</span><span class="o">::</span><span class="nf">fwrite</span><span class="p">(</span><span class="n">to_save</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;scratch/results/mr/mr_results_supplementary.csv&quot;</span><span class="p">)</span>
+
+
+<span class="n">incidence_ais</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rbind</span><span class="p">(</span><span class="n">mr_publised_incidence_ais</span><span class="p">,</span><span class="w"> </span><span class="n">mr_incidence_ais</span><span class="p">,</span><span class="w"> </span><span class="n">mr_incidence_ais_remix</span><span class="p">,</span><span class="w"> </span><span class="n">mr_published_ais_remix</span><span class="p">)</span>
+<span class="n">subsequent_mace</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rbind</span><span class="p">(</span><span class="n">mr_mace</span><span class="p">,</span><span class="w"> </span><span class="n">mr_mace_remix</span><span class="p">,</span><span class="w"> </span><span class="n">mr_mace_slopehunter</span><span class="p">,</span><span class="w"> </span><span class="n">mr_mace_dudbridge</span><span class="p">,</span><span class="w"> </span><span class="n">mr_mace_slopehunter_remix</span><span class="p">)</span>
+<span class="n">subsequent_ais</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rbind</span><span class="p">(</span><span class="n">mr_ais</span><span class="p">,</span><span class="w"> </span><span class="n">mr_ais_remix</span><span class="p">,</span><span class="w"> </span><span class="n">mr_ais_slopehunter</span><span class="p">,</span><span class="w"> </span><span class="n">mr_ais_dudbridge</span><span class="p">,</span><span class="w"> </span><span class="n">mr_ais_slopehunter_remix</span><span class="p">)</span>
+
+<span class="n">IRdisplay</span><span class="o">::</span><span class="nf">display_markdown</span><span class="p">(</span><span class="s">&quot;### MR of druggable incidence targets&quot;</span><span class="p">)</span>
+<span class="n">druggable_target_list</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/data/pqtl/ischemic_stroke_druggable_targets.tsv&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">select</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;symbol&quot;</span><span class="p">))</span>
+<span class="n">druggable_incidence</span><span class="w"> </span><span class="o">&lt;-</span><span class="nf">subset</span><span class="p">(</span><span class="n">mr_published_ais_remix</span><span class="p">,</span><span class="w"> </span><span class="n">exposure</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="n">druggable_target_list</span><span class="o">$</span><span class="n">symbol</span><span class="p">)</span>
+<span class="n">druggable_incidence</span><span class="o">$</span><span class="n">pval_adjusted</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">p.adjust</span><span class="p">(</span><span class="n">druggable_incidence</span><span class="o">$</span><span class="n">pval</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;fdr&quot;</span><span class="p">)</span>
+<span class="n">druggable_incidence</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">merge_marker_data</span><span class="p">(</span><span class="n">druggable_incidence</span><span class="p">[</span><span class="n">druggable_incidence</span><span class="o">$</span><span class="n">pval_adjusted</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">0.05</span><span class="p">,</span><span class="w"> </span><span class="p">])</span>
+<span class="nf">nrow</span><span class="p">(</span><span class="n">druggable_incidence</span><span class="p">)</span>
+<span class="n">druggable_incidence</span>
+
+<span class="n">IRdisplay</span><span class="o">::</span><span class="nf">display_markdown</span><span class="p">(</span><span class="s">&quot;### MR of druggable targets vs subsequent MACE&quot;</span><span class="p">)</span>
+<span class="n">druggable_subsequent_mace</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">subset</span><span class="p">(</span><span class="n">subsequent_mace</span><span class="p">,</span><span class="w"> </span><span class="n">exposure</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="n">druggable_target_list</span><span class="o">$</span><span class="n">symbol</span><span class="p">)</span>
+<span class="n">druggable_subsequent_mace</span><span class="o">$</span><span class="n">pval_adjusted</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">p.adjust</span><span class="p">(</span><span class="n">druggable_subsequent_mace</span><span class="o">$</span><span class="n">pval</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;fdr&quot;</span><span class="p">)</span>
+<span class="n">druggable_subsequent_mace</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">merge_marker_data</span><span class="p">(</span><span class="n">druggable_subsequent_mace</span><span class="p">[</span><span class="n">druggable_subsequent_mace</span><span class="o">$</span><span class="n">pval_adjusted</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">0.05</span><span class="p">,</span><span class="w"> </span><span class="p">])</span>
+<span class="nf">nrow</span><span class="p">(</span><span class="n">druggable_subsequent_mace</span><span class="p">)</span>
+<span class="n">druggable_subsequent_mace</span>
+
+<span class="n">IRdisplay</span><span class="o">::</span><span class="nf">display_markdown</span><span class="p">(</span><span class="s">&quot;### MR of druggable targets vs subsequent AIS&quot;</span><span class="p">)</span>
+<span class="n">druggable_subsequent_ais</span><span class="w"> </span><span class="o">&lt;-</span><span class="nf">subset</span><span class="p">(</span><span class="n">subsequent_ais</span><span class="p">,</span><span class="w"> </span><span class="n">exposure</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="n">druggable_target_list</span><span class="o">$</span><span class="n">symbol</span><span class="p">)</span>
+<span class="n">druggable_subsequent_ais</span><span class="o">$</span><span class="n">pval_adjusted</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">p.adjust</span><span class="p">(</span><span class="n">druggable_subsequent_ais</span><span class="o">$</span><span class="n">pval</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;fdr&quot;</span><span class="p">)</span>
+<span class="n">druggable_subsequent_ais</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">merge_marker_data</span><span class="p">(</span><span class="n">druggable_subsequent_ais</span><span class="p">[</span><span class="n">druggable_subsequent_ais</span><span class="o">$</span><span class="n">pval_adjusted</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">0.05</span><span class="p">,</span><span class="w"> </span><span class="p">])</span>
+<span class="nf">nrow</span><span class="p">(</span><span class="n">druggable_subsequent_ais</span><span class="p">)</span>
+<span class="n">druggable_subsequent_ais</span>
+
+<span class="n">IRdisplay</span><span class="o">::</span><span class="nf">display_markdown</span><span class="p">(</span><span class="s">&quot;### MR of subsequent which are interesting in incidence druggable&quot;</span><span class="p">)</span>
+<span class="n">found_in_incidence_druggable</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">subset</span><span class="p">(</span><span class="n">mr_mace_remix</span><span class="p">,</span><span class="w"> </span><span class="n">exposure</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="n">druggable_incidence</span><span class="o">$</span><span class="n">exposure</span><span class="p">)</span>
+<span class="n">found_in_incidence_druggable</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">found_in_incidence_druggable</span><span class="p">[</span><span class="nf">with</span><span class="p">(</span><span class="n">found_in_incidence_druggable</span><span class="p">,</span><span class="w"> </span><span class="nf">order</span><span class="p">(</span><span class="n">exposure</span><span class="p">)),</span><span class="w"> </span><span class="p">]</span>
+<span class="n">found_in_incidence_druggable</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
+<h3 id="MR-of-druggable-incidence-targets">MR of druggable incidence targets<a class="anchor-link" href="#MR-of-druggable-incidence-targets">&#182;</a></h3>
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+5
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<table class="dataframe">
+<caption>A data.table: 5 × 11</caption>
+<thead>
+	<tr><th scope=col>exposure</th><th scope=col>id.exposure</th><th scope=col>id.outcome</th><th scope=col>outcome</th><th scope=col>method</th><th scope=col>nsnp</th><th scope=col>b</th><th scope=col>se</th><th scope=col>pval</th><th scope=col>pval_adjusted</th><th scope=col>marker.exposure</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>ANGPT1</td><td>o7mYaA</td><td>3Kz1gM</td><td>published_first_ais</td><td>Wald ratio</td><td>1</td><td> 0.09040802</td><td>0.029279869</td><td>2.016989e-03</td><td>4.154997e-02</td><td>8:106581528 </td></tr>
+	<tr><td>FGF5  </td><td>QknuFF</td><td>3Kz1gM</td><td>published_first_ais</td><td>Wald ratio</td><td>1</td><td> 0.06129667</td><td>0.008378681</td><td>2.558726e-13</td><td>2.635487e-11</td><td>4:81182554  </td></tr>
+	<tr><td>FURIN </td><td>WVZiio</td><td>3Kz1gM</td><td>published_first_ais</td><td>Wald ratio</td><td>1</td><td> 0.12656548</td><td>0.033682749</td><td>1.715674e-04</td><td>5.890482e-03</td><td>15:91425232 </td></tr>
+	<tr><td>MMP12 </td><td>EnKqXG</td><td>3Kz1gM</td><td>published_first_ais</td><td>Wald ratio</td><td>1</td><td>-0.05813384</td><td>0.011680471</td><td>6.457349e-07</td><td>3.325535e-05</td><td>11:102748695</td></tr>
+	<tr><td>TFPI  </td><td>Y5bwYe</td><td>3Kz1gM</td><td>published_first_ais</td><td>Wald ratio</td><td>1</td><td>-0.05582197</td><td>0.017932447</td><td>1.852568e-03</td><td>4.154997e-02</td><td>2:188343781 </td></tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
+<h3 id="MR-of-druggable-targets-vs-subsequent-MACE">MR of druggable targets vs subsequent MACE<a class="anchor-link" href="#MR-of-druggable-targets-vs-subsequent-MACE">&#182;</a></h3>
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+0
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<table class="dataframe">
+<caption>A data.table: 0 × 11</caption>
+<thead>
+	<tr><th scope=col>exposure</th><th scope=col>id.exposure</th><th scope=col>id.outcome</th><th scope=col>outcome</th><th scope=col>method</th><th scope=col>nsnp</th><th scope=col>b</th><th scope=col>se</th><th scope=col>pval</th><th scope=col>pval_adjusted</th><th scope=col>marker.exposure</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
+<h3 id="MR-of-druggable-targets-vs-subsequent-AIS">MR of druggable targets vs subsequent AIS<a class="anchor-link" href="#MR-of-druggable-targets-vs-subsequent-AIS">&#182;</a></h3>
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+0
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<table class="dataframe">
+<caption>A data.table: 0 × 11</caption>
+<thead>
+	<tr><th scope=col>exposure</th><th scope=col>id.exposure</th><th scope=col>id.outcome</th><th scope=col>outcome</th><th scope=col>method</th><th scope=col>nsnp</th><th scope=col>b</th><th scope=col>se</th><th scope=col>pval</th><th scope=col>pval_adjusted</th><th scope=col>marker.exposure</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
+<h3 id="MR-of-subsequent-which-are-interesting-in-incidence-druggable">MR of subsequent which are interesting in incidence druggable<a class="anchor-link" href="#MR-of-subsequent-which-are-interesting-in-incidence-druggable">&#182;</a></h3>
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<table class="dataframe">
+<caption>A data.table: 5 × 10</caption>
+<thead>
+	<tr><th scope=col>id.exposure</th><th scope=col>id.outcome</th><th scope=col>outcome</th><th scope=col>exposure</th><th scope=col>method</th><th scope=col>nsnp</th><th scope=col>b</th><th scope=col>se</th><th scope=col>pval</th><th scope=col>pval_adjusted</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>YDoV3V</td><td>95KBa0</td><td>subsequent_mace_remix</td><td>ANGPT1</td><td>Wald ratio</td><td>1</td><td> 0.06369656</td><td>0.05496397</td><td>0.2465057</td><td>0.9571110</td></tr>
+	<tr><td>bhJ1vx</td><td>95KBa0</td><td>subsequent_mace_remix</td><td>FGF5  </td><td>Wald ratio</td><td>1</td><td> 0.03454369</td><td>0.01719835</td><td>0.0445852</td><td>0.9059481</td></tr>
+	<tr><td>fCHsxM</td><td>95KBa0</td><td>subsequent_mace_remix</td><td>FURIN </td><td>Wald ratio</td><td>1</td><td> 0.02245517</td><td>0.05971033</td><td>0.7068661</td><td>0.9915825</td></tr>
+	<tr><td>KSIaqD</td><td>95KBa0</td><td>subsequent_mace_remix</td><td>MMP12 </td><td>Wald ratio</td><td>1</td><td>-0.02228688</td><td>0.02161558</td><td>0.3025146</td><td>0.9671614</td></tr>
+	<tr><td>Rd005B</td><td>95KBa0</td><td>subsequent_mace_remix</td><td>TFPI  </td><td>Wald ratio</td><td>1</td><td>-0.05003731</td><td>0.03094793</td><td>0.1059166</td><td>0.9059481</td></tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+</body>
+
+
+
+
+
+
+
+</html>
