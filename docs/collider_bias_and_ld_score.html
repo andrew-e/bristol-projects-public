@@ -14931,6 +14931,158 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 </div>
 
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-r"><pre><span></span><span class="n">incidence_mace</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/gwas_comparison/incidence_vs_sub_mace.tsv&quot;</span><span class="p">)</span>
+<span class="n">published_mace</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/gwas_comparison/published_vs_sub_mace.tsv&quot;</span><span class="p">)</span>
+<span class="n">incidence_mace_sh</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/gwas_comparison/incidence_vs_sub_mace_sh.tsv&quot;</span><span class="p">)</span>
+<span class="n">published_mace_sh</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/gwas_comparison/published_vs_sub_mace_sh.tsv&quot;</span><span class="p">)</span>
+<span class="n">published_incidence</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="s">&quot;scratch/results/gwas_comparison/published_vs_incidence.tsv&quot;</span><span class="p">)</span>
+
+<span class="n">IRdisplay</span><span class="o">::</span><span class="nf">display_markdown</span><span class="p">(</span><span class="s">&quot;### Published vs. MVP and UKB Incidence&quot;</span><span class="p">)</span>
+<span class="n">published_incidence</span>
+
+<span class="n">IRdisplay</span><span class="o">::</span><span class="nf">display_markdown</span><span class="p">(</span><span class="s">&quot;### Incidence vs. Subsequent Mace&quot;</span><span class="p">)</span>
+<span class="n">incidence_mace</span>
+<span class="n">IRdisplay</span><span class="o">::</span><span class="nf">display_markdown</span><span class="p">(</span><span class="s">&quot;### Incidence vs. Subsequent Mace SlopeHunter Corrected&quot;</span><span class="p">)</span>
+
+<span class="n">incidence_mace_sh</span>
+
+<span class="c1">#IRdisplay::display_markdown(&quot;### Published vs. UKBMVP Incidence&quot;)</span>
+<span class="c1">#published_mace</span>
+<span class="c1">#published_mace_sh</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
+<h3 id="Published-vs.-UKBMVP-Incidence">Published vs. UKBMVP Incidence<a class="anchor-link" href="#Published-vs.-UKBMVP-Incidence">&#182;</a></h3>
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<table class="dataframe">
+<caption>A data.table: 4 × 5</caption>
+<thead>
+	<tr><th scope=col>nsnp</th><th scope=col>metric</th><th scope=col>datum</th><th scope=col>value</th><th scope=col>pdiff</th></tr>
+	<tr><th scope=col>&lt;int&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;int&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>1063</td><td>Sign   </td><td>Expected</td><td>1062.815</td><td>NA</td></tr>
+	<tr><td>1063</td><td>Sign   </td><td>Observed</td><td> 546.000</td><td> 0</td></tr>
+	<tr><td>1063</td><td>P-value</td><td>Expected</td><td>1060.958</td><td>NA</td></tr>
+	<tr><td>1063</td><td>P-value</td><td>Observed</td><td> 292.000</td><td> 0</td></tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
+<h3 id="Incidence-vs.-Subsequent-Mace">Incidence vs. Subsequent Mace<a class="anchor-link" href="#Incidence-vs.-Subsequent-Mace">&#182;</a></h3>
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<table class="dataframe">
+<caption>A data.table: 4 × 5</caption>
+<thead>
+	<tr><th scope=col>nsnp</th><th scope=col>metric</th><th scope=col>datum</th><th scope=col>value</th><th scope=col>pdiff</th></tr>
+	<tr><th scope=col>&lt;int&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>306</td><td>Sign   </td><td>Expected</td><td>186.90038</td><td>          NA</td></tr>
+	<tr><td>306</td><td>Sign   </td><td>Observed</td><td>143.00000</td><td>3.965530e-07</td></tr>
+	<tr><td>306</td><td>P-value</td><td>Expected</td><td> 41.69313</td><td>          NA</td></tr>
+	<tr><td>306</td><td>P-value</td><td>Observed</td><td> 35.00000</td><td>3.167175e-01</td></tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
+<h3 id="Incidence-vs.-Subsequent-Mace-SlopeHunter-Corrected">Incidence vs. Subsequent Mace SlopeHunter Corrected<a class="anchor-link" href="#Incidence-vs.-Subsequent-Mace-SlopeHunter-Corrected">&#182;</a></h3>
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<table class="dataframe">
+<caption>A data.table: 4 × 5</caption>
+<thead>
+	<tr><th scope=col>nsnp</th><th scope=col>metric</th><th scope=col>datum</th><th scope=col>value</th><th scope=col>pdiff</th></tr>
+	<tr><th scope=col>&lt;int&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>304</td><td>Sign   </td><td>Expected</td><td>184.93101</td><td>          NA</td></tr>
+	<tr><td>304</td><td>Sign   </td><td>Observed</td><td>152.00000</td><td>0.0001295036</td></tr>
+	<tr><td>304</td><td>P-value</td><td>Expected</td><td> 39.20209</td><td>          NA</td></tr>
+	<tr><td>304</td><td>P-value</td><td>Observed</td><td> 35.00000</td><td>0.5487989363</td></tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
 </div>
 </body>
 
