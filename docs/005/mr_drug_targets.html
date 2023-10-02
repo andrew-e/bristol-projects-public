@@ -14620,7 +14620,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[6]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-r"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">IRdisplay</span><span class="p">)</span>
@@ -14743,7 +14743,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[7]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-r"><pre><span></span><span class="n">scz_afr</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">vroom</span><span class="o">::</span><span class="nf">vroom</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/scz_gwas_afr_metabrain.tsv.gz&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">show_col_types</span><span class="o">=</span><span class="bp">F</span><span class="p">)</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nf">subset</span><span class="p">(</span><span class="n">outcome</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;cortex_afr_top_hits&quot;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">exposure</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="n">interesting_drug_targets</span><span class="p">)</span>
@@ -14752,8 +14752,6 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <span class="n">scz_all</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">vroom</span><span class="o">::</span><span class="nf">vroom</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/scz_gwas_all_vs_eur.tsv.gz&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">show_col_types</span><span class="o">=</span><span class="bp">F</span><span class="p">)</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nf">subset</span><span class="p">(</span><span class="n">outcome</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;cortex_eur_top_hits&quot;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">exposure</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="n">interesting_drug_targets</span><span class="p">)</span>
 <span class="n">scz_tr</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">vroom</span><span class="o">::</span><span class="nf">vroom</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/scz_tr_gwas_metaanalysis_metabrain.tsv.gz&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">show_col_types</span><span class="o">=</span><span class="bp">F</span><span class="p">)</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nf">subset</span><span class="p">(</span><span class="n">outcome</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;cortex_eur_top_hits&quot;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">exposure</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="n">interesting_drug_targets</span><span class="p">)</span>
 <span class="n">scz_tr_cb</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">vroom</span><span class="o">::</span><span class="nf">vroom</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/scz_tr_cb_corrected_gwas_metaanalysis_metabrain.tsv.gz&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">show_col_types</span><span class="o">=</span><span class="bp">F</span><span class="p">)</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nf">subset</span><span class="p">(</span><span class="n">outcome</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;cortex_eur&quot;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">exposure</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="n">interesting_drug_targets</span><span class="p">)</span>
-
-
 
 <span class="n">IRdisplay</span><span class="o">::</span><span class="nf">display_markdown</span><span class="p">(</span><span class="s">&quot;### Ancestry Specific Results, filtered by pval &lt; 9e-4 (0.05/55)&quot;</span><span class="p">)</span>
 <span class="n">IRdisplay</span><span class="o">::</span><span class="nf">display_markdown</span><span class="p">(</span><span class="s">&quot;#### AFR&quot;</span><span class="p">)</span>
@@ -15021,7 +15019,12 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Plotting-the-Differences-in-MR-results:-Scz-TR-vs.-SCZ">Plotting the Differences in MR results: Scz TR vs. SCZ<a class="anchor-link" href="#Plotting-the-Differences-in-MR-results:-Scz-TR-vs.-SCZ">&#182;</a></h2><p><img src="scratch/results/plots/drug_target_tr_vs_scz_mr_results.png" alt="alt" /></p>
+<h2 id="Plotting-the-Differences-in-MR-results:-Scz-TR-vs.-SCZ">Plotting the Differences in MR results: Scz TR vs. SCZ<a class="anchor-link" href="#Plotting-the-Differences-in-MR-results:-Scz-TR-vs.-SCZ">&#182;</a></h2><p><img src="scratch/results/plots/drug_target_tr_vs_scz_mr_results.png" alt="alt" />
+GABBR2 | GABRG1</p>
+<ul>
+<li>| -</li>
+</ul>
+<p><img src="scratch/results/plots/miami_GABBR2.png" alt="alt" /> | <img src="scratch/results/plots/miami_GABRG1.png" alt="alt" /></p>
 
 </div>
 </div>
