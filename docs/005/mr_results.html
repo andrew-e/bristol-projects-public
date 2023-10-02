@@ -14688,7 +14688,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[7]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[12]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-r"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">IRdisplay</span><span class="p">)</span>
@@ -14731,9 +14731,9 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 <span class="n">IRdisplay</span><span class="o">::</span><span class="nf">display_markdown</span><span class="p">(</span><span class="s">&quot;## Comparing Treatment Resistant Results to Not:&quot;</span><span class="p">)</span>
 <span class="n">IRdisplay</span><span class="o">::</span><span class="nf">display_markdown</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="s">&quot;### QTLs that are significant in SCZ TR, but not in (Meta-analysed) SCZ:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nf">length</span><span class="p">(</span><span class="n">tr_not_all</span><span class="p">)))</span>
-<span class="n">IRdisplay</span><span class="o">::</span><span class="nf">display_markdown</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="n">tr_not_all</span><span class="p">))</span>
+<span class="c1">#IRdisplay::display_markdown(paste(tr_not_all))</span>
 <span class="n">IRdisplay</span><span class="o">::</span><span class="nf">display_markdown</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="s">&quot;### QTLs that are significant up in SCZ TR, but not in (EUR only) SCZ:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nf">length</span><span class="p">(</span><span class="n">tr_not_eur</span><span class="p">)))</span>
-<span class="n">IRdisplay</span><span class="o">::</span><span class="nf">display_markdown</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="n">tr_not_eur</span><span class="p">))</span>
+<span class="c1">#IRdisplay::display_markdown(paste(tr_not_eur))</span>
 </pre></div>
 
      </div>
@@ -14841,33 +14841,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
-<p>HIST1H3FPRSS16CCHCR1ASPHD1HSPE1PLPP5SMDT1FXR1LSM1APH1ACCDC92RPRD2ALG12UQCRC2MAMSTRSLC38A7ZNF878RGS6CLIP1PRSS35ZNF322FOXO6KIF21AHCAR1RAD51CRAB25TMEM222STX16LMAN2LMSR1SOWAHCCALCOCO2C17orf98AGPAT2STX18LRP8TMEM8AZCCHC17IREB2CCDC157ZNF738PMVKGRID1ZNF493PPP2R5BSPDYATRMT61BFMO5CARMIL1GLI1GOLGA8JCHAC2UGT1A7SCRIBSYNDIG1LOBP2BANKHD1HIST1H4CABCD2ME1NTAN1FLT3LGC12orf65AS3MTHIST1H2ABPRKD1LMOD1ACVR2BVPS39RAB27BPCDHGA2CUL7SEMA6CGIGYF2SEPTIN10PIK3C2BSNX14EIF3BNPHP1MCTP1DCP1ALY6G6ESKA2HLA-DPA1SHISA4ADSSBORCS7GANCC9PTDSS1RRN3ELOVL7ZNF112TLE7CWC25BCKDHAPDIA5MARCH3SGSM3ZNF233FESTCF19SLC12A9EGFB4GALT5PARLDPF1MRPL28GABRG1SLITRK6RMND5AANKFY1DAP3SNORCKHDC1RABEP1SLC4A1APKLF5CACNA1GHIST1H2BBHIST1H2ACH2AFJDSCAML1EFSARL6IP6HIST1H1CELOA3BNRXN2PIAS2ZNF235MOV10L1GALNT4TM9SF3FAM178BKLC4FABP3ATP13A5KCNK7TMEM42RPS11PACSIN2FKBP1CEFL1KLF16TAB1PATE2NIPSNAP2AKT3MSL2CADPSACTR1AINAVALIMA1GABBR2PRR11ARHGEF19ARHGEF4HIST1H3CCKS1BCENPLC5PYROXD2HARBI1WNT2BCNOT1CHMP5CWF19L2ADCK5CMTM1PDCD1ZNF592ATXN7L3BC1orf116C12orf42LRRC57RMI1PIP4K2BRNF24DNAL4NATD1RHBDL2CCL21SPON2UTP4RPL12DEPDC1BGABRG3NPIPB9KIAA0895LPAR6LATHIST1H2BCMAP3K12IFT74VPS35LBRINP3ELOA3DDNAJC22CIZ1PRKRIP1ACCSLATP1A4TMEM163SYNJ2ELAVL2SMIM27SNX8NFKBIAITPRIPL1CIB4JMJD6ZNF534CADM1FOXK1ORAI2KCNJ11AIDAZNF853RPL13AELP5CCDC121LIN7BVPS36NEGR1ZNF860DGCR8FAM186AATF1CHD1C2orf66PEX10POLHIFT172ACMSDTRIM47PAEPMBTD1PPIARNF185MRPS12CASQ1FANCLATXN1MIPMIXL1GLDNTNFRSF1AXRN2C1QTNF1AKIRIN1PIGVRPS5ERC2IPPKMAGOHJHYMED28HMCESRIMKLAKRTAP2-2GDPD1UBBSEMG2MAP6D1RCBTB2SPTSSBLHFPL2MACROD1NME8GNG4BEND4CCDC149ELLRAB13NKX2-5SNX17PLEKHG5IER2MTRF1LBROXZNF747HIST1H2BAFBXO5FAM47EPGAM5CZIBCDRT15NALCNBHMTHIST1H4BSLC25A32CDK15ANO5TAP2HAUS4RAB8BBFARKCNK4NRBP1LAP3PIGMNUDCDPY19L1PXKDAB2IL25SULT1E1RPL26L1ATP6V1G2DNAJC11VPS28ZNF484SLC8A3THRSPZNF513IL17RELPTP4A1UCNKIF17FBXO42AL139353.1CCDC106ZIC4TNIKNECAP2CWF19L1EGFL8OR12D2HIF1ALRGUKDGKADMAC2CNIH2LY6G6DKRTCAP3CTXN3ZBTB22OLFM4ZDHHC21PRMT5RTN3DYRK1BANKDD1BPDCD6IPLRRC36SYN3IGFALSNOL4LAMTOR3CD82LMBRD2</p>
-
-</div>
-
-</div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
 <h3 id="QTLs-that-are-significant-up-in-SCZ-TR,-but-not-in-(EUR-only)-SCZ:-343">QTLs that are significant up in SCZ TR, but not in (EUR only) SCZ: 343<a class="anchor-link" href="#QTLs-that-are-significant-up-in-SCZ-TR,-but-not-in-(EUR-only)-SCZ:-343">&#182;</a></h3>
-</div>
-
-</div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
-<p>HIST1H3FPRSS16CCHCR1ASPHD1HSPE1PLPP5SMDT1REEP2FXR1LSM1APH1ACCDC92RPRD2ALG12UQCRC2MAMSTRCOA8SLC38A7RGS6CLIP1HCAR1SIPA1L3STX16CHST8KIF1BPCALCOCO2AGPAT2HLA-DRAZCCHC17IREB2CCDC157ZNF738PMVKGRID1ZNF493DIRAS1SNX11SLC16A4TSPAN16GLI1ZNF433GOLGA8JCOX8CUGT1A7GOLGA6L9OBP2BANKHD1HIST1H4CABCD2ME1NTAN1C12orf65AS3MTPRKD1LMOD1SIRPB1ACVR2BVPS39PCDHGA2CUL7SEMA6CPCDHB16TAC1PIK3C2BGLCECOL6A6SNX14EIF3BNPHP1MCTP1DCP1ACD34LY6G6EOGASKA2SHISA4BORCS7GANCC9PTDSS1RRN3ZNF112TLE7CWC25CEPT1BCKDHAFAM168BPDIA5ZNF233TCF19NOCTB4GALT5PARLDPF1MRPL28GABRG1SLITRK6RMND5AANKFY1TMEM14ADAP3SNORCKHDC1RABEP1SLC4A1APCACNA1GHIST1H2BBHIST1H2ACC9orf131H2AFJEFSARL6IP6HIST1H1CELOA3BNRXN2PIAS2ZNF235MOV10L1GALNT4TM9SF3KLC4FABP3ATP13A5KCNK7MAPK8IP1MRGPRX3FKBP1CEFL1KLF16TAB1GLULPATE2NIPSNAP2AKT3MSL2CADPSACTR1AINAVALIMA1GABBR2ENPP4CLIC5PRR11ARHGEF19GABPB1LAIR1TOXARHGEF4HIST1H3CCKS1BCENPLPYROXD2HARBI1CHMP5ADCK5YY1AP1CMTM1PDCD1ZNF592ATXN7L3BPARD6AC1orf116C12orf42MDM4LRRC57RMI1PIP4K2BRNF24SLTMTRMT2ADNAL4NATD1RHBDL2ZDHHC8PGM2UTP4DEPDC1BGABRG3E2F4NPIPB9KIAA0895LPAR6PIK3R4UNC119BLATHIST1H2BCMAP3K12IFT74TRIM37BRINP3ELOA3DPCDHGB7PRKRIP1ACCSLTMEM127SLC39A3TMEM163SYNJ2ELAVL2HTR4SMIM27SNX8SMARCAD1NFKBIAITPRIPL1IQSEC1CIB4JMJD6ZNF534DOT1LFOXK1ORAI2LRRC4BAIDAZNF853RPL13AELP5CCDC121VPS36NEGR1ZNF860ATF1CHD1CIAO1PEX10TMEM87BRANBP1POLHRWDD2BACMSDTRIM47PAEPMBTD1APOC2PPIARNF185EDC4MRPS12FAAP20FBXL17FANCLATXN1MIPGLDNTNFRSF1AXRN2C1QTNF1AKIRIN1PIGVRPS5ERC2IPPKMAGOHTRMT9BJHYMED28KRTAP2-2GDPD1UBBSEMG2MAP6D1RCBTB2SPTSSBLHFPL2PRIMA1MACROD1NME8GNG4BEND4CCDC149ELLRAB13ACSM3PLEKHG5IER2MTRF1LBROXFOXO3ZNF747POGZPGAM5CZIBRNF227PSMB4CDRT15NALCNNCBP2AS2BHMTHIST1H4BSLC25A32CDK15ANO5TAP2HAUS4BFARLAP3NUDCDPY19L1PXKDAB2IL25SULT1E1RPL26L1SSR2VPS28ZNF484SLC8A3THRSPZNF513IL17RELPTP4A1KIF17FBXO42TRIM35AL139353.1ZIC4TNIKNECAP2CWF19L1WBP11EGFL8OR12D2HIF1ALRGUKDGKADMAC2CNIH2LY6G6DCTXN3ZBTB22OLFM4CHFRZDHHC21PRMT5PIP4P2DYRK1BANKDD1BPDCD6IPSYN3IGFALSNOL4CD82LMBRD2</p>
-
 </div>
 
 </div>
@@ -14884,12 +14858,16 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Plotting-the-Differences-in-MR-results:-Scz-TR-vs.-SCZ">Plotting the Differences in MR results: Scz TR vs. SCZ<a class="anchor-link" href="#Plotting-the-Differences-in-MR-results:-Scz-TR-vs.-SCZ">&#182;</a></h2><p>This list is primarily filtered as results that are uniquely significant in Scz TR (not in Scz all).  Then filtered by a decent sized difference between BETAs / SEs to Scz all</p>
-<h3 id="Scz-(meta)-TR-vs.-Scz-(meta)-All">Scz (meta) TR vs. Scz (meta) All<a class="anchor-link" href="#Scz-(meta)-TR-vs.-Scz-(meta)-All">&#182;</a></h3><p>Where Scz TR results are significant, and Scz All results are not</p>
+<ul>
+<li>Where Scz TR results are significant, and Scz All results are not</li>
+<li>Where there is a difference of BETA &gt; 0.2</li>
+<li>Where there is some significant value in Scz TR and Scz SE crosses 0 by a bit</li>
+</ul>
 <table>
 <thead>
 <tr>
-  <th>Scz (meta) TR vs. Scz (meta) All</th>
-  <th>EAS vs. EUR</th>
+  <th>Scz meta TR vs. Scz meta All, where Scz TR results are significant</th>
+  <th>EAS vs. EUR, where EAS results are significant</th>
 </tr>
 </thead>
 <tbody>
