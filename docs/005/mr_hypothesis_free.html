@@ -3,7 +3,7 @@
 <head><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>mr_results</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>mr_hypothesis_free</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 
 
 
@@ -14615,74 +14615,6 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-r"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">IRdisplay</span><span class="p">)</span>
-<span class="n">IRdisplay</span><span class="o">::</span><span class="nf">display_markdown</span><span class="p">(</span><span class="s">&quot;### Expected vs Observed Outcomes of Scz meta-analysis vs. Scz TR meta-analysis&quot;</span><span class="p">)</span>
-
-<span class="n">outcomes</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">vroom</span><span class="o">::</span><span class="nf">vroom</span><span class="p">(</span><span class="s">&quot;scratch/results/collider_bias/expected_vs_observed_outcomes.tsv&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">show_col_types</span><span class="o">=</span><span class="bp">F</span><span class="p">)</span>
-<span class="n">outcomes</span><span class="o">$</span><span class="n">COMPARISON</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s">&quot;scz_meta_vs_scz_tr_meta&quot;</span>
-<span class="n">outcomes</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
-<h3 id="Expected-vs-Observed-Outcomes-of-Scz-meta-analysis-vs.-Scz-TR-meta-analysis">Expected vs Observed Outcomes of Scz meta-analysis vs. Scz TR meta-analysis<a class="anchor-link" href="#Expected-vs-Observed-Outcomes-of-Scz-meta-analysis-vs.-Scz-TR-meta-analysis">&#182;</a></h3>
-</div>
-
-</div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
-<table class="dataframe">
-<caption>A spec_tbl_df: 4 × 6</caption>
-<thead>
-	<tr><th scope=col>COMPARISON</th><th scope=col>N</th><th scope=col>METRIC</th><th scope=col>DATUM</th><th scope=col>VALUE</th><th scope=col>P_DIFF</th></tr>
-	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
-</thead>
-<tbody>
-	<tr><td>scz_meta_vs_scz_tr_meta</td><td>4043</td><td>Sign   </td><td>Expected</td><td>4040.825</td><td>          NA</td></tr>
-	<tr><td>scz_meta_vs_scz_tr_meta</td><td>4043</td><td>Sign   </td><td>Observed</td><td>4041.000</td><td>1.000000e+00</td></tr>
-	<tr><td>scz_meta_vs_scz_tr_meta</td><td>4043</td><td>P-value</td><td>Expected</td><td>3759.603</td><td>          NA</td></tr>
-	<tr><td>scz_meta_vs_scz_tr_meta</td><td>4043</td><td>P-value</td><td>Observed</td><td>3896.000</td><td>5.053391e-20</td></tr>
-</tbody>
-</table>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">

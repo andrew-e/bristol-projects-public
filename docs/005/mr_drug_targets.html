@@ -3,7 +3,7 @@
 <head><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>index</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>mr_drug_targets</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 
 
 
@@ -14555,35 +14555,484 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 }
 </style>
 
-<h1>
-Scizophrenia Drug Project
-</h1>
+<!-- Load mathjax -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS_CHTML-full,Safe"> </script>
+    <!-- MathJax configuration -->
+    <script type="text/x-mathjax-config">
+    init_mathjax = function() {
+        if (window.MathJax) {
+        // MathJax loaded
+            MathJax.Hub.Config({
+                TeX: {
+                    equationNumbers: {
+                    autoNumber: "AMS",
+                    useLabelIds: true
+                    }
+                },
+                tex2jax: {
+                    inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                    displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+                    processEscapes: true,
+                    processEnvironments: true
+                },
+                displayAlign: 'center',
+                CommonHTML: {
+                    linebreaks: {
+                    automatic: true
+                    }
+                }
+            });
 
-<h3>
-<a href="collider_bias_pipeline.html">Collider Bias Pipeline Results (Scz vs. Treatment Resistant Scz)</a> 
-<br/>
-<a href="mr_drug_targets.html">Running MR on Scz GWASes against Meta-Brain Cortex QTLs (specific to known scz drug targets)</a> 
-<br/>
-<a href="mr_hypothesis_free.html">Running MR on Scz GWASes against Meta-Brain Cortex QTLs (hypothesis free)</a> 
-<br/>
-</h3>
+            MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+        }
+    }
+    init_mathjax();
+    </script>
+    <!-- End of mathjax configuration --></head>
+<body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
 
-<br/>
-</h3>
-
-GWAS Data:
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="Schizophenia-vs.-Treatment-Resistant-Schizophrenia">Schizophenia vs. Treatment Resistant Schizophrenia<a class="anchor-link" href="#Schizophenia-vs.-Treatment-Resistant-Schizophrenia">&#182;</a></h1><p>Running MR against Cortex QTL from Metabrain</p>
 <ul>
-<li> Scz: EUR, AFR, EAS, and Meta-analysed</li>
-<li> Scz TR: Meta-analysed only</li>
-<li> Metabrain Cortex QTLs: EUR, AFR, EAS.  Meta-analysed not provided</li>
+<li>Scz = Schizophreina</li>
+<li>Scz tr = Schizophrenia that is resistant to certain treatment (and is therefore perscribed clozapine)</li>
+<li>Scz tr cb = Scz tr GWAS that has been corrected for collider bias (CB correction was ~= 1)</li>
 </ul>
-<br />
-All meta-analysed GWASes were run against EUR Metabrain Cortex QTLs<br />
-<br />
-Nomenclature:<br />
+<p>GWAS:</p>
 <ul>
-<li> Scz = Schizophreina</li>
-<li> Scz tr = Schizophrenia that is resistant to certain drug treatments (and was therefore perscribed clozapine)</li>
-<li> Scz tr cb = Scz tr GWAS that has been corrected for collider bias (CB correction slope was ~= 1)</li>
+<li>Scz: EUR, AFR, EAS, and Meta-analysed</li>
+<li>Scz TR: Meta-analysed only</li>
+<li>Metabrain Cortex QTLs: EUR, AFR, EAS.  Meta-analysed not provided</li>
+<li>Meta analysis not so simple (for top hits), as Gene -&gt; SNP is not the same for top hits.</li>
 </ul>
+<p>All meta-analysed GWASes were run against EUR Metabrain Cortex QTLs</p>
 
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[6]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-r"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">IRdisplay</span><span class="p">)</span>
+
+<span class="n">drug_targets</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">vroom</span><span class="o">::</span><span class="nf">vroom</span><span class="p">(</span><span class="s">&quot;scratch/data/scz_drug_target_bindings.tsv&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">show_col_types</span><span class="o">=</span><span class="bp">F</span><span class="p">)</span>
+<span class="n">other_targets</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;HTR2B&quot;</span><span class="p">,</span><span class="s">&quot; HTR5A&quot;</span><span class="p">,</span><span class="s">&quot; HRH2&quot;</span><span class="p">,</span><span class="s">&quot; HRH3&quot;</span><span class="p">,</span><span class="s">&quot; OPRK1&quot;</span><span class="p">,</span><span class="s">&quot; OPRD1&quot;</span><span class="p">,</span><span class="s">&quot; GRIN1&quot;</span><span class="p">,</span><span class="s">&quot; GRIN2A&quot;</span><span class="p">,</span><span class="s">&quot; GRIN2B&quot;</span><span class="p">,</span><span class="s">&quot; GRIN2C&quot;</span><span class="p">,</span><span class="s">&quot; GRIN2D&quot;</span><span class="p">,</span><span class="s">&quot; GRIN3A&quot;</span><span class="p">,</span><span class="s">&quot; GRIN3B&quot;</span><span class="p">,</span><span class="s">&quot; SLC6A3&quot;</span><span class="p">,</span><span class="s">&quot; SLC6A4&quot;</span><span class="p">)</span>
+<span class="n">interesting_drug_targets</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">unique</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="n">drug_targets</span><span class="o">$</span><span class="n">target</span><span class="p">,</span><span class="w"> </span><span class="n">other_targets</span><span class="p">))</span>
+
+<span class="n">n</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">length</span><span class="p">(</span><span class="n">interesting_drug_targets</span><span class="p">)</span>
+
+<span class="n">IRdisplay</span><span class="o">::</span><span class="nf">display_markdown</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="s">&quot;### Number of Drug Targets Tried:&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">))</span>
+
+<span class="n">IRdisplay</span><span class="o">::</span><span class="nf">display_markdown</span><span class="p">(</span><span class="s">&quot;### Basic Table of a few drugs and their targets&quot;</span><span class="p">)</span>
+
+<span class="n">drug_targets</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="n">dplyr</span><span class="o">::</span><span class="nf">select</span><span class="p">(</span><span class="n">target</span><span class="p">,</span><span class="w"> </span><span class="n">colzapine_target</span><span class="p">,</span><span class="w"> </span><span class="n">olanzapine_target</span><span class="p">,</span><span class="w"> </span><span class="n">haloperidol_target</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
+<h3 id="Number-of-Drug-Targets-Tried:-55">Number of Drug Targets Tried: 55<a class="anchor-link" href="#Number-of-Drug-Targets-Tried:-55">&#182;</a></h3>
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
+<h3 id="Basic-Table-of-a-few-drugs-and-their-targets">Basic Table of a few drugs and their targets<a class="anchor-link" href="#Basic-Table-of-a-few-drugs-and-their-targets">&#182;</a></h3>
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<table class="dataframe">
+<caption>A spec_tbl_df: 40 × 4</caption>
+<thead>
+	<tr><th scope=col>target</th><th scope=col>colzapine_target</th><th scope=col>olanzapine_target</th><th scope=col>haloperidol_target</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>ADRA1A </td><td> TRUE</td><td> TRUE</td><td> TRUE</td></tr>
+	<tr><td>ADRA1B </td><td> TRUE</td><td> TRUE</td><td>FALSE</td></tr>
+	<tr><td>ADRA2A </td><td> TRUE</td><td>FALSE</td><td> TRUE</td></tr>
+	<tr><td>ADRA2B </td><td> TRUE</td><td>FALSE</td><td> TRUE</td></tr>
+	<tr><td>ADRA2C </td><td> TRUE</td><td>FALSE</td><td> TRUE</td></tr>
+	<tr><td>ADRB1  </td><td>FALSE</td><td> TRUE</td><td>FALSE</td></tr>
+	<tr><td>ADRB2  </td><td>FALSE</td><td> TRUE</td><td>FALSE</td></tr>
+	<tr><td>ADRB3  </td><td>FALSE</td><td> TRUE</td><td>FALSE</td></tr>
+	<tr><td>CALY   </td><td> TRUE</td><td>FALSE</td><td>FALSE</td></tr>
+	<tr><td>CHRM1  </td><td> TRUE</td><td> TRUE</td><td>FALSE</td></tr>
+	<tr><td>CHRM2  </td><td> TRUE</td><td> TRUE</td><td>FALSE</td></tr>
+	<tr><td>CHRM3  </td><td> TRUE</td><td> TRUE</td><td> TRUE</td></tr>
+	<tr><td>CHRM4  </td><td> TRUE</td><td> TRUE</td><td>FALSE</td></tr>
+	<tr><td>CHRM5  </td><td> TRUE</td><td>FALSE</td><td>FALSE</td></tr>
+	<tr><td>DRD1   </td><td> TRUE</td><td> TRUE</td><td> TRUE</td></tr>
+	<tr><td>DRD2   </td><td> TRUE</td><td> TRUE</td><td> TRUE</td></tr>
+	<tr><td>DRD3   </td><td> TRUE</td><td> TRUE</td><td> TRUE</td></tr>
+	<tr><td>DRD4   </td><td> TRUE</td><td> TRUE</td><td>FALSE</td></tr>
+	<tr><td>DRD5   </td><td> TRUE</td><td> TRUE</td><td>FALSE</td></tr>
+	<tr><td>GABBR1 </td><td> TRUE</td><td>FALSE</td><td>FALSE</td></tr>
+	<tr><td>GABBR2 </td><td> TRUE</td><td>FALSE</td><td>FALSE</td></tr>
+	<tr><td>GABRA1 </td><td> TRUE</td><td>FALSE</td><td>FALSE</td></tr>
+	<tr><td>GABRB1 </td><td> TRUE</td><td>FALSE</td><td>FALSE</td></tr>
+	<tr><td>GABRG1 </td><td> TRUE</td><td>FALSE</td><td>FALSE</td></tr>
+	<tr><td>GRIN2B </td><td>FALSE</td><td>FALSE</td><td> TRUE</td></tr>
+	<tr><td>GSTP1  </td><td> TRUE</td><td>FALSE</td><td>FALSE</td></tr>
+	<tr><td>HRH1   </td><td> TRUE</td><td> TRUE</td><td> TRUE</td></tr>
+	<tr><td>HRH4   </td><td> TRUE</td><td>FALSE</td><td>FALSE</td></tr>
+	<tr><td>HTR1A  </td><td> TRUE</td><td>FALSE</td><td> TRUE</td></tr>
+	<tr><td>HTR1B  </td><td> TRUE</td><td>FALSE</td><td>FALSE</td></tr>
+	<tr><td>HTR1D  </td><td> TRUE</td><td>FALSE</td><td>FALSE</td></tr>
+	<tr><td>HTR1E  </td><td> TRUE</td><td>FALSE</td><td>FALSE</td></tr>
+	<tr><td>HTR2A  </td><td> TRUE</td><td> TRUE</td><td> TRUE</td></tr>
+	<tr><td>HTR2C  </td><td> TRUE</td><td> TRUE</td><td> TRUE</td></tr>
+	<tr><td>HTR3A  </td><td> TRUE</td><td> TRUE</td><td>FALSE</td></tr>
+	<tr><td>HTR6   </td><td> TRUE</td><td> TRUE</td><td> TRUE</td></tr>
+	<tr><td>HTR7   </td><td> TRUE</td><td>FALSE</td><td> TRUE</td></tr>
+	<tr><td>MCHR1  </td><td>FALSE</td><td>FALSE</td><td> TRUE</td></tr>
+	<tr><td>SIGMAR1</td><td>FALSE</td><td>FALSE</td><td> TRUE</td></tr>
+	<tr><td>SLC18A2</td><td>FALSE</td><td>FALSE</td><td> TRUE</td></tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[7]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-r"><pre><span></span><span class="n">scz_afr</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">vroom</span><span class="o">::</span><span class="nf">vroom</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/scz_gwas_afr_metabrain.tsv.gz&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">show_col_types</span><span class="o">=</span><span class="bp">F</span><span class="p">)</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nf">subset</span><span class="p">(</span><span class="n">outcome</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;cortex_afr_top_hits&quot;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">exposure</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="n">interesting_drug_targets</span><span class="p">)</span>
+<span class="n">scz_eas</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">vroom</span><span class="o">::</span><span class="nf">vroom</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/scz_gwas_eas_metabrain.tsv.gz&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">show_col_types</span><span class="o">=</span><span class="bp">F</span><span class="p">)</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nf">subset</span><span class="p">(</span><span class="n">outcome</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;cortex_eas_top_hits&quot;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">exposure</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="n">interesting_drug_targets</span><span class="p">)</span>
+<span class="n">scz_eur</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">vroom</span><span class="o">::</span><span class="nf">vroom</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/scz_gwas_eur_metabrain.tsv.gz&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">show_col_types</span><span class="o">=</span><span class="bp">F</span><span class="p">)</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nf">subset</span><span class="p">(</span><span class="n">outcome</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;cortex_eur_top_hits&quot;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">exposure</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="n">interesting_drug_targets</span><span class="p">)</span><span class="w"> </span>
+<span class="n">scz_all</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">vroom</span><span class="o">::</span><span class="nf">vroom</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/scz_gwas_all_vs_eur.tsv.gz&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">show_col_types</span><span class="o">=</span><span class="bp">F</span><span class="p">)</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nf">subset</span><span class="p">(</span><span class="n">outcome</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;cortex_eur_top_hits&quot;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">exposure</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="n">interesting_drug_targets</span><span class="p">)</span>
+<span class="n">scz_tr</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">vroom</span><span class="o">::</span><span class="nf">vroom</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/scz_tr_gwas_metaanalysis_metabrain.tsv.gz&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">show_col_types</span><span class="o">=</span><span class="bp">F</span><span class="p">)</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nf">subset</span><span class="p">(</span><span class="n">outcome</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;cortex_eur_top_hits&quot;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">exposure</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="n">interesting_drug_targets</span><span class="p">)</span>
+<span class="n">scz_tr_cb</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">vroom</span><span class="o">::</span><span class="nf">vroom</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/scz_tr_cb_corrected_gwas_metaanalysis_metabrain.tsv.gz&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">show_col_types</span><span class="o">=</span><span class="bp">F</span><span class="p">)</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nf">subset</span><span class="p">(</span><span class="n">outcome</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;cortex_eur&quot;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">exposure</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="n">interesting_drug_targets</span><span class="p">)</span>
+
+
+
+<span class="n">IRdisplay</span><span class="o">::</span><span class="nf">display_markdown</span><span class="p">(</span><span class="s">&quot;### Ancestry Specific Results, filtered by pval &lt; 9e-4 (0.05/55)&quot;</span><span class="p">)</span>
+<span class="n">IRdisplay</span><span class="o">::</span><span class="nf">display_markdown</span><span class="p">(</span><span class="s">&quot;#### AFR&quot;</span><span class="p">)</span>
+<span class="n">sig_scz_afr</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">scz_afr</span><span class="p">[</span><span class="n">scz_afr</span><span class="o">$</span><span class="n">pval</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">0.05</span><span class="o">/</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
+<span class="n">sig_scz_afr</span>
+<span class="n">IRdisplay</span><span class="o">::</span><span class="nf">display_markdown</span><span class="p">(</span><span class="s">&quot;#### EAS&quot;</span><span class="p">)</span>
+<span class="n">sig_scz_eas</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">scz_eas</span><span class="p">[</span><span class="n">scz_eas</span><span class="o">$</span><span class="n">pval</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">0.05</span><span class="o">/</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
+<span class="n">sig_scz_eas</span>
+<span class="n">IRdisplay</span><span class="o">::</span><span class="nf">display_markdown</span><span class="p">(</span><span class="s">&quot;#### EUR&quot;</span><span class="p">)</span>
+<span class="n">sig_scz_eur</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">scz_eur</span><span class="p">[</span><span class="nf">with</span><span class="p">(</span><span class="n">scz_eur</span><span class="p">,</span><span class="w"> </span><span class="nf">order</span><span class="p">(</span><span class="n">pval</span><span class="p">)),</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nf">subset</span><span class="p">(</span><span class="n">pval</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">0.05</span><span class="o">/</span><span class="n">n</span><span class="p">)</span>
+<span class="n">sig_scz_eur</span>
+<span class="n">IRdisplay</span><span class="o">::</span><span class="nf">display_markdown</span><span class="p">(</span><span class="s">&quot;### Meta-analysed results, filtered by pval &lt; 9e-4 (0.05/55)&quot;</span><span class="p">)</span>
+<span class="n">IRdisplay</span><span class="o">::</span><span class="nf">display_markdown</span><span class="p">(</span><span class="s">&quot;#### Scz&quot;</span><span class="p">)</span>
+<span class="n">sig_scz_all</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">scz_all</span><span class="p">[</span><span class="nf">with</span><span class="p">(</span><span class="n">scz_all</span><span class="p">,</span><span class="w"> </span><span class="nf">order</span><span class="p">(</span><span class="n">pval</span><span class="p">)),</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nf">subset</span><span class="p">(</span><span class="n">pval</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">0.05</span><span class="o">/</span><span class="n">n</span><span class="p">)</span>
+<span class="n">sig_scz_all</span>
+<span class="n">IRdisplay</span><span class="o">::</span><span class="nf">display_markdown</span><span class="p">(</span><span class="s">&quot;#### Scz TR&quot;</span><span class="p">)</span>
+<span class="n">sig_scz_tr</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">scz_tr</span><span class="p">[</span><span class="nf">with</span><span class="p">(</span><span class="n">scz_tr</span><span class="p">,</span><span class="w"> </span><span class="nf">order</span><span class="p">(</span><span class="n">pval</span><span class="p">)),</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nf">subset</span><span class="p">(</span><span class="n">pval</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">0.05</span><span class="o">/</span><span class="n">n</span><span class="p">)</span>
+<span class="n">sig_scz_tr</span>
+<span class="n">IRdisplay</span><span class="o">::</span><span class="nf">display_markdown</span><span class="p">(</span><span class="s">&quot;#### Scz TR CB corrected&quot;</span><span class="p">)</span>
+<span class="n">sig_scz_tr_cb</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">scz_tr_cb</span><span class="p">[</span><span class="nf">with</span><span class="p">(</span><span class="n">scz_tr_cb</span><span class="p">,</span><span class="w"> </span><span class="nf">order</span><span class="p">(</span><span class="n">pval</span><span class="p">)),</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nf">subset</span><span class="p">(</span><span class="n">pval</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">0.05</span><span class="o">/</span><span class="n">n</span><span class="p">)</span>
+<span class="n">sig_scz_tr_cb</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
+<h3 id="Ancestry-Specific-Results,-filtered-by-pval-%3C-9e-4-(0.05/55)">Ancestry Specific Results, filtered by pval &lt; 9e-4 (0.05/55)<a class="anchor-link" href="#Ancestry-Specific-Results,-filtered-by-pval-%3C-9e-4-(0.05/55)">&#182;</a></h3>
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
+<h4 id="AFR">AFR<a class="anchor-link" href="#AFR">&#182;</a></h4>
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<table class="dataframe">
+<caption>A spec_tbl_df: 0 × 10</caption>
+<thead>
+	<tr><th scope=col>id.exposure</th><th scope=col>id.outcome</th><th scope=col>outcome</th><th scope=col>exposure</th><th scope=col>method</th><th scope=col>nsnp</th><th scope=col>b</th><th scope=col>se</th><th scope=col>pval</th><th scope=col>p.adjusted</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
+<h4 id="EAS">EAS<a class="anchor-link" href="#EAS">&#182;</a></h4>
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<table class="dataframe">
+<caption>A spec_tbl_df: 0 × 10</caption>
+<thead>
+	<tr><th scope=col>id.exposure</th><th scope=col>id.outcome</th><th scope=col>outcome</th><th scope=col>exposure</th><th scope=col>method</th><th scope=col>nsnp</th><th scope=col>b</th><th scope=col>se</th><th scope=col>pval</th><th scope=col>p.adjusted</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
+<h4 id="EUR">EUR<a class="anchor-link" href="#EUR">&#182;</a></h4>
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<table class="dataframe">
+<caption>A spec_tbl_df: 1 × 10</caption>
+<thead>
+	<tr><th scope=col>id.exposure</th><th scope=col>id.outcome</th><th scope=col>outcome</th><th scope=col>exposure</th><th scope=col>method</th><th scope=col>nsnp</th><th scope=col>b</th><th scope=col>se</th><th scope=col>pval</th><th scope=col>p.adjusted</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>YiRcGH</td><td>bEI5xq</td><td>cortex_eur_top_hits</td><td>MCHR1</td><td>Wald ratio</td><td>1</td><td>-0.07861655</td><td>0.02128504</td><td>0.0002211784</td><td>0.007363778</td></tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
+<h3 id="Meta-analysed-results,-filtered-by-pval-%3C-9e-4-(0.05/55)">Meta-analysed results, filtered by pval &lt; 9e-4 (0.05/55)<a class="anchor-link" href="#Meta-analysed-results,-filtered-by-pval-%3C-9e-4-(0.05/55)">&#182;</a></h3>
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
+<h4 id="Scz">Scz<a class="anchor-link" href="#Scz">&#182;</a></h4>
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<table class="dataframe">
+<caption>A spec_tbl_df: 1 × 10</caption>
+<thead>
+	<tr><th scope=col>id.exposure</th><th scope=col>id.outcome</th><th scope=col>outcome</th><th scope=col>exposure</th><th scope=col>method</th><th scope=col>nsnp</th><th scope=col>b</th><th scope=col>se</th><th scope=col>pval</th><th scope=col>p.adjusted</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>QOEouL</td><td>aTLApw</td><td>cortex_eur_top_hits</td><td>MCHR1</td><td>Wald ratio</td><td>1</td><td>-0.06693036</td><td>0.01783341</td><td>0.0001746697</td><td>0.00534335</td></tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
+<h4 id="Scz-TR">Scz TR<a class="anchor-link" href="#Scz-TR">&#182;</a></h4>
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<table class="dataframe">
+<caption>A spec_tbl_df: 3 × 10</caption>
+<thead>
+	<tr><th scope=col>id.exposure</th><th scope=col>id.outcome</th><th scope=col>outcome</th><th scope=col>exposure</th><th scope=col>method</th><th scope=col>nsnp</th><th scope=col>b</th><th scope=col>se</th><th scope=col>pval</th><th scope=col>p.adjusted</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>eCS8K2</td><td>czvSg5</td><td>cortex_eur_top_hits</td><td>MCHR1 </td><td>Wald ratio</td><td>1</td><td>-0.09593128</td><td>0.02334115</td><td>3.957221e-05</td><td>0.001985206</td></tr>
+	<tr><td>kqHDD5</td><td>czvSg5</td><td>cortex_eur_top_hits</td><td>GABRG1</td><td>Wald ratio</td><td>1</td><td>-0.13213872</td><td>0.03753223</td><td>4.304522e-04</td><td>0.012009693</td></tr>
+	<tr><td>fXwqNN</td><td>czvSg5</td><td>cortex_eur_top_hits</td><td>GABBR2</td><td>Wald ratio</td><td>1</td><td>-0.17169749</td><td>0.05122502</td><td>8.027966e-04</td><td>0.019067334</td></tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
+<h4 id="Scz-TR-CB-corrected">Scz TR CB corrected<a class="anchor-link" href="#Scz-TR-CB-corrected">&#182;</a></h4>
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<table class="dataframe">
+<caption>A spec_tbl_df: 0 × 10</caption>
+<thead>
+	<tr><th scope=col>id.exposure</th><th scope=col>id.outcome</th><th scope=col>outcome</th><th scope=col>exposure</th><th scope=col>method</th><th scope=col>nsnp</th><th scope=col>b</th><th scope=col>se</th><th scope=col>pval</th><th scope=col>p.adjusted</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Plotting-the-Differences-in-MR-results:-Scz-TR-vs.-SCZ">Plotting the Differences in MR results: Scz TR vs. SCZ<a class="anchor-link" href="#Plotting-the-Differences-in-MR-results:-Scz-TR-vs.-SCZ">&#182;</a></h2><p><img src="scratch/results/plots/drug_target_tr_vs_scz_mr_results.png" alt="alt" /></p>
+
+</div>
+</div>
+</div>
+</div>
+</body>
+
+
+
+
+
+
+
+</html>
