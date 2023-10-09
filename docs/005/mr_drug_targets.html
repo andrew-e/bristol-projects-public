@@ -14620,7 +14620,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[78]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[81]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-r"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">IRdisplay</span><span class="p">)</span>
@@ -14638,14 +14638,14 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <span class="n">IRdisplay</span><span class="o">::</span><span class="nf">display_markdown</span><span class="p">(</span><span class="s">&quot;### Targets Only Found in Clozapine&quot;</span><span class="p">)</span>
 
 <span class="n">other_targets</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">drug_targets</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="n">dplyr</span><span class="o">::</span><span class="nf">select</span><span class="p">(</span><span class="nf">contains</span><span class="p">(</span><span class="s">&quot;_target&quot;</span><span class="p">),</span><span class="w"> </span><span class="o">-</span><span class="nf">c</span><span class="p">(</span><span class="n">clozapine_target</span><span class="p">))</span>
-<span class="n">drug_targets</span><span class="p">[</span><span class="n">drug_targets</span><span class="o">$</span><span class="n">clozapine_target</span><span class="o">==</span><span class="bp">T</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nf">rowSums</span><span class="p">(</span><span class="n">other_targets</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="n">dplyr</span><span class="o">::</span><span class="nf">select</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
-
+<span class="n">cloz_only</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">drug_targets</span><span class="p">[</span><span class="n">drug_targets</span><span class="o">$</span><span class="n">clozapine_target</span><span class="o">==</span><span class="bp">T</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nf">rowSums</span><span class="p">(</span><span class="n">other_targets</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="n">dplyr</span><span class="o">::</span><span class="nf">select</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
+<span class="n">cloz_only</span>
 <span class="n">IRdisplay</span><span class="o">::</span><span class="nf">display_markdown</span><span class="p">(</span><span class="s">&quot;[Links between GABA receptors and Scz have been studied before](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4262918/)&quot;</span><span class="p">)</span>
 
 <span class="n">IRdisplay</span><span class="o">::</span><span class="nf">display_markdown</span><span class="p">(</span><span class="s">&quot;### Targets Mostly Found in Clozapine&quot;</span><span class="p">)</span>
 
-<span class="n">drug_targets</span><span class="p">[</span><span class="n">drug_targets</span><span class="o">$</span><span class="n">clozapine_target</span><span class="o">==</span><span class="bp">T</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nf">rowSums</span><span class="p">(</span><span class="n">other_targets</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nf">rowSums</span><span class="p">(</span><span class="n">other_targets</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
-
+<span class="n">mostly_cloz</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">drug_targets</span><span class="p">[</span><span class="n">drug_targets</span><span class="o">$</span><span class="n">clozapine_target</span><span class="o">==</span><span class="bp">T</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nf">rowSums</span><span class="p">(</span><span class="n">other_targets</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nf">rowSums</span><span class="p">(</span><span class="n">other_targets</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
+<span class="n">mostly_cloz</span>
 
 <span class="n">number_of_targets_in_cortex_eur</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">vroom</span><span class="o">::</span><span class="nf">vroom</span><span class="p">(</span><span class="s">&quot;scratch/data/qtls/metabrain/top_hits/cortex_eur.tsv.gz&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">show_col_types</span><span class="o">=</span><span class="bp">F</span><span class="p">)</span>
 <span class="n">targets_available</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">nrow</span><span class="p">(</span><span class="n">number_of_targets_in_cortex_eur</span><span class="p">[</span><span class="n">number_of_targets_in_cortex_eur</span><span class="o">$</span><span class="n">EXPOSURE</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="n">interesting_drug_targets</span><span class="p">,</span><span class="w"> </span><span class="p">])</span>
@@ -14814,7 +14814,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[76]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[86]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-r"><pre><span></span><span class="n">scz_afr</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">vroom</span><span class="o">::</span><span class="nf">vroom</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/scz_gwas_afr_metabrain.tsv.gz&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">show_col_types</span><span class="o">=</span><span class="bp">F</span><span class="p">)</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nf">subset</span><span class="p">(</span><span class="n">outcome</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;cortex_afr&quot;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">exposure</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="n">interesting_drug_targets</span><span class="p">)</span>
@@ -14828,9 +14828,15 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <span class="n">IRdisplay</span><span class="o">::</span><span class="nf">display_markdown</span><span class="p">(</span><span class="s">&quot;#### Scz&quot;</span><span class="p">)</span>
 <span class="n">sig_scz_all</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">scz_all</span><span class="p">[</span><span class="nf">with</span><span class="p">(</span><span class="n">scz_all</span><span class="p">,</span><span class="w"> </span><span class="nf">order</span><span class="p">(</span><span class="n">pval</span><span class="p">)),</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nf">subset</span><span class="p">(</span><span class="n">pval</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">0.05</span><span class="o">/</span><span class="n">n</span><span class="p">)</span>
 <span class="n">sig_scz_all</span>
+<span class="n">IRdisplay</span><span class="o">::</span><span class="nf">display_markdown</span><span class="p">(</span><span class="s">&quot;#### Scz of Cloz Specific targets (regardless of p.value)&quot;</span><span class="p">)</span>
+<span class="n">scz_all</span><span class="p">[</span><span class="nf">with</span><span class="p">(</span><span class="n">scz_all</span><span class="p">,</span><span class="w"> </span><span class="nf">order</span><span class="p">(</span><span class="n">pval</span><span class="p">)),</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nf">subset</span><span class="p">(</span><span class="n">exposure</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="n">cloz_only</span><span class="o">$</span><span class="n">target</span><span class="p">)</span>
+
 <span class="n">IRdisplay</span><span class="o">::</span><span class="nf">display_markdown</span><span class="p">(</span><span class="s">&quot;#### Scz TR&quot;</span><span class="p">)</span>
 <span class="n">sig_scz_tr</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">scz_tr</span><span class="p">[</span><span class="nf">with</span><span class="p">(</span><span class="n">scz_tr</span><span class="p">,</span><span class="w"> </span><span class="nf">order</span><span class="p">(</span><span class="n">pval</span><span class="p">)),</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nf">subset</span><span class="p">(</span><span class="n">pval</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">0.05</span><span class="o">/</span><span class="n">n</span><span class="p">)</span>
 <span class="n">sig_scz_tr</span>
+<span class="n">IRdisplay</span><span class="o">::</span><span class="nf">display_markdown</span><span class="p">(</span><span class="s">&quot;#### Scz TR of Cloz Specific targets (regardless of p.value)&quot;</span><span class="p">)</span>
+<span class="n">scz_tr</span><span class="p">[</span><span class="nf">with</span><span class="p">(</span><span class="n">scz_tr</span><span class="p">,</span><span class="w"> </span><span class="nf">order</span><span class="p">(</span><span class="n">pval</span><span class="p">)),</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nf">subset</span><span class="p">(</span><span class="n">exposure</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="n">cloz_only</span><span class="o">$</span><span class="n">target</span><span class="p">)</span>
+
 <span class="n">IRdisplay</span><span class="o">::</span><span class="nf">display_markdown</span><span class="p">(</span><span class="s">&quot;#### Scz TR CB corrected&quot;</span><span class="p">)</span>
 <span class="n">sig_scz_tr_cb</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">scz_tr_cb</span><span class="p">[</span><span class="nf">with</span><span class="p">(</span><span class="n">scz_tr_cb</span><span class="p">,</span><span class="w"> </span><span class="nf">order</span><span class="p">(</span><span class="n">pval</span><span class="p">)),</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nf">subset</span><span class="p">(</span><span class="n">pval</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">0.05</span><span class="o">/</span><span class="n">n</span><span class="p">)</span>
 <span class="n">sig_scz_tr_cb</span>
@@ -14907,6 +14913,43 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
+<h4 id="Scz-of-Cloz-Specific-targets-(regardless-of-p.value)">Scz of Cloz Specific targets (regardless of p.value)<a class="anchor-link" href="#Scz-of-Cloz-Specific-targets-(regardless-of-p.value)">&#182;</a></h4>
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<table class="dataframe">
+<caption>A spec_tbl_df: 5 × 11</caption>
+<thead>
+	<tr><th scope=col>id.exposure</th><th scope=col>id.outcome</th><th scope=col>outcome</th><th scope=col>exposure</th><th scope=col>method</th><th scope=col>nsnp</th><th scope=col>b</th><th scope=col>se</th><th scope=col>pval</th><th scope=col>p.adjusted</th><th scope=col>SNP</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>bvSSR6</td><td>2GkMt6</td><td>cortex_eur</td><td>GABRB1</td><td>Wald ratio</td><td>1</td><td> 0.078506484</td><td>0.03419321</td><td>0.02167778</td><td>0.1574034</td><td>4:47410245_C_G  </td></tr>
+	<tr><td>nSoagQ</td><td>2GkMt6</td><td>cortex_eur</td><td>GABBR1</td><td>Wald ratio</td><td>1</td><td> 0.025210230</td><td>0.01945171</td><td>0.19496108</td><td>0.5247028</td><td>6:29580265_G_T  </td></tr>
+	<tr><td>7TI9vw</td><td>2GkMt6</td><td>cortex_eur</td><td>GABRA1</td><td>Wald ratio</td><td>1</td><td> 0.040181618</td><td>0.03713412</td><td>0.27922261</td><td>0.6180678</td><td>5:161337873_C_T </td></tr>
+	<tr><td>AFistv</td><td>2GkMt6</td><td>cortex_eur</td><td>GSTP1 </td><td>Wald ratio</td><td>1</td><td>-0.002569506</td><td>0.01053848</td><td>0.80736911</td><td>0.9346301</td><td>11:67342580_A_G </td></tr>
+	<tr><td>YDCOxg</td><td>2GkMt6</td><td>cortex_eur</td><td>CALY  </td><td>Wald ratio</td><td>1</td><td>-0.004992217</td><td>0.04846187</td><td>0.91795241</td><td>0.9746135</td><td>10:135179831_A_G</td></tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
 <h4 id="Scz-TR">Scz TR<a class="anchor-link" href="#Scz-TR">&#182;</a></h4>
 </div>
 
@@ -14927,6 +14970,45 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <tbody>
 	<tr><td>mGJuF9</td><td>9aXaDb</td><td>cortex_eur</td><td>MCHR1 </td><td>Wald ratio</td><td>1</td><td>-0.09593128</td><td>0.02334115</td><td>3.957221e-05</td><td>0.001985206</td><td>22:41060853_A_T</td></tr>
 	<tr><td>rkX9Fn</td><td>9aXaDb</td><td>cortex_eur</td><td>GABRG1</td><td>Wald ratio</td><td>1</td><td>-0.13213872</td><td>0.03753223</td><td>4.304522e-04</td><td>0.012009693</td><td>4:46293809_C_T </td></tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
+<h4 id="Scz-TR-of-Cloz-Specific-targets-(regardless-of-p.value)">Scz TR of Cloz Specific targets (regardless of p.value)<a class="anchor-link" href="#Scz-TR-of-Cloz-Specific-targets-(regardless-of-p.value)">&#182;</a></h4>
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<table class="dataframe">
+<caption>A spec_tbl_df: 7 × 11</caption>
+<thead>
+	<tr><th scope=col>id.exposure</th><th scope=col>id.outcome</th><th scope=col>outcome</th><th scope=col>exposure</th><th scope=col>method</th><th scope=col>nsnp</th><th scope=col>b</th><th scope=col>se</th><th scope=col>pval</th><th scope=col>p.adjusted</th><th scope=col>SNP</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>rkX9Fn</td><td>9aXaDb</td><td>cortex_eur</td><td>GABRG1</td><td>Wald ratio</td><td>1</td><td>-0.132138719</td><td>0.03753223</td><td>0.0004304522</td><td>0.01200969</td><td>4:46293809_C_T  </td></tr>
+	<tr><td>W1wvtx</td><td>9aXaDb</td><td>cortex_eur</td><td>GABBR2</td><td>Wald ratio</td><td>1</td><td>-0.171697494</td><td>0.05122502</td><td>0.0008027966</td><td>0.01906733</td><td>9:101030586_C_T </td></tr>
+	<tr><td>uHWRbi</td><td>9aXaDb</td><td>cortex_eur</td><td>GABRB1</td><td>Wald ratio</td><td>1</td><td> 0.114853464</td><td>0.04131246</td><td>0.0054339394</td><td>0.07041236</td><td>4:47410245_C_G  </td></tr>
+	<tr><td>0OojQ7</td><td>9aXaDb</td><td>cortex_eur</td><td>GABRA1</td><td>Wald ratio</td><td>1</td><td> 0.073214433</td><td>0.04719624</td><td>0.1208353968</td><td>0.43121651</td><td>5:161337873_C_T </td></tr>
+	<tr><td>LrbZzN</td><td>9aXaDb</td><td>cortex_eur</td><td>CALY  </td><td>Wald ratio</td><td>1</td><td> 0.089031770</td><td>0.06181509</td><td>0.1497848451</td><td>0.47748114</td><td>10:135179831_A_G</td></tr>
+	<tr><td>QXV9uT</td><td>9aXaDb</td><td>cortex_eur</td><td>GABBR1</td><td>Wald ratio</td><td>1</td><td> 0.031882852</td><td>0.02991267</td><td>0.2864849722</td><td>0.63820990</td><td>6:29580265_G_T  </td></tr>
+	<tr><td>e17hrK</td><td>9aXaDb</td><td>cortex_eur</td><td>GSTP1 </td><td>Wald ratio</td><td>1</td><td>-0.003964495</td><td>0.01316661</td><td>0.7633365611</td><td>0.92553597</td><td>11:67342580_A_G </td></tr>
 </tbody>
 </table>
 
