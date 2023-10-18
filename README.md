@@ -1,2 +1,3 @@
-# bristol-132-stroke-progression
-Public Repository for the Bristol University IEU Stroke Progression / pQTL project
+# bristol-projects-public
+
+https://andrew-e.github.io/bristol-projects-public/index.html

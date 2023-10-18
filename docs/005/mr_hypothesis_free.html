@@ -14615,63 +14615,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[12]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-r"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">IRdisplay</span><span class="p">)</span>
-<span class="n">scz_afr</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">vroom</span><span class="o">::</span><span class="nf">vroom</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/scz_gwas_afr_metabrain.tsv.gz&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">show_col_types</span><span class="o">=</span><span class="bp">F</span><span class="p">)</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nf">subset</span><span class="p">(</span><span class="n">outcome</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;cortex_afr_top_hits&quot;</span><span class="p">)</span>
-<span class="n">scz_eas</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">vroom</span><span class="o">::</span><span class="nf">vroom</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/scz_gwas_eas_metabrain.tsv.gz&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">show_col_types</span><span class="o">=</span><span class="bp">F</span><span class="p">)</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nf">subset</span><span class="p">(</span><span class="n">outcome</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;cortex_eas_top_hits&quot;</span><span class="p">)</span>
-<span class="n">scz_eur</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">vroom</span><span class="o">::</span><span class="nf">vroom</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/scz_gwas_eur_metabrain.tsv.gz&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">show_col_types</span><span class="o">=</span><span class="bp">F</span><span class="p">)</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nf">subset</span><span class="p">(</span><span class="n">outcome</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;cortex_eur_top_hits&quot;</span><span class="p">)</span><span class="w"> </span>
-<span class="n">scz_all</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">vroom</span><span class="o">::</span><span class="nf">vroom</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/scz_gwas_all_vs_eur.tsv.gz&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">show_col_types</span><span class="o">=</span><span class="bp">F</span><span class="p">)</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nf">subset</span><span class="p">(</span><span class="n">outcome</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;cortex_eur_top_hits&quot;</span><span class="p">)</span>
-<span class="n">scz_tr</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">vroom</span><span class="o">::</span><span class="nf">vroom</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/scz_tr_gwas_metaanalysis_metabrain.tsv.gz&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">show_col_types</span><span class="o">=</span><span class="bp">F</span><span class="p">)</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nf">subset</span><span class="p">(</span><span class="n">outcome</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;cortex_eur_top_hits&quot;</span><span class="p">)</span>
-<span class="n">scz_tr_cb</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">vroom</span><span class="o">::</span><span class="nf">vroom</span><span class="p">(</span><span class="s">&quot;scratch/results/mr/scz_tr_cb_corrected_gwas_metaanalysis_metabrain.tsv.gz&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">show_col_types</span><span class="o">=</span><span class="bp">F</span><span class="p">)</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nf">subset</span><span class="p">(</span><span class="n">outcome</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;cortex_eur&quot;</span><span class="p">)</span>
-
-<span class="n">sig_scz_afr</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">scz_afr</span><span class="p">[</span><span class="n">scz_afr</span><span class="o">$</span><span class="n">p.adjusted</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">0.05</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
-<span class="n">sig_scz_eas</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">scz_eas</span><span class="p">[</span><span class="n">scz_eas</span><span class="o">$</span><span class="n">p.adjusted</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">0.05</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
-<span class="n">sig_scz_eur</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">scz_eur</span><span class="p">[</span><span class="nf">with</span><span class="p">(</span><span class="n">scz_eur</span><span class="p">,</span><span class="w"> </span><span class="nf">order</span><span class="p">(</span><span class="n">p.adjusted</span><span class="p">)),</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nf">subset</span><span class="p">(</span><span class="n">p.adjusted</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">0.05</span><span class="p">)</span>
-<span class="n">sig_scz_all</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">scz_all</span><span class="p">[</span><span class="nf">with</span><span class="p">(</span><span class="n">scz_all</span><span class="p">,</span><span class="w"> </span><span class="nf">order</span><span class="p">(</span><span class="n">p.adjusted</span><span class="p">)),</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nf">subset</span><span class="p">(</span><span class="n">p.adjusted</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">0.05</span><span class="p">)</span>
-<span class="n">sig_scz_tr</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">scz_tr</span><span class="p">[</span><span class="nf">with</span><span class="p">(</span><span class="n">scz_tr</span><span class="p">,</span><span class="w"> </span><span class="nf">order</span><span class="p">(</span><span class="n">p.adjusted</span><span class="p">)),</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nf">subset</span><span class="p">(</span><span class="n">p.adjusted</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">0.05</span><span class="p">)</span>
-<span class="n">sig_scz_tr_cb</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">scz_tr_cb</span><span class="p">[</span><span class="nf">with</span><span class="p">(</span><span class="n">scz_tr_cb</span><span class="p">,</span><span class="w"> </span><span class="nf">order</span><span class="p">(</span><span class="n">p.adjusted</span><span class="p">)),</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nf">subset</span><span class="p">(</span><span class="n">p.adjusted</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">0.05</span><span class="p">)</span>
-
-<span class="n">eas_not_eur</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">setdiff</span><span class="p">(</span><span class="n">sig_scz_eas</span><span class="o">$</span><span class="n">exposure</span><span class="p">,</span><span class="w"> </span><span class="n">sig_scz_eur</span><span class="o">$</span><span class="n">exposure</span><span class="p">)</span>
-<span class="n">eas_not_all</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">setdiff</span><span class="p">(</span><span class="n">sig_scz_eas</span><span class="o">$</span><span class="n">exposure</span><span class="p">,</span><span class="w"> </span><span class="n">sig_scz_all</span><span class="o">$</span><span class="n">exposure</span><span class="p">)</span>
-<span class="n">eur_not_all</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">setdiff</span><span class="p">(</span><span class="n">sig_scz_eur</span><span class="o">$</span><span class="n">exposure</span><span class="p">,</span><span class="w"> </span><span class="n">sig_scz_all</span><span class="o">$</span><span class="n">exposure</span><span class="p">)</span>
-<span class="n">all_not_eur</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">setdiff</span><span class="p">(</span><span class="n">sig_scz_all</span><span class="o">$</span><span class="n">exposure</span><span class="p">,</span><span class="w"> </span><span class="n">sig_scz_eur</span><span class="o">$</span><span class="n">exposure</span><span class="p">)</span>
-<span class="n">tr_not_all</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">setdiff</span><span class="p">(</span><span class="n">sig_scz_tr</span><span class="o">$</span><span class="n">exposure</span><span class="p">,</span><span class="w"> </span><span class="n">sig_scz_all</span><span class="o">$</span><span class="n">exposure</span><span class="p">)</span>
-<span class="n">tr_cb_not_all</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">setdiff</span><span class="p">(</span><span class="n">sig_scz_tr_cb</span><span class="o">$</span><span class="n">exposure</span><span class="p">,</span><span class="w"> </span><span class="n">sig_scz_all</span><span class="o">$</span><span class="n">exposure</span><span class="p">)</span>
-<span class="n">tr_not_eur</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">setdiff</span><span class="p">(</span><span class="n">sig_scz_tr</span><span class="o">$</span><span class="n">exposure</span><span class="p">,</span><span class="w"> </span><span class="n">sig_scz_eur</span><span class="o">$</span><span class="n">exposure</span><span class="p">)</span>
-
-<span class="n">IRdisplay</span><span class="o">::</span><span class="nf">display_markdown</span><span class="p">(</span><span class="s">&quot;### Summary of MR Results:&quot;</span><span class="p">)</span>
-<span class="n">tibble</span><span class="o">::</span><span class="nf">tribble</span><span class="p">(</span>
-<span class="w">    </span><span class="o">~</span><span class="n">dataset</span><span class="p">,</span><span class="w"> </span><span class="o">~</span><span class="n">number_of_qtls_in_cortex</span><span class="p">,</span><span class="w"> </span><span class="o">~</span><span class="n">number_of_tests</span><span class="p">,</span><span class="w"> </span><span class="o">~</span><span class="n">number_of_sig_results</span><span class="p">,</span><span class="w"> </span><span class="o">~</span><span class="n">number_of_uniquely_significant_results</span><span class="p">,</span>
-<span class="w">    </span><span class="s">&quot;scz_afr   vs. cortex afr&quot;</span><span class="p">,</span><span class="w"> </span><span class="m">18153</span><span class="p">,</span><span class="w"> </span><span class="nf">nrow</span><span class="p">(</span><span class="n">scz_afr</span><span class="p">),</span><span class="w"> </span><span class="nf">nrow</span><span class="p">(</span><span class="n">sig_scz_afr</span><span class="p">),</span><span class="w"> </span><span class="kc">NA</span><span class="p">,</span>
-<span class="w">    </span><span class="s">&quot;scz_eas   vs. cortex eas&quot;</span><span class="p">,</span><span class="w"> </span><span class="m">17108</span><span class="p">,</span><span class="w"> </span><span class="nf">nrow</span><span class="p">(</span><span class="n">scz_eas</span><span class="p">),</span><span class="w"> </span><span class="nf">nrow</span><span class="p">(</span><span class="n">sig_scz_eas</span><span class="p">),</span><span class="w"> </span><span class="nf">length</span><span class="p">(</span><span class="n">eas_not_eur</span><span class="p">),</span>
-<span class="w">    </span><span class="s">&quot;scz_eur   vs. cortex eur&quot;</span><span class="p">,</span><span class="w"> </span><span class="m">18095</span><span class="p">,</span><span class="w"> </span><span class="nf">nrow</span><span class="p">(</span><span class="n">scz_eur</span><span class="p">),</span><span class="w"> </span><span class="nf">nrow</span><span class="p">(</span><span class="n">sig_scz_eur</span><span class="p">),</span><span class="w"> </span><span class="nf">length</span><span class="p">(</span><span class="n">eur_not_all</span><span class="p">),</span>
-<span class="w">    </span><span class="s">&quot;scz_meta  vs. cortex eur&quot;</span><span class="p">,</span><span class="w"> </span><span class="m">18095</span><span class="p">,</span><span class="w"> </span><span class="nf">nrow</span><span class="p">(</span><span class="n">scz_all</span><span class="p">),</span><span class="w"> </span><span class="nf">nrow</span><span class="p">(</span><span class="n">sig_scz_all</span><span class="p">),</span><span class="w"> </span><span class="nf">length</span><span class="p">(</span><span class="n">all_not_eur</span><span class="p">),</span>
-<span class="w">    </span><span class="s">&quot;scz_tr    vs. cortex eur&quot;</span><span class="p">,</span><span class="w"> </span><span class="m">18095</span><span class="p">,</span><span class="w"> </span><span class="nf">nrow</span><span class="p">(</span><span class="n">scz_tr</span><span class="p">),</span><span class="w"> </span><span class="nf">nrow</span><span class="p">(</span><span class="n">sig_scz_tr</span><span class="p">),</span><span class="w"> </span><span class="nf">length</span><span class="p">(</span><span class="n">tr_not_all</span><span class="p">),</span>
-<span class="w">    </span><span class="s">&quot;scz_tr_cb vs. cortex eur&quot;</span><span class="p">,</span><span class="w"> </span><span class="m">18095</span><span class="p">,</span><span class="w"> </span><span class="nf">nrow</span><span class="p">(</span><span class="n">scz_tr_cb</span><span class="p">),</span><span class="w"> </span><span class="nf">nrow</span><span class="p">(</span><span class="n">sig_scz_tr_cb</span><span class="p">),</span><span class="w"> </span><span class="nf">length</span><span class="p">(</span><span class="n">tr_cb_not_all</span><span class="p">)</span>
-<span class="p">)</span>
-
-<span class="n">outcomes</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">vroom</span><span class="o">::</span><span class="nf">vroom</span><span class="p">(</span><span class="s">&quot;scratch/results/collider_bias/expected_vs_observed_outcomes.tsv&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">show_col_types</span><span class="o">=</span><span class="bp">F</span><span class="p">)</span>
-<span class="n">outcomes</span><span class="o">$</span><span class="n">COMPARISON</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s">&quot;scz_meta_vs_scz_tr_meta&quot;</span>
-<span class="n">outcomes</span>
-
-<span class="n">IRdisplay</span><span class="o">::</span><span class="nf">display_markdown</span><span class="p">(</span><span class="s">&quot;## Comparing Treatment Resistant Results to Not:&quot;</span><span class="p">)</span>
-<span class="n">IRdisplay</span><span class="o">::</span><span class="nf">display_markdown</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="s">&quot;### QTLs that are significant in SCZ TR, but not in (Meta-analysed) SCZ:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nf">length</span><span class="p">(</span><span class="n">tr_not_all</span><span class="p">)))</span>
-<span class="c1">#IRdisplay::display_markdown(paste(tr_not_all))</span>
-<span class="n">IRdisplay</span><span class="o">::</span><span class="nf">display_markdown</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="s">&quot;### QTLs that are significant up in SCZ TR, but not in (EUR only) SCZ:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nf">length</span><span class="p">(</span><span class="n">tr_not_eur</span><span class="p">)))</span>
-<span class="c1">#IRdisplay::display_markdown(paste(tr_not_eur))</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell  jp-mod-noInput ">
 
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
@@ -14803,65 +14747,17 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </tr>
 </tbody>
 </table>
-<p>And the plots that are significant in Scz, and not in TR</p>
-<p><img src="scratch/results/plots/volcano_only_sig_in_scz_all.png" alt="alt" /></p>
 <p>This list is primarily filtered as results that are uniquely significant in Scz TR (not in Scz all).  Then filtered by a decent sized difference between BETAs / SEs to Scz all</p>
 <ul>
 <li>Where Scz TR results are significant, and Scz All results are not</li>
 <li>Where there is a difference of BETA &gt; 0.2</li>
 <li>Where there is some significant value in Scz TR and Scz SE crosses 0 by a bit</li>
 </ul>
-<table>
-<thead>
-<tr>
-  <th>Scz meta TR vs. Scz meta All, where Scz TR results are significant</th>
-  <th>EAS vs. EUR, where EAS results are significant</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-  <td><img src="scratch/results/plots/volcano_only_sig_in_scz_eas.png" alt="alt" /></td>
-  <td><img src="scratch/results/plots/scz_eas_vs_eur_mr_results.png" alt="alt" /></td>
-</tr>
-</tbody>
-</table>
 
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[10]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-r"><pre><span></span><span class="n">IRdisplay</span><span class="o">::</span><span class="nf">display_markdown</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="s">&quot;## Significant SCZ TR QTLs compared to SCZ (meta-analysed)&quot;</span><span class="p">))</span>
-
-<span class="n">comparing_results</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">sig_scz_tr</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span>
-<span class="w">    </span><span class="nf">subset</span><span class="p">(</span><span class="n">exposure</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="n">tr_not_all</span><span class="p">)</span><span class="w"> </span><span class="o">|&gt;</span>
-<span class="w">    </span><span class="nf">merge</span><span class="p">(</span><span class="n">scz_all</span><span class="p">,</span><span class="w"> </span><span class="n">by</span><span class="o">=</span><span class="s">&quot;exposure&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">|&gt;</span>
-<span class="w">    </span><span class="n">dplyr</span><span class="o">::</span><span class="nf">select</span><span class="p">(</span><span class="n">exposure</span><span class="p">,</span><span class="w"> </span><span class="n">b.x</span><span class="p">,</span><span class="w"> </span><span class="n">se.x</span><span class="p">,</span><span class="w"> </span><span class="n">p.adjusted.x</span><span class="p">,</span><span class="w"> </span><span class="n">b.y</span><span class="p">,</span><span class="w"> </span><span class="n">se.y</span><span class="p">,</span><span class="w"> </span><span class="n">p.adjusted.y</span><span class="p">)</span>
-
-<span class="n">IRdisplay</span><span class="o">::</span><span class="nf">display_markdown</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="s">&quot;### Significant SCZ TR QTLs that have betas in the opposite direction as SCZ&quot;</span><span class="p">))</span>
-<span class="n">comparing_results</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nf">subset</span><span class="p">(</span><span class="n">b.x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">b.y</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">0</span><span class="p">)</span>
-<span class="n">IRdisplay</span><span class="o">::</span><span class="nf">display_markdown</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="s">&quot;### Significant SCZ TR QTLs that have &gt; 0.2 difference in beta, compared to SCZ&quot;</span><span class="p">))</span>
-<span class="n">pos_genes</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">comparing_results</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nf">subset</span><span class="p">(</span><span class="n">b.x</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">b.y</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nf">abs</span><span class="p">(</span><span class="n">b.x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">b.y</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">0.2</span><span class="p">)</span>
-<span class="n">neg_genes</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">comparing_results</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nf">subset</span><span class="p">(</span><span class="n">b.x</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">b.y</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nf">abs</span><span class="p">(</span><span class="n">b.y</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">b.x</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">0.2</span><span class="p">)</span>
-<span class="nf">rbind</span><span class="p">(</span><span class="n">pos_genes</span><span class="p">,</span><span class="w"> </span><span class="n">neg_genes</span><span class="p">)</span>
-<span class="n">IRdisplay</span><span class="o">::</span><span class="nf">display_markdown</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="s">&quot;### Significant SCZ TR QTLs where SCZ standard errors cross 0 by a bit (ie. may have little to no effect)&quot;</span><span class="p">))</span>
-<span class="c1">#1.66 instead of 1.96 just so it crosses 0 by a bit.</span>
-<span class="n">interesting_pos_results</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">comparing_results</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nf">subset</span><span class="p">(</span><span class="n">b.y</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">b.y</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="p">(</span><span class="m">1.36</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">se.y</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">0</span><span class="p">)</span>
-<span class="n">interesting_neg_results</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">comparing_results</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nf">subset</span><span class="p">(</span><span class="n">b.y</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">b.y</span><span class="o">*</span><span class="m">-1</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="p">(</span><span class="m">1.36</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">se.y</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">0</span><span class="p">)</span>
-<span class="n">interesting_results</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rbind</span><span class="p">(</span><span class="n">interesting_pos_results</span><span class="p">,</span><span class="w"> </span><span class="n">interesting_neg_results</span><span class="p">)</span>
-<span class="n">interesting_results</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell  jp-mod-noInput ">
 
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
@@ -14877,7 +14773,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
-<h2 id="Significant-SCZ-TR-QTLs-compared-to-SCZ-(meta-analysed)">Significant SCZ TR QTLs compared to SCZ (meta-analysed)<a class="anchor-link" href="#Significant-SCZ-TR-QTLs-compared-to-SCZ-(meta-analysed)">&#182;</a></h2>
+<h2 id="Uniquely-Significant-SCZ-TR-QTLs-compared-to-SCZ-(meta-analysed)">Uniquely Significant SCZ TR QTLs compared to SCZ (meta-analysed)<a class="anchor-link" href="#Uniquely-Significant-SCZ-TR-QTLs-compared-to-SCZ-(meta-analysed)">&#182;</a></h2>
 </div>
 
 </div>
@@ -14889,7 +14785,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
-<h3 id="Significant-SCZ-TR-QTLs-that-have-betas-in-the-opposite-direction-as-SCZ">Significant SCZ TR QTLs that have betas in the opposite direction as SCZ<a class="anchor-link" href="#Significant-SCZ-TR-QTLs-that-have-betas-in-the-opposite-direction-as-SCZ">&#182;</a></h3>
+<h3 id="Uniquely-Significant-SCZ-TR-QTLs-that-have-betas-in-the-opposite-direction-as-SCZ">Uniquely Significant SCZ TR QTLs that have betas in the opposite direction as SCZ<a class="anchor-link" href="#Uniquely-Significant-SCZ-TR-QTLs-that-have-betas-in-the-opposite-direction-as-SCZ">&#182;</a></h3>
 </div>
 
 </div>
@@ -14921,7 +14817,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
-<h3 id="Significant-SCZ-TR-QTLs-that-have-%3E-0.2-difference-in-beta,-compared-to-SCZ">Significant SCZ TR QTLs that have &gt; 0.2 difference in beta, compared to SCZ<a class="anchor-link" href="#Significant-SCZ-TR-QTLs-that-have-%3E-0.2-difference-in-beta,-compared-to-SCZ">&#182;</a></h3>
+<h3 id="Uniquely-Significant-SCZ-TR-QTLs-that-have-%3E-0.2-difference-in-beta,-compared-to-SCZ">Uniquely Significant SCZ TR QTLs that have &gt; 0.2 difference in beta, compared to SCZ<a class="anchor-link" href="#Uniquely-Significant-SCZ-TR-QTLs-that-have-%3E-0.2-difference-in-beta,-compared-to-SCZ">&#182;</a></h3>
 </div>
 
 </div>
@@ -14933,20 +14829,20 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
 <table class="dataframe">
-<caption>A data.frame: 8 × 7</caption>
+<caption>A data.frame: 8 × 1</caption>
 <thead>
-	<tr><th></th><th scope=col>exposure</th><th scope=col>b.x</th><th scope=col>se.x</th><th scope=col>p.adjusted.x</th><th scope=col>b.y</th><th scope=col>se.y</th><th scope=col>p.adjusted.y</th></tr>
-	<tr><th></th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+	<tr><th></th><th scope=col>exposure</th></tr>
+	<tr><th></th><th scope=col>&lt;chr&gt;</th></tr>
 </thead>
 <tbody>
-	<tr><th scope=row>157</th><td>LY6G6E   </td><td> 0.3177225</td><td>0.08704932</td><td>0.008294860</td><td> 0.09700484</td><td>0.06741453</td><td>0.4637497</td></tr>
-	<tr><th scope=row>187</th><td>OR12D2   </td><td> 0.3705094</td><td>0.12458444</td><td>0.046762223</td><td> 0.12293925</td><td>0.08171058</td><td>0.4340192</td></tr>
-	<tr><th scope=row>233</th><td>SGSM3    </td><td> 0.3321586</td><td>0.09379110</td><td>0.011433544</td><td> 0.07285573</td><td>0.07024178</td><td>0.6355908</td></tr>
-	<tr><th scope=row>31</th><td>BRINP3   </td><td>-0.2591934</td><td>0.08105283</td><td>0.028818380</td><td>-0.05606386</td><td>0.06369210</td><td>0.7009932</td></tr>
-	<tr><th scope=row>54</th><td>CHD1     </td><td>-0.2743970</td><td>0.08754581</td><td>0.033202644</td><td>-0.07413714</td><td>0.04835499</td><td>0.4233421</td></tr>
-	<tr><th scope=row>98</th><td>FKBP1C   </td><td>-0.3437021</td><td>0.10145809</td><td>0.017241706</td><td>-0.14193246</td><td>0.07857349</td><td>0.3124167</td></tr>
-	<tr><th scope=row>114</th><td>HIST1H2AB</td><td>-0.2833025</td><td>0.07517956</td><td>0.005845804</td><td>-0.07869627</td><td>0.04849372</td><td>0.3839698</td></tr>
-	<tr><th scope=row>266</th><td>UGT1A7   </td><td>-0.3607822</td><td>0.09458771</td><td>0.005201757</td><td>-0.15034342</td><td>0.07468542</td><td>0.2407032</td></tr>
+	<tr><th scope=row>157</th><td>LY6G6E   </td></tr>
+	<tr><th scope=row>187</th><td>OR12D2   </td></tr>
+	<tr><th scope=row>233</th><td>SGSM3    </td></tr>
+	<tr><th scope=row>31</th><td>BRINP3   </td></tr>
+	<tr><th scope=row>54</th><td>CHD1     </td></tr>
+	<tr><th scope=row>98</th><td>FKBP1C   </td></tr>
+	<tr><th scope=row>114</th><td>HIST1H2AB</td></tr>
+	<tr><th scope=row>266</th><td>UGT1A7   </td></tr>
 </tbody>
 </table>
 
@@ -14961,7 +14857,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
-<h3 id="Significant-SCZ-TR-QTLs-where-SCZ-standard-errors-cross-0-by-a-bit-(ie.-may-have-little-to-no-effect)">Significant SCZ TR QTLs where SCZ standard errors cross 0 by a bit (ie. may have little to no effect)<a class="anchor-link" href="#Significant-SCZ-TR-QTLs-where-SCZ-standard-errors-cross-0-by-a-bit-(ie.-may-have-little-to-no-effect)">&#182;</a></h3>
+<h3 id="Uniquely-Significant-SCZ-TR-QTLs-where-SCZ-standard-errors-cross-0-by-a-bit-(ie.-may-have-little-to-no-effect)">Uniquely Significant SCZ TR QTLs where SCZ standard errors cross 0 by a bit (ie. may have little to no effect)<a class="anchor-link" href="#Uniquely-Significant-SCZ-TR-QTLs-where-SCZ-standard-errors-cross-0-by-a-bit-(ie.-may-have-little-to-no-effect)">&#182;</a></h3>
 </div>
 
 </div>
@@ -14973,28 +14869,28 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
 <table class="dataframe">
-<caption>A data.frame: 16 × 7</caption>
+<caption>A data.frame: 16 × 1</caption>
 <thead>
-	<tr><th></th><th scope=col>exposure</th><th scope=col>b.x</th><th scope=col>se.x</th><th scope=col>p.adjusted.x</th><th scope=col>b.y</th><th scope=col>se.y</th><th scope=col>p.adjusted.y</th></tr>
-	<tr><th></th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+	<tr><th></th><th scope=col>exposure</th></tr>
+	<tr><th></th><th scope=col>&lt;chr&gt;</th></tr>
 </thead>
 <tbody>
-	<tr><th scope=row>9</th><td>AKIRIN1 </td><td> 0.09203524</td><td>0.02975454</td><td>0.036297323</td><td> 0.019070553</td><td>0.021000255</td><td>0.6878482</td></tr>
-	<tr><th scope=row>15</th><td>ARHGEF19</td><td> 0.04744928</td><td>0.01419983</td><td>0.019580329</td><td> 0.014469725</td><td>0.011242808</td><td>0.5290892</td></tr>
-	<tr><th scope=row>50</th><td>CDK15   </td><td> 0.14532294</td><td>0.04807642</td><td>0.042157730</td><td> 0.030092374</td><td>0.038130023</td><td>0.7424101</td></tr>
-	<tr><th scope=row>62</th><td>CTXN3   </td><td> 0.11637491</td><td>0.03924497</td><td>0.047608290</td><td> 0.035594503</td><td>0.029479860</td><td>0.5612374</td></tr>
-	<tr><th scope=row>136</th><td>KHDC1   </td><td> 0.15632002</td><td>0.04464906</td><td>0.012679577</td><td> 0.045509821</td><td>0.037007562</td><td>0.5535117</td></tr>
-	<tr><th scope=row>165</th><td>MOV10L1 </td><td> 0.10739065</td><td>0.03134868</td><td>0.015607561</td><td> 0.033039785</td><td>0.026382398</td><td>0.5434344</td></tr>
-	<tr><th scope=row>219</th><td>RHBDL2  </td><td> 0.24913438</td><td>0.07663521</td><td>0.025042154</td><td> 0.063291368</td><td>0.053830572</td><td>0.5744761</td></tr>
-	<tr><th scope=row>233</th><td>SGSM3   </td><td> 0.33215861</td><td>0.09379110</td><td>0.011433544</td><td> 0.072855733</td><td>0.070241776</td><td>0.6355908</td></tr>
-	<tr><th scope=row>247</th><td>SPTSSB  </td><td> 0.09212168</td><td>0.03003412</td><td>0.038247251</td><td> 0.027313449</td><td>0.023063710</td><td>0.5714088</td></tr>
-	<tr><th scope=row>271</th><td>VPS39   </td><td> 0.10867068</td><td>0.02909285</td><td>0.006435435</td><td> 0.027624510</td><td>0.021502974</td><td>0.5299246</td></tr>
-	<tr><th scope=row>275</th><td>ZDHHC21 </td><td> 0.08088268</td><td>0.02730026</td><td>0.047812732</td><td> 0.024229582</td><td>0.020266058</td><td>0.5664838</td></tr>
-	<tr><th scope=row>283</th><td>ZNF534  </td><td> 0.04564227</td><td>0.01444602</td><td>0.031430655</td><td> 0.011554141</td><td>0.010017725</td><td>0.5830464</td></tr>
-	<tr><th scope=row>31</th><td>BRINP3  </td><td>-0.25919345</td><td>0.08105283</td><td>0.028818380</td><td>-0.056063859</td><td>0.063692104</td><td>0.7009932</td></tr>
-	<tr><th scope=row>65</th><td>CWF19L1 </td><td>-0.03082468</td><td>0.01035429</td><td>0.046491123</td><td>-0.008765948</td><td>0.008770706</td><td>0.6498242</td></tr>
-	<tr><th scope=row>83</th><td>EGFL8   </td><td>-0.21527610</td><td>0.07237552</td><td>0.046762223</td><td>-0.060622948</td><td>0.057903566</td><td>0.6321142</td></tr>
-	<tr><th scope=row>259</th><td>TMEM42  </td><td>-0.19536720</td><td>0.05742387</td><td>0.016556541</td><td>-0.052467046</td><td>0.044631144</td><td>0.5744761</td></tr>
+	<tr><th scope=row>9</th><td>AKIRIN1 </td></tr>
+	<tr><th scope=row>15</th><td>ARHGEF19</td></tr>
+	<tr><th scope=row>50</th><td>CDK15   </td></tr>
+	<tr><th scope=row>62</th><td>CTXN3   </td></tr>
+	<tr><th scope=row>136</th><td>KHDC1   </td></tr>
+	<tr><th scope=row>165</th><td>MOV10L1 </td></tr>
+	<tr><th scope=row>219</th><td>RHBDL2  </td></tr>
+	<tr><th scope=row>233</th><td>SGSM3   </td></tr>
+	<tr><th scope=row>247</th><td>SPTSSB  </td></tr>
+	<tr><th scope=row>271</th><td>VPS39   </td></tr>
+	<tr><th scope=row>275</th><td>ZDHHC21 </td></tr>
+	<tr><th scope=row>283</th><td>ZNF534  </td></tr>
+	<tr><th scope=row>31</th><td>BRINP3  </td></tr>
+	<tr><th scope=row>65</th><td>CWF19L1 </td></tr>
+	<tr><th scope=row>83</th><td>EGFL8   </td></tr>
+	<tr><th scope=row>259</th><td>TMEM42  </td></tr>
 </tbody>
 </table>
 
@@ -15006,40 +14902,32 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 </div>
 
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[11]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-r"><pre><span></span><span class="n">IRdisplay</span><span class="o">::</span><span class="nf">display_markdown</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="s">&quot;## Significant SCZ EAS QTLs compared to EUR&quot;</span><span class="p">))</span>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Interesting-Results-in-EAS-vs.-EUR-Ancestries">Interesting Results in EAS vs. EUR Ancestries<a class="anchor-link" href="#Interesting-Results-in-EAS-vs.-EUR-Ancestries">&#182;</a></h2><table>
+<thead>
+<tr>
+  <th>Scz meta TR vs. Scz meta All, where Scz TR results are significant</th>
+  <th>EAS vs. EUR, where EAS results are significant</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><img src="scratch/results/plots/volcano_only_sig_in_scz_eas.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/scz_eas_vs_eur_mr_results.png" alt="alt" /></td>
+</tr>
+</tbody>
+</table>
 
-<span class="n">comparing_results</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">sig_scz_eas</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span>
-<span class="w">    </span><span class="nf">subset</span><span class="p">(</span><span class="n">exposure</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="n">eas_not_eur</span><span class="p">)</span><span class="w"> </span><span class="o">|&gt;</span>
-<span class="w">    </span><span class="nf">merge</span><span class="p">(</span><span class="n">scz_eur</span><span class="p">,</span><span class="w"> </span><span class="n">by</span><span class="o">=</span><span class="s">&quot;exposure&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">|&gt;</span>
-<span class="w">    </span><span class="n">dplyr</span><span class="o">::</span><span class="nf">select</span><span class="p">(</span><span class="n">exposure</span><span class="p">,</span><span class="w"> </span><span class="n">b.x</span><span class="p">,</span><span class="w"> </span><span class="n">se.x</span><span class="p">,</span><span class="w"> </span><span class="n">p.adjusted.x</span><span class="p">,</span><span class="w"> </span><span class="n">b.y</span><span class="p">,</span><span class="w"> </span><span class="n">se.y</span><span class="p">,</span><span class="w"> </span><span class="n">p.adjusted.y</span><span class="p">)</span>
-
-<span class="n">IRdisplay</span><span class="o">::</span><span class="nf">display_markdown</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="s">&quot;### Significant SCZ TR QTLs that have betas in the opposite direction as SCZ&quot;</span><span class="p">))</span>
-<span class="n">comparing_results</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nf">subset</span><span class="p">(</span><span class="n">b.x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">b.y</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">0</span><span class="p">)</span>
-<span class="n">IRdisplay</span><span class="o">::</span><span class="nf">display_markdown</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="s">&quot;### Significant SCZ TR QTLs that have &gt; 0.2 difference in beta, compared to SCZ&quot;</span><span class="p">))</span>
-<span class="n">comparing_results</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nf">subset</span><span class="p">(</span><span class="nf">abs</span><span class="p">(</span><span class="n">b.x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">b.y</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">0.2</span><span class="p">)</span>
-<span class="n">pos_genes</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">comparing_results</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nf">subset</span><span class="p">(</span><span class="n">b.x</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">b.y</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nf">abs</span><span class="p">(</span><span class="n">b.x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">b.y</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">0.2</span><span class="p">)</span>
-<span class="n">neg_genes</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">comparing_results</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nf">subset</span><span class="p">(</span><span class="n">b.x</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">b.y</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nf">abs</span><span class="p">(</span><span class="n">b.y</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">b.x</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">0.2</span><span class="p">)</span>
-<span class="nf">rbind</span><span class="p">(</span><span class="n">pos_genes</span><span class="p">,</span><span class="w"> </span><span class="n">neg_genes</span><span class="p">)</span>
-<span class="n">IRdisplay</span><span class="o">::</span><span class="nf">display_markdown</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="s">&quot;### Significant SCZ TR QTLs where SCZ standard errors cross 0 by a bit (ie. may have little to no effect)&quot;</span><span class="p">))</span>
-<span class="c1">#1.66 instead of 1.96 just so it crosses 0 by a bit.</span>
-<span class="n">interesting_pos_results</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">comparing_results</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nf">subset</span><span class="p">(</span><span class="n">b.y</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">b.y</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="p">(</span><span class="m">1.36</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">se.y</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">0</span><span class="p">)</span>
-<span class="n">interesting_neg_results</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">comparing_results</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nf">subset</span><span class="p">(</span><span class="n">b.y</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">b.y</span><span class="o">*</span><span class="m">-1</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="p">(</span><span class="m">1.36</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">se.y</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">0</span><span class="p">)</span>
-<span class="n">interesting_results</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rbind</span><span class="p">(</span><span class="n">interesting_pos_results</span><span class="p">,</span><span class="w"> </span><span class="n">interesting_neg_results</span><span class="p">)</span>
-<span class="n">interesting_results</span>
-</pre></div>
-
-     </div>
 </div>
 </div>
 </div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell  jp-mod-noInput ">
 
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
