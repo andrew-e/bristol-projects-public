@@ -3,7 +3,7 @@
 <head><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>index</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>side_effect_matrix_information</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 
 
 
@@ -14555,55 +14555,422 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 }
 </style>
 
-<h1>
-Scizophrenia Drug Project
-</h1>
+<!-- Load mathjax -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS_CHTML-full,Safe"> </script>
+    <!-- MathJax configuration -->
+    <script type="text/x-mathjax-config">
+    init_mathjax = function() {
+        if (window.MathJax) {
+        // MathJax loaded
+            MathJax.Hub.Config({
+                TeX: {
+                    equationNumbers: {
+                    autoNumber: "AMS",
+                    useLabelIds: true
+                    }
+                },
+                tex2jax: {
+                    inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                    displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+                    processEscapes: true,
+                    processEnvironments: true
+                },
+                displayAlign: 'center',
+                CommonHTML: {
+                    linebreaks: {
+                    automatic: true
+                    }
+                }
+            });
 
-<h3>
+            MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+        }
+    }
+    init_mathjax();
+    </script>
+    <!-- End of mathjax configuration --></head>
+<body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
+
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="Drug-Side-Effects">Drug Side Effects<a class="anchor-link" href="#Drug-Side-Effects">&#182;</a></h1><p>Retrieved Data from: <a href="http://sideeffects.embl.de/">http://sideeffects.embl.de/</a></p>
 <ul>
-<li><a href="collider_bias_pipeline.html">Collider Bias Pipeline Results (Scz vs. Treatment Resistant Scz)</a> </li>
-<li><a href="mr_drug_targets_proxies.html">MR on Scz GWASes against Meta-Brain QTLs (specific to known scz drug targets)</a> </li>
-<li><a href="mr_hypothesis_free_all_metabrain_regions.html">Running MR on Scz GWASes against Meta-Brain Cortex QTLs (hypothesis free)</a> </li>
-<li><a href="side_effect_matrix_information.html">Drug Side Effects and Phenotype Mapping</a> </li>
-<li><a href="phewas_and_coloc_results.html">Drug Effect Matrix: PheWAS and coloc results</a> </li>
+<li>Only 6 Drugs Found with relevant information from above webite: aripiprozole, clozapine, olanzapine, paliperidone, quetiapine, risperidone</li>
+<li>Drugs that had insufficient data for side effects: Chlorpromazine, Haloperidol</li>
 </ul>
-</h3>
-
-
-<br/>
-</h3>
-
-GWAS Data:
-<ul>
-<li> Scz: EUR, AFR, EAS, and Meta-analysed</li>
-<li> Scz TR: Meta-analysed only</li>
-<li> Metabrain Cortex QTLs: EUR, AFR, EAS.  Meta-analysed not provided</li>
+<h3 id="Consolidated-for-only-Side-Effects-that-had-a-matching-PheWAS-traits-associations">Consolidated for only Side Effects that had a matching PheWAS traits associations<a class="anchor-link" href="#Consolidated-for-only-Side-Effects-that-had-a-matching-PheWAS-traits-associations">&#182;</a></h3><h4 id="%E2%80%A2-drugs:-6">&#8226; drugs: 6<a class="anchor-link" href="#%E2%80%A2-drugs:-6">&#182;</a></h4><h4 id="%E2%80%A2-genes:-54">&#8226; genes: 54<a class="anchor-link" href="#%E2%80%A2-genes:-54">&#182;</a></h4><h4 id="%E2%80%A2-side-effects:-53-(out-of-165-total-side-effects-found-on-http://sideeffects.embl.de/)">&#8226; side effects: 53 (out of 165 total side effects found on <a href="http://sideeffects.embl.de/">http://sideeffects.embl.de/</a>)<a class="anchor-link" href="#%E2%80%A2-side-effects:-53-(out-of-165-total-side-effects-found-on-http://sideeffects.embl.de/)">&#182;</a></h4><h4 id="%E2%80%A2-phewas-traits:-190">&#8226; phewas traits: 190<a class="anchor-link" href="#%E2%80%A2-phewas-traits:-190">&#182;</a></h4><h3 id="Matrices:">Matrices:<a class="anchor-link" href="#Matrices:">&#182;</a></h3><ul>
+<li>A = side_effect_x_drug = n_se X m_drugs = 53 x 6</li>
+<li>B = drug_x_gene = p_genes X m_drugs = 54 x 6</li>
+<li>C = phewas_trait_x_gene = q_traits X p_genes = 190 x 54</li>
+<li>D = phewas_trait_x_side_effect = q_traits X n_se = 90 x 53</li>
 </ul>
-<br />
-All meta-analysed GWASes were run against EUR Metabrain Cortex QTLs<br />
-<br />
-Nomenclature:<br />
-<ul>
-<li> Scz = Schizophreina</li>
-<li> Scz tr = Schizophrenia that is resistant to certain drug treatments (and was therefore perscribed clozapine)</li>
-<li> Scz tr cb = Scz tr GWAS that has been corrected for collider bias (CB correction slope was ~= 1)</li>
-</ul>
-<br />
-<br />
-Data Sets:
-<br />
-Scz:
-<ul>
-<li> Meta Analysis: 76,755 (243,649 controls)</li>
-<li> Scz afr: 7,386 (7,008 controls)</li>
-<li> Scz EAS: 14,004 (16,757 controls)</li>
-<li> Scz EUR: 53,386 (77,258 controls)</li>
-</ul>
+<p>I followed a guide of matrix multiplication to attempt to predict the side effect x drug matrix (by using the other 3).  Details can be found here: <a href="https://explodecomputer.github.io/lab-book/posts/2023-10-31-drug-matrices/">https://explodecomputer.github.io/lab-book/posts/2023-10-31-drug-matrices/</a></p>
 
-Scz TR:
-<ul>
-<li> Meta Analysis: 11,260 (24,542 controls)</li>
-<li> No info found on ancestral breakdown (but from UKB, so assuming EUR)</li>
-</ul>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell  jp-mod-noInput ">
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
 
 
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
+<h3 id="PheWAS-trait-%3C-%3E-Drug-Side-Effects">PheWAS trait &lt;-&gt; Drug Side Effects<a class="anchor-link" href="#PheWAS-trait-%3C-%3E-Drug-Side-Effects">&#182;</a></h3>
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<table class="dataframe">
+<caption>A data.frame: 9 × 35</caption>
+<thead>
+	<tr><th></th><th scope=col>Abdominal discomfort</th><th scope=col>Alanine aminotransferase increased</th><th scope=col>Amenorrhoea</th><th scope=col>Anorexia</th><th scope=col>Anxiety</th><th scope=col>Aspartate aminotransferase increased</th><th scope=col>Asthenia</th><th scope=col>Back pain</th><th scope=col>Bilirubin total low/decreased</th><th scope=col>Blood and lymphatic system disorders</th><th scope=col>Blood prolactin increased</th><th scope=col>Cardiovascular disorder</th><th scope=col>Connective tissue disorder</th><th scope=col>Constipation</th><th scope=col>Depression</th><th scope=col>Erythema</th><th scope=col>Gamma-glutamyltransferase increased</th><th scope=col>Headache</th><th scope=col>Hypertension</th><th scope=col>Insomnia</th><th scope=col>Irritability</th><th scope=col>Lethargy</th><th scope=col>Malnutrition</th><th scope=col>Neutropenia</th><th scope=col>Oedema peripheral</th><th scope=col>Parkinsonism</th><th scope=col>Pneumonia</th><th scope=col>Rhinitis</th><th scope=col>Sinusitis</th><th scope=col>Tooth infection</th><th scope=col>Toothache</th><th scope=col>Upper respiratory tract infection</th><th scope=col>Weight increased</th><th scope=col>White blood cell count decreased</th><th scope=col>total_side_effects</th></tr>
+	<tr><th></th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>GABBR1</th><td>1</td><td>1</td><td>1</td><td>0</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>0</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>25</td></tr>
+	<tr><th scope=row>GABBR2</th><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td> 5</td></tr>
+	<tr><th scope=row>GABRA1</th><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td><td>1</td><td>0</td><td>1</td><td> 9</td></tr>
+	<tr><th scope=row>GABRB1</th><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td> 5</td></tr>
+	<tr><th scope=row>GABRG1</th><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td> 4</td></tr>
+	<tr><th scope=row>GSTP1</th><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td> 3</td></tr>
+	<tr><th scope=row>HRH4</th><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td> 3</td></tr>
+	<tr><th scope=row>HTR1B</th><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td> 4</td></tr>
+	<tr><th scope=row>HTR1E</th><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td> 5</td></tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<table class="dataframe">
+<caption>A data.frame: 54 × 1</caption>
+<thead>
+	<tr><th></th><th scope=col>total_side_effects</th></tr>
+	<tr><th></th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>ADRA1A</th><td> 3</td></tr>
+	<tr><th scope=row>ADRA1B</th><td> 8</td></tr>
+	<tr><th scope=row>ADRA1D</th><td> 2</td></tr>
+	<tr><th scope=row>ADRA2A</th><td> 3</td></tr>
+	<tr><th scope=row>ADRA2B</th><td> 5</td></tr>
+	<tr><th scope=row>ADRB1</th><td> 8</td></tr>
+	<tr><th scope=row>ADRB2</th><td> 4</td></tr>
+	<tr><th scope=row>ADRB3</th><td> 4</td></tr>
+	<tr><th scope=row>CALM1</th><td> 4</td></tr>
+	<tr><th scope=row>CHRM1</th><td> 4</td></tr>
+	<tr><th scope=row>CHRM2</th><td> 7</td></tr>
+	<tr><th scope=row>CHRM3</th><td> 3</td></tr>
+	<tr><th scope=row>CHRM4</th><td> 9</td></tr>
+	<tr><th scope=row>DRD1</th><td> 6</td></tr>
+	<tr><th scope=row>DRD2</th><td>16</td></tr>
+	<tr><th scope=row>DRD3</th><td> 4</td></tr>
+	<tr><th scope=row>DRD4</th><td> 6</td></tr>
+	<tr><th scope=row>GABBR1</th><td>25</td></tr>
+	<tr><th scope=row>GABBR2</th><td> 5</td></tr>
+	<tr><th scope=row>GABRA1</th><td> 9</td></tr>
+	<tr><th scope=row>GABRB1</th><td> 5</td></tr>
+	<tr><th scope=row>GABRG1</th><td> 4</td></tr>
+	<tr><th scope=row>GRIN1</th><td> 7</td></tr>
+	<tr><th scope=row>GRIN2A</th><td> 2</td></tr>
+	<tr><th scope=row>GRIN2B</th><td> 1</td></tr>
+	<tr><th scope=row>GRIN2D</th><td> 2</td></tr>
+	<tr><th scope=row>GRIN3A</th><td> 3</td></tr>
+	<tr><th scope=row>GRIN3B</th><td> 2</td></tr>
+	<tr><th scope=row>GSTP1</th><td> 3</td></tr>
+	<tr><th scope=row>HRH1</th><td> 5</td></tr>
+	<tr><th scope=row>HRH3</th><td> 3</td></tr>
+	<tr><th scope=row>HRH4</th><td> 3</td></tr>
+	<tr><th scope=row>HTR1A</th><td> 4</td></tr>
+	<tr><th scope=row>HTR1B</th><td> 4</td></tr>
+	<tr><th scope=row>HTR1D</th><td> 5</td></tr>
+	<tr><th scope=row>HTR1E</th><td> 5</td></tr>
+	<tr><th scope=row>HTR2A</th><td> 4</td></tr>
+	<tr><th scope=row>HTR2B</th><td> 5</td></tr>
+	<tr><th scope=row>HTR3A</th><td> 1</td></tr>
+	<tr><th scope=row>HTR5A</th><td> 2</td></tr>
+	<tr><th scope=row>HTR6</th><td> 7</td></tr>
+	<tr><th scope=row>HTR7</th><td> 6</td></tr>
+	<tr><th scope=row>KCNH2</th><td> 7</td></tr>
+	<tr><th scope=row>MCHR1</th><td> 4</td></tr>
+	<tr><th scope=row>OPRD1</th><td> 3</td></tr>
+	<tr><th scope=row>OPRK1</th><td> 4</td></tr>
+	<tr><th scope=row>OPRM1</th><td> 7</td></tr>
+	<tr><th scope=row>ORM1</th><td> 5</td></tr>
+	<tr><th scope=row>ORM2</th><td> 3</td></tr>
+	<tr><th scope=row>SIGMAR1</th><td> 4</td></tr>
+	<tr><th scope=row>SLC18A2</th><td> 1</td></tr>
+	<tr><th scope=row>SLC6A3</th><td> 3</td></tr>
+	<tr><th scope=row>SLC6A4</th><td> 3</td></tr>
+	<tr><th scope=row>SMPD1</th><td> 5</td></tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
+<p>Freq &gt; 1 means it was found for more than one Gene/SNP</p>
+
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<table class="dataframe">
+<caption>A spec_tbl_df: 190 × 3</caption>
+<thead>
+	<tr><th scope=col>trait</th><th scope=col>og_search_term</th><th scope=col>Freq</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>abdominal and pelvic pain                                                                                          </td><td>Abdominal discomfort                </td><td> 1</td></tr>
+	<tr><td>pain type(s) experienced in last month: stomach or abdominal pain                                                  </td><td>Abdominal discomfort                </td><td> 1</td></tr>
+	<tr><td>other external causes of accidental injury                                                                         </td><td>Accidental injury                   </td><td> 1</td></tr>
+	<tr><td>alanine aminotransferase                                                                                           </td><td>Alanine aminotransferase increased  </td><td> 3</td></tr>
+	<tr><td>alanine aminotransferase levels                                                                                    </td><td>Alanine aminotransferase increased  </td><td> 3</td></tr>
+	<tr><td>alanine aminotransferase levels (ukb data field 30620)                                                             </td><td>Alanine aminotransferase increased  </td><td> 2</td></tr>
+	<tr><td>liver enzyme levels (alanine transaminase)                                                                         </td><td>Alanine aminotransferase increased  </td><td> 2</td></tr>
+	<tr><td>liver iron content                                                                                                 </td><td>Alanine aminotransferase increased  </td><td> 1</td></tr>
+	<tr><td>operative procedures - main opcs: r18.2 lower uterine segment caesarean delivery nec                               </td><td>Alanine aminotransferase increased  </td><td> 1</td></tr>
+	<tr><td>other inflammatory liver diseases                                                                                  </td><td>Alanine aminotransferase increased  </td><td> 1</td></tr>
+	<tr><td>percent liver fat                                                                                                  </td><td>Alanine aminotransferase increased  </td><td> 1</td></tr>
+	<tr><td>age at menopause (last menstrual period)                                                                           </td><td>Amenorrhoea                         </td><td> 2</td></tr>
+	<tr><td>adhd vs anorexia nervosa (ordinary least squares (ols))                                                            </td><td>Anorexia                            </td><td> 1</td></tr>
+	<tr><td>anorexia nervosa vs obsessive compulsive disorder (ordinary least squares (ols))                                   </td><td>Anorexia                            </td><td> 1</td></tr>
+	<tr><td>schizophrenia vs anorexia nervosa (ordinary least squares (ols))                                                   </td><td>Anorexia                            </td><td> 2</td></tr>
+	<tr><td>activities undertaken to treat anxiety: talking therapies, such as psychotherapy, counselling, group therapy or cbt</td><td>Anxiety                             </td><td> 1</td></tr>
+	<tr><td>anxious personality disorder                                                                                       </td><td>Anxiety                             </td><td> 1</td></tr>
+	<tr><td>frequent trouble falling or staying asleep during worst period of anxiety                                          </td><td>Anxiety                             </td><td> 1</td></tr>
+	<tr><td>phobic anxiety disorders                                                                                           </td><td>Anxiety                             </td><td> 1</td></tr>
+	<tr><td>seen a psychiatrist for nerves, anxiety, tension or depression                                                     </td><td>Anxiety                             </td><td> 1</td></tr>
+	<tr><td>seen doctor (gp) for nerves  anxiety  tension or depression                                                        </td><td>Anxiety                             </td><td> 2</td></tr>
+	<tr><td>seen doctor (gp) for nerves, anxiety, tension or depression                                                        </td><td>Anxiety                             </td><td> 1</td></tr>
+	<tr><td>seen doctor for nerves anxiety tension or depression (ukb data field 2090) (firth correction)                      </td><td>Anxiety                             </td><td> 1</td></tr>
+	<tr><td>seen doctor for nerves anxiety tension or depression (ukb data field 2090) (spa correction)                        </td><td>Anxiety                             </td><td> 1</td></tr>
+	<tr><td>seen psychiatrist for nerves anxiety tension or depression (ukb data field 2100) (firth correction)                </td><td>Anxiety                             </td><td> 1</td></tr>
+	<tr><td>seen psychiatrist for nerves anxiety tension or depression (ukb data field 2100) (spa correction)                  </td><td>Anxiety                             </td><td> 1</td></tr>
+	<tr><td>worrier / anxious feelings                                                                                         </td><td>Anxiety                             </td><td> 2</td></tr>
+	<tr><td>dislocation, sprain and strain of joint and ligaments of hip                                                       </td><td>Arthralgia                          </td><td> 1</td></tr>
+	<tr><td>operation code: bone surgery/joint surgery                                                                         </td><td>Arthralgia                          </td><td> 1</td></tr>
+	<tr><td>operative procedures - secondary opcs: w90.3 injection of therapeutic substance into joint                         </td><td>Arthralgia                          </td><td> 1</td></tr>
+	<tr><td>other joint disorders                                                                                              </td><td>Arthralgia                          </td><td> 1</td></tr>
+	<tr><td>pain in joint                                                                                                      </td><td>Arthralgia                          </td><td> 1</td></tr>
+	<tr><td>aspartate aminotransferase                                                                                         </td><td>Aspartate aminotransferase increased</td><td> 5</td></tr>
+	<tr><td>aspartate aminotransferase levels                                                                                  </td><td>Aspartate aminotransferase increased</td><td> 6</td></tr>
+	<tr><td>aspartate aminotransferase levels (ukb data field 30650)                                                           </td><td>Aspartate aminotransferase increased</td><td> 5</td></tr>
+	<tr><td>early-onset myasthenia gravis                                                                                      </td><td>Asthenia                            </td><td> 1</td></tr>
+	<tr><td>late-onset myasthenia gravis                                                                                       </td><td>Asthenia                            </td><td> 1</td></tr>
+	<tr><td>myasthenia gravis                                                                                                  </td><td>Asthenia                            </td><td> 2</td></tr>
+	<tr><td>diagnoses - main icd10: m54.59 low back pain (site unspecified)                                                    </td><td>Back pain                           </td><td> 1</td></tr>
+	<tr><td>low back pain                                                                                                      </td><td>Back pain                           </td><td> 1</td></tr>
+	<tr><td>lower back pain or/and sciatica                                                                                    </td><td>Back pain                           </td><td> 1</td></tr>
+	<tr><td>pain type(s) experienced in last month: back pain                                                                  </td><td>Back pain                           </td><td> 1</td></tr>
+	<tr><td>direct bilirubin                                                                                                   </td><td>Bilirubin total low/decreased       </td><td> 1</td></tr>
+	<tr><td>direct bilirubin levels (ukb data field 30660)                                                                     </td><td>Bilirubin total low/decreased       </td><td> 1</td></tr>
+	<tr><td>disorders of porphyrin and bilirubin metabolism                                                                    </td><td>Bilirubin total low/decreased       </td><td> 1</td></tr>
+	<tr><td>total bilirubin                                                                                                    </td><td>Bilirubin total low/decreased       </td><td> 2</td></tr>
+	<tr><td>total bilirubin levels                                                                                             </td><td>Bilirubin total low/decreased       </td><td> 3</td></tr>
+	<tr><td>total bilirubin levels (ukb data field 30840)                                                                      </td><td>Bilirubin total low/decreased       </td><td> 4</td></tr>
+	<tr><td>diseases of veins, lymphatic vessels and lymph nodes, not elsewhere classified                                     </td><td>Blood and lymphatic system disorders</td><td> 1</td></tr>
+	<tr><td>diseases of veins, lymphatic vessels and lymph nodes, not elsewhere classified (finngen)                           </td><td>Blood and lymphatic system disorders</td><td> 1</td></tr>
+	<tr><td>prolactin                                                                                                          </td><td>Blood prolactin increased           </td><td> 1</td></tr>
+	<tr><td>cardiac problem                                                                                                    </td><td>Cardiac disorder                    </td><td> 1</td></tr>
+	<tr><td>congenital malformations of cardiac chambers and connections                                                       </td><td>Cardiac disorder                    </td><td> 1</td></tr>
+	<tr><td>cardiovascular disease                                                                                             </td><td>Cardiovascular disorder             </td><td> 6</td></tr>
+	<tr><td>cardiovascular diseases                                                                                            </td><td>Cardiovascular disorder             </td><td> 1</td></tr>
+	<tr><td>cardiovascular diseases (excluding rheumatic etc)                                                                  </td><td>Cardiovascular disorder             </td><td> 1</td></tr>
+	<tr><td>chest pain or discomfort                                                                                           </td><td>Chest pain                          </td><td> 2</td></tr>
+	<tr><td>connective tissue disorder                                                                                         </td><td>Connective tissue disorder          </td><td> 1</td></tr>
+	<tr><td>diseases of the musculoskeletal system and connective tissue                                                       </td><td>Connective tissue disorder          </td><td> 1</td></tr>
+	<tr><td>other specified/unspecified systemic involvement of connective tissue                                              </td><td>Connective tissue disorder          </td><td> 1</td></tr>
+	<tr><td>other systemic involvement of connective tissue                                                                    </td><td>Connective tissue disorder          </td><td> 2</td></tr>
+	<tr><td>other systemic involvement of connective tissue (fg)                                                               </td><td>Connective tissue disorder          </td><td> 2</td></tr>
+	<tr><td>systemic connective tissue disorders                                                                               </td><td>Connective tissue disorder          </td><td> 1</td></tr>
+	<tr><td>constipation                                                                                                       </td><td>Constipation                        </td><td> 2</td></tr>
+	<tr><td>inflammatory bowel disease                                                                                         </td><td>Constipation                        </td><td> 4</td></tr>
+	<tr><td>inflammatory bowel disease (firth correction)                                                                      </td><td>Constipation                        </td><td> 1</td></tr>
+	<tr><td>inflammatory bowel disease (spa correction)                                                                        </td><td>Constipation                        </td><td> 1</td></tr>
+	<tr><td>medication for pain relief  constipation  heartburn: ibuprofen (e.g. nurofen)                                      </td><td>Constipation                        </td><td> 1</td></tr>
+	<tr><td>medication for pain relief  constipation  heartburn: none of the above                                             </td><td>Constipation                        </td><td> 2</td></tr>
+	<tr><td>medication for pain relief  constipation  heartburn: paracetamol                                                   </td><td>Constipation                        </td><td> 1</td></tr>
+	<tr><td>medication for pain relief, constipation, heartburn                                                                </td><td>Constipation                        </td><td> 2</td></tr>
+	<tr><td>medication for pain relief, constipation, heartburn: ibuprofen (e.g. nurofen)                                      </td><td>Constipation                        </td><td> 1</td></tr>
+	<tr><td>medication for pain relief, constipation, heartburn: laxatives (e.g. dulcolax, senokot)                            </td><td>Constipation                        </td><td> 1</td></tr>
+	<tr><td>medication for pain relief, constipation, heartburn: none of the above                                             </td><td>Constipation                        </td><td> 1</td></tr>
+	<tr><td>medication for pain relief, constipation, heartburn: omeprazole (e.g. zanprol)                                     </td><td>Constipation                        </td><td> 1</td></tr>
+	<tr><td>medication for pain relief, constipation, heartburn: paracetamol                                                   </td><td>Constipation                        </td><td> 1</td></tr>
+	<tr><td>medication for pain relief, constipation, heartburn: ranitidine (e.g. zantac)                                      </td><td>Constipation                        </td><td> 1</td></tr>
+	<tr><td>cough on most days                                                                                                 </td><td>Cough                               </td><td> 1</td></tr>
+	<tr><td>activities undertaken to treat depression: other therapeutic activities such as mindfulness, yoga or art classes   </td><td>Depression                          </td><td> 1</td></tr>
+	<tr><td>bipolar and major depression status: no bipolar or depression                                                      </td><td>Depression                          </td><td> 1</td></tr>
+	<tr><td>depression (broad)                                                                                                 </td><td>Depression                          </td><td> 1</td></tr>
+	<tr><td>depression medications                                                                                             </td><td>Depression                          </td><td> 1</td></tr>
+	<tr><td>feelings of worthlessness during worst period of depression                                                        </td><td>Depression                          </td><td> 1</td></tr>
+	<tr><td>major depression                                                                                                   </td><td>Depression                          </td><td> 1</td></tr>
+	<tr><td>professional informed about depression                                                                             </td><td>Depression                          </td><td> 1</td></tr>
+	<tr><td>recent feelings of depression                                                                                      </td><td>Depression                          </td><td> 1</td></tr>
+	<tr><td>dyspnoea                                                                                                           </td><td>Dyspnoea                            </td><td> 1</td></tr>
+	<tr><td>lupus erythematosus                                                                                                </td><td>Erythema                            </td><td> 1</td></tr>
+	<tr><td>systemic lupus erythematosus                                                                                       </td><td>Erythema                            </td><td> 2</td></tr>
+	<tr><td>extrapyramidal and movement disorders                                                                              </td><td>Extrapyramidal disorder             </td><td> 1</td></tr>
+	<tr><td>motor neuron and pancreas homeobox protein 1                                                                       </td><td>Extrapyramidal disorder             </td><td> 2</td></tr>
+	<tr><td>gamma glutamyltransferase                                                                                          </td><td>Gamma-glutamyltransferase increased </td><td> 3</td></tr>
+	<tr><td>gamma glutamyltransferase levels (ukb data field 30730)                                                            </td><td>Gamma-glutamyltransferase increased </td><td> 7</td></tr>
+	<tr><td>diagnoses - main icd10: r51 headache                                                                               </td><td>Headache                            </td><td> 2</td></tr>
+	<tr><td>headache                                                                                                           </td><td>Headache                            </td><td> 1</td></tr>
+	<tr><td>headaches for 3+ months                                                                                            </td><td>Headache                            </td><td> 1</td></tr>
+	<tr><td>pain type(s) experienced in last month: headache                                                                   </td><td>Headache                            </td><td> 2</td></tr>
+	<tr><td>pain type(s) experienced in last month: headache (ukb data field 6159_1) (firth correction)                        </td><td>Headache                            </td><td> 3</td></tr>
+	<tr><td>pain type(s) experienced in last month: headache (ukb data field 6159_1) (spa correction)                          </td><td>Headache                            </td><td> 3</td></tr>
+	<tr><td>hypertension, essential (no controls excluded)                                                                     </td><td>Hypertension                        </td><td> 1</td></tr>
+	<tr><td>benign intracranial hypertension                                                                                   </td><td>Hypertension                        </td><td> 1</td></tr>
+	<tr><td>diagnoses - secondary icd10: i10 essential (primary) hypertension                                                  </td><td>Hypertension                        </td><td> 1</td></tr>
+	<tr><td>hypertension                                                                                                       </td><td>Hypertension                        </td><td> 6</td></tr>
+	<tr><td>hypertension (no controls excluded)                                                                                </td><td>Hypertension                        </td><td> 1</td></tr>
+	<tr><td>hypertension, essential                                                                                            </td><td>Hypertension                        </td><td> 1</td></tr>
+	<tr><td>non-cancer illness code  self-reported: hypertension                                                               </td><td>Hypertension                        </td><td> 3</td></tr>
+	<tr><td>non-cancer illness code, self-reported: hypertension                                                               </td><td>Hypertension                        </td><td> 3</td></tr>
+	<tr><td>secondary hypertension                                                                                             </td><td>Hypertension                        </td><td> 1</td></tr>
+	<tr><td>secondary hypertension (no controls excluded)                                                                      </td><td>Hypertension                        </td><td> 1</td></tr>
+	<tr><td>asymptomatic human immunodeficiency virus [hiv] infection status                                                   </td><td>Infection                           </td><td> 1</td></tr>
+	<tr><td>bacterial infection, other or unspecified                                                                          </td><td>Infection                           </td><td> 1</td></tr>
+	<tr><td>diagnoses - main icd10: b34.9 viral infection, unspecified                                                         </td><td>Infection                           </td><td> 1</td></tr>
+	<tr><td>meningococcal infection                                                                                            </td><td>Infection                           </td><td> 1</td></tr>
+	<tr><td>daytime dozing / sleeping (narcolepsy)                                                                             </td><td>Insomnia                            </td><td> 3</td></tr>
+	<tr><td>insomnia (firth correction)                                                                                        </td><td>Insomnia                            </td><td> 1</td></tr>
+	<tr><td>insomnia (spa correction)                                                                                          </td><td>Insomnia                            </td><td> 1</td></tr>
+	<tr><td>sleep disorders (combined)                                                                                         </td><td>Insomnia                            </td><td> 1</td></tr>
+	<tr><td>sleep duration                                                                                                     </td><td>Insomnia                            </td><td> 2</td></tr>
+	<tr><td>sleeplessness / insomnia                                                                                           </td><td>Insomnia                            </td><td> 2</td></tr>
+	<tr><td>trouble falling asleep                                                                                             </td><td>Insomnia                            </td><td> 1</td></tr>
+	<tr><td>irritability                                                                                                       </td><td>Irritability                        </td><td> 2</td></tr>
+	<tr><td>irritability (ukb data field 1940) (firth correction)                                                              </td><td>Irritability                        </td><td> 2</td></tr>
+	<tr><td>irritability (ukb data field 1940) (spa correction)                                                                </td><td>Irritability                        </td><td> 2</td></tr>
+	<tr><td>irritable mood                                                                                                     </td><td>Irritability                        </td><td> 1</td></tr>
+	<tr><td>manifestations of mania or irritability: i was more confident than usual                                           </td><td>Irritability                        </td><td> 1</td></tr>
+	<tr><td>manifestations of mania or irritability: i was more creative or had more ideas than usual                          </td><td>Irritability                        </td><td> 1</td></tr>
+	<tr><td>severity of problems due to mania or irritability                                                                  </td><td>Irritability                        </td><td> 1</td></tr>
+	<tr><td>frequency of tiredness / lethargy in last 2 weeks                                                                  </td><td>Lethargy                            </td><td> 4</td></tr>
+	<tr><td>malnutrition                                                                                                       </td><td>Malnutrition                        </td><td> 1</td></tr>
+	<tr><td>ever manic/hyper for 2 days                                                                                        </td><td>Manic psychosis                     </td><td> 1</td></tr>
+	<tr><td>muscle or soft tissue problem (firth correction)                                                                   </td><td>Muscle rigidity                     </td><td> 1</td></tr>
+	<tr><td>muscle or soft tissue problem (spa correction)                                                                     </td><td>Muscle rigidity                     </td><td> 1</td></tr>
+	<tr><td>pulse wave arterial stiffness index                                                                                </td><td>Musculoskeletal stiffness           </td><td> 1</td></tr>
+	<tr><td>diagnoses - main icd10: j34.8 other specified disorders of nose and nasal sinuses                                  </td><td>Nasal congestion                    </td><td> 1</td></tr>
+	<tr><td>chronic rhinitsi, nasopharyngitis and pharyngitis                                                                  </td><td>Nasopharyngitis                     </td><td> 1</td></tr>
+	<tr><td>diagnoses - main icd10: r11 nausea and vomiting                                                                    </td><td>Nausea                              </td><td> 1</td></tr>
+	<tr><td>feeling nervous                                                                                                    </td><td>Nervousness                         </td><td> 1</td></tr>
+	<tr><td>nervous feelings                                                                                                   </td><td>Nervousness                         </td><td> 1</td></tr>
+	<tr><td>neutrophil cell count                                                                                              </td><td>Neutropenia                         </td><td>13</td></tr>
+	<tr><td>neutrophil count                                                                                                   </td><td>Neutropenia                         </td><td>15</td></tr>
+	<tr><td>neutrophil percentage of granulocytes                                                                              </td><td>Neutropenia                         </td><td> 5</td></tr>
+	<tr><td>neutrophil percentage of white cells                                                                               </td><td>Neutropenia                         </td><td> 8</td></tr>
+	<tr><td>neutrophill count                                                                                                  </td><td>Neutropenia                         </td><td> 9</td></tr>
+	<tr><td>neutrophill count (ukb data field 30140)                                                                           </td><td>Neutropenia                         </td><td>10</td></tr>
+	<tr><td>neutrophill percentage                                                                                             </td><td>Neutropenia                         </td><td> 5</td></tr>
+	<tr><td>sum basophil neutrophil counts                                                                                     </td><td>Neutropenia                         </td><td> 4</td></tr>
+	<tr><td>sum neutrophil eosinophil counts                                                                                   </td><td>Neutropenia                         </td><td> 4</td></tr>
+	<tr><td>hypothyroidism or myxoedema (firth correction)                                                                     </td><td>Oedema peripheral                   </td><td> 3</td></tr>
+	<tr><td>hypothyroidism or myxoedema (spa correction)                                                                       </td><td>Oedema peripheral                   </td><td> 3</td></tr>
+	<tr><td>non-cancer illness code  self-reported: hypothyroidism/myxoedema                                                   </td><td>Oedema peripheral                   </td><td> 3</td></tr>
+	<tr><td>non-cancer illness code, self-reported: hypothyroidism/myxoedema                                                   </td><td>Oedema peripheral                   </td><td> 4</td></tr>
+	<tr><td>oedema, proteinuria and hypertensive disorders in pregnancy, childbirth and the puerperium                         </td><td>Oedema peripheral                   </td><td> 1</td></tr>
+	<tr><td>illnesses of mother: parkinson's disease                                                                           </td><td>Parkinsonism                        </td><td> 2</td></tr>
+	<tr><td>asthma-related pneumonia                                                                                           </td><td>Pneumonia                           </td><td> 1</td></tr>
+	<tr><td>asthma-related pneumonia or sepsis                                                                                 </td><td>Pneumonia                           </td><td> 1</td></tr>
+	<tr><td>bacterial pneumoniae                                                                                               </td><td>Pneumonia                           </td><td> 1</td></tr>
+	<tr><td>diagnoses - main icd10: j18.9 pneumonia, unspecified                                                               </td><td>Pneumonia                           </td><td> 1</td></tr>
+	<tr><td>non-cancer illness code, self-reported: pneumonia                                                                  </td><td>Pneumonia                           </td><td> 1</td></tr>
+	<tr><td>pneumonia                                                                                                          </td><td>Pneumonia                           </td><td> 1</td></tr>
+	<tr><td>viral pneumonia                                                                                                    </td><td>Pneumonia                           </td><td> 1</td></tr>
+	<tr><td>viral pneumonia (unknown virus, not influenza)                                                                     </td><td>Pneumonia                           </td><td> 2</td></tr>
+	<tr><td>allergic rhinitis                                                                                                  </td><td>Rhinitis                            </td><td> 1</td></tr>
+	<tr><td>allergic rhinitis (firth correction)                                                                               </td><td>Rhinitis                            </td><td> 1</td></tr>
+	<tr><td>allergic rhinitis (spa correction)                                                                                 </td><td>Rhinitis                            </td><td> 1</td></tr>
+	<tr><td>blood clot  dvt  bronchitis  emphysema  asthma  rhinitis  eczema  allergy diagnosed by doctor: asthma              </td><td>Rhinitis                            </td><td> 1</td></tr>
+	<tr><td>blood clot, dvt, bronchitis, emphysema, asthma, rhinitis, eczema, allergy diagnosed by doctor: asthma              </td><td>Rhinitis                            </td><td> 1</td></tr>
+	<tr><td>blood clot, dvt, bronchitis, emphysema, asthma, rhinitis, eczema, allergy diagnosed by doctor: none of the above   </td><td>Rhinitis                            </td><td> 1</td></tr>
+	<tr><td>non-cancer illness code, self-reported: hayfever/allergic rhinitis                                                 </td><td>Rhinitis                            </td><td> 1</td></tr>
+	<tr><td>vasomotor rhinitis (mode)                                                                                          </td><td>Rhinitis                            </td><td> 1</td></tr>
+	<tr><td>chronic sinusitis                                                                                                  </td><td>Sinusitis                           </td><td> 1</td></tr>
+	<tr><td>diagnoses - main icd10: j32 chronic sinusitis                                                                      </td><td>Sinusitis                           </td><td> 1</td></tr>
+	<tr><td>somnolence                                                                                                         </td><td>Somnolence                          </td><td> 1</td></tr>
+	<tr><td>diagnoses - main icd10: i47 paroxysmal tachycardia                                                                 </td><td>Tachycardia                         </td><td> 1</td></tr>
+	<tr><td>tooth agenesis exclude clefts and syndromes                                                                        </td><td>Tooth infection                     </td><td> 1</td></tr>
+	<tr><td>mouth/teeth dental problems: toothache                                                                             </td><td>Toothache                           </td><td> 2</td></tr>
+	<tr><td>other respiratory diseases principally affecting the interstitium                                                  </td><td>Upper respiratory tract infection   </td><td> 1</td></tr>
+	<tr><td>respiratory or ear-nose-throat disease                                                                             </td><td>Upper respiratory tract infection   </td><td> 1</td></tr>
+	<tr><td>respiratory tuberculosis, bacteriologically and histologically confirmed                                           </td><td>Upper respiratory tract infection   </td><td> 1</td></tr>
+	<tr><td>severe covid-19 infection with respiratory failure (analysis ii)                                                   </td><td>Upper respiratory tract infection   </td><td> 1</td></tr>
+	<tr><td>symptoms and signs involving the urinary system                                                                    </td><td>Urinary incontinence                </td><td> 1</td></tr>
+	<tr><td>diagnoses - main icd10: n93.9 abnormal uterine and vaginal bleeding, unspecified                                   </td><td>Vaginal discharge                   </td><td> 1</td></tr>
+	<tr><td>birth weight                                                                                                       </td><td>Weight increased                    </td><td> 7</td></tr>
+	<tr><td>weight                                                                                                             </td><td>Weight increased                    </td><td>14</td></tr>
+	<tr><td>white blood cell (leukocyte) count                                                                                 </td><td>White blood cell count decreased    </td><td>11</td></tr>
+	<tr><td>white blood cell count                                                                                             </td><td>White blood cell count decreased    </td><td>18</td></tr>
+	<tr><td>white blood cell count (basophil)                                                                                  </td><td>White blood cell count decreased    </td><td> 1</td></tr>
+	<tr><td>white blood cell count (eosinophil)                                                                                </td><td>White blood cell count decreased    </td><td> 8</td></tr>
+	<tr><td>white blood cell count (lymphocyte)                                                                                </td><td>White blood cell count decreased    </td><td> 8</td></tr>
+	<tr><td>white blood cell count (monocyte)                                                                                  </td><td>White blood cell count decreased    </td><td> 9</td></tr>
+	<tr><td>white blood cell leukocyte count (ukb data field 30000)                                                            </td><td>White blood cell count decreased    </td><td>14</td></tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+</body>
+
+
+
+
+
+
+
+</html>
