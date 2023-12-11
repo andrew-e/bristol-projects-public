@@ -14699,31 +14699,6 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 </div>
 
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Plotting-the-Differences-in-MR-results:-Scz-TR-vs.-SCZ">Plotting the Differences in MR results: Scz TR vs. SCZ<a class="anchor-link" href="#Plotting-the-Differences-in-MR-results:-Scz-TR-vs.-SCZ">&#182;</a></h2><h3 id="Volcano-Plots">Volcano Plots<a class="anchor-link" href="#Volcano-Plots">&#182;</a></h3><table>
-<thead>
-<tr>
-  <th>MR of Scz meta TR, filtered by results only significant in Scz TR</th>
-  <th>MR of Scz meta, filtered by results only significant in Scz</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-  <td><img src="scratch/results/plots/volcano_heterogeneous_results.png" alt="alt" /></td>
-  <td><img src="scratch/results/plots/forest_plot_heterogeneous_results.png" alt="alt" /></td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell  jp-mod-noInput ">
 
 <div class="jp-Cell-outputWrapper">
@@ -14755,16 +14730,6 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <h3 id="SCZ-TR-Results-that-fail-the-hetergeneity-check:">SCZ TR Results that fail the hetergeneity check:<a class="anchor-link" href="#SCZ-TR-Results-that-fail-the-hetergeneity-check:">&#182;</a></h3>
 </div>
 
-</div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
-<pre>Saving 2000 x 2000 px image
-</pre>
-</div>
 </div>
 <div class="jp-OutputArea-child">
     
@@ -14820,6 +14785,108 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
+<h3 id="Coloc-Results:-Metabrain-QTL-(exposure)-vs.-Scz-GWAS">Coloc Results: Metabrain QTL (exposure) vs. Scz GWAS<a class="anchor-link" href="#Coloc-Results:-Metabrain-QTL-(exposure)-vs.-Scz-GWAS">&#182;</a></h3>
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>Warning message:
+“Expected 3 pieces. Additional pieces discarded in 11 rows [14, 15, 16, 51, 84,
+85, 103, 114, 115, 116, 117].”
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<table class="dataframe">
+<caption>A data.frame: 19 × 4</caption>
+<thead>
+	<tr><th scope=col>outcome</th><th scope=col>exposure</th><th scope=col>scz_tr_h4</th><th scope=col>scz_h4</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>basalganglia_eur</td><td>C4A      </td><td>0.906</td><td>0.884</td></tr>
+	<tr><td>basalganglia_eur</td><td>GABBR2   </td><td>0.516</td><td>0.024</td></tr>
+	<tr><td>basalganglia_eur</td><td>MSR1     </td><td>0.580</td><td>0.112</td></tr>
+	<tr><td>basalganglia_eur</td><td>SHISA4   </td><td>0.875</td><td>0.045</td></tr>
+	<tr><td>cerebellum_eur  </td><td>EEF2K    </td><td>0.860</td><td>0.026</td></tr>
+	<tr><td>cerebellum_eur  </td><td>ZDHHC4   </td><td>0.761</td><td>0.051</td></tr>
+	<tr><td>cerebellum_eur  </td><td>ZSCAN9   </td><td>0.601</td><td>0.848</td></tr>
+	<tr><td>cortex_eur      </td><td>AGPAT2   </td><td>0.961</td><td>0.071</td></tr>
+	<tr><td>cortex_eur      </td><td>CUL7     </td><td>0.409</td><td>0.000</td></tr>
+	<tr><td>cortex_eur      </td><td>GOLGA8J  </td><td>0.936</td><td>0.032</td></tr>
+	<tr><td>cortex_eur      </td><td>HIST1H2BN</td><td>0.842</td><td>0.863</td></tr>
+	<tr><td>cortex_eur      </td><td>KIF21A   </td><td>0.916</td><td>0.487</td></tr>
+	<tr><td>cortex_eur      </td><td>MSR1     </td><td>0.860</td><td>0.086</td></tr>
+	<tr><td>cortex_eur      </td><td>TMEM42   </td><td>0.735</td><td>0.018</td></tr>
+	<tr><td>cortex_eur      </td><td>UQCRC2   </td><td>0.975</td><td>0.098</td></tr>
+	<tr><td>cortex_eur      </td><td>VPS39    </td><td>0.764</td><td>0.022</td></tr>
+	<tr><td>cortex_eur      </td><td>ZCCHC17  </td><td>0.865</td><td>0.058</td></tr>
+	<tr><td>hippocampus_eur </td><td>PYROXD2  </td><td>0.647</td><td>0.031</td></tr>
+	<tr><td>hippocampus_eur </td><td>ZNF534   </td><td>0.615</td><td>0.020</td></tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Plotting-the-Differences-in-MR-results:-Scz-TR-vs.-SCZ">Plotting the Differences in MR results: Scz TR vs. SCZ<a class="anchor-link" href="#Plotting-the-Differences-in-MR-results:-Scz-TR-vs.-SCZ">&#182;</a></h2><h3 id="Volcano-Plot-of-MR-results,-filtered-by-hetergeneity-+-only-in-Scz-TR-(and-not-in-Scz)">Volcano Plot of MR results, filtered by hetergeneity + only in Scz TR (and not in Scz)<a class="anchor-link" href="#Volcano-Plot-of-MR-results,-filtered-by-hetergeneity-+-only-in-Scz-TR-(and-not-in-Scz)">&#182;</a></h3><p><img src="scratch/results/plots/volcano_heterogeneous_results.png" alt="alt" /></p>
+<table>
+<thead>
+<tr>
+  <th>Forest Plot of MR results, filtered by hetergeneity + only in Scz TR (and not in Scz)</th>
+  <th>Forest Plot of MR results, filtered by hetergeneity and coloc + only in Scz TR (and not in Scz)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><img src="scratch/results/plots/forest_plot_heterogeneous_results.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/forest_plot_heterogeneous_results_coloc_filtered.png" alt="alt" /></td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell  jp-mod-noInput ">
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
 <h2 id="Proteins-Associated-with-other-proteins-by-Phewas">Proteins Associated with other proteins by Phewas<a class="anchor-link" href="#Proteins-Associated-with-other-proteins-by-Phewas">&#182;</a></h2>
 </div>
 
@@ -14844,55 +14911,17 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
 <table class="dataframe">
-<caption>A data.frame: 5 × 24</caption>
+<caption>A data.frame: 5 × 9</caption>
 <thead>
-	<tr><th></th><th scope=col>exposure</th><th scope=col>SNP</th><th scope=col>id.exposure</th><th scope=col>id.outcome</th><th scope=col>outcome</th><th scope=col>method</th><th scope=col>nsnp</th><th scope=col>b</th><th scope=col>se.x</th><th scope=col>pval</th><th scope=col>p.adjusted</th><th scope=col>HetISq</th><th scope=col>HetChiSq</th><th scope=col>HetDf</th><th scope=col>HetPVal</th><th scope=col>related_exposure</th><th scope=col>region</th><th scope=col>trait</th><th scope=col>p</th><th scope=col>beta</th><th scope=col>se.y</th><th scope=col>n</th><th scope=col>chr</th><th scope=col>position</th></tr>
-	<tr><th></th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+	<tr><th></th><th scope=col>related_exposure</th><th scope=col>SNP</th><th scope=col>exposure</th><th scope=col>outcome</th><th scope=col>p</th><th scope=col>beta</th><th scope=col>se.y</th><th scope=col>chr</th><th scope=col>position</th></tr>
+	<tr><th></th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
 </thead>
 <tbody>
-	<tr><th scope=row>6</th><td>HLA-E </td><td>6:31317850_A_G</td><td>qCpBW7</td><td>eSl5dX</td><td>basalganglia_eur</td><td>Wald ratio</td><td>1</td><td>-0.1097690</td><td>0.02971211</td><td>2.203910e-04</td><td>1.123142e-02</td><td>81.3</td><td> 5.337</td><td>1</td><td>2.087e-02</td><td>GABBR1</td><td>hippocampus</td><td>ENSG00000204592</td><td>1.25516e-19</td><td> 0.1292430</td><td>0.0142584</td><td> 6796</td><td>6</td><td>30065416</td></tr>
-	<tr><th scope=row>8</th><td>HLA-F </td><td>6:29825415_A_G</td><td>jZ5bKY</td><td>4hf0b2</td><td>hippocampus_eur </td><td>Wald ratio</td><td>1</td><td> 0.2790894</td><td>0.03061066</td><td>7.695540e-20</td><td>1.560656e-16</td><td>84.1</td><td> 6.292</td><td>1</td><td>1.213e-02</td><td>GABBR1</td><td>cortex     </td><td>ENSG00000204642</td><td>4.42996e-27</td><td> 0.2148890</td><td>0.0199396</td><td>24953</td><td>6</td><td>29580265</td></tr>
-	<tr><th scope=row>16</th><td>IER3  </td><td>6:29768780_C_T</td><td>GmU57e</td><td>4hf0b2</td><td>hippocampus_eur </td><td>Wald ratio</td><td>1</td><td> 0.2379863</td><td>0.02950232</td><td>7.222444e-16</td><td>8.925586e-13</td><td>94.0</td><td>16.531</td><td>1</td><td>4.787e-05</td><td>GABBR1</td><td>basilinga  </td><td>ENSG00000137331</td><td>1.34679e-12</td><td>-0.1065050</td><td>0.0150231</td><td> 7715</td><td>6</td><td>30063496</td></tr>
-	<tr><th scope=row>18</th><td>TRIM26</td><td>6:30796545_C_T</td><td>qq4ukY</td><td>eSl5dX</td><td>basalganglia_eur</td><td>Wald ratio</td><td>1</td><td>-0.2795942</td><td>0.02510911</td><td>8.458241e-29</td><td>5.574827e-25</td><td>89.4</td><td> 9.408</td><td>1</td><td>2.161e-03</td><td>GABBR1</td><td>hippocampus</td><td>ENSG00000234127</td><td>7.29138e-06</td><td> 0.0640907</td><td>0.0142897</td><td> 7715</td><td>6</td><td>30065416</td></tr>
-	<tr><th scope=row>19</th><td>ZNF311</td><td>6:28659407_A_G</td><td>G7vDfp</td><td>Ky5ief</td><td>spinalcord_eur  </td><td>Wald ratio</td><td>1</td><td>-0.1990734</td><td>0.02218554</td><td>2.882425e-19</td><td>5.699418e-16</td><td>79.9</td><td> 4.974</td><td>1</td><td>2.574e-02</td><td>GABBR1</td><td>spinalcord </td><td>ENSG00000197935</td><td>2.18852e-08</td><td>-0.0677189</td><td>0.0121004</td><td>22213</td><td>6</td><td>29354809</td></tr>
-</tbody>
-</table>
-
-</div>
-
-</div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
-<h3 id="All-54-drug-targets-that-are-related-to-other-Metabrain-gene-results">All 54 drug targets that are related to other Metabrain gene results<a class="anchor-link" href="#All-54-drug-targets-that-are-related-to-other-Metabrain-gene-results">&#182;</a></h3>
-</div>
-
-</div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
-<table class="dataframe">
-<caption>A data.frame: 6 × 24</caption>
-<thead>
-	<tr><th></th><th scope=col>exposure</th><th scope=col>SNP</th><th scope=col>id.exposure</th><th scope=col>id.outcome</th><th scope=col>outcome</th><th scope=col>method</th><th scope=col>nsnp</th><th scope=col>b</th><th scope=col>se.x</th><th scope=col>pval</th><th scope=col>p.adjusted</th><th scope=col>HetISq</th><th scope=col>HetChiSq</th><th scope=col>HetDf</th><th scope=col>HetPVal</th><th scope=col>related_exposure</th><th scope=col>region</th><th scope=col>trait</th><th scope=col>p</th><th scope=col>beta</th><th scope=col>se.y</th><th scope=col>n</th><th scope=col>chr</th><th scope=col>position</th></tr>
-	<tr><th></th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
-</thead>
-<tbody>
-	<tr><th scope=row>1</th><td>ARID5A</td><td>2:97413488_C_G</td><td>NQzWxi</td><td>Ky5ief</td><td>spinalcord_eur  </td><td>Wald ratio</td><td>1</td><td> 0.09349788</td><td>0.02086392</td><td>7.418289e-06</td><td>8.103968e-04</td><td>77.8</td><td> 4.497</td><td>1</td><td>3.395e-02</td><td>ADRA2B</td><td>hippocampus</td><td>ENSG00000196843</td><td>7.50240e-28</td><td>-0.1676860</td><td>0.0153293</td><td>31467</td><td>2</td><td>96914636</td></tr>
-	<tr><th scope=row>6</th><td>HLA-E </td><td>6:31317850_A_G</td><td>qCpBW7</td><td>eSl5dX</td><td>basalganglia_eur</td><td>Wald ratio</td><td>1</td><td>-0.10976896</td><td>0.02971211</td><td>2.203910e-04</td><td>1.123142e-02</td><td>81.3</td><td> 5.337</td><td>1</td><td>2.087e-02</td><td>GABBR1</td><td>hippocampus</td><td>ENSG00000204592</td><td>1.25516e-19</td><td> 0.1292430</td><td>0.0142584</td><td> 6796</td><td>6</td><td>30065416</td></tr>
-	<tr><th scope=row>8</th><td>HLA-F </td><td>6:29825415_A_G</td><td>jZ5bKY</td><td>4hf0b2</td><td>hippocampus_eur </td><td>Wald ratio</td><td>1</td><td> 0.27908936</td><td>0.03061066</td><td>7.695540e-20</td><td>1.560656e-16</td><td>84.1</td><td> 6.292</td><td>1</td><td>1.213e-02</td><td>GABBR1</td><td>cortex     </td><td>ENSG00000204642</td><td>4.42996e-27</td><td> 0.2148890</td><td>0.0199396</td><td>24953</td><td>6</td><td>29580265</td></tr>
-	<tr><th scope=row>16</th><td>IER3  </td><td>6:29768780_C_T</td><td>GmU57e</td><td>4hf0b2</td><td>hippocampus_eur </td><td>Wald ratio</td><td>1</td><td> 0.23798635</td><td>0.02950232</td><td>7.222444e-16</td><td>8.925586e-13</td><td>94.0</td><td>16.531</td><td>1</td><td>4.787e-05</td><td>GABBR1</td><td>basilinga  </td><td>ENSG00000137331</td><td>1.34679e-12</td><td>-0.1065050</td><td>0.0150231</td><td> 7715</td><td>6</td><td>30063496</td></tr>
-	<tr><th scope=row>18</th><td>TRIM26</td><td>6:30796545_C_T</td><td>qq4ukY</td><td>eSl5dX</td><td>basalganglia_eur</td><td>Wald ratio</td><td>1</td><td>-0.27959424</td><td>0.02510911</td><td>8.458241e-29</td><td>5.574827e-25</td><td>89.4</td><td> 9.408</td><td>1</td><td>2.161e-03</td><td>GABBR1</td><td>hippocampus</td><td>ENSG00000234127</td><td>7.29138e-06</td><td> 0.0640907</td><td>0.0142897</td><td> 7715</td><td>6</td><td>30065416</td></tr>
-	<tr><th scope=row>19</th><td>ZNF311</td><td>6:28659407_A_G</td><td>G7vDfp</td><td>Ky5ief</td><td>spinalcord_eur  </td><td>Wald ratio</td><td>1</td><td>-0.19907342</td><td>0.02218554</td><td>2.882425e-19</td><td>5.699418e-16</td><td>79.9</td><td> 4.974</td><td>1</td><td>2.574e-02</td><td>GABBR1</td><td>spinalcord </td><td>ENSG00000197935</td><td>2.18852e-08</td><td>-0.0677189</td><td>0.0121004</td><td>22213</td><td>6</td><td>29354809</td></tr>
+	<tr><th scope=row>6</th><td>GABBR1</td><td>6:31317850_A_G</td><td>HLA-E </td><td>basalganglia_eur</td><td>1.25516e-19</td><td> 0.1292430</td><td>0.0142584</td><td>6</td><td>30065416</td></tr>
+	<tr><th scope=row>8</th><td>GABBR1</td><td>6:29825415_A_G</td><td>HLA-F </td><td>hippocampus_eur </td><td>4.42996e-27</td><td> 0.2148890</td><td>0.0199396</td><td>6</td><td>29580265</td></tr>
+	<tr><th scope=row>16</th><td>GABBR1</td><td>6:29768780_C_T</td><td>IER3  </td><td>hippocampus_eur </td><td>1.34679e-12</td><td>-0.1065050</td><td>0.0150231</td><td>6</td><td>30063496</td></tr>
+	<tr><th scope=row>18</th><td>GABBR1</td><td>6:30796545_C_T</td><td>TRIM26</td><td>basalganglia_eur</td><td>7.29138e-06</td><td> 0.0640907</td><td>0.0142897</td><td>6</td><td>30065416</td></tr>
+	<tr><th scope=row>19</th><td>GABBR1</td><td>6:28659407_A_G</td><td>ZNF311</td><td>spinalcord_eur  </td><td>2.18852e-08</td><td>-0.0677189</td><td>0.0121004</td><td>6</td><td>29354809</td></tr>
 </tbody>
 </table>
 
