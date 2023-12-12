@@ -14617,6 +14617,20 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 </div>
 </div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs jp-mod-noInput ">
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Side-effects-uniquely-affecting-each-drug">Side effects uniquely affecting each drug<a class="anchor-link" href="#Side-effects-uniquely-affecting-each-drug">&#182;</a></h2><p>Each drug is filtered by targets unique to that drug.  The remaining shared effects are below</p>
+
+</div>
+</div>
+</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell  jp-mod-noInput ">
 
 <div class="jp-Cell-outputWrapper">
@@ -14633,7 +14647,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
-<h1 id="Results-of-PheWAS-+-coloc-compared-to-Side-effect-matrix-mapping:">Results of PheWAS + coloc compared to Side effect matrix mapping:<a class="anchor-link" href="#Results-of-PheWAS-+-coloc-compared-to-Side-effect-matrix-mapping:">&#182;</a></h1>
+<h2 id="Unique-targets-for-aripiprazole">Unique targets for aripiprazole<a class="anchor-link" href="#Unique-targets-for-aripiprazole">&#182;</a></h2>
 </div>
 
 </div>
@@ -14645,19 +14659,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
-<h2 id="aripiprazole">aripiprazole<a class="anchor-link" href="#aripiprazole">&#182;</a></h2>
-</div>
-
-</div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
-<p>no. side effects where in phewas and coloc &gt; 80%: 20</p>
+<p>GRIN1  GRIN2A  GRIN2B  GRIN2C  GRIN2D  GRIN3A  GRIN3B  HRH2  HRH3  HTR2B  HTR5A  OPRD1  OPRK1  OPRM1  SLC6A3  SLC6A4</p>
 
 </div>
 
@@ -14670,7 +14672,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
-<h3 id="Results-where-in-known-side-effect,-and-found-in-phewas,-and-h4-%3E-80%25">Results where in known side effect, and found in phewas, and h4 &gt; 80%<a class="anchor-link" href="#Results-where-in-known-side-effect,-and-found-in-phewas,-and-h4-%3E-80%25">&#182;</a></h3>
+<h4 id="Results-of-PheWAS-+-coloc-%3E=-80%25-compared-to-Side-effect-matrix-mapping:">Results of PheWAS + coloc &gt;= 80% compared to Side effect matrix mapping:<a class="anchor-link" href="#Results-of-PheWAS-+-coloc-%3E=-80%25-compared-to-Side-effect-matrix-mapping:">&#182;</a></h4>
 </div>
 
 </div>
@@ -14682,71 +14684,31 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
 <table class="dataframe">
-<caption>A data.frame: 59 × 7</caption>
+<caption>A data.frame: 19 × 8</caption>
 <thead>
-	<tr><th scope=col>side_effect</th><th scope=col>documented</th><th scope=col>exposure</th><th scope=col>region</th><th scope=col>beta</th><th scope=col>p</th><th scope=col>phewas_trait</th></tr>
-	<tr><th scope=col>&lt;I&lt;chr&gt;&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+	<tr><th scope=col>side_effect</th><th scope=col>documented</th><th scope=col>exposure</th><th scope=col>region</th><th scope=col>h4</th><th scope=col>beta</th><th scope=col>p</th><th scope=col>phewas_trait</th></tr>
+	<tr><th scope=col>&lt;I&lt;chr&gt;&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
 </thead>
 <tbody>
-	<tr><td>Anxiety                         </td><td>1</td><td>ADRA2B</td><td>cortex    </td><td> 0.01345810</td><td>1.11258e-04</td><td>frequent trouble falling or staying asleep during worst period of anxiety                           </td></tr>
-	<tr><td>Bilirubin total low/decreased   </td><td>0</td><td>HTR5A </td><td>cortex    </td><td> 0.02784000</td><td>7.17200e-06</td><td>total bilirubin                                                                                     </td></tr>
-	<tr><td>Bilirubin total low/decreased   </td><td>0</td><td>HTR5A </td><td>cortex    </td><td> 0.02447960</td><td>8.90000e-06</td><td>total bilirubin levels                                                                              </td></tr>
-	<tr><td>Conjunctivitis                  </td><td>0</td><td>DRD2  </td><td>cortex    </td><td> 0.07000000</td><td>1.29101e-04</td><td>use of eye-antiallergens (taken as indicator of allergic/atopic conjunctivitis)                     </td></tr>
-	<tr><td>Constipation                    </td><td>1</td><td>GRIN2A</td><td>cortex    </td><td>-0.29358100</td><td>6.66730e-05</td><td>constipation                                                                                        </td></tr>
-	<tr><td>Constipation                    </td><td>1</td><td>DRD4  </td><td>cerebellum</td><td> 0.63935900</td><td>6.08695e-05</td><td>constipation                                                                                        </td></tr>
-	<tr><td>Corneal lesion                  </td><td>0</td><td>HTR1D </td><td>cortex    </td><td>-0.01939660</td><td>1.50000e-05</td><td>corneal hysteresis (right)                                                                          </td></tr>
-	<tr><td>Eosinophilia                    </td><td>0</td><td>HTR1D </td><td>cortex    </td><td> 0.01604490</td><td>9.03400e-06</td><td>eosinophil percentage of white cells                                                                </td></tr>
-	<tr><td>Eosinophilia                    </td><td>0</td><td>HTR1D </td><td>cortex    </td><td> 0.01542570</td><td>2.13900e-05</td><td>eosinophil percentage of granulocytes                                                               </td></tr>
-	<tr><td>Eosinophilia                    </td><td>0</td><td>HTR6  </td><td>cortex    </td><td>-0.09421600</td><td>3.59998e-04</td><td>eosinophil counts                                                                                   </td></tr>
-	<tr><td>Eosinophilia                    </td><td>0</td><td>HTR1D </td><td>cortex    </td><td> 0.01800300</td><td>6.65794e-07</td><td>sum eosinophil basophil counts                                                                      </td></tr>
-	<tr><td>Eosinophilia                    </td><td>0</td><td>HTR1D </td><td>cortex    </td><td> 0.01770050</td><td>9.93894e-07</td><td>eosinophil counts                                                                                   </td></tr>
-	<tr><td>Extrapyramidal disorder         </td><td>1</td><td>OPRM1 </td><td>cerebellum</td><td> 0.17030000</td><td>4.57088e-06</td><td>motor neuron and pancreas homeobox protein 1                                                        </td></tr>
-	<tr><td>Hypertension                    </td><td>1</td><td>ADRA2B</td><td>cortex    </td><td> 0.00453044</td><td>2.90001e-05</td><td>non-cancer illness code, self-reported: hypertension                                                </td></tr>
-	<tr><td>Hypertension                    </td><td>1</td><td>ADRA2B</td><td>cortex    </td><td> 0.00452108</td><td>1.09999e-05</td><td>hypertension                                                                                        </td></tr>
-	<tr><td>Hypotension                     </td><td>0</td><td>ADRA1A</td><td>cortex    </td><td>-0.01437090</td><td>3.50002e-09</td><td>diastolic blood pressure                                                                            </td></tr>
-	<tr><td>Hypotension                     </td><td>0</td><td>ADRA2B</td><td>cortex    </td><td> 0.00462115</td><td>2.59998e-05</td><td>vascular/heart problems diagnosed by doctor: high blood pressure                                    </td></tr>
-	<tr><td>Hypotension                     </td><td>0</td><td>HRH1  </td><td>cortex    </td><td>-0.00533015</td><td>5.39995e-05</td><td>medication for cholesterol, blood pressure, diabetes, or take exogenous hormones: cholesterol loweri</td></tr>
-	<tr><td>Hypotension                     </td><td>0</td><td>HTR1B </td><td>cortex    </td><td>-0.00600217</td><td>8.53867e-05</td><td>medication for cholesterol  blood pressure  diabetes  or take exogenous hormones: cholesterol loweri</td></tr>
-	<tr><td>Hypothyroidism                  </td><td>0</td><td>DRD4  </td><td>cortex    </td><td>-0.00287405</td><td>4.39997e-09</td><td>hypothyroidism                                                                                      </td></tr>
-	<tr><td>Hypothyroidism                  </td><td>0</td><td>DRD4  </td><td>cortex    </td><td>-0.00264714</td><td>3.89996e-08</td><td>hypothyroidism or myxedema                                                                          </td></tr>
-	<tr><td>Hypothyroidism                  </td><td>0</td><td>DRD4  </td><td>cortex    </td><td>-0.00170659</td><td>2.50000e-07</td><td>diagnoses - secondary icd10: e03.9 hypothyroidism, unspecified                                      </td></tr>
-	<tr><td>Hypothyroidism                  </td><td>0</td><td>DRD4  </td><td>cortex    </td><td>-0.06550000</td><td>2.02502e-08</td><td>hypothyroidism                                                                                      </td></tr>
-	<tr><td>Irritability                    </td><td>1</td><td>DRD2  </td><td>cerebellum</td><td>-0.00533958</td><td>2.09320e-06</td><td>irritability                                                                                        </td></tr>
-	<tr><td>Irritability                    </td><td>1</td><td>DRD2  </td><td>cerebellum</td><td>-0.00446467</td><td>3.50002e-06</td><td>irritability                                                                                        </td></tr>
-	<tr><td>Manic psychosis                 </td><td>0</td><td>DRD2  </td><td>cortex    </td><td> 0.00372940</td><td>6.69993e-05</td><td>ever manic/hyper for 2 days                                                                         </td></tr>
-	<tr><td>Manic psychosis                 </td><td>0</td><td>DRD2  </td><td>cortex    </td><td> 0.00413442</td><td>1.11774e-04</td><td>ever manic/hyper for 2 days                                                                         </td></tr>
-	<tr><td>Micturition urgency             </td><td>0</td><td>DRD2  </td><td>cerebellum</td><td>-0.00714309</td><td>2.15263e-05</td><td>urinary albumin excretion                                                                           </td></tr>
-	<tr><td>Micturition urgency             </td><td>0</td><td>DRD1  </td><td>cortex    </td><td> 0.01222170</td><td>1.92331e-06</td><td>urinary sodium-potassium ratio                                                                      </td></tr>
-	<tr><td>Neck pain                       </td><td>0</td><td>HRH3  </td><td>cerebellum</td><td> 0.00593299</td><td>9.90011e-05</td><td>pain type(s) experienced in last month: neck or shoulder pain                                       </td></tr>
-	<tr><td>Neutropenia                     </td><td>0</td><td>HTR1B </td><td>cortex    </td><td> 0.14958500</td><td>4.06996e-04</td><td>neutrophil count                                                                                    </td></tr>
-	<tr><td>Neutropenia                     </td><td>0</td><td>HTR1D </td><td>cortex    </td><td>-0.01473140</td><td>4.95199e-05</td><td>neutrophil percentage of granulocytes                                                               </td></tr>
-	<tr><td>Oedema peripheral               </td><td>1</td><td>DRD4  </td><td>cortex    </td><td>-0.00283408</td><td>1.00749e-06</td><td>non-cancer illness code  self-reported: hypothyroidism/myxoedema                                    </td></tr>
-	<tr><td>Oedema peripheral               </td><td>1</td><td>DRD4  </td><td>cortex    </td><td>-0.00280397</td><td>1.50000e-08</td><td>non-cancer illness code, self-reported: hypothyroidism/myxoedema                                    </td></tr>
-	<tr><td>Seasonal allergy                </td><td>0</td><td>DRD2  </td><td>cortex    </td><td> 0.07000000</td><td>1.29101e-04</td><td>use of eye-antiallergens (taken as indicator of allergic/atopic conjunctivitis)                     </td></tr>
-	<tr><td>Urinary abnormalities           </td><td>0</td><td>DRD1  </td><td>cortex    </td><td> 0.01222170</td><td>1.92331e-06</td><td>urinary sodium-potassium ratio                                                                      </td></tr>
-	<tr><td>Urinary abnormalities           </td><td>0</td><td>DRD2  </td><td>cerebellum</td><td>-0.00714309</td><td>2.15263e-05</td><td>urinary albumin excretion                                                                           </td></tr>
-	<tr><td>Weight increased                </td><td>1</td><td>GRIN3A</td><td>cortex    </td><td>-0.00980000</td><td>1.87698e-07</td><td>body mass index                                                                                     </td></tr>
-	<tr><td>Weight increased                </td><td>1</td><td>GRIN3A</td><td>cerebellum</td><td> 0.00959958</td><td>7.19996e-07</td><td>body mass index                                                                                     </td></tr>
-	<tr><td>Weight increased                </td><td>1</td><td>GRIN3A</td><td>cortex    </td><td>-0.01030000</td><td>2.19999e-09</td><td>body mass index                                                                                     </td></tr>
-	<tr><td>Weight increased                </td><td>1</td><td>OPRK1 </td><td>cerebellum</td><td> 0.00750000</td><td>2.63403e-05</td><td>weight                                                                                              </td></tr>
-	<tr><td>Weight increased                </td><td>1</td><td>HTR1B </td><td>cortex    </td><td>-0.00993594</td><td>4.20001e-05</td><td>weight                                                                                              </td></tr>
-	<tr><td>Weight increased                </td><td>1</td><td>GRIN3A</td><td>cortex    </td><td>-0.01037860</td><td>2.00000e-07</td><td>body mass index (bmi)                                                                               </td></tr>
-	<tr><td>Weight increased                </td><td>1</td><td>OPRK1 </td><td>cerebellum</td><td> 0.00805802</td><td>2.39999e-05</td><td>weight                                                                                              </td></tr>
-	<tr><td>Weight increased                </td><td>1</td><td>HTR1B </td><td>cortex    </td><td>-0.00997281</td><td>3.40001e-05</td><td>weight                                                                                              </td></tr>
-	<tr><td>Weight increased                </td><td>1</td><td>OPRK1 </td><td>cerebellum</td><td> 0.00817983</td><td>1.50000e-05</td><td>weight                                                                                              </td></tr>
-	<tr><td>Weight increased                </td><td>1</td><td>HTR1B </td><td>cortex    </td><td>-0.01214070</td><td>3.37886e-05</td><td>weight                                                                                              </td></tr>
-	<tr><td>Weight increased                </td><td>1</td><td>OPRK1 </td><td>cerebellum</td><td> 0.01005040</td><td>1.54252e-05</td><td>weight                                                                                              </td></tr>
-	<tr><td>Weight increased                </td><td>1</td><td>GRIN3A</td><td>cortex    </td><td>-0.01018620</td><td>1.40001e-07</td><td>body mass index                                                                                     </td></tr>
-	<tr><td>Weight increased                </td><td>1</td><td>HTR1B </td><td>cortex    </td><td>-0.01195510</td><td>6.40000e-06</td><td>body mass index                                                                                     </td></tr>
-	<tr><td>Weight increased                </td><td>1</td><td>GRIN3A</td><td>cortex    </td><td>-0.01300000</td><td>1.05901e-05</td><td>body mass index                                                                                     </td></tr>
-	<tr><td>Weight increased                </td><td>1</td><td>GRIN3A</td><td>cerebellum</td><td> 0.00994235</td><td>5.10000e-07</td><td>body mass index (bmi)                                                                               </td></tr>
-	<tr><td>Weight increased                </td><td>1</td><td>GRIN3A</td><td>cortex    </td><td>-0.01059010</td><td>8.99995e-08</td><td>body mass index (bmi)                                                                               </td></tr>
-	<tr><td>Weight increased                </td><td>1</td><td>HTR1B </td><td>cortex    </td><td>-0.01131610</td><td>3.79997e-05</td><td>body mass index (bmi)                                                                               </td></tr>
-	<tr><td>Weight increased                </td><td>1</td><td>GRIN3A</td><td>cerebellum</td><td> 0.00986545</td><td>7.49998e-07</td><td>body mass index (bmi)                                                                               </td></tr>
-	<tr><td>Weight increased                </td><td>1</td><td>HTR1B </td><td>cortex    </td><td>-0.01129610</td><td>4.49997e-05</td><td>body mass index (bmi)                                                                               </td></tr>
-	<tr><td>Weight increased                </td><td>1</td><td>GRIN3A</td><td>cortex    </td><td>-0.01103090</td><td>4.48828e-06</td><td>body mass index (bmi)                                                                               </td></tr>
-	<tr><td>Weight increased                </td><td>1</td><td>HTR1B </td><td>cortex    </td><td>-0.01485070</td><td>7.47618e-06</td><td>body mass index (bmi)                                                                               </td></tr>
-	<tr><td>White blood cell count decreased</td><td>0</td><td>ADRA1B</td><td>cortex    </td><td>-0.00784375</td><td>3.50002e-05</td><td>white blood cell count (monocyte)                                                                   </td></tr>
+	<tr><td>Bilirubin total low/decreased</td><td>0</td><td>HTR5A </td><td>cortex    </td><td>0.904</td><td> 0.02784</td><td>7.17200e-06</td><td>total bilirubin                                              </td></tr>
+	<tr><td>Bilirubin total low/decreased</td><td>0</td><td>HTR5A </td><td>cortex    </td><td>0.969</td><td> 0.02448</td><td>8.90000e-06</td><td>total bilirubin levels                                       </td></tr>
+	<tr><td>Constipation                 </td><td>1</td><td>GRIN2A</td><td>cortex    </td><td>0.835</td><td>-0.29358</td><td>6.66730e-05</td><td>constipation                                                 </td></tr>
+	<tr><td>Extrapyramidal disorder      </td><td>1</td><td>OPRM1 </td><td>cerebellum</td><td>0.971</td><td> 0.17030</td><td>4.57088e-06</td><td>motor neuron and pancreas homeobox protein 1                 </td></tr>
+	<tr><td>Neck pain                    </td><td>0</td><td>HRH3  </td><td>cerebellum</td><td>0.812</td><td> 0.00593</td><td>9.90011e-05</td><td>pain type(s) experienced in last month: neck or shoulder pain</td></tr>
+	<tr><td>Weight increased             </td><td>1</td><td>GRIN3A</td><td>cortex    </td><td>0.912</td><td>-0.00980</td><td>1.87698e-07</td><td>body mass index                                              </td></tr>
+	<tr><td>Weight increased             </td><td>1</td><td>GRIN3A</td><td>cerebellum</td><td>0.859</td><td> 0.00960</td><td>7.19996e-07</td><td>body mass index                                              </td></tr>
+	<tr><td>Weight increased             </td><td>1</td><td>GRIN3A</td><td>cortex    </td><td>0.956</td><td>-0.01030</td><td>2.19999e-09</td><td>body mass index                                              </td></tr>
+	<tr><td>Weight increased             </td><td>1</td><td>OPRK1 </td><td>cerebellum</td><td>0.814</td><td> 0.00750</td><td>2.63403e-05</td><td>weight                                                       </td></tr>
+	<tr><td>Weight increased             </td><td>1</td><td>GRIN3A</td><td>cortex    </td><td>0.894</td><td>-0.01038</td><td>2.00000e-07</td><td>body mass index (bmi)                                        </td></tr>
+	<tr><td>Weight increased             </td><td>1</td><td>OPRK1 </td><td>cerebellum</td><td>0.870</td><td> 0.00806</td><td>2.39999e-05</td><td>weight                                                       </td></tr>
+	<tr><td>Weight increased             </td><td>1</td><td>OPRK1 </td><td>cerebellum</td><td>0.905</td><td> 0.00818</td><td>1.50000e-05</td><td>weight                                                       </td></tr>
+	<tr><td>Weight increased             </td><td>1</td><td>OPRK1 </td><td>cerebellum</td><td>0.900</td><td> 0.01005</td><td>1.54252e-05</td><td>weight                                                       </td></tr>
+	<tr><td>Weight increased             </td><td>1</td><td>GRIN3A</td><td>cortex    </td><td>0.893</td><td>-0.01019</td><td>1.40001e-07</td><td>body mass index                                              </td></tr>
+	<tr><td>Weight increased             </td><td>1</td><td>GRIN3A</td><td>cortex    </td><td>0.926</td><td>-0.01300</td><td>1.05901e-05</td><td>body mass index                                              </td></tr>
+	<tr><td>Weight increased             </td><td>1</td><td>GRIN3A</td><td>cerebellum</td><td>0.860</td><td> 0.00994</td><td>5.10000e-07</td><td>body mass index (bmi)                                        </td></tr>
+	<tr><td>Weight increased             </td><td>1</td><td>GRIN3A</td><td>cortex    </td><td>0.906</td><td>-0.01059</td><td>8.99995e-08</td><td>body mass index (bmi)                                        </td></tr>
+	<tr><td>Weight increased             </td><td>1</td><td>GRIN3A</td><td>cerebellum</td><td>0.879</td><td> 0.00987</td><td>7.49998e-07</td><td>body mass index (bmi)                                        </td></tr>
+	<tr><td>Weight increased             </td><td>1</td><td>GRIN3A</td><td>cortex    </td><td>0.875</td><td>-0.01103</td><td>4.48828e-06</td><td>body mass index (bmi)                                        </td></tr>
 </tbody>
 </table>
 
@@ -14761,32 +14723,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
-<h2 id="clozapine">clozapine<a class="anchor-link" href="#clozapine">&#182;</a></h2>
-</div>
-
-</div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
-<p>no. side effects where in phewas and coloc &gt; 80%: 19</p>
-
-</div>
-
-</div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
-<h3 id="Results-where-in-known-side-effect,-and-found-in-phewas,-and-h4-%3E-80%25">Results where in known side effect, and found in phewas, and h4 &gt; 80%<a class="anchor-link" href="#Results-where-in-known-side-effect,-and-found-in-phewas,-and-h4-%3E-80%25">&#182;</a></h3>
+<h4 id="Additional-results-where-60%25-%3C-coloc-%3C-80%25">Additional results where 60% &lt; coloc &lt; 80%<a class="anchor-link" href="#Additional-results-where-60%25-%3C-coloc-%3C-80%25">&#182;</a></h4>
 </div>
 
 </div>
@@ -14798,60 +14735,19 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
 <table class="dataframe">
-<caption>A data.frame: 48 × 7</caption>
+<caption>A data.frame: 7 × 8</caption>
 <thead>
-	<tr><th scope=col>side_effect</th><th scope=col>documented</th><th scope=col>exposure</th><th scope=col>region</th><th scope=col>beta</th><th scope=col>p</th><th scope=col>phewas_trait</th></tr>
-	<tr><th scope=col>&lt;I&lt;chr&gt;&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+	<tr><th scope=col>side_effect</th><th scope=col>documented</th><th scope=col>exposure</th><th scope=col>region</th><th scope=col>h4</th><th scope=col>beta</th><th scope=col>p</th><th scope=col>phewas_trait</th></tr>
+	<tr><th scope=col>&lt;I&lt;chr&gt;&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
 </thead>
 <tbody>
-	<tr><td>Anxiety                         </td><td>1</td><td>ADRA2B</td><td>cortex    </td><td> 0.01345810</td><td>1.11258e-04</td><td>frequent trouble falling or staying asleep during worst period of anxiety                           </td></tr>
-	<tr><td>Conjunctivitis                  </td><td>0</td><td>DRD2  </td><td>cortex    </td><td> 0.07000000</td><td>1.29101e-04</td><td>use of eye-antiallergens (taken as indicator of allergic/atopic conjunctivitis)                     </td></tr>
-	<tr><td>Constipation                    </td><td>1</td><td>DRD4  </td><td>cerebellum</td><td> 0.63935900</td><td>6.08695e-05</td><td>constipation                                                                                        </td></tr>
-	<tr><td>Corneal lesion                  </td><td>0</td><td>HTR1D </td><td>cortex    </td><td>-0.01939660</td><td>1.50000e-05</td><td>corneal hysteresis (right)                                                                          </td></tr>
-	<tr><td>Eosinophilia                    </td><td>1</td><td>HTR1D </td><td>cortex    </td><td> 0.01542570</td><td>2.13900e-05</td><td>eosinophil percentage of granulocytes                                                               </td></tr>
-	<tr><td>Eosinophilia                    </td><td>1</td><td>HTR1D </td><td>cortex    </td><td> 0.01604490</td><td>9.03400e-06</td><td>eosinophil percentage of white cells                                                                </td></tr>
-	<tr><td>Eosinophilia                    </td><td>1</td><td>HTR1D </td><td>cortex    </td><td> 0.01770050</td><td>9.93894e-07</td><td>eosinophil counts                                                                                   </td></tr>
-	<tr><td>Eosinophilia                    </td><td>1</td><td>HTR1D </td><td>cortex    </td><td> 0.01800300</td><td>6.65794e-07</td><td>sum eosinophil basophil counts                                                                      </td></tr>
-	<tr><td>Eosinophilia                    </td><td>1</td><td>HTR6  </td><td>cortex    </td><td>-0.09421600</td><td>3.59998e-04</td><td>eosinophil counts                                                                                   </td></tr>
-	<tr><td>Hypertension                    </td><td>1</td><td>ADRA2B</td><td>cortex    </td><td> 0.00452108</td><td>1.09999e-05</td><td>hypertension                                                                                        </td></tr>
-	<tr><td>Hypertension                    </td><td>1</td><td>ADRA2B</td><td>cortex    </td><td> 0.00453044</td><td>2.90001e-05</td><td>non-cancer illness code, self-reported: hypertension                                                </td></tr>
-	<tr><td>Hypotension                     </td><td>1</td><td>HRH1  </td><td>cortex    </td><td>-0.00533015</td><td>5.39995e-05</td><td>medication for cholesterol, blood pressure, diabetes, or take exogenous hormones: cholesterol loweri</td></tr>
-	<tr><td>Hypotension                     </td><td>1</td><td>ADRA1A</td><td>cortex    </td><td>-0.01437090</td><td>3.50002e-09</td><td>diastolic blood pressure                                                                            </td></tr>
-	<tr><td>Hypotension                     </td><td>1</td><td>HTR1B </td><td>cortex    </td><td>-0.00600217</td><td>8.53867e-05</td><td>medication for cholesterol  blood pressure  diabetes  or take exogenous hormones: cholesterol loweri</td></tr>
-	<tr><td>Hypotension                     </td><td>1</td><td>ADRA2B</td><td>cortex    </td><td> 0.00462115</td><td>2.59998e-05</td><td>vascular/heart problems diagnosed by doctor: high blood pressure                                    </td></tr>
-	<tr><td>Hypothyroidism                  </td><td>0</td><td>DRD4  </td><td>cortex    </td><td>-0.00287405</td><td>4.39997e-09</td><td>hypothyroidism                                                                                      </td></tr>
-	<tr><td>Hypothyroidism                  </td><td>0</td><td>DRD4  </td><td>cortex    </td><td>-0.00170659</td><td>2.50000e-07</td><td>diagnoses - secondary icd10: e03.9 hypothyroidism, unspecified                                      </td></tr>
-	<tr><td>Hypothyroidism                  </td><td>0</td><td>DRD4  </td><td>cortex    </td><td>-0.06550000</td><td>2.02502e-08</td><td>hypothyroidism                                                                                      </td></tr>
-	<tr><td>Hypothyroidism                  </td><td>0</td><td>DRD4  </td><td>cortex    </td><td>-0.00264714</td><td>3.89996e-08</td><td>hypothyroidism or myxedema                                                                          </td></tr>
-	<tr><td>Insomnia                        </td><td>1</td><td>GABRA1</td><td>cortex    </td><td>-0.00557488</td><td>3.09999e-06</td><td>daytime dozing / sleeping (narcolepsy)                                                              </td></tr>
-	<tr><td>Irritability                    </td><td>0</td><td>DRD2  </td><td>cerebellum</td><td>-0.00533958</td><td>2.09320e-06</td><td>irritability                                                                                        </td></tr>
-	<tr><td>Irritability                    </td><td>0</td><td>DRD2  </td><td>cerebellum</td><td>-0.00446467</td><td>3.50002e-06</td><td>irritability                                                                                        </td></tr>
-	<tr><td>Manic psychosis                 </td><td>0</td><td>DRD2  </td><td>cortex    </td><td> 0.00413442</td><td>1.11774e-04</td><td>ever manic/hyper for 2 days                                                                         </td></tr>
-	<tr><td>Manic psychosis                 </td><td>0</td><td>DRD2  </td><td>cortex    </td><td> 0.00372940</td><td>6.69993e-05</td><td>ever manic/hyper for 2 days                                                                         </td></tr>
-	<tr><td>Micturition urgency             </td><td>1</td><td>DRD2  </td><td>cerebellum</td><td>-0.00714309</td><td>2.15263e-05</td><td>urinary albumin excretion                                                                           </td></tr>
-	<tr><td>Micturition urgency             </td><td>1</td><td>DRD1  </td><td>cortex    </td><td> 0.01222170</td><td>1.92331e-06</td><td>urinary sodium-potassium ratio                                                                      </td></tr>
-	<tr><td>Neutropenia                     </td><td>1</td><td>HTR1B </td><td>cortex    </td><td> 0.14958500</td><td>4.06996e-04</td><td>neutrophil count                                                                                    </td></tr>
-	<tr><td>Neutropenia                     </td><td>1</td><td>HTR1D </td><td>cortex    </td><td>-0.01473140</td><td>4.95199e-05</td><td>neutrophil percentage of granulocytes                                                               </td></tr>
-	<tr><td>Oedema peripheral               </td><td>0</td><td>DRD4  </td><td>cortex    </td><td>-0.00280397</td><td>1.50000e-08</td><td>non-cancer illness code, self-reported: hypothyroidism/myxoedema                                    </td></tr>
-	<tr><td>Oedema peripheral               </td><td>0</td><td>DRD4  </td><td>cortex    </td><td>-0.00283408</td><td>1.00749e-06</td><td>non-cancer illness code  self-reported: hypothyroidism/myxoedema                                    </td></tr>
-	<tr><td>Rhinitis                        </td><td>0</td><td>GABRA1</td><td>cortex    </td><td>-0.19660000</td><td>6.36796e-05</td><td>vasomotor rhinitis (mode)                                                                           </td></tr>
-	<tr><td>Seasonal allergy                </td><td>0</td><td>DRD2  </td><td>cortex    </td><td> 0.07000000</td><td>1.29101e-04</td><td>use of eye-antiallergens (taken as indicator of allergic/atopic conjunctivitis)                     </td></tr>
-	<tr><td>Urinary abnormalities           </td><td>1</td><td>DRD2  </td><td>cerebellum</td><td>-0.00714309</td><td>2.15263e-05</td><td>urinary albumin excretion                                                                           </td></tr>
-	<tr><td>Urinary abnormalities           </td><td>1</td><td>DRD1  </td><td>cortex    </td><td> 0.01222170</td><td>1.92331e-06</td><td>urinary sodium-potassium ratio                                                                      </td></tr>
-	<tr><td>Weight increased                </td><td>1</td><td>HTR1B </td><td>cortex    </td><td>-0.01485070</td><td>7.47618e-06</td><td>body mass index (bmi)                                                                               </td></tr>
-	<tr><td>Weight increased                </td><td>1</td><td>HTR1B </td><td>cortex    </td><td>-0.01129610</td><td>4.49997e-05</td><td>body mass index (bmi)                                                                               </td></tr>
-	<tr><td>Weight increased                </td><td>1</td><td>HTR1B </td><td>cortex    </td><td>-0.01214070</td><td>3.37886e-05</td><td>weight                                                                                              </td></tr>
-	<tr><td>Weight increased                </td><td>1</td><td>HTR1B </td><td>cortex    </td><td>-0.01195510</td><td>6.40000e-06</td><td>body mass index                                                                                     </td></tr>
-	<tr><td>Weight increased                </td><td>1</td><td>HTR1B </td><td>cortex    </td><td>-0.00993594</td><td>4.20001e-05</td><td>weight                                                                                              </td></tr>
-	<tr><td>Weight increased                </td><td>1</td><td>HTR1B </td><td>cortex    </td><td>-0.00997281</td><td>3.40001e-05</td><td>weight                                                                                              </td></tr>
-	<tr><td>Weight increased                </td><td>1</td><td>HTR1B </td><td>cortex    </td><td>-0.01131610</td><td>3.79997e-05</td><td>body mass index (bmi)                                                                               </td></tr>
-	<tr><td>White blood cell count decreased</td><td>1</td><td>GABRA1</td><td>cortex    </td><td>-0.01002200</td><td>2.35999e-06</td><td>white blood cell count                                                                              </td></tr>
-	<tr><td>White blood cell count decreased</td><td>1</td><td>GABRA1</td><td>cortex    </td><td>-0.01098020</td><td>8.30004e-06</td><td>white blood cell count                                                                              </td></tr>
-	<tr><td>White blood cell count decreased</td><td>1</td><td>GABRA1</td><td>cortex    </td><td>-0.01002200</td><td>2.35999e-06</td><td>white blood cell count                                                                              </td></tr>
-	<tr><td>White blood cell count decreased</td><td>1</td><td>GABRA1</td><td>cortex    </td><td>-0.00970000</td><td>1.96002e-05</td><td>white blood cell count                                                                              </td></tr>
-	<tr><td>White blood cell count decreased</td><td>1</td><td>ADRA1B</td><td>cortex    </td><td>-0.00784375</td><td>3.50002e-05</td><td>white blood cell count (monocyte)                                                                   </td></tr>
-	<tr><td>White blood cell count decreased</td><td>1</td><td>GABRA1</td><td>cortex    </td><td>-0.01184970</td><td>1.00000e-08</td><td>white blood cell count (monocyte)                                                                   </td></tr>
-	<tr><td>White blood cell count decreased</td><td>1</td><td>GABRA1</td><td>cortex    </td><td>-0.01208410</td><td>1.28021e-05</td><td>white blood cell (leukocyte) count                                                                  </td></tr>
+	<tr><td>Constipation                       </td><td>1</td><td>GRIN2A</td><td>basalganglia</td><td>0.688</td><td>-0.29358</td><td>6.66730e-05</td><td>constipation                             </td></tr>
+	<tr><td>Constipation                       </td><td>1</td><td>GRIN2A</td><td>spinalcord  </td><td>0.753</td><td>-0.29358</td><td>6.66730e-05</td><td>constipation                             </td></tr>
+	<tr><td>Gamma-glutamyltransferase increased</td><td>0</td><td>HRH3  </td><td>cortex      </td><td>0.701</td><td> 0.02918</td><td>2.06300e-05</td><td>gamma glutamyltransferase                </td></tr>
+	<tr><td>Infection                          </td><td>0</td><td>HTR5A </td><td>cortex      </td><td>0.670</td><td>-0.04060</td><td>2.55000e-04</td><td>bacterial infection, other or unspecified</td></tr>
+	<tr><td>Insomnia                           </td><td>1</td><td>OPRM1 </td><td>cerebellum  </td><td>0.744</td><td>-0.01565</td><td>2.03334e-04</td><td>trouble falling asleep                   </td></tr>
+	<tr><td>Neutropenia                        </td><td>0</td><td>OPRM1 </td><td>cerebellum  </td><td>0.611</td><td> 0.01147</td><td>2.69998e-04</td><td>neutrophil count                         </td></tr>
+	<tr><td>Weight increased                   </td><td>1</td><td>GRIN3A</td><td>cerebellum  </td><td>0.799</td><td> 0.00940</td><td>4.60002e-08</td><td>body mass index                          </td></tr>
 </tbody>
 </table>
 
@@ -14866,7 +14762,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
-<h2 id="olanzapine">olanzapine<a class="anchor-link" href="#olanzapine">&#182;</a></h2>
+<h2 id="Unique-targets-for-clozapine">Unique targets for clozapine<a class="anchor-link" href="#Unique-targets-for-clozapine">&#182;</a></h2>
 </div>
 
 </div>
@@ -14878,7 +14774,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
-<p>no. side effects where in phewas and coloc &gt; 80%: 11</p>
+<p>CALY  GABBR1  GABBR2  GABRA1  GABRB1  GABRG1  GSTP1</p>
 
 </div>
 
@@ -14891,7 +14787,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
-<h3 id="Results-where-in-known-side-effect,-and-found-in-phewas,-and-h4-%3E-80%25">Results where in known side effect, and found in phewas, and h4 &gt; 80%<a class="anchor-link" href="#Results-where-in-known-side-effect,-and-found-in-phewas,-and-h4-%3E-80%25">&#182;</a></h3>
+<h4 id="Results-of-PheWAS-+-coloc-%3E=-80%25-compared-to-Side-effect-matrix-mapping:">Results of PheWAS + coloc &gt;= 80% compared to Side effect matrix mapping:<a class="anchor-link" href="#Results-of-PheWAS-+-coloc-%3E=-80%25-compared-to-Side-effect-matrix-mapping:">&#182;</a></h4>
 </div>
 
 </div>
@@ -14903,32 +14799,20 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
 <table class="dataframe">
-<caption>A data.frame: 20 × 7</caption>
+<caption>A data.frame: 8 × 8</caption>
 <thead>
-	<tr><th scope=col>side_effect</th><th scope=col>documented</th><th scope=col>exposure</th><th scope=col>region</th><th scope=col>beta</th><th scope=col>p</th><th scope=col>phewas_trait</th></tr>
-	<tr><th scope=col>&lt;I&lt;chr&gt;&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+	<tr><th scope=col>side_effect</th><th scope=col>documented</th><th scope=col>exposure</th><th scope=col>region</th><th scope=col>h4</th><th scope=col>beta</th><th scope=col>p</th><th scope=col>phewas_trait</th></tr>
+	<tr><th scope=col>&lt;I&lt;chr&gt;&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
 </thead>
 <tbody>
-	<tr><td>Conjunctivitis                  </td><td>0</td><td>DRD2  </td><td>cortex    </td><td> 0.07000000</td><td>1.29101e-04</td><td>use of eye-antiallergens (taken as indicator of allergic/atopic conjunctivitis)                     </td></tr>
-	<tr><td>Constipation                    </td><td>1</td><td>DRD4  </td><td>cerebellum</td><td> 0.63935900</td><td>6.08695e-05</td><td>constipation                                                                                        </td></tr>
-	<tr><td>Eosinophilia                    </td><td>0</td><td>HTR6  </td><td>cortex    </td><td>-0.09421600</td><td>3.59998e-04</td><td>eosinophil counts                                                                                   </td></tr>
-	<tr><td>Hypotension                     </td><td>1</td><td>ADRA1A</td><td>cortex    </td><td>-0.01437090</td><td>3.50002e-09</td><td>diastolic blood pressure                                                                            </td></tr>
-	<tr><td>Hypotension                     </td><td>1</td><td>HRH1  </td><td>cortex    </td><td>-0.00533015</td><td>5.39995e-05</td><td>medication for cholesterol, blood pressure, diabetes, or take exogenous hormones: cholesterol loweri</td></tr>
-	<tr><td>Hypothyroidism                  </td><td>0</td><td>DRD4  </td><td>cortex    </td><td>-0.06550000</td><td>2.02502e-08</td><td>hypothyroidism                                                                                      </td></tr>
-	<tr><td>Hypothyroidism                  </td><td>0</td><td>DRD4  </td><td>cortex    </td><td>-0.00264714</td><td>3.89996e-08</td><td>hypothyroidism or myxedema                                                                          </td></tr>
-	<tr><td>Hypothyroidism                  </td><td>0</td><td>DRD4  </td><td>cortex    </td><td>-0.00287405</td><td>4.39997e-09</td><td>hypothyroidism                                                                                      </td></tr>
-	<tr><td>Hypothyroidism                  </td><td>0</td><td>DRD4  </td><td>cortex    </td><td>-0.00170659</td><td>2.50000e-07</td><td>diagnoses - secondary icd10: e03.9 hypothyroidism, unspecified                                      </td></tr>
-	<tr><td>Irritability                    </td><td>0</td><td>DRD2  </td><td>cerebellum</td><td>-0.00446467</td><td>3.50002e-06</td><td>irritability                                                                                        </td></tr>
-	<tr><td>Irritability                    </td><td>0</td><td>DRD2  </td><td>cerebellum</td><td>-0.00533958</td><td>2.09320e-06</td><td>irritability                                                                                        </td></tr>
-	<tr><td>Manic psychosis                 </td><td>0</td><td>DRD2  </td><td>cortex    </td><td> 0.00413442</td><td>1.11774e-04</td><td>ever manic/hyper for 2 days                                                                         </td></tr>
-	<tr><td>Manic psychosis                 </td><td>0</td><td>DRD2  </td><td>cortex    </td><td> 0.00372940</td><td>6.69993e-05</td><td>ever manic/hyper for 2 days                                                                         </td></tr>
-	<tr><td>Micturition urgency             </td><td>0</td><td>DRD1  </td><td>cortex    </td><td> 0.01222170</td><td>1.92331e-06</td><td>urinary sodium-potassium ratio                                                                      </td></tr>
-	<tr><td>Micturition urgency             </td><td>0</td><td>DRD2  </td><td>cerebellum</td><td>-0.00714309</td><td>2.15263e-05</td><td>urinary albumin excretion                                                                           </td></tr>
-	<tr><td>Oedema peripheral               </td><td>1</td><td>DRD4  </td><td>cortex    </td><td>-0.00283408</td><td>1.00749e-06</td><td>non-cancer illness code  self-reported: hypothyroidism/myxoedema                                    </td></tr>
-	<tr><td>Oedema peripheral               </td><td>1</td><td>DRD4  </td><td>cortex    </td><td>-0.00280397</td><td>1.50000e-08</td><td>non-cancer illness code, self-reported: hypothyroidism/myxoedema                                    </td></tr>
-	<tr><td>Urinary abnormalities           </td><td>0</td><td>DRD2  </td><td>cerebellum</td><td>-0.00714309</td><td>2.15263e-05</td><td>urinary albumin excretion                                                                           </td></tr>
-	<tr><td>Urinary abnormalities           </td><td>0</td><td>DRD1  </td><td>cortex    </td><td> 0.01222170</td><td>1.92331e-06</td><td>urinary sodium-potassium ratio                                                                      </td></tr>
-	<tr><td>White blood cell count decreased</td><td>0</td><td>ADRA1B</td><td>cortex    </td><td>-0.00784375</td><td>3.50002e-05</td><td>white blood cell count (monocyte)                                                                   </td></tr>
+	<tr><td>Insomnia                        </td><td>1</td><td>GABRA1</td><td>cortex</td><td>0.943</td><td>-0.00557</td><td>3.09999e-06</td><td>daytime dozing / sleeping (narcolepsy)</td></tr>
+	<tr><td>Rhinitis                        </td><td>0</td><td>GABRA1</td><td>cortex</td><td>0.859</td><td>-0.19660</td><td>6.36796e-05</td><td>vasomotor rhinitis (mode)             </td></tr>
+	<tr><td>White blood cell count decreased</td><td>1</td><td>GABRA1</td><td>cortex</td><td>0.929</td><td>-0.01002</td><td>2.35999e-06</td><td>white blood cell count                </td></tr>
+	<tr><td>White blood cell count decreased</td><td>1</td><td>GABRA1</td><td>cortex</td><td>0.923</td><td>-0.01098</td><td>8.30004e-06</td><td>white blood cell count                </td></tr>
+	<tr><td>White blood cell count decreased</td><td>1</td><td>GABRA1</td><td>cortex</td><td>0.930</td><td>-0.01002</td><td>2.35999e-06</td><td>white blood cell count                </td></tr>
+	<tr><td>White blood cell count decreased</td><td>1</td><td>GABRA1</td><td>cortex</td><td>0.879</td><td>-0.00970</td><td>1.96002e-05</td><td>white blood cell count                </td></tr>
+	<tr><td>White blood cell count decreased</td><td>1</td><td>GABRA1</td><td>cortex</td><td>0.969</td><td>-0.01185</td><td>1.00000e-08</td><td>white blood cell count (monocyte)     </td></tr>
+	<tr><td>White blood cell count decreased</td><td>1</td><td>GABRA1</td><td>cortex</td><td>0.909</td><td>-0.01208</td><td>1.28021e-05</td><td>white blood cell (leukocyte) count    </td></tr>
 </tbody>
 </table>
 
@@ -14943,32 +14827,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
-<h2 id="paliperidone">paliperidone<a class="anchor-link" href="#paliperidone">&#182;</a></h2>
-</div>
-
-</div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
-<p>no. side effects where in phewas and coloc &gt; 80%: 13</p>
-
-</div>
-
-</div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
-<h3 id="Results-where-in-known-side-effect,-and-found-in-phewas,-and-h4-%3E-80%25">Results where in known side effect, and found in phewas, and h4 &gt; 80%<a class="anchor-link" href="#Results-where-in-known-side-effect,-and-found-in-phewas,-and-h4-%3E-80%25">&#182;</a></h3>
+<h4 id="Additional-results-where-60%25-%3C-coloc-%3C-80%25">Additional results where 60% &lt; coloc &lt; 80%<a class="anchor-link" href="#Additional-results-where-60%25-%3C-coloc-%3C-80%25">&#182;</a></h4>
 </div>
 
 </div>
@@ -14980,37 +14839,23 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
 <table class="dataframe">
-<caption>A data.frame: 25 × 7</caption>
+<caption>A data.frame: 11 × 8</caption>
 <thead>
-	<tr><th scope=col>side_effect</th><th scope=col>documented</th><th scope=col>exposure</th><th scope=col>region</th><th scope=col>beta</th><th scope=col>p</th><th scope=col>phewas_trait</th></tr>
-	<tr><th scope=col>&lt;I&lt;chr&gt;&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+	<tr><th scope=col>side_effect</th><th scope=col>documented</th><th scope=col>exposure</th><th scope=col>region</th><th scope=col>h4</th><th scope=col>beta</th><th scope=col>p</th><th scope=col>phewas_trait</th></tr>
+	<tr><th scope=col>&lt;I&lt;chr&gt;&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
 </thead>
 <tbody>
-	<tr><td>Anxiety                         </td><td>1</td><td>ADRA2B</td><td>cortex    </td><td> 0.01345810</td><td>1.11258e-04</td><td>frequent trouble falling or staying asleep during worst period of anxiety                           </td></tr>
-	<tr><td>Conjunctivitis                  </td><td>0</td><td>DRD2  </td><td>cortex    </td><td> 0.07000000</td><td>1.29101e-04</td><td>use of eye-antiallergens (taken as indicator of allergic/atopic conjunctivitis)                     </td></tr>
-	<tr><td>Constipation                    </td><td>1</td><td>DRD4  </td><td>cerebellum</td><td> 0.63935900</td><td>6.08695e-05</td><td>constipation                                                                                        </td></tr>
-	<tr><td>Corneal lesion                  </td><td>0</td><td>HTR1D </td><td>cortex    </td><td>-0.01939660</td><td>1.50000e-05</td><td>corneal hysteresis (right)                                                                          </td></tr>
-	<tr><td>Eosinophilia                    </td><td>0</td><td>HTR1D </td><td>cortex    </td><td> 0.01604490</td><td>9.03400e-06</td><td>eosinophil percentage of white cells                                                                </td></tr>
-	<tr><td>Eosinophilia                    </td><td>0</td><td>HTR1D </td><td>cortex    </td><td> 0.01800300</td><td>6.65794e-07</td><td>sum eosinophil basophil counts                                                                      </td></tr>
-	<tr><td>Eosinophilia                    </td><td>0</td><td>HTR1D </td><td>cortex    </td><td> 0.01542570</td><td>2.13900e-05</td><td>eosinophil percentage of granulocytes                                                               </td></tr>
-	<tr><td>Eosinophilia                    </td><td>0</td><td>HTR1D </td><td>cortex    </td><td> 0.01770050</td><td>9.93894e-07</td><td>eosinophil counts                                                                                   </td></tr>
-	<tr><td>Hypertension                    </td><td>0</td><td>ADRA2B</td><td>cortex    </td><td> 0.00452108</td><td>1.09999e-05</td><td>hypertension                                                                                        </td></tr>
-	<tr><td>Hypertension                    </td><td>0</td><td>ADRA2B</td><td>cortex    </td><td> 0.00453044</td><td>2.90001e-05</td><td>non-cancer illness code, self-reported: hypertension                                                </td></tr>
-	<tr><td>Hypotension                     </td><td>0</td><td>ADRA2B</td><td>cortex    </td><td> 0.00462115</td><td>2.59998e-05</td><td>vascular/heart problems diagnosed by doctor: high blood pressure                                    </td></tr>
-	<tr><td>Hypotension                     </td><td>0</td><td>ADRA1A</td><td>cortex    </td><td>-0.01437090</td><td>3.50002e-09</td><td>diastolic blood pressure                                                                            </td></tr>
-	<tr><td>Hypotension                     </td><td>0</td><td>HRH1  </td><td>cortex    </td><td>-0.00533015</td><td>5.39995e-05</td><td>medication for cholesterol, blood pressure, diabetes, or take exogenous hormones: cholesterol loweri</td></tr>
-	<tr><td>Hypothyroidism                  </td><td>0</td><td>DRD4  </td><td>cortex    </td><td>-0.00287405</td><td>4.39997e-09</td><td>hypothyroidism                                                                                      </td></tr>
-	<tr><td>Hypothyroidism                  </td><td>0</td><td>DRD4  </td><td>cortex    </td><td>-0.06550000</td><td>2.02502e-08</td><td>hypothyroidism                                                                                      </td></tr>
-	<tr><td>Hypothyroidism                  </td><td>0</td><td>DRD4  </td><td>cortex    </td><td>-0.00170659</td><td>2.50000e-07</td><td>diagnoses - secondary icd10: e03.9 hypothyroidism, unspecified                                      </td></tr>
-	<tr><td>Hypothyroidism                  </td><td>0</td><td>DRD4  </td><td>cortex    </td><td>-0.00264714</td><td>3.89996e-08</td><td>hypothyroidism or myxedema                                                                          </td></tr>
-	<tr><td>Irritability                    </td><td>0</td><td>DRD2  </td><td>cerebellum</td><td>-0.00533958</td><td>2.09320e-06</td><td>irritability                                                                                        </td></tr>
-	<tr><td>Irritability                    </td><td>0</td><td>DRD2  </td><td>cerebellum</td><td>-0.00446467</td><td>3.50002e-06</td><td>irritability                                                                                        </td></tr>
-	<tr><td>Micturition urgency             </td><td>0</td><td>DRD1  </td><td>cortex    </td><td> 0.01222170</td><td>1.92331e-06</td><td>urinary sodium-potassium ratio                                                                      </td></tr>
-	<tr><td>Micturition urgency             </td><td>0</td><td>DRD2  </td><td>cerebellum</td><td>-0.00714309</td><td>2.15263e-05</td><td>urinary albumin excretion                                                                           </td></tr>
-	<tr><td>Neutropenia                     </td><td>0</td><td>HTR1D </td><td>cortex    </td><td>-0.01473140</td><td>4.95199e-05</td><td>neutrophil percentage of granulocytes                                                               </td></tr>
-	<tr><td>Oedema peripheral               </td><td>0</td><td>DRD4  </td><td>cortex    </td><td>-0.00280397</td><td>1.50000e-08</td><td>non-cancer illness code, self-reported: hypothyroidism/myxoedema                                    </td></tr>
-	<tr><td>Oedema peripheral               </td><td>0</td><td>DRD4  </td><td>cortex    </td><td>-0.00283408</td><td>1.00749e-06</td><td>non-cancer illness code  self-reported: hypothyroidism/myxoedema                                    </td></tr>
-	<tr><td>White blood cell count decreased</td><td>0</td><td>ADRA1B</td><td>cortex    </td><td>-0.00784375</td><td>3.50002e-05</td><td>white blood cell count (monocyte)                                                                   </td></tr>
+	<tr><td>Insomnia                        </td><td>1</td><td>GABBR2</td><td>cerebellum</td><td>0.723</td><td>-0.06350</td><td>1.48501e-05</td><td>sleep disorders (combined)                                              </td></tr>
+	<tr><td>Insomnia                        </td><td>1</td><td>GSTP1 </td><td>cortex    </td><td>0.667</td><td>-0.00473</td><td>8.94314e-05</td><td>daytime dozing / sleeping (narcolepsy)                                  </td></tr>
+	<tr><td>Irritability                    </td><td>0</td><td>GSTP1 </td><td>cortex    </td><td>0.634</td><td>-0.00254</td><td>2.97900e-04</td><td>manifestations of mania or irritability: i was more confident than usual</td></tr>
+	<tr><td>Neutropenia                     </td><td>1</td><td>GABRA1</td><td>cortex    </td><td>0.710</td><td>-0.01100</td><td>7.01552e-05</td><td>neutrophill count                                                       </td></tr>
+	<tr><td>Neutropenia                     </td><td>1</td><td>GABRA1</td><td>cortex    </td><td>0.614</td><td>-0.00929</td><td>2.87998e-05</td><td>neutrophil count                                                        </td></tr>
+	<tr><td>Neutropenia                     </td><td>1</td><td>GABRA1</td><td>cortex    </td><td>0.616</td><td>-0.00929</td><td>2.87998e-05</td><td>neutrophil cell count                                                   </td></tr>
+	<tr><td>Neutropenia                     </td><td>1</td><td>GABRA1</td><td>cortex    </td><td>0.698</td><td>-0.01041</td><td>2.90001e-05</td><td>neutrophil count                                                        </td></tr>
+	<tr><td>Sleep disorder                  </td><td>0</td><td>GABBR2</td><td>cerebellum</td><td>0.608</td><td>-0.06030</td><td>1.25701e-04</td><td>sleep apnoea, including avohilmo                                        </td></tr>
+	<tr><td>Sleep disorder                  </td><td>0</td><td>GABBR2</td><td>cerebellum</td><td>0.602</td><td>-0.05960</td><td>1.51098e-04</td><td>sleep apnoea                                                            </td></tr>
+	<tr><td>Weight increased                </td><td>1</td><td>GABBR1</td><td>cortex    </td><td>0.601</td><td>-0.01717</td><td>1.60000e-04</td><td>birth weight                                                            </td></tr>
+	<tr><td>White blood cell count decreased</td><td>1</td><td>GABRA1</td><td>cortex    </td><td>0.636</td><td>-0.01548</td><td>1.98299e-04</td><td>white blood cell count                                                  </td></tr>
 </tbody>
 </table>
 
@@ -15025,7 +14870,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
-<h2 id="quetiapine">quetiapine<a class="anchor-link" href="#quetiapine">&#182;</a></h2>
+<h2 id="Unique-targets-for-olanzapine">Unique targets for olanzapine<a class="anchor-link" href="#Unique-targets-for-olanzapine">&#182;</a></h2>
 </div>
 
 </div>
@@ -15037,7 +14882,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
-<p>no. side effects where in phewas and coloc &gt; 80%: 16</p>
+<p>ADRB3</p>
 
 </div>
 
@@ -15050,7 +14895,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
-<h3 id="Results-where-in-known-side-effect,-and-found-in-phewas,-and-h4-%3E-80%25">Results where in known side effect, and found in phewas, and h4 &gt; 80%<a class="anchor-link" href="#Results-where-in-known-side-effect,-and-found-in-phewas,-and-h4-%3E-80%25">&#182;</a></h3>
+<h4 id="Results-of-PheWAS-+-coloc-%3E=-80%25-compared-to-Side-effect-matrix-mapping:">Results of PheWAS + coloc &gt;= 80% compared to Side effect matrix mapping:<a class="anchor-link" href="#Results-of-PheWAS-+-coloc-%3E=-80%25-compared-to-Side-effect-matrix-mapping:">&#182;</a></h4>
 </div>
 
 </div>
@@ -15062,50 +14907,12 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
 <table class="dataframe">
-<caption>A data.frame: 38 × 7</caption>
+<caption>A data.frame: 0 × 8</caption>
 <thead>
-	<tr><th scope=col>side_effect</th><th scope=col>documented</th><th scope=col>exposure</th><th scope=col>region</th><th scope=col>beta</th><th scope=col>p</th><th scope=col>phewas_trait</th></tr>
-	<tr><th scope=col>&lt;I&lt;chr&gt;&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+	<tr><th scope=col>side_effect</th><th scope=col>documented</th><th scope=col>exposure</th><th scope=col>region</th><th scope=col>h4</th><th scope=col>beta</th><th scope=col>p</th><th scope=col>phewas_trait</th></tr>
+	<tr><th scope=col>&lt;I&lt;chr&gt;&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
 </thead>
 <tbody>
-	<tr><td>Anxiety                         </td><td>1</td><td>ADRA2B</td><td>cortex    </td><td> 0.01345810</td><td>1.11258e-04</td><td>frequent trouble falling or staying asleep during worst period of anxiety                           </td></tr>
-	<tr><td>Conjunctivitis                  </td><td>0</td><td>DRD2  </td><td>cortex    </td><td> 0.07000000</td><td>1.29101e-04</td><td>use of eye-antiallergens (taken as indicator of allergic/atopic conjunctivitis)                     </td></tr>
-	<tr><td>Constipation                    </td><td>1</td><td>DRD4  </td><td>cerebellum</td><td> 0.63935900</td><td>6.08695e-05</td><td>constipation                                                                                        </td></tr>
-	<tr><td>Corneal lesion                  </td><td>0</td><td>HTR1D </td><td>cortex    </td><td>-0.01939660</td><td>1.50000e-05</td><td>corneal hysteresis (right)                                                                          </td></tr>
-	<tr><td>Eosinophilia                    </td><td>0</td><td>HTR1D </td><td>cortex    </td><td> 0.01542570</td><td>2.13900e-05</td><td>eosinophil percentage of granulocytes                                                               </td></tr>
-	<tr><td>Eosinophilia                    </td><td>0</td><td>HTR1D </td><td>cortex    </td><td> 0.01770050</td><td>9.93894e-07</td><td>eosinophil counts                                                                                   </td></tr>
-	<tr><td>Eosinophilia                    </td><td>0</td><td>HTR6  </td><td>cortex    </td><td>-0.09421600</td><td>3.59998e-04</td><td>eosinophil counts                                                                                   </td></tr>
-	<tr><td>Eosinophilia                    </td><td>0</td><td>HTR1D </td><td>cortex    </td><td> 0.01604490</td><td>9.03400e-06</td><td>eosinophil percentage of white cells                                                                </td></tr>
-	<tr><td>Eosinophilia                    </td><td>0</td><td>HTR1D </td><td>cortex    </td><td> 0.01800300</td><td>6.65794e-07</td><td>sum eosinophil basophil counts                                                                      </td></tr>
-	<tr><td>Hypertension                    </td><td>1</td><td>ADRA2B</td><td>cortex    </td><td> 0.00452108</td><td>1.09999e-05</td><td>hypertension                                                                                        </td></tr>
-	<tr><td>Hypertension                    </td><td>1</td><td>ADRA2B</td><td>cortex    </td><td> 0.00453044</td><td>2.90001e-05</td><td>non-cancer illness code, self-reported: hypertension                                                </td></tr>
-	<tr><td>Hypotension                     </td><td>1</td><td>HRH1  </td><td>cortex    </td><td>-0.00533015</td><td>5.39995e-05</td><td>medication for cholesterol, blood pressure, diabetes, or take exogenous hormones: cholesterol loweri</td></tr>
-	<tr><td>Hypotension                     </td><td>1</td><td>HTR1B </td><td>cortex    </td><td>-0.00600217</td><td>8.53867e-05</td><td>medication for cholesterol  blood pressure  diabetes  or take exogenous hormones: cholesterol loweri</td></tr>
-	<tr><td>Hypotension                     </td><td>1</td><td>ADRA2B</td><td>cortex    </td><td> 0.00462115</td><td>2.59998e-05</td><td>vascular/heart problems diagnosed by doctor: high blood pressure                                    </td></tr>
-	<tr><td>Hypothyroidism                  </td><td>1</td><td>DRD4  </td><td>cortex    </td><td>-0.00170659</td><td>2.50000e-07</td><td>diagnoses - secondary icd10: e03.9 hypothyroidism, unspecified                                      </td></tr>
-	<tr><td>Hypothyroidism                  </td><td>1</td><td>DRD4  </td><td>cortex    </td><td>-0.00264714</td><td>3.89996e-08</td><td>hypothyroidism or myxedema                                                                          </td></tr>
-	<tr><td>Hypothyroidism                  </td><td>1</td><td>DRD4  </td><td>cortex    </td><td>-0.00287405</td><td>4.39997e-09</td><td>hypothyroidism                                                                                      </td></tr>
-	<tr><td>Hypothyroidism                  </td><td>1</td><td>DRD4  </td><td>cortex    </td><td>-0.06550000</td><td>2.02502e-08</td><td>hypothyroidism                                                                                      </td></tr>
-	<tr><td>Irritability                    </td><td>1</td><td>DRD2  </td><td>cerebellum</td><td>-0.00446467</td><td>3.50002e-06</td><td>irritability                                                                                        </td></tr>
-	<tr><td>Irritability                    </td><td>1</td><td>DRD2  </td><td>cerebellum</td><td>-0.00533958</td><td>2.09320e-06</td><td>irritability                                                                                        </td></tr>
-	<tr><td>Manic psychosis                 </td><td>0</td><td>DRD2  </td><td>cortex    </td><td> 0.00372940</td><td>6.69993e-05</td><td>ever manic/hyper for 2 days                                                                         </td></tr>
-	<tr><td>Manic psychosis                 </td><td>0</td><td>DRD2  </td><td>cortex    </td><td> 0.00413442</td><td>1.11774e-04</td><td>ever manic/hyper for 2 days                                                                         </td></tr>
-	<tr><td>Micturition urgency             </td><td>0</td><td>DRD2  </td><td>cerebellum</td><td>-0.00714309</td><td>2.15263e-05</td><td>urinary albumin excretion                                                                           </td></tr>
-	<tr><td>Micturition urgency             </td><td>0</td><td>DRD1  </td><td>cortex    </td><td> 0.01222170</td><td>1.92331e-06</td><td>urinary sodium-potassium ratio                                                                      </td></tr>
-	<tr><td>Neutropenia                     </td><td>0</td><td>HTR1D </td><td>cortex    </td><td>-0.01473140</td><td>4.95199e-05</td><td>neutrophil percentage of granulocytes                                                               </td></tr>
-	<tr><td>Neutropenia                     </td><td>0</td><td>HTR1B </td><td>cortex    </td><td> 0.14958500</td><td>4.06996e-04</td><td>neutrophil count                                                                                    </td></tr>
-	<tr><td>Oedema peripheral               </td><td>1</td><td>DRD4  </td><td>cortex    </td><td>-0.00280397</td><td>1.50000e-08</td><td>non-cancer illness code, self-reported: hypothyroidism/myxoedema                                    </td></tr>
-	<tr><td>Oedema peripheral               </td><td>1</td><td>DRD4  </td><td>cortex    </td><td>-0.00283408</td><td>1.00749e-06</td><td>non-cancer illness code  self-reported: hypothyroidism/myxoedema                                    </td></tr>
-	<tr><td>Urinary abnormalities           </td><td>0</td><td>DRD2  </td><td>cerebellum</td><td>-0.00714309</td><td>2.15263e-05</td><td>urinary albumin excretion                                                                           </td></tr>
-	<tr><td>Urinary abnormalities           </td><td>0</td><td>DRD1  </td><td>cortex    </td><td> 0.01222170</td><td>1.92331e-06</td><td>urinary sodium-potassium ratio                                                                      </td></tr>
-	<tr><td>Weight increased                </td><td>1</td><td>HTR1B </td><td>cortex    </td><td>-0.00997281</td><td>3.40001e-05</td><td>weight                                                                                              </td></tr>
-	<tr><td>Weight increased                </td><td>1</td><td>HTR1B </td><td>cortex    </td><td>-0.00993594</td><td>4.20001e-05</td><td>weight                                                                                              </td></tr>
-	<tr><td>Weight increased                </td><td>1</td><td>HTR1B </td><td>cortex    </td><td>-0.01485070</td><td>7.47618e-06</td><td>body mass index (bmi)                                                                               </td></tr>
-	<tr><td>Weight increased                </td><td>1</td><td>HTR1B </td><td>cortex    </td><td>-0.01214070</td><td>3.37886e-05</td><td>weight                                                                                              </td></tr>
-	<tr><td>Weight increased                </td><td>1</td><td>HTR1B </td><td>cortex    </td><td>-0.01131610</td><td>3.79997e-05</td><td>body mass index (bmi)                                                                               </td></tr>
-	<tr><td>Weight increased                </td><td>1</td><td>HTR1B </td><td>cortex    </td><td>-0.01129610</td><td>4.49997e-05</td><td>body mass index (bmi)                                                                               </td></tr>
-	<tr><td>Weight increased                </td><td>1</td><td>HTR1B </td><td>cortex    </td><td>-0.01195510</td><td>6.40000e-06</td><td>body mass index                                                                                     </td></tr>
-	<tr><td>White blood cell count decreased</td><td>0</td><td>ADRA1B</td><td>cortex    </td><td>-0.00784375</td><td>3.50002e-05</td><td>white blood cell count (monocyte)                                                                   </td></tr>
 </tbody>
 </table>
 
@@ -15120,32 +14927,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
-<h2 id="risperidone">risperidone<a class="anchor-link" href="#risperidone">&#182;</a></h2>
-</div>
-
-</div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
-<p>no. side effects where in phewas and coloc &gt; 80%: 9</p>
-
-</div>
-
-</div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
-<h3 id="Results-where-in-known-side-effect,-and-found-in-phewas,-and-h4-%3E-80%25">Results where in known side effect, and found in phewas, and h4 &gt; 80%<a class="anchor-link" href="#Results-where-in-known-side-effect,-and-found-in-phewas,-and-h4-%3E-80%25">&#182;</a></h3>
+<h4 id="Additional-results-where-60%25-%3C-coloc-%3C-80%25">Additional results where 60% &lt; coloc &lt; 80%<a class="anchor-link" href="#Additional-results-where-60%25-%3C-coloc-%3C-80%25">&#182;</a></h4>
 </div>
 
 </div>
@@ -15157,26 +14939,572 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
 <table class="dataframe">
-<caption>A data.frame: 14 × 7</caption>
+<caption>A data.frame: 0 × 8</caption>
 <thead>
-	<tr><th scope=col>side_effect</th><th scope=col>documented</th><th scope=col>exposure</th><th scope=col>region</th><th scope=col>beta</th><th scope=col>p</th><th scope=col>phewas_trait</th></tr>
-	<tr><th scope=col>&lt;I&lt;chr&gt;&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+	<tr><th scope=col>side_effect</th><th scope=col>documented</th><th scope=col>exposure</th><th scope=col>region</th><th scope=col>h4</th><th scope=col>beta</th><th scope=col>p</th><th scope=col>phewas_trait</th></tr>
+	<tr><th scope=col>&lt;I&lt;chr&gt;&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
 </thead>
 <tbody>
-	<tr><td>Anxiety                         </td><td>1</td><td>ADRA2B</td><td>cortex    </td><td> 0.01345810</td><td>1.11258e-04</td><td>frequent trouble falling or staying asleep during worst period of anxiety                           </td></tr>
-	<tr><td>Corneal lesion                  </td><td>0</td><td>HTR1D </td><td>cortex    </td><td>-0.01939660</td><td>1.50000e-05</td><td>corneal hysteresis (right)                                                                          </td></tr>
-	<tr><td>Hypertension                    </td><td>1</td><td>ADRA2B</td><td>cortex    </td><td> 0.00452108</td><td>1.09999e-05</td><td>hypertension                                                                                        </td></tr>
-	<tr><td>Hypertension                    </td><td>1</td><td>ADRA2B</td><td>cortex    </td><td> 0.00453044</td><td>2.90001e-05</td><td>non-cancer illness code, self-reported: hypertension                                                </td></tr>
-	<tr><td>Hypotension                     </td><td>1</td><td>ADRA2B</td><td>cortex    </td><td> 0.00462115</td><td>2.59998e-05</td><td>vascular/heart problems diagnosed by doctor: high blood pressure                                    </td></tr>
-	<tr><td>Hypotension                     </td><td>1</td><td>ADRA1A</td><td>cortex    </td><td>-0.01437090</td><td>3.50002e-09</td><td>diastolic blood pressure                                                                            </td></tr>
-	<tr><td>Hypotension                     </td><td>1</td><td>HRH1  </td><td>cortex    </td><td>-0.00533015</td><td>5.39995e-05</td><td>medication for cholesterol, blood pressure, diabetes, or take exogenous hormones: cholesterol loweri</td></tr>
-	<tr><td>Irritability                    </td><td>0</td><td>DRD2  </td><td>cerebellum</td><td>-0.00533958</td><td>2.09320e-06</td><td>irritability                                                                                        </td></tr>
-	<tr><td>Irritability                    </td><td>0</td><td>DRD2  </td><td>cerebellum</td><td>-0.00446467</td><td>3.50002e-06</td><td>irritability                                                                                        </td></tr>
-	<tr><td>Micturition urgency             </td><td>0</td><td>DRD2  </td><td>cerebellum</td><td>-0.00714309</td><td>2.15263e-05</td><td>urinary albumin excretion                                                                           </td></tr>
-	<tr><td>Micturition urgency             </td><td>0</td><td>DRD1  </td><td>cortex    </td><td> 0.01222170</td><td>1.92331e-06</td><td>urinary sodium-potassium ratio                                                                      </td></tr>
-	<tr><td>Neutropenia                     </td><td>0</td><td>HTR1D </td><td>cortex    </td><td>-0.01473140</td><td>4.95199e-05</td><td>neutrophil percentage of granulocytes                                                               </td></tr>
-	<tr><td>Seasonal allergy                </td><td>0</td><td>DRD2  </td><td>cortex    </td><td> 0.07000000</td><td>1.29101e-04</td><td>use of eye-antiallergens (taken as indicator of allergic/atopic conjunctivitis)                     </td></tr>
-	<tr><td>White blood cell count decreased</td><td>0</td><td>ADRA1B</td><td>cortex    </td><td>-0.00784375</td><td>3.50002e-05</td><td>white blood cell count (monocyte)                                                                   </td></tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
+<h2 id="Unique-targets-for-paliperidone">Unique targets for paliperidone<a class="anchor-link" href="#Unique-targets-for-paliperidone">&#182;</a></h2>
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
+
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
+<h4 id="Results-of-PheWAS-+-coloc-%3E=-80%25-compared-to-Side-effect-matrix-mapping:">Results of PheWAS + coloc &gt;= 80% compared to Side effect matrix mapping:<a class="anchor-link" href="#Results-of-PheWAS-+-coloc-%3E=-80%25-compared-to-Side-effect-matrix-mapping:">&#182;</a></h4>
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<table class="dataframe">
+<caption>A data.frame: 0 × 8</caption>
+<thead>
+	<tr><th scope=col>side_effect</th><th scope=col>documented</th><th scope=col>exposure</th><th scope=col>region</th><th scope=col>h4</th><th scope=col>beta</th><th scope=col>p</th><th scope=col>phewas_trait</th></tr>
+	<tr><th scope=col>&lt;I&lt;chr&gt;&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
+<h4 id="Additional-results-where-60%25-%3C-coloc-%3C-80%25">Additional results where 60% &lt; coloc &lt; 80%<a class="anchor-link" href="#Additional-results-where-60%25-%3C-coloc-%3C-80%25">&#182;</a></h4>
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<table class="dataframe">
+<caption>A data.frame: 0 × 8</caption>
+<thead>
+	<tr><th scope=col>side_effect</th><th scope=col>documented</th><th scope=col>exposure</th><th scope=col>region</th><th scope=col>h4</th><th scope=col>beta</th><th scope=col>p</th><th scope=col>phewas_trait</th></tr>
+	<tr><th scope=col>&lt;I&lt;chr&gt;&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
+<h2 id="Unique-targets-for-quetiapine">Unique targets for quetiapine<a class="anchor-link" href="#Unique-targets-for-quetiapine">&#182;</a></h2>
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
+<p>ADRA1C  ADRA1D</p>
+
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
+<h4 id="Results-of-PheWAS-+-coloc-%3E=-80%25-compared-to-Side-effect-matrix-mapping:">Results of PheWAS + coloc &gt;= 80% compared to Side effect matrix mapping:<a class="anchor-link" href="#Results-of-PheWAS-+-coloc-%3E=-80%25-compared-to-Side-effect-matrix-mapping:">&#182;</a></h4>
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<table class="dataframe">
+<caption>A data.frame: 0 × 8</caption>
+<thead>
+	<tr><th scope=col>side_effect</th><th scope=col>documented</th><th scope=col>exposure</th><th scope=col>region</th><th scope=col>h4</th><th scope=col>beta</th><th scope=col>p</th><th scope=col>phewas_trait</th></tr>
+	<tr><th scope=col>&lt;I&lt;chr&gt;&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
+<h4 id="Additional-results-where-60%25-%3C-coloc-%3C-80%25">Additional results where 60% &lt; coloc &lt; 80%<a class="anchor-link" href="#Additional-results-where-60%25-%3C-coloc-%3C-80%25">&#182;</a></h4>
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<table class="dataframe">
+<caption>A data.frame: 0 × 8</caption>
+<thead>
+	<tr><th scope=col>side_effect</th><th scope=col>documented</th><th scope=col>exposure</th><th scope=col>region</th><th scope=col>h4</th><th scope=col>beta</th><th scope=col>p</th><th scope=col>phewas_trait</th></tr>
+	<tr><th scope=col>&lt;I&lt;chr&gt;&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
+<h2 id="Unique-targets-for-risperidone">Unique targets for risperidone<a class="anchor-link" href="#Unique-targets-for-risperidone">&#182;</a></h2>
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
+
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
+<h4 id="Results-of-PheWAS-+-coloc-%3E=-80%25-compared-to-Side-effect-matrix-mapping:">Results of PheWAS + coloc &gt;= 80% compared to Side effect matrix mapping:<a class="anchor-link" href="#Results-of-PheWAS-+-coloc-%3E=-80%25-compared-to-Side-effect-matrix-mapping:">&#182;</a></h4>
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<table class="dataframe">
+<caption>A data.frame: 0 × 8</caption>
+<thead>
+	<tr><th scope=col>side_effect</th><th scope=col>documented</th><th scope=col>exposure</th><th scope=col>region</th><th scope=col>h4</th><th scope=col>beta</th><th scope=col>p</th><th scope=col>phewas_trait</th></tr>
+	<tr><th scope=col>&lt;I&lt;chr&gt;&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
+<h4 id="Additional-results-where-60%25-%3C-coloc-%3C-80%25">Additional results where 60% &lt; coloc &lt; 80%<a class="anchor-link" href="#Additional-results-where-60%25-%3C-coloc-%3C-80%25">&#182;</a></h4>
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<table class="dataframe">
+<caption>A data.frame: 0 × 8</caption>
+<thead>
+	<tr><th scope=col>side_effect</th><th scope=col>documented</th><th scope=col>exposure</th><th scope=col>region</th><th scope=col>h4</th><th scope=col>beta</th><th scope=col>p</th><th scope=col>phewas_trait</th></tr>
+	<tr><th scope=col>&lt;I&lt;chr&gt;&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
+<h2 id="Shared-by-clozapine-and-aripiprazole-(+-a-couple-others)">Shared by clozapine and aripiprazole (+ a couple others)<a class="anchor-link" href="#Shared-by-clozapine-and-aripiprazole-(+-a-couple-others)">&#182;</a></h2>
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
+<p>CHRM5  HRH4  HTR1B  HTR1E</p>
+
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
+<h4 id="Additional-results-where-coloc-%3E=-80%25">Additional results where coloc &gt;= 80%<a class="anchor-link" href="#Additional-results-where-coloc-%3E=-80%25">&#182;</a></h4>
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<table class="dataframe">
+<caption>A data.frame: 11 × 8</caption>
+<thead>
+	<tr><th></th><th scope=col>side_effect</th><th scope=col>documented</th><th scope=col>exposure</th><th scope=col>region</th><th scope=col>h4</th><th scope=col>beta</th><th scope=col>p</th><th scope=col>phewas_trait</th></tr>
+	<tr><th></th><th scope=col>&lt;I&lt;chr&gt;&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1</th><td>Hypotension     </td><td>0</td><td>HTR1B</td><td>cortex</td><td>0.819</td><td>-0.00600</td><td>8.53867e-05</td><td>medication for cholesterol  blood pressure  diabetes  or take exogenous hormones: choleste</td></tr>
+	<tr><th scope=row>2</th><td>Hypotension     </td><td>1</td><td>HTR1B</td><td>cortex</td><td>0.819</td><td>-0.00600</td><td>8.53867e-05</td><td>medication for cholesterol  blood pressure  diabetes  or take exogenous hormones: choleste</td></tr>
+	<tr><th scope=row>4</th><td>Neutropenia     </td><td>0</td><td>HTR1B</td><td>cortex</td><td>0.845</td><td> 0.14958</td><td>4.06996e-04</td><td>neutrophil count                                                                          </td></tr>
+	<tr><th scope=row>5</th><td>Neutropenia     </td><td>1</td><td>HTR1B</td><td>cortex</td><td>0.845</td><td> 0.14958</td><td>4.06996e-04</td><td>neutrophil count                                                                          </td></tr>
+	<tr><th scope=row>7</th><td>Weight increased</td><td>1</td><td>HTR1B</td><td>cortex</td><td>0.887</td><td>-0.00994</td><td>4.20001e-05</td><td>weight                                                                                    </td></tr>
+	<tr><th scope=row>8</th><td>Weight increased</td><td>1</td><td>HTR1B</td><td>cortex</td><td>0.895</td><td>-0.00997</td><td>3.40001e-05</td><td>weight                                                                                    </td></tr>
+	<tr><th scope=row>9</th><td>Weight increased</td><td>1</td><td>HTR1B</td><td>cortex</td><td>0.904</td><td>-0.01214</td><td>3.37886e-05</td><td>weight                                                                                    </td></tr>
+	<tr><th scope=row>10</th><td>Weight increased</td><td>1</td><td>HTR1B</td><td>cortex</td><td>0.919</td><td>-0.01196</td><td>6.40000e-06</td><td>body mass index                                                                           </td></tr>
+	<tr><th scope=row>11</th><td>Weight increased</td><td>1</td><td>HTR1B</td><td>cortex</td><td>0.868</td><td>-0.01132</td><td>3.79997e-05</td><td>body mass index (bmi)                                                                     </td></tr>
+	<tr><th scope=row>12</th><td>Weight increased</td><td>1</td><td>HTR1B</td><td>cortex</td><td>0.861</td><td>-0.01130</td><td>4.49997e-05</td><td>body mass index (bmi)                                                                     </td></tr>
+	<tr><th scope=row>13</th><td>Weight increased</td><td>1</td><td>HTR1B</td><td>cortex</td><td>0.961</td><td>-0.01485</td><td>7.47618e-06</td><td>body mass index (bmi)                                                                     </td></tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
+<h4 id="Additional-results-where-60%25-%3C-coloc-%3C-80%25">Additional results where 60% &lt; coloc &lt; 80%<a class="anchor-link" href="#Additional-results-where-60%25-%3C-coloc-%3C-80%25">&#182;</a></h4>
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<table class="dataframe">
+<caption>A data.frame: 15 × 8</caption>
+<thead>
+	<tr><th></th><th scope=col>side_effect</th><th scope=col>documented</th><th scope=col>exposure</th><th scope=col>region</th><th scope=col>h4</th><th scope=col>beta</th><th scope=col>p</th><th scope=col>phewas_trait</th></tr>
+	<tr><th></th><th scope=col>&lt;I&lt;chr&gt;&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1</th><td>Cellulitis                      </td><td>0</td><td>HRH4 </td><td>cortex     </td><td>0.767</td><td>-0.10780</td><td>5.08803e-05</td><td>cellulitis                                         </td></tr>
+	<tr><th scope=row>3</th><td>Eosinophilia                    </td><td>0</td><td>HTR1E</td><td>hippocampus</td><td>0.659</td><td> 0.01741</td><td>4.95678e-13</td><td>eosinophill percentage                             </td></tr>
+	<tr><th scope=row>4</th><td>Eosinophilia                    </td><td>0</td><td>HTR1E</td><td>hippocampus</td><td>0.644</td><td> 0.01421</td><td>1.33999e-12</td><td>eosinophil cell count                              </td></tr>
+	<tr><th scope=row>5</th><td>Eosinophilia                    </td><td>0</td><td>HTR1E</td><td>hippocampus</td><td>0.644</td><td> 0.01421</td><td>1.33999e-12</td><td>eosinophil counts                                  </td></tr>
+	<tr><th scope=row>6</th><td>Eosinophilia                    </td><td>0</td><td>HTR1E</td><td>hippocampus</td><td>0.670</td><td> 0.01950</td><td>1.29987e-19</td><td>eosinophil percentage of white cells               </td></tr>
+	<tr><th scope=row>7</th><td>Eosinophilia                    </td><td>1</td><td>HTR1E</td><td>hippocampus</td><td>0.670</td><td> 0.01950</td><td>1.29987e-19</td><td>eosinophil percentage of white cells               </td></tr>
+	<tr><th scope=row>8</th><td>Eosinophilia                    </td><td>1</td><td>HTR1E</td><td>hippocampus</td><td>0.644</td><td> 0.01421</td><td>1.33999e-12</td><td>eosinophil cell count                              </td></tr>
+	<tr><th scope=row>9</th><td>Eosinophilia                    </td><td>1</td><td>HTR1E</td><td>hippocampus</td><td>0.659</td><td> 0.01741</td><td>4.95678e-13</td><td>eosinophill percentage                             </td></tr>
+	<tr><th scope=row>10</th><td>Eosinophilia                    </td><td>1</td><td>HTR1E</td><td>hippocampus</td><td>0.644</td><td> 0.01421</td><td>1.33999e-12</td><td>eosinophil counts                                  </td></tr>
+	<tr><th scope=row>15</th><td>Hypothyroidism                  </td><td>0</td><td>HTR1E</td><td>hippocampus</td><td>0.708</td><td> 0.00199</td><td>2.30001e-06</td><td>hypothyroidism or myxedema                         </td></tr>
+	<tr><th scope=row>17</th><td>Hypothyroidism                  </td><td>1</td><td>HTR1E</td><td>hippocampus</td><td>0.708</td><td> 0.00199</td><td>2.30001e-06</td><td>hypothyroidism or myxedema                         </td></tr>
+	<tr><th scope=row>18</th><td>Malnutrition                    </td><td>0</td><td>HRH4 </td><td>cortex     </td><td>0.689</td><td>-0.40530</td><td>1.94599e-04</td><td>malnutrition                                       </td></tr>
+	<tr><th scope=row>19</th><td>Seasonal allergy                </td><td>0</td><td>HTR1E</td><td>cortex     </td><td>0.605</td><td>-0.04025</td><td>3.69999e-04</td><td>recent medication for hayfever or allergic rhinitis</td></tr>
+	<tr><th scope=row>21</th><td>White blood cell count decreased</td><td>0</td><td>HTR1E</td><td>hippocampus</td><td>0.733</td><td> 0.01314</td><td>4.40048e-11</td><td>white blood cell count (eosinophil)                </td></tr>
+	<tr><th scope=row>22</th><td>White blood cell count decreased</td><td>1</td><td>HTR1E</td><td>hippocampus</td><td>0.733</td><td> 0.01314</td><td>4.40048e-11</td><td>white blood cell count (eosinophil)                </td></tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
+<h3 id="All-the-other-side-effects-of-shared-genes-where-coloc-%3E=-80%25:">All the other side effects of shared genes where coloc &gt;= 80%:<a class="anchor-link" href="#All-the-other-side-effects-of-shared-genes-where-coloc-%3E=-80%25:">&#182;</a></h3>
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<table class="dataframe">
+<caption>A data.frame: 55 × 8</caption>
+<thead>
+	<tr><th></th><th scope=col>side_effect</th><th scope=col>documented</th><th scope=col>exposure</th><th scope=col>region</th><th scope=col>h4</th><th scope=col>beta</th><th scope=col>p</th><th scope=col>phewas_trait</th></tr>
+	<tr><th></th><th scope=col>&lt;I&lt;chr&gt;&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1</th><td>Anxiety                         </td><td>1</td><td>ADRA2B</td><td>cortex    </td><td>0.904</td><td> 0.01346</td><td>1.11258e-04</td><td>frequent trouble falling or staying asleep during worst period of anxiety                 </td></tr>
+	<tr><th scope=row>2</th><td>Conjunctivitis                  </td><td>0</td><td>DRD2  </td><td>cortex    </td><td>0.835</td><td> 0.07000</td><td>1.29101e-04</td><td>use of eye-antiallergens (taken as indicator of allergic/atopic conjunctivitis)           </td></tr>
+	<tr><th scope=row>3</th><td>Constipation                    </td><td>1</td><td>DRD4  </td><td>cerebellum</td><td>0.855</td><td> 0.63936</td><td>6.08695e-05</td><td>constipation                                                                              </td></tr>
+	<tr><th scope=row>4</th><td>Corneal lesion                  </td><td>0</td><td>HTR1D </td><td>cortex    </td><td>0.911</td><td>-0.01940</td><td>1.50000e-05</td><td>corneal hysteresis (right)                                                                </td></tr>
+	<tr><th scope=row>5</th><td>Eosinophilia                    </td><td>0</td><td>HTR1D </td><td>cortex    </td><td>0.904</td><td> 0.01604</td><td>9.03400e-06</td><td>eosinophil percentage of white cells                                                      </td></tr>
+	<tr><th scope=row>6</th><td>Eosinophilia                    </td><td>0</td><td>HTR1D </td><td>cortex    </td><td>0.890</td><td> 0.01543</td><td>2.13900e-05</td><td>eosinophil percentage of granulocytes                                                     </td></tr>
+	<tr><th scope=row>7</th><td>Eosinophilia                    </td><td>0</td><td>HTR6  </td><td>cortex    </td><td>0.828</td><td>-0.09422</td><td>3.59998e-04</td><td>eosinophil counts                                                                         </td></tr>
+	<tr><th scope=row>8</th><td>Eosinophilia                    </td><td>0</td><td>HTR1D </td><td>cortex    </td><td>0.854</td><td> 0.01800</td><td>6.65794e-07</td><td>sum eosinophil basophil counts                                                            </td></tr>
+	<tr><th scope=row>9</th><td>Eosinophilia                    </td><td>0</td><td>HTR1D </td><td>cortex    </td><td>0.931</td><td> 0.01770</td><td>9.93894e-07</td><td>eosinophil counts                                                                         </td></tr>
+	<tr><th scope=row>36</th><td>Eosinophilia                    </td><td>1</td><td>HTR1D </td><td>cortex    </td><td>0.890</td><td> 0.01543</td><td>2.13900e-05</td><td>eosinophil percentage of granulocytes                                                     </td></tr>
+	<tr><th scope=row>37</th><td>Eosinophilia                    </td><td>1</td><td>HTR1D </td><td>cortex    </td><td>0.904</td><td> 0.01604</td><td>9.03400e-06</td><td>eosinophil percentage of white cells                                                      </td></tr>
+	<tr><th scope=row>38</th><td>Eosinophilia                    </td><td>1</td><td>HTR1D </td><td>cortex    </td><td>0.931</td><td> 0.01770</td><td>9.93894e-07</td><td>eosinophil counts                                                                         </td></tr>
+	<tr><th scope=row>39</th><td>Eosinophilia                    </td><td>1</td><td>HTR1D </td><td>cortex    </td><td>0.854</td><td> 0.01800</td><td>6.65794e-07</td><td>sum eosinophil basophil counts                                                            </td></tr>
+	<tr><th scope=row>40</th><td>Eosinophilia                    </td><td>1</td><td>HTR6  </td><td>cortex    </td><td>0.828</td><td>-0.09422</td><td>3.59998e-04</td><td>eosinophil counts                                                                         </td></tr>
+	<tr><th scope=row>10</th><td>Hypertension                    </td><td>1</td><td>ADRA2B</td><td>cortex    </td><td>0.908</td><td> 0.00453</td><td>2.90001e-05</td><td>non-cancer illness code, self-reported: hypertension                                      </td></tr>
+	<tr><th scope=row>11</th><td>Hypertension                    </td><td>1</td><td>ADRA2B</td><td>cortex    </td><td>0.899</td><td> 0.00452</td><td>1.09999e-05</td><td>hypertension                                                                              </td></tr>
+	<tr><th scope=row>91</th><td>Hypertension                    </td><td>0</td><td>ADRA2B</td><td>cortex    </td><td>0.899</td><td> 0.00452</td><td>1.09999e-05</td><td>hypertension                                                                              </td></tr>
+	<tr><th scope=row>92</th><td>Hypertension                    </td><td>0</td><td>ADRA2B</td><td>cortex    </td><td>0.908</td><td> 0.00453</td><td>2.90001e-05</td><td>non-cancer illness code, self-reported: hypertension                                      </td></tr>
+	<tr><th scope=row>12</th><td>Hypotension                     </td><td>0</td><td>ADRA1A</td><td>cortex    </td><td>0.902</td><td>-0.01437</td><td>3.50002e-09</td><td>diastolic blood pressure                                                                  </td></tr>
+	<tr><th scope=row>13</th><td>Hypotension                     </td><td>0</td><td>ADRA2B</td><td>cortex    </td><td>0.912</td><td> 0.00462</td><td>2.59998e-05</td><td>vascular/heart problems diagnosed by doctor: high blood pressure                          </td></tr>
+	<tr><th scope=row>14</th><td>Hypotension                     </td><td>0</td><td>HRH1  </td><td>cortex    </td><td>0.833</td><td>-0.00533</td><td>5.39995e-05</td><td>medication for cholesterol, blood pressure, diabetes, or take exogenous hormones: choleste</td></tr>
+	<tr><th scope=row>43</th><td>Hypotension                     </td><td>1</td><td>HRH1  </td><td>cortex    </td><td>0.833</td><td>-0.00533</td><td>5.39995e-05</td><td>medication for cholesterol, blood pressure, diabetes, or take exogenous hormones: choleste</td></tr>
+	<tr><th scope=row>44</th><td>Hypotension                     </td><td>1</td><td>ADRA1A</td><td>cortex    </td><td>0.902</td><td>-0.01437</td><td>3.50002e-09</td><td>diastolic blood pressure                                                                  </td></tr>
+	<tr><th scope=row>45</th><td>Hypotension                     </td><td>1</td><td>ADRA2B</td><td>cortex    </td><td>0.912</td><td> 0.00462</td><td>2.59998e-05</td><td>vascular/heart problems diagnosed by doctor: high blood pressure                          </td></tr>
+	<tr><th scope=row>15</th><td>Hypothyroidism                  </td><td>0</td><td>DRD4  </td><td>cortex    </td><td>0.941</td><td>-0.00287</td><td>4.39997e-09</td><td>hypothyroidism                                                                            </td></tr>
+	<tr><th scope=row>16</th><td>Hypothyroidism                  </td><td>0</td><td>DRD4  </td><td>cortex    </td><td>0.884</td><td>-0.00265</td><td>3.89996e-08</td><td>hypothyroidism or myxedema                                                                </td></tr>
+	<tr><th scope=row>17</th><td>Hypothyroidism                  </td><td>0</td><td>DRD4  </td><td>cortex    </td><td>0.949</td><td>-0.00171</td><td>2.50000e-07</td><td>diagnoses - secondary icd10: e03.9 hypothyroidism, unspecified                            </td></tr>
+	<tr><th scope=row>18</th><td>Hypothyroidism                  </td><td>0</td><td>DRD4  </td><td>cortex    </td><td>0.961</td><td>-0.06550</td><td>2.02502e-08</td><td>hypothyroidism                                                                            </td></tr>
+	<tr><th scope=row>121</th><td>Hypothyroidism                  </td><td>1</td><td>DRD4  </td><td>cortex    </td><td>0.949</td><td>-0.00171</td><td>2.50000e-07</td><td>diagnoses - secondary icd10: e03.9 hypothyroidism, unspecified                            </td></tr>
+	<tr><th scope=row>122</th><td>Hypothyroidism                  </td><td>1</td><td>DRD4  </td><td>cortex    </td><td>0.884</td><td>-0.00265</td><td>3.89996e-08</td><td>hypothyroidism or myxedema                                                                </td></tr>
+	<tr><th scope=row>123</th><td>Hypothyroidism                  </td><td>1</td><td>DRD4  </td><td>cortex    </td><td>0.941</td><td>-0.00287</td><td>4.39997e-09</td><td>hypothyroidism                                                                            </td></tr>
+	<tr><th scope=row>124</th><td>Hypothyroidism                  </td><td>1</td><td>DRD4  </td><td>cortex    </td><td>0.961</td><td>-0.06550</td><td>2.02502e-08</td><td>hypothyroidism                                                                            </td></tr>
+	<tr><th scope=row>19</th><td>Irritability                    </td><td>1</td><td>DRD2  </td><td>cerebellum</td><td>0.980</td><td>-0.00534</td><td>2.09320e-06</td><td>irritability                                                                              </td></tr>
+	<tr><th scope=row>20</th><td>Irritability                    </td><td>1</td><td>DRD2  </td><td>cerebellum</td><td>0.973</td><td>-0.00446</td><td>3.50002e-06</td><td>irritability                                                                              </td></tr>
+	<tr><th scope=row>50</th><td>Irritability                    </td><td>0</td><td>DRD2  </td><td>cerebellum</td><td>0.980</td><td>-0.00534</td><td>2.09320e-06</td><td>irritability                                                                              </td></tr>
+	<tr><th scope=row>51</th><td>Irritability                    </td><td>0</td><td>DRD2  </td><td>cerebellum</td><td>0.973</td><td>-0.00446</td><td>3.50002e-06</td><td>irritability                                                                              </td></tr>
+	<tr><th scope=row>21</th><td>Manic psychosis                 </td><td>0</td><td>DRD2  </td><td>cortex    </td><td>0.878</td><td> 0.00373</td><td>6.69993e-05</td><td>ever manic/hyper for 2 days                                                               </td></tr>
+	<tr><th scope=row>22</th><td>Manic psychosis                 </td><td>0</td><td>DRD2  </td><td>cortex    </td><td>0.838</td><td> 0.00413</td><td>1.11774e-04</td><td>ever manic/hyper for 2 days                                                               </td></tr>
+	<tr><th scope=row>23</th><td>Micturition urgency             </td><td>0</td><td>DRD2  </td><td>cerebellum</td><td>0.924</td><td>-0.00714</td><td>2.15263e-05</td><td>urinary albumin excretion                                                                 </td></tr>
+	<tr><th scope=row>24</th><td>Micturition urgency             </td><td>0</td><td>DRD1  </td><td>cortex    </td><td>0.994</td><td> 0.01222</td><td>1.92331e-06</td><td>urinary sodium-potassium ratio                                                            </td></tr>
+	<tr><th scope=row>54</th><td>Micturition urgency             </td><td>1</td><td>DRD2  </td><td>cerebellum</td><td>0.924</td><td>-0.00714</td><td>2.15263e-05</td><td>urinary albumin excretion                                                                 </td></tr>
+	<tr><th scope=row>55</th><td>Micturition urgency             </td><td>1</td><td>DRD1  </td><td>cortex    </td><td>0.994</td><td> 0.01222</td><td>1.92331e-06</td><td>urinary sodium-potassium ratio                                                            </td></tr>
+	<tr><th scope=row>25</th><td>Neutropenia                     </td><td>0</td><td>HTR1D </td><td>cortex    </td><td>0.823</td><td>-0.01473</td><td>4.95199e-05</td><td>neutrophil percentage of granulocytes                                                     </td></tr>
+	<tr><th scope=row>56</th><td>Neutropenia                     </td><td>1</td><td>HTR1D </td><td>cortex    </td><td>0.823</td><td>-0.01473</td><td>4.95199e-05</td><td>neutrophil percentage of granulocytes                                                     </td></tr>
+	<tr><th scope=row>26</th><td>Oedema peripheral               </td><td>1</td><td>DRD4  </td><td>cortex    </td><td>0.947</td><td>-0.00283</td><td>1.00749e-06</td><td>non-cancer illness code  self-reported: hypothyroidism/myxoedema                          </td></tr>
+	<tr><th scope=row>27</th><td>Oedema peripheral               </td><td>1</td><td>DRD4  </td><td>cortex    </td><td>0.926</td><td>-0.00280</td><td>1.50000e-08</td><td>non-cancer illness code, self-reported: hypothyroidism/myxoedema                          </td></tr>
+	<tr><th scope=row>57</th><td>Oedema peripheral               </td><td>0</td><td>DRD4  </td><td>cortex    </td><td>0.926</td><td>-0.00280</td><td>1.50000e-08</td><td>non-cancer illness code, self-reported: hypothyroidism/myxoedema                          </td></tr>
+	<tr><th scope=row>58</th><td>Oedema peripheral               </td><td>0</td><td>DRD4  </td><td>cortex    </td><td>0.947</td><td>-0.00283</td><td>1.00749e-06</td><td>non-cancer illness code  self-reported: hypothyroidism/myxoedema                          </td></tr>
+	<tr><th scope=row>28</th><td>Seasonal allergy                </td><td>0</td><td>DRD2  </td><td>cortex    </td><td>0.835</td><td> 0.07000</td><td>1.29101e-04</td><td>use of eye-antiallergens (taken as indicator of allergic/atopic conjunctivitis)           </td></tr>
+	<tr><th scope=row>29</th><td>Urinary abnormalities           </td><td>0</td><td>DRD1  </td><td>cortex    </td><td>0.994</td><td> 0.01222</td><td>1.92331e-06</td><td>urinary sodium-potassium ratio                                                            </td></tr>
+	<tr><th scope=row>30</th><td>Urinary abnormalities           </td><td>0</td><td>DRD2  </td><td>cerebellum</td><td>0.924</td><td>-0.00714</td><td>2.15263e-05</td><td>urinary albumin excretion                                                                 </td></tr>
+	<tr><th scope=row>60</th><td>Urinary abnormalities           </td><td>1</td><td>DRD2  </td><td>cerebellum</td><td>0.924</td><td>-0.00714</td><td>2.15263e-05</td><td>urinary albumin excretion                                                                 </td></tr>
+	<tr><th scope=row>61</th><td>Urinary abnormalities           </td><td>1</td><td>DRD1  </td><td>cortex    </td><td>0.994</td><td> 0.01222</td><td>1.92331e-06</td><td>urinary sodium-potassium ratio                                                            </td></tr>
+	<tr><th scope=row>31</th><td>White blood cell count decreased</td><td>0</td><td>ADRA1B</td><td>cortex    </td><td>0.823</td><td>-0.00784</td><td>3.50002e-05</td><td>white blood cell count (monocyte)                                                         </td></tr>
+	<tr><th scope=row>62</th><td>White blood cell count decreased</td><td>1</td><td>ADRA1B</td><td>cortex    </td><td>0.823</td><td>-0.00784</td><td>3.50002e-05</td><td>white blood cell count (monocyte)                                                         </td></tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
+<h3 id="All-the-other-side-effects-of-shared-genes-where-60%25-%3C-coloc-%3C-80%25">All the other side effects of shared genes where 60% &lt; coloc &lt; 80%<a class="anchor-link" href="#All-the-other-side-effects-of-shared-genes-where-60%25-%3C-coloc-%3C-80%25">&#182;</a></h3>
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<table class="dataframe">
+<caption>A data.frame: 61 × 8</caption>
+<thead>
+	<tr><th></th><th scope=col>side_effect</th><th scope=col>documented</th><th scope=col>exposure</th><th scope=col>region</th><th scope=col>h4</th><th scope=col>beta</th><th scope=col>p</th><th scope=col>phewas_trait</th></tr>
+	<tr><th></th><th scope=col>&lt;I&lt;chr&gt;&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1</th><td>Abdominal discomfort               </td><td>1</td><td>DRD2  </td><td>cerebellum </td><td>0.669</td><td>-0.00223</td><td>1.50000e-04</td><td>pain type(s) experienced in last month: stomach or abdominal pain</td></tr>
+	<tr><th scope=row>2</th><td>Alanine aminotransferase increased </td><td>0</td><td>ADRB1 </td><td>cortex     </td><td>0.659</td><td>-0.02854</td><td>1.89998e-04</td><td>percent liver fat                                                </td></tr>
+	<tr><th scope=row>79</th><td>Alanine aminotransferase increased </td><td>1</td><td>ADRB1 </td><td>cortex     </td><td>0.659</td><td>-0.02854</td><td>1.89998e-04</td><td>percent liver fat                                                </td></tr>
+	<tr><th scope=row>3</th><td>Back pain                          </td><td>0</td><td>HTR2A </td><td>cortex     </td><td>0.632</td><td>-0.04250</td><td>2.82501e-04</td><td>lower back pain or/and sciatica                                  </td></tr>
+	<tr><th scope=row>80</th><td>Back pain                          </td><td>1</td><td>HTR2A </td><td>cortex     </td><td>0.632</td><td>-0.04250</td><td>2.82501e-04</td><td>lower back pain or/and sciatica                                  </td></tr>
+	<tr><th scope=row>4</th><td>Bundle branch block right          </td><td>0</td><td>HTR3A </td><td>cortex     </td><td>0.637</td><td>-0.29630</td><td>3.93904e-04</td><td>right bundle-branch block (no controls excluded)                 </td></tr>
+	<tr><th scope=row>5</th><td>Bundle branch block right          </td><td>0</td><td>HTR3A </td><td>cortex     </td><td>0.688</td><td>-0.30280</td><td>3.06098e-04</td><td>right bundle-branch block                                        </td></tr>
+	<tr><th scope=row>6</th><td>Cardiovascular disorder            </td><td>0</td><td>ADRA2B</td><td>cortex     </td><td>0.745</td><td> 0.00417</td><td>9.59997e-05</td><td>cardiovascular disease                                           </td></tr>
+	<tr><th scope=row>173</th><td>Cardiovascular disorder            </td><td>1</td><td>ADRA2B</td><td>cortex     </td><td>0.745</td><td> 0.00417</td><td>9.59997e-05</td><td>cardiovascular disease                                           </td></tr>
+	<tr><th scope=row>7</th><td>Conjunctivitis                     </td><td>0</td><td>DRD2  </td><td>cortex     </td><td>0.726</td><td> 0.06550</td><td>2.58702e-04</td><td>allergic conjunctivitis                                          </td></tr>
+	<tr><th scope=row>8</th><td>Convulsion                         </td><td>0</td><td>ADRA2C</td><td>cerebellum </td><td>0.604</td><td>-0.07650</td><td>4.10403e-04</td><td>convulsions, not elsewhere classified                            </td></tr>
+	<tr><th scope=row>46</th><td>Convulsion                         </td><td>1</td><td>ADRA2C</td><td>cerebellum </td><td>0.604</td><td>-0.07650</td><td>4.10403e-04</td><td>convulsions, not elsewhere classified                            </td></tr>
+	<tr><th scope=row>9</th><td>Gamma-glutamyltransferase increased</td><td>0</td><td>DRD2  </td><td>cerebellum </td><td>0.627</td><td>-0.00857</td><td>1.28499e-04</td><td>gamma glutamyltransferase                                        </td></tr>
+	<tr><th scope=row>84</th><td>Gamma-glutamyltransferase increased</td><td>1</td><td>DRD2  </td><td>cerebellum </td><td>0.627</td><td>-0.00857</td><td>1.28499e-04</td><td>gamma glutamyltransferase                                        </td></tr>
+	<tr><th scope=row>10</th><td>Headache                           </td><td>1</td><td>DRD1  </td><td>cortex     </td><td>0.727</td><td> 0.00406</td><td>8.88035e-05</td><td>pain type(s) experienced in last month: headache                 </td></tr>
+	<tr><th scope=row>11</th><td>Headache                           </td><td>1</td><td>DRD2  </td><td>cerebellum </td><td>0.798</td><td>-0.00081</td><td>6.29999e-05</td><td>diagnoses - main icd10: r51 headache                             </td></tr>
+	<tr><th scope=row>12</th><td>Hypertension                       </td><td>1</td><td>HRH1  </td><td>cortex     </td><td>0.797</td><td>-0.32540</td><td>2.82397e-04</td><td>hypertension                                                     </td></tr>
+	<tr><th scope=row>117</th><td>Hypertension                       </td><td>0</td><td>HRH1  </td><td>cortex     </td><td>0.797</td><td>-0.32540</td><td>2.82397e-04</td><td>hypertension                                                     </td></tr>
+	<tr><th scope=row>13</th><td>Hypotension                        </td><td>0</td><td>ADRA1A</td><td>cortex     </td><td>0.738</td><td>-0.00860</td><td>1.17401e-04</td><td>diastolic blood pressure                                         </td></tr>
+	<tr><th scope=row>14</th><td>Hypotension                        </td><td>0</td><td>ADRA1A</td><td>cortex     </td><td>0.680</td><td>-0.00871</td><td>2.59998e-04</td><td>diastolic blood pressure, automated reading                      </td></tr>
+	<tr><th scope=row>15</th><td>Hypotension                        </td><td>0</td><td>ADRA1A</td><td>cortex     </td><td>0.796</td><td>-0.01086</td><td>1.25756e-04</td><td>diastolic blood pressure  automated reading                      </td></tr>
+	<tr><th scope=row>51</th><td>Hypotension                        </td><td>1</td><td>ADRA1A</td><td>cortex     </td><td>0.796</td><td>-0.01086</td><td>1.25756e-04</td><td>diastolic blood pressure  automated reading                      </td></tr>
+	<tr><th scope=row>52</th><td>Hypotension                        </td><td>1</td><td>ADRA1A</td><td>cortex     </td><td>0.680</td><td>-0.00871</td><td>2.59998e-04</td><td>diastolic blood pressure, automated reading                      </td></tr>
+	<tr><th scope=row>53</th><td>Hypotension                        </td><td>1</td><td>ADRA1A</td><td>cortex     </td><td>0.738</td><td>-0.00860</td><td>1.17401e-04</td><td>diastolic blood pressure                                         </td></tr>
+	<tr><th scope=row>16</th><td>Hypothyroidism                     </td><td>0</td><td>HTR6  </td><td>cerebellum </td><td>0.607</td><td>-0.00227</td><td>7.19996e-08</td><td>hypothyroidism                                                   </td></tr>
+	<tr><th scope=row>17</th><td>Hypothyroidism                     </td><td>0</td><td>HTR6  </td><td>cerebellum </td><td>0.721</td><td>-0.04930</td><td>8.96603e-07</td><td>hypothyroidism                                                   </td></tr>
+	<tr><th scope=row>18</th><td>Hypothyroidism                     </td><td>0</td><td>DRD4  </td><td>cortex     </td><td>0.637</td><td>-0.09470</td><td>3.33803e-04</td><td>hypothyroidism, drug reimbursement                               </td></tr>
+	<tr><th scope=row>150</th><td>Hypothyroidism                     </td><td>1</td><td>DRD4  </td><td>cortex     </td><td>0.637</td><td>-0.09470</td><td>3.33803e-04</td><td>hypothyroidism, drug reimbursement                               </td></tr>
+	<tr><th scope=row>151</th><td>Hypothyroidism                     </td><td>1</td><td>HTR6  </td><td>cerebellum </td><td>0.721</td><td>-0.04930</td><td>8.96603e-07</td><td>hypothyroidism                                                   </td></tr>
+	<tr><th scope=row>152</th><td>Hypothyroidism                     </td><td>1</td><td>HTR6  </td><td>cerebellum </td><td>0.607</td><td>-0.00227</td><td>7.19996e-08</td><td>hypothyroidism                                                   </td></tr>
+	<tr><th scope=row>19</th><td>Infection                          </td><td>0</td><td>HTR7  </td><td>cortex     </td><td>0.748</td><td> 0.00040</td><td>5.39995e-05</td><td>diagnoses - main icd10: b34.9 viral infection, unspecified       </td></tr>
+	<tr><th scope=row>182</th><td>Infection                          </td><td>1</td><td>HTR7  </td><td>cortex     </td><td>0.748</td><td> 0.00040</td><td>5.39995e-05</td><td>diagnoses - main icd10: b34.9 viral infection, unspecified       </td></tr>
+	<tr><th scope=row>20</th><td>Irritability                       </td><td>1</td><td>DRD2  </td><td>cerebellum </td><td>0.781</td><td>-0.00925</td><td>8.65107e-05</td><td>irritable mood                                                   </td></tr>
+	<tr><th scope=row>58</th><td>Irritability                       </td><td>0</td><td>DRD2  </td><td>cerebellum </td><td>0.781</td><td>-0.00925</td><td>8.65107e-05</td><td>irritable mood                                                   </td></tr>
+	<tr><th scope=row>21</th><td>Lymphadenopathy                    </td><td>0</td><td>ADRA2B</td><td>cerebellum </td><td>0.726</td><td>-0.01200</td><td>7.64469e-05</td><td>lymphocyte percentage                                            </td></tr>
+	<tr><th scope=row>22</th><td>Lymphadenopathy                    </td><td>0</td><td>ADRA2B</td><td>cortex     </td><td>0.664</td><td>-0.01059</td><td>1.99719e-04</td><td>lymphocyte percentage                                            </td></tr>
+	<tr><th scope=row>154</th><td>Lymphadenopathy                    </td><td>1</td><td>ADRA2B</td><td>cortex     </td><td>0.664</td><td>-0.01059</td><td>1.99719e-04</td><td>lymphocyte percentage                                            </td></tr>
+	<tr><th scope=row>155</th><td>Lymphadenopathy                    </td><td>1</td><td>ADRA2B</td><td>cerebellum </td><td>0.726</td><td>-0.01200</td><td>7.64469e-05</td><td>lymphocyte percentage                                            </td></tr>
+	<tr><th scope=row>23</th><td>Nervousness                        </td><td>0</td><td>DRD2  </td><td>cerebellum </td><td>0.619</td><td>-0.00919</td><td>8.32109e-05</td><td>feeling nervous                                                  </td></tr>
+	<tr><th scope=row>24</th><td>Nervousness                        </td><td>0</td><td>DRD2  </td><td>cerebellum </td><td>0.769</td><td>-0.00436</td><td>3.53834e-05</td><td>nervous feelings                                                 </td></tr>
+	<tr><th scope=row>95</th><td>Nervousness                        </td><td>1</td><td>DRD2  </td><td>cerebellum </td><td>0.619</td><td>-0.00919</td><td>8.32109e-05</td><td>feeling nervous                                                  </td></tr>
+	<tr><th scope=row>96</th><td>Nervousness                        </td><td>1</td><td>DRD2  </td><td>cerebellum </td><td>0.769</td><td>-0.00436</td><td>3.53834e-05</td><td>nervous feelings                                                 </td></tr>
+	<tr><th scope=row>25</th><td>Pneumonia                          </td><td>0</td><td>HTR1D </td><td>cortex     </td><td>0.731</td><td> 0.00048</td><td>9.90011e-05</td><td>diagnoses - main icd10: j18.9 pneumonia, unspecified             </td></tr>
+	<tr><th scope=row>26</th><td>Seasonal allergy                   </td><td>0</td><td>DRD2  </td><td>cortex     </td><td>0.726</td><td> 0.06550</td><td>2.58702e-04</td><td>allergic conjunctivitis                                          </td></tr>
+	<tr><th scope=row>27</th><td>Weight increased                   </td><td>1</td><td>CHRM3 </td><td>cortex     </td><td>0.715</td><td> 0.01705</td><td>9.58672e-08</td><td>birth weight                                                     </td></tr>
+	<tr><th scope=row>28</th><td>Weight increased                   </td><td>1</td><td>HRH1  </td><td>cerebellum </td><td>0.707</td><td> 0.01810</td><td>2.99999e-08</td><td>body mass index                                                  </td></tr>
+	<tr><th scope=row>29</th><td>Weight increased                   </td><td>1</td><td>HRH1  </td><td>hippocampus</td><td>0.682</td><td>-0.01238</td><td>6.49995e-07</td><td>body mass index (bmi)                                            </td></tr>
+	<tr><th scope=row>30</th><td>Weight increased                   </td><td>1</td><td>HRH1  </td><td>hippocampus</td><td>0.766</td><td>-0.01275</td><td>3.59998e-07</td><td>body mass index (bmi)                                            </td></tr>
+	<tr><th scope=row>31</th><td>Weight increased                   </td><td>1</td><td>HRH1  </td><td>cerebellum </td><td>0.792</td><td> 0.01747</td><td>1.50000e-08</td><td>weight                                                           </td></tr>
+	<tr><th scope=row>32</th><td>Weight increased                   </td><td>1</td><td>HRH1  </td><td>hippocampus</td><td>0.720</td><td>-0.01112</td><td>4.20001e-07</td><td>weight                                                           </td></tr>
+	<tr><th scope=row>33</th><td>Weight increased                   </td><td>1</td><td>HRH1  </td><td>cerebellum </td><td>0.769</td><td> 0.01410</td><td>2.40497e-08</td><td>weight                                                           </td></tr>
+	<tr><th scope=row>34</th><td>Weight increased                   </td><td>1</td><td>HRH1  </td><td>cerebellum </td><td>0.799</td><td> 0.01773</td><td>7.10003e-09</td><td>weight                                                           </td></tr>
+	<tr><th scope=row>35</th><td>Weight increased                   </td><td>1</td><td>CHRM3 </td><td>cortex     </td><td>0.611</td><td> 0.01329</td><td>1.09999e-06</td><td>birth weight                                                     </td></tr>
+	<tr><th scope=row>36</th><td>White blood cell count decreased   </td><td>0</td><td>HTR6  </td><td>cortex     </td><td>0.772</td><td> 0.01035</td><td>3.83028e-05</td><td>white blood cell (leukocyte) count                               </td></tr>
+	<tr><th scope=row>37</th><td>White blood cell count decreased   </td><td>0</td><td>DRD2  </td><td>cerebellum </td><td>0.624</td><td>-0.00838</td><td>1.70000e-04</td><td>white blood cell count (eosinophil)                              </td></tr>
+	<tr><th scope=row>38</th><td>White blood cell count decreased   </td><td>0</td><td>ADRA1B</td><td>cortex     </td><td>0.601</td><td>-0.00989</td><td>8.99995e-07</td><td>white blood cell count                                           </td></tr>
+	<tr><th scope=row>39</th><td>White blood cell count decreased   </td><td>0</td><td>HRH1  </td><td>cortex     </td><td>0.657</td><td>-0.05982</td><td>3.06697e-04</td><td>white blood cell count                                           </td></tr>
+	<tr><th scope=row>74</th><td>White blood cell count decreased   </td><td>1</td><td>ADRA1B</td><td>cortex     </td><td>0.601</td><td>-0.00989</td><td>8.99995e-07</td><td>white blood cell count                                           </td></tr>
+	<tr><th scope=row>75</th><td>White blood cell count decreased   </td><td>1</td><td>HTR6  </td><td>cortex     </td><td>0.772</td><td> 0.01035</td><td>3.83028e-05</td><td>white blood cell (leukocyte) count                               </td></tr>
+	<tr><th scope=row>76</th><td>White blood cell count decreased   </td><td>1</td><td>HRH1  </td><td>cortex     </td><td>0.657</td><td>-0.05982</td><td>3.06697e-04</td><td>white blood cell count                                           </td></tr>
+	<tr><th scope=row>77</th><td>White blood cell count decreased   </td><td>1</td><td>DRD2  </td><td>cerebellum </td><td>0.624</td><td>-0.00838</td><td>1.70000e-04</td><td>white blood cell count (eosinophil)                              </td></tr>
 </tbody>
 </table>
 
@@ -15230,580 +15558,6 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
 <p>cor() of h4 vs. p-value of h4 &gt; 0.8 phewas results: -0.49294126793656</p>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Side-effects-uniquely-affecting-each-drug">Side effects uniquely affecting each drug<a class="anchor-link" href="#Side-effects-uniquely-affecting-each-drug">&#182;</a></h2><p>Each drug is filtered by targets unique to that drug.  The remaining shared effects are below</p>
-
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell  jp-mod-noInput ">
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
-<h3 id="Unique-targets-for-aripiprazole">Unique targets for aripiprazole<a class="anchor-link" href="#Unique-targets-for-aripiprazole">&#182;</a></h3>
-</div>
-
-</div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
-<p>GRIN1  GRIN2A  GRIN2B  GRIN2C  GRIN2D  GRIN3A  GRIN3B  HRH2  HRH3  HTR2B  HTR5A  OPRD1  OPRK1  OPRM1  SLC6A3  SLC6A4</p>
-
-</div>
-
-</div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
-<table class="dataframe">
-<caption>A data.frame: 19 × 8</caption>
-<thead>
-	<tr><th scope=col>side_effect</th><th scope=col>documented</th><th scope=col>exposure</th><th scope=col>region</th><th scope=col>beta</th><th scope=col>p</th><th scope=col>phewas_trait</th><th scope=col>drug</th></tr>
-	<tr><th scope=col>&lt;I&lt;chr&gt;&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
-</thead>
-<tbody>
-	<tr><td>Bilirubin total low/decreased</td><td>0</td><td>HTR5A </td><td>cortex    </td><td> 0.02784000</td><td>7.17200e-06</td><td>total bilirubin                                              </td><td>aripiprazole</td></tr>
-	<tr><td>Bilirubin total low/decreased</td><td>0</td><td>HTR5A </td><td>cortex    </td><td> 0.02447960</td><td>8.90000e-06</td><td>total bilirubin levels                                       </td><td>aripiprazole</td></tr>
-	<tr><td>Constipation                 </td><td>1</td><td>GRIN2A</td><td>cortex    </td><td>-0.29358100</td><td>6.66730e-05</td><td>constipation                                                 </td><td>aripiprazole</td></tr>
-	<tr><td>Extrapyramidal disorder      </td><td>1</td><td>OPRM1 </td><td>cerebellum</td><td> 0.17030000</td><td>4.57088e-06</td><td>motor neuron and pancreas homeobox protein 1                 </td><td>aripiprazole</td></tr>
-	<tr><td>Neck pain                    </td><td>0</td><td>HRH3  </td><td>cerebellum</td><td> 0.00593299</td><td>9.90011e-05</td><td>pain type(s) experienced in last month: neck or shoulder pain</td><td>aripiprazole</td></tr>
-	<tr><td>Weight increased             </td><td>1</td><td>GRIN3A</td><td>cortex    </td><td>-0.00980000</td><td>1.87698e-07</td><td>body mass index                                              </td><td>aripiprazole</td></tr>
-	<tr><td>Weight increased             </td><td>1</td><td>GRIN3A</td><td>cerebellum</td><td> 0.00959958</td><td>7.19996e-07</td><td>body mass index                                              </td><td>aripiprazole</td></tr>
-	<tr><td>Weight increased             </td><td>1</td><td>GRIN3A</td><td>cortex    </td><td>-0.01030000</td><td>2.19999e-09</td><td>body mass index                                              </td><td>aripiprazole</td></tr>
-	<tr><td>Weight increased             </td><td>1</td><td>OPRK1 </td><td>cerebellum</td><td> 0.00750000</td><td>2.63403e-05</td><td>weight                                                       </td><td>aripiprazole</td></tr>
-	<tr><td>Weight increased             </td><td>1</td><td>GRIN3A</td><td>cortex    </td><td>-0.01037860</td><td>2.00000e-07</td><td>body mass index (bmi)                                        </td><td>aripiprazole</td></tr>
-	<tr><td>Weight increased             </td><td>1</td><td>OPRK1 </td><td>cerebellum</td><td> 0.00805802</td><td>2.39999e-05</td><td>weight                                                       </td><td>aripiprazole</td></tr>
-	<tr><td>Weight increased             </td><td>1</td><td>OPRK1 </td><td>cerebellum</td><td> 0.00817983</td><td>1.50000e-05</td><td>weight                                                       </td><td>aripiprazole</td></tr>
-	<tr><td>Weight increased             </td><td>1</td><td>OPRK1 </td><td>cerebellum</td><td> 0.01005040</td><td>1.54252e-05</td><td>weight                                                       </td><td>aripiprazole</td></tr>
-	<tr><td>Weight increased             </td><td>1</td><td>GRIN3A</td><td>cortex    </td><td>-0.01018620</td><td>1.40001e-07</td><td>body mass index                                              </td><td>aripiprazole</td></tr>
-	<tr><td>Weight increased             </td><td>1</td><td>GRIN3A</td><td>cortex    </td><td>-0.01300000</td><td>1.05901e-05</td><td>body mass index                                              </td><td>aripiprazole</td></tr>
-	<tr><td>Weight increased             </td><td>1</td><td>GRIN3A</td><td>cerebellum</td><td> 0.00994235</td><td>5.10000e-07</td><td>body mass index (bmi)                                        </td><td>aripiprazole</td></tr>
-	<tr><td>Weight increased             </td><td>1</td><td>GRIN3A</td><td>cortex    </td><td>-0.01059010</td><td>8.99995e-08</td><td>body mass index (bmi)                                        </td><td>aripiprazole</td></tr>
-	<tr><td>Weight increased             </td><td>1</td><td>GRIN3A</td><td>cerebellum</td><td> 0.00986545</td><td>7.49998e-07</td><td>body mass index (bmi)                                        </td><td>aripiprazole</td></tr>
-	<tr><td>Weight increased             </td><td>1</td><td>GRIN3A</td><td>cortex    </td><td>-0.01103090</td><td>4.48828e-06</td><td>body mass index (bmi)                                        </td><td>aripiprazole</td></tr>
-</tbody>
-</table>
-
-</div>
-
-</div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
-<h3 id="Unique-targets-for-clozapine">Unique targets for clozapine<a class="anchor-link" href="#Unique-targets-for-clozapine">&#182;</a></h3>
-</div>
-
-</div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
-<p>CALY  GABBR1  GABBR2  GABRA1  GABRB1  GABRG1  GSTP1</p>
-
-</div>
-
-</div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
-<table class="dataframe">
-<caption>A data.frame: 8 × 8</caption>
-<thead>
-	<tr><th scope=col>side_effect</th><th scope=col>documented</th><th scope=col>exposure</th><th scope=col>region</th><th scope=col>beta</th><th scope=col>p</th><th scope=col>phewas_trait</th><th scope=col>drug</th></tr>
-	<tr><th scope=col>&lt;I&lt;chr&gt;&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
-</thead>
-<tbody>
-	<tr><td>Insomnia                        </td><td>1</td><td>GABRA1</td><td>cortex</td><td>-0.00557488</td><td>3.09999e-06</td><td>daytime dozing / sleeping (narcolepsy)</td><td>clozapine</td></tr>
-	<tr><td>Rhinitis                        </td><td>0</td><td>GABRA1</td><td>cortex</td><td>-0.19660000</td><td>6.36796e-05</td><td>vasomotor rhinitis (mode)             </td><td>clozapine</td></tr>
-	<tr><td>White blood cell count decreased</td><td>1</td><td>GABRA1</td><td>cortex</td><td>-0.01002200</td><td>2.35999e-06</td><td>white blood cell count                </td><td>clozapine</td></tr>
-	<tr><td>White blood cell count decreased</td><td>1</td><td>GABRA1</td><td>cortex</td><td>-0.01098020</td><td>8.30004e-06</td><td>white blood cell count                </td><td>clozapine</td></tr>
-	<tr><td>White blood cell count decreased</td><td>1</td><td>GABRA1</td><td>cortex</td><td>-0.01002200</td><td>2.35999e-06</td><td>white blood cell count                </td><td>clozapine</td></tr>
-	<tr><td>White blood cell count decreased</td><td>1</td><td>GABRA1</td><td>cortex</td><td>-0.00970000</td><td>1.96002e-05</td><td>white blood cell count                </td><td>clozapine</td></tr>
-	<tr><td>White blood cell count decreased</td><td>1</td><td>GABRA1</td><td>cortex</td><td>-0.01184970</td><td>1.00000e-08</td><td>white blood cell count (monocyte)     </td><td>clozapine</td></tr>
-	<tr><td>White blood cell count decreased</td><td>1</td><td>GABRA1</td><td>cortex</td><td>-0.01208410</td><td>1.28021e-05</td><td>white blood cell (leukocyte) count    </td><td>clozapine</td></tr>
-</tbody>
-</table>
-
-</div>
-
-</div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
-<h3 id="Unique-targets-for-olanzapine">Unique targets for olanzapine<a class="anchor-link" href="#Unique-targets-for-olanzapine">&#182;</a></h3>
-</div>
-
-</div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
-<p>ADRB3</p>
-
-</div>
-
-</div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
-<table class="dataframe">
-<caption>A data.frame: 0 × 8</caption>
-<thead>
-	<tr><th scope=col>side_effect</th><th scope=col>documented</th><th scope=col>exposure</th><th scope=col>region</th><th scope=col>beta</th><th scope=col>p</th><th scope=col>phewas_trait</th><th scope=col>drug</th></tr>
-	<tr><th scope=col>&lt;I&lt;chr&gt;&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
-</thead>
-<tbody>
-</tbody>
-</table>
-
-</div>
-
-</div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
-<h3 id="Unique-targets-for-paliperidone">Unique targets for paliperidone<a class="anchor-link" href="#Unique-targets-for-paliperidone">&#182;</a></h3>
-</div>
-
-</div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
-
-</div>
-
-</div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
-<table class="dataframe">
-<caption>A data.frame: 0 × 8</caption>
-<thead>
-	<tr><th scope=col>side_effect</th><th scope=col>documented</th><th scope=col>exposure</th><th scope=col>region</th><th scope=col>beta</th><th scope=col>p</th><th scope=col>phewas_trait</th><th scope=col>drug</th></tr>
-	<tr><th scope=col>&lt;I&lt;chr&gt;&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
-</thead>
-<tbody>
-</tbody>
-</table>
-
-</div>
-
-</div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
-<h3 id="Unique-targets-for-quetiapine">Unique targets for quetiapine<a class="anchor-link" href="#Unique-targets-for-quetiapine">&#182;</a></h3>
-</div>
-
-</div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
-<p>ADRA1C  ADRA1D</p>
-
-</div>
-
-</div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
-<table class="dataframe">
-<caption>A data.frame: 0 × 8</caption>
-<thead>
-	<tr><th scope=col>side_effect</th><th scope=col>documented</th><th scope=col>exposure</th><th scope=col>region</th><th scope=col>beta</th><th scope=col>p</th><th scope=col>phewas_trait</th><th scope=col>drug</th></tr>
-	<tr><th scope=col>&lt;I&lt;chr&gt;&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
-</thead>
-<tbody>
-</tbody>
-</table>
-
-</div>
-
-</div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
-<h3 id="Unique-targets-for-risperidone">Unique targets for risperidone<a class="anchor-link" href="#Unique-targets-for-risperidone">&#182;</a></h3>
-</div>
-
-</div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
-
-</div>
-
-</div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
-<table class="dataframe">
-<caption>A data.frame: 0 × 8</caption>
-<thead>
-	<tr><th scope=col>side_effect</th><th scope=col>documented</th><th scope=col>exposure</th><th scope=col>region</th><th scope=col>beta</th><th scope=col>p</th><th scope=col>phewas_trait</th><th scope=col>drug</th></tr>
-	<tr><th scope=col>&lt;I&lt;chr&gt;&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
-</thead>
-<tbody>
-</tbody>
-</table>
-
-</div>
-
-</div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
-<h3 id="Uniquely-shared-by-clozapine-and-aripiprazole-(+-a-couple-others)">Uniquely shared by clozapine and aripiprazole (+ a couple others)<a class="anchor-link" href="#Uniquely-shared-by-clozapine-and-aripiprazole-(+-a-couple-others)">&#182;</a></h3>
-</div>
-
-</div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
-<p>CHRM5HRH4HTR1BHTR1E</p>
-
-</div>
-
-</div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
-<table class="dataframe">
-<caption>A data.frame: 27 × 8</caption>
-<thead>
-	<tr><th scope=col>side_effect</th><th scope=col>documented</th><th scope=col>exposure</th><th scope=col>region</th><th scope=col>beta</th><th scope=col>p</th><th scope=col>phewas_trait</th><th scope=col>drug</th></tr>
-	<tr><th scope=col>&lt;I&lt;chr&gt;&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
-</thead>
-<tbody>
-	<tr><td>Hypotension     </td><td>0</td><td>HTR1B</td><td>cortex</td><td>-0.00600217</td><td>8.53867e-05</td><td>medication for cholesterol  blood pressure  diabetes  or take exogenous hormones: cholesterol loweri</td><td>aripiprazole</td></tr>
-	<tr><td>Hypotension     </td><td>1</td><td>HTR1B</td><td>cortex</td><td>-0.00600217</td><td>8.53867e-05</td><td>medication for cholesterol  blood pressure  diabetes  or take exogenous hormones: cholesterol loweri</td><td>clozapine   </td></tr>
-	<tr><td>Hypotension     </td><td>1</td><td>HTR1B</td><td>cortex</td><td>-0.00600217</td><td>8.53867e-05</td><td>medication for cholesterol  blood pressure  diabetes  or take exogenous hormones: cholesterol loweri</td><td>quetiapine  </td></tr>
-	<tr><td>Neutropenia     </td><td>0</td><td>HTR1B</td><td>cortex</td><td> 0.14958500</td><td>4.06996e-04</td><td>neutrophil count                                                                                    </td><td>aripiprazole</td></tr>
-	<tr><td>Neutropenia     </td><td>1</td><td>HTR1B</td><td>cortex</td><td> 0.14958500</td><td>4.06996e-04</td><td>neutrophil count                                                                                    </td><td>clozapine   </td></tr>
-	<tr><td>Neutropenia     </td><td>0</td><td>HTR1B</td><td>cortex</td><td> 0.14958500</td><td>4.06996e-04</td><td>neutrophil count                                                                                    </td><td>quetiapine  </td></tr>
-	<tr><td>Weight increased</td><td>1</td><td>HTR1B</td><td>cortex</td><td>-0.00993594</td><td>4.20001e-05</td><td>weight                                                                                              </td><td>aripiprazole</td></tr>
-	<tr><td>Weight increased</td><td>1</td><td>HTR1B</td><td>cortex</td><td>-0.00997281</td><td>3.40001e-05</td><td>weight                                                                                              </td><td>aripiprazole</td></tr>
-	<tr><td>Weight increased</td><td>1</td><td>HTR1B</td><td>cortex</td><td>-0.01214070</td><td>3.37886e-05</td><td>weight                                                                                              </td><td>aripiprazole</td></tr>
-	<tr><td>Weight increased</td><td>1</td><td>HTR1B</td><td>cortex</td><td>-0.01195510</td><td>6.40000e-06</td><td>body mass index                                                                                     </td><td>aripiprazole</td></tr>
-	<tr><td>Weight increased</td><td>1</td><td>HTR1B</td><td>cortex</td><td>-0.01131610</td><td>3.79997e-05</td><td>body mass index (bmi)                                                                               </td><td>aripiprazole</td></tr>
-	<tr><td>Weight increased</td><td>1</td><td>HTR1B</td><td>cortex</td><td>-0.01129610</td><td>4.49997e-05</td><td>body mass index (bmi)                                                                               </td><td>aripiprazole</td></tr>
-	<tr><td>Weight increased</td><td>1</td><td>HTR1B</td><td>cortex</td><td>-0.01485070</td><td>7.47618e-06</td><td>body mass index (bmi)                                                                               </td><td>aripiprazole</td></tr>
-	<tr><td>Weight increased</td><td>1</td><td>HTR1B</td><td>cortex</td><td>-0.01485070</td><td>7.47618e-06</td><td>body mass index (bmi)                                                                               </td><td>clozapine   </td></tr>
-	<tr><td>Weight increased</td><td>1</td><td>HTR1B</td><td>cortex</td><td>-0.01129610</td><td>4.49997e-05</td><td>body mass index (bmi)                                                                               </td><td>clozapine   </td></tr>
-	<tr><td>Weight increased</td><td>1</td><td>HTR1B</td><td>cortex</td><td>-0.01214070</td><td>3.37886e-05</td><td>weight                                                                                              </td><td>clozapine   </td></tr>
-	<tr><td>Weight increased</td><td>1</td><td>HTR1B</td><td>cortex</td><td>-0.01195510</td><td>6.40000e-06</td><td>body mass index                                                                                     </td><td>clozapine   </td></tr>
-	<tr><td>Weight increased</td><td>1</td><td>HTR1B</td><td>cortex</td><td>-0.00993594</td><td>4.20001e-05</td><td>weight                                                                                              </td><td>clozapine   </td></tr>
-	<tr><td>Weight increased</td><td>1</td><td>HTR1B</td><td>cortex</td><td>-0.00997281</td><td>3.40001e-05</td><td>weight                                                                                              </td><td>clozapine   </td></tr>
-	<tr><td>Weight increased</td><td>1</td><td>HTR1B</td><td>cortex</td><td>-0.01131610</td><td>3.79997e-05</td><td>body mass index (bmi)                                                                               </td><td>clozapine   </td></tr>
-	<tr><td>Weight increased</td><td>1</td><td>HTR1B</td><td>cortex</td><td>-0.00997281</td><td>3.40001e-05</td><td>weight                                                                                              </td><td>quetiapine  </td></tr>
-	<tr><td>Weight increased</td><td>1</td><td>HTR1B</td><td>cortex</td><td>-0.00993594</td><td>4.20001e-05</td><td>weight                                                                                              </td><td>quetiapine  </td></tr>
-	<tr><td>Weight increased</td><td>1</td><td>HTR1B</td><td>cortex</td><td>-0.01485070</td><td>7.47618e-06</td><td>body mass index (bmi)                                                                               </td><td>quetiapine  </td></tr>
-	<tr><td>Weight increased</td><td>1</td><td>HTR1B</td><td>cortex</td><td>-0.01214070</td><td>3.37886e-05</td><td>weight                                                                                              </td><td>quetiapine  </td></tr>
-	<tr><td>Weight increased</td><td>1</td><td>HTR1B</td><td>cortex</td><td>-0.01131610</td><td>3.79997e-05</td><td>body mass index (bmi)                                                                               </td><td>quetiapine  </td></tr>
-	<tr><td>Weight increased</td><td>1</td><td>HTR1B</td><td>cortex</td><td>-0.01129610</td><td>4.49997e-05</td><td>body mass index (bmi)                                                                               </td><td>quetiapine  </td></tr>
-	<tr><td>Weight increased</td><td>1</td><td>HTR1B</td><td>cortex</td><td>-0.01195510</td><td>6.40000e-06</td><td>body mass index                                                                                     </td><td>quetiapine  </td></tr>
-</tbody>
-</table>
-
-</div>
-
-</div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
-<h3 id="All-the-other-side-effects-of-shared-genes:">All the other side effects of shared genes:<a class="anchor-link" href="#All-the-other-side-effects-of-shared-genes:">&#182;</a></h3>
-</div>
-
-</div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
-<table class="dataframe">
-<caption>A data.frame: 150 × 8</caption>
-<thead>
-	<tr><th></th><th scope=col>side_effect</th><th scope=col>documented</th><th scope=col>exposure</th><th scope=col>region</th><th scope=col>beta</th><th scope=col>p</th><th scope=col>phewas_trait</th><th scope=col>drug</th></tr>
-	<tr><th></th><th scope=col>&lt;I&lt;chr&gt;&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
-</thead>
-<tbody>
-	<tr><th scope=row>1</th><td>Anxiety                         </td><td>1</td><td>ADRA2B</td><td>cortex    </td><td> 0.01345810</td><td>1.11258e-04</td><td>frequent trouble falling or staying asleep during worst period of anxiety                           </td><td>aripiprazole</td></tr>
-	<tr><th scope=row>32</th><td>Anxiety                         </td><td>1</td><td>ADRA2B</td><td>cortex    </td><td> 0.01345810</td><td>1.11258e-04</td><td>frequent trouble falling or staying asleep during worst period of anxiety                           </td><td>clozapine   </td></tr>
-	<tr><th scope=row>83</th><td>Anxiety                         </td><td>1</td><td>ADRA2B</td><td>cortex    </td><td> 0.01345810</td><td>1.11258e-04</td><td>frequent trouble falling or staying asleep during worst period of anxiety                           </td><td>paliperidone</td></tr>
-	<tr><th scope=row>108</th><td>Anxiety                         </td><td>1</td><td>ADRA2B</td><td>cortex    </td><td> 0.01345810</td><td>1.11258e-04</td><td>frequent trouble falling or staying asleep during worst period of anxiety                           </td><td>quetiapine  </td></tr>
-	<tr><th scope=row>137</th><td>Anxiety                         </td><td>1</td><td>ADRA2B</td><td>cortex    </td><td> 0.01345810</td><td>1.11258e-04</td><td>frequent trouble falling or staying asleep during worst period of anxiety                           </td><td>risperidone </td></tr>
-	<tr><th scope=row>2</th><td>Conjunctivitis                  </td><td>0</td><td>DRD2  </td><td>cortex    </td><td> 0.07000000</td><td>1.29101e-04</td><td>use of eye-antiallergens (taken as indicator of allergic/atopic conjunctivitis)                     </td><td>aripiprazole</td></tr>
-	<tr><th scope=row>33</th><td>Conjunctivitis                  </td><td>0</td><td>DRD2  </td><td>cortex    </td><td> 0.07000000</td><td>1.29101e-04</td><td>use of eye-antiallergens (taken as indicator of allergic/atopic conjunctivitis)                     </td><td>clozapine   </td></tr>
-	<tr><th scope=row>63</th><td>Conjunctivitis                  </td><td>0</td><td>DRD2  </td><td>cortex    </td><td> 0.07000000</td><td>1.29101e-04</td><td>use of eye-antiallergens (taken as indicator of allergic/atopic conjunctivitis)                     </td><td>olanzapine  </td></tr>
-	<tr><th scope=row>84</th><td>Conjunctivitis                  </td><td>0</td><td>DRD2  </td><td>cortex    </td><td> 0.07000000</td><td>1.29101e-04</td><td>use of eye-antiallergens (taken as indicator of allergic/atopic conjunctivitis)                     </td><td>paliperidone</td></tr>
-	<tr><th scope=row>109</th><td>Conjunctivitis                  </td><td>0</td><td>DRD2  </td><td>cortex    </td><td> 0.07000000</td><td>1.29101e-04</td><td>use of eye-antiallergens (taken as indicator of allergic/atopic conjunctivitis)                     </td><td>quetiapine  </td></tr>
-	<tr><th scope=row>3</th><td>Constipation                    </td><td>1</td><td>DRD4  </td><td>cerebellum</td><td> 0.63935900</td><td>6.08695e-05</td><td>constipation                                                                                        </td><td>aripiprazole</td></tr>
-	<tr><th scope=row>34</th><td>Constipation                    </td><td>1</td><td>DRD4  </td><td>cerebellum</td><td> 0.63935900</td><td>6.08695e-05</td><td>constipation                                                                                        </td><td>clozapine   </td></tr>
-	<tr><th scope=row>64</th><td>Constipation                    </td><td>1</td><td>DRD4  </td><td>cerebellum</td><td> 0.63935900</td><td>6.08695e-05</td><td>constipation                                                                                        </td><td>olanzapine  </td></tr>
-	<tr><th scope=row>85</th><td>Constipation                    </td><td>1</td><td>DRD4  </td><td>cerebellum</td><td> 0.63935900</td><td>6.08695e-05</td><td>constipation                                                                                        </td><td>paliperidone</td></tr>
-	<tr><th scope=row>110</th><td>Constipation                    </td><td>1</td><td>DRD4  </td><td>cerebellum</td><td> 0.63935900</td><td>6.08695e-05</td><td>constipation                                                                                        </td><td>quetiapine  </td></tr>
-	<tr><th scope=row>4</th><td>Corneal lesion                  </td><td>0</td><td>HTR1D </td><td>cortex    </td><td>-0.01939660</td><td>1.50000e-05</td><td>corneal hysteresis (right)                                                                          </td><td>aripiprazole</td></tr>
-	<tr><th scope=row>35</th><td>Corneal lesion                  </td><td>0</td><td>HTR1D </td><td>cortex    </td><td>-0.01939660</td><td>1.50000e-05</td><td>corneal hysteresis (right)                                                                          </td><td>clozapine   </td></tr>
-	<tr><th scope=row>86</th><td>Corneal lesion                  </td><td>0</td><td>HTR1D </td><td>cortex    </td><td>-0.01939660</td><td>1.50000e-05</td><td>corneal hysteresis (right)                                                                          </td><td>paliperidone</td></tr>
-	<tr><th scope=row>111</th><td>Corneal lesion                  </td><td>0</td><td>HTR1D </td><td>cortex    </td><td>-0.01939660</td><td>1.50000e-05</td><td>corneal hysteresis (right)                                                                          </td><td>quetiapine  </td></tr>
-	<tr><th scope=row>138</th><td>Corneal lesion                  </td><td>0</td><td>HTR1D </td><td>cortex    </td><td>-0.01939660</td><td>1.50000e-05</td><td>corneal hysteresis (right)                                                                          </td><td>risperidone </td></tr>
-	<tr><th scope=row>5</th><td>Eosinophilia                    </td><td>0</td><td>HTR1D </td><td>cortex    </td><td> 0.01604490</td><td>9.03400e-06</td><td>eosinophil percentage of white cells                                                                </td><td>aripiprazole</td></tr>
-	<tr><th scope=row>6</th><td>Eosinophilia                    </td><td>0</td><td>HTR1D </td><td>cortex    </td><td> 0.01542570</td><td>2.13900e-05</td><td>eosinophil percentage of granulocytes                                                               </td><td>aripiprazole</td></tr>
-	<tr><th scope=row>7</th><td>Eosinophilia                    </td><td>0</td><td>HTR6  </td><td>cortex    </td><td>-0.09421600</td><td>3.59998e-04</td><td>eosinophil counts                                                                                   </td><td>aripiprazole</td></tr>
-	<tr><th scope=row>8</th><td>Eosinophilia                    </td><td>0</td><td>HTR1D </td><td>cortex    </td><td> 0.01800300</td><td>6.65794e-07</td><td>sum eosinophil basophil counts                                                                      </td><td>aripiprazole</td></tr>
-	<tr><th scope=row>9</th><td>Eosinophilia                    </td><td>0</td><td>HTR1D </td><td>cortex    </td><td> 0.01770050</td><td>9.93894e-07</td><td>eosinophil counts                                                                                   </td><td>aripiprazole</td></tr>
-	<tr><th scope=row>36</th><td>Eosinophilia                    </td><td>1</td><td>HTR1D </td><td>cortex    </td><td> 0.01542570</td><td>2.13900e-05</td><td>eosinophil percentage of granulocytes                                                               </td><td>clozapine   </td></tr>
-	<tr><th scope=row>37</th><td>Eosinophilia                    </td><td>1</td><td>HTR1D </td><td>cortex    </td><td> 0.01604490</td><td>9.03400e-06</td><td>eosinophil percentage of white cells                                                                </td><td>clozapine   </td></tr>
-	<tr><th scope=row>38</th><td>Eosinophilia                    </td><td>1</td><td>HTR1D </td><td>cortex    </td><td> 0.01770050</td><td>9.93894e-07</td><td>eosinophil counts                                                                                   </td><td>clozapine   </td></tr>
-	<tr><th scope=row>39</th><td>Eosinophilia                    </td><td>1</td><td>HTR1D </td><td>cortex    </td><td> 0.01800300</td><td>6.65794e-07</td><td>sum eosinophil basophil counts                                                                      </td><td>clozapine   </td></tr>
-	<tr><th scope=row>40</th><td>Eosinophilia                    </td><td>1</td><td>HTR6  </td><td>cortex    </td><td>-0.09421600</td><td>3.59998e-04</td><td>eosinophil counts                                                                                   </td><td>clozapine   </td></tr>
-	<tr><th scope=row>65</th><td>Eosinophilia                    </td><td>0</td><td>HTR6  </td><td>cortex    </td><td>-0.09421600</td><td>3.59998e-04</td><td>eosinophil counts                                                                                   </td><td>olanzapine  </td></tr>
-	<tr><th scope=row>87</th><td>Eosinophilia                    </td><td>0</td><td>HTR1D </td><td>cortex    </td><td> 0.01604490</td><td>9.03400e-06</td><td>eosinophil percentage of white cells                                                                </td><td>paliperidone</td></tr>
-	<tr><th scope=row>88</th><td>Eosinophilia                    </td><td>0</td><td>HTR1D </td><td>cortex    </td><td> 0.01800300</td><td>6.65794e-07</td><td>sum eosinophil basophil counts                                                                      </td><td>paliperidone</td></tr>
-	<tr><th scope=row>89</th><td>Eosinophilia                    </td><td>0</td><td>HTR1D </td><td>cortex    </td><td> 0.01542570</td><td>2.13900e-05</td><td>eosinophil percentage of granulocytes                                                               </td><td>paliperidone</td></tr>
-	<tr><th scope=row>90</th><td>Eosinophilia                    </td><td>0</td><td>HTR1D </td><td>cortex    </td><td> 0.01770050</td><td>9.93894e-07</td><td>eosinophil counts                                                                                   </td><td>paliperidone</td></tr>
-	<tr><th scope=row>112</th><td>Eosinophilia                    </td><td>0</td><td>HTR1D </td><td>cortex    </td><td> 0.01542570</td><td>2.13900e-05</td><td>eosinophil percentage of granulocytes                                                               </td><td>quetiapine  </td></tr>
-	<tr><th scope=row>113</th><td>Eosinophilia                    </td><td>0</td><td>HTR1D </td><td>cortex    </td><td> 0.01770050</td><td>9.93894e-07</td><td>eosinophil counts                                                                                   </td><td>quetiapine  </td></tr>
-	<tr><th scope=row>114</th><td>Eosinophilia                    </td><td>0</td><td>HTR6  </td><td>cortex    </td><td>-0.09421600</td><td>3.59998e-04</td><td>eosinophil counts                                                                                   </td><td>quetiapine  </td></tr>
-	<tr><th scope=row>115</th><td>Eosinophilia                    </td><td>0</td><td>HTR1D </td><td>cortex    </td><td> 0.01604490</td><td>9.03400e-06</td><td>eosinophil percentage of white cells                                                                </td><td>quetiapine  </td></tr>
-	<tr><th scope=row>116</th><td>Eosinophilia                    </td><td>0</td><td>HTR1D </td><td>cortex    </td><td> 0.01800300</td><td>6.65794e-07</td><td>sum eosinophil basophil counts                                                                      </td><td>quetiapine  </td></tr>
-	<tr><th scope=row>10</th><td>Hypertension                    </td><td>1</td><td>ADRA2B</td><td>cortex    </td><td> 0.00453044</td><td>2.90001e-05</td><td>non-cancer illness code, self-reported: hypertension                                                </td><td>aripiprazole</td></tr>
-	<tr><th scope=row>11</th><td>Hypertension                    </td><td>1</td><td>ADRA2B</td><td>cortex    </td><td> 0.00452108</td><td>1.09999e-05</td><td>hypertension                                                                                        </td><td>aripiprazole</td></tr>
-	<tr><th scope=row>41</th><td>Hypertension                    </td><td>1</td><td>ADRA2B</td><td>cortex    </td><td> 0.00452108</td><td>1.09999e-05</td><td>hypertension                                                                                        </td><td>clozapine   </td></tr>
-	<tr><th scope=row>42</th><td>Hypertension                    </td><td>1</td><td>ADRA2B</td><td>cortex    </td><td> 0.00453044</td><td>2.90001e-05</td><td>non-cancer illness code, self-reported: hypertension                                                </td><td>clozapine   </td></tr>
-	<tr><th scope=row>91</th><td>Hypertension                    </td><td>0</td><td>ADRA2B</td><td>cortex    </td><td> 0.00452108</td><td>1.09999e-05</td><td>hypertension                                                                                        </td><td>paliperidone</td></tr>
-	<tr><th scope=row>92</th><td>Hypertension                    </td><td>0</td><td>ADRA2B</td><td>cortex    </td><td> 0.00453044</td><td>2.90001e-05</td><td>non-cancer illness code, self-reported: hypertension                                                </td><td>paliperidone</td></tr>
-	<tr><th scope=row>117</th><td>Hypertension                    </td><td>1</td><td>ADRA2B</td><td>cortex    </td><td> 0.00452108</td><td>1.09999e-05</td><td>hypertension                                                                                        </td><td>quetiapine  </td></tr>
-	<tr><th scope=row>118</th><td>Hypertension                    </td><td>1</td><td>ADRA2B</td><td>cortex    </td><td> 0.00453044</td><td>2.90001e-05</td><td>non-cancer illness code, self-reported: hypertension                                                </td><td>quetiapine  </td></tr>
-	<tr><th scope=row>139</th><td>Hypertension                    </td><td>1</td><td>ADRA2B</td><td>cortex    </td><td> 0.00452108</td><td>1.09999e-05</td><td>hypertension                                                                                        </td><td>risperidone </td></tr>
-	<tr><th scope=row>140</th><td>Hypertension                    </td><td>1</td><td>ADRA2B</td><td>cortex    </td><td> 0.00453044</td><td>2.90001e-05</td><td>non-cancer illness code, self-reported: hypertension                                                </td><td>risperidone </td></tr>
-	<tr><th scope=row>12</th><td>Hypotension                     </td><td>0</td><td>ADRA1A</td><td>cortex    </td><td>-0.01437090</td><td>3.50002e-09</td><td>diastolic blood pressure                                                                            </td><td>aripiprazole</td></tr>
-	<tr><th scope=row>13</th><td>Hypotension                     </td><td>0</td><td>ADRA2B</td><td>cortex    </td><td> 0.00462115</td><td>2.59998e-05</td><td>vascular/heart problems diagnosed by doctor: high blood pressure                                    </td><td>aripiprazole</td></tr>
-	<tr><th scope=row>14</th><td>Hypotension                     </td><td>0</td><td>HRH1  </td><td>cortex    </td><td>-0.00533015</td><td>5.39995e-05</td><td>medication for cholesterol, blood pressure, diabetes, or take exogenous hormones: cholesterol loweri</td><td>aripiprazole</td></tr>
-	<tr><th scope=row>43</th><td>Hypotension                     </td><td>1</td><td>HRH1  </td><td>cortex    </td><td>-0.00533015</td><td>5.39995e-05</td><td>medication for cholesterol, blood pressure, diabetes, or take exogenous hormones: cholesterol loweri</td><td>clozapine   </td></tr>
-	<tr><th scope=row>44</th><td>Hypotension                     </td><td>1</td><td>ADRA1A</td><td>cortex    </td><td>-0.01437090</td><td>3.50002e-09</td><td>diastolic blood pressure                                                                            </td><td>clozapine   </td></tr>
-	<tr><th scope=row>45</th><td>Hypotension                     </td><td>1</td><td>ADRA2B</td><td>cortex    </td><td> 0.00462115</td><td>2.59998e-05</td><td>vascular/heart problems diagnosed by doctor: high blood pressure                                    </td><td>clozapine   </td></tr>
-	<tr><th scope=row>66</th><td>Hypotension                     </td><td>1</td><td>ADRA1A</td><td>cortex    </td><td>-0.01437090</td><td>3.50002e-09</td><td>diastolic blood pressure                                                                            </td><td>olanzapine  </td></tr>
-	<tr><th scope=row>67</th><td>Hypotension                     </td><td>1</td><td>HRH1  </td><td>cortex    </td><td>-0.00533015</td><td>5.39995e-05</td><td>medication for cholesterol, blood pressure, diabetes, or take exogenous hormones: cholesterol loweri</td><td>olanzapine  </td></tr>
-	<tr><th scope=row>93</th><td>Hypotension                     </td><td>0</td><td>ADRA2B</td><td>cortex    </td><td> 0.00462115</td><td>2.59998e-05</td><td>vascular/heart problems diagnosed by doctor: high blood pressure                                    </td><td>paliperidone</td></tr>
-	<tr><th scope=row>94</th><td>Hypotension                     </td><td>0</td><td>ADRA1A</td><td>cortex    </td><td>-0.01437090</td><td>3.50002e-09</td><td>diastolic blood pressure                                                                            </td><td>paliperidone</td></tr>
-	<tr><th scope=row>95</th><td>Hypotension                     </td><td>0</td><td>HRH1  </td><td>cortex    </td><td>-0.00533015</td><td>5.39995e-05</td><td>medication for cholesterol, blood pressure, diabetes, or take exogenous hormones: cholesterol loweri</td><td>paliperidone</td></tr>
-	<tr><th scope=row>119</th><td>Hypotension                     </td><td>1</td><td>HRH1  </td><td>cortex    </td><td>-0.00533015</td><td>5.39995e-05</td><td>medication for cholesterol, blood pressure, diabetes, or take exogenous hormones: cholesterol loweri</td><td>quetiapine  </td></tr>
-	<tr><th scope=row>120</th><td>Hypotension                     </td><td>1</td><td>ADRA2B</td><td>cortex    </td><td> 0.00462115</td><td>2.59998e-05</td><td>vascular/heart problems diagnosed by doctor: high blood pressure                                    </td><td>quetiapine  </td></tr>
-	<tr><th scope=row>141</th><td>Hypotension                     </td><td>1</td><td>ADRA2B</td><td>cortex    </td><td> 0.00462115</td><td>2.59998e-05</td><td>vascular/heart problems diagnosed by doctor: high blood pressure                                    </td><td>risperidone </td></tr>
-	<tr><th scope=row>142</th><td>Hypotension                     </td><td>1</td><td>ADRA1A</td><td>cortex    </td><td>-0.01437090</td><td>3.50002e-09</td><td>diastolic blood pressure                                                                            </td><td>risperidone </td></tr>
-	<tr><th scope=row>143</th><td>Hypotension                     </td><td>1</td><td>HRH1  </td><td>cortex    </td><td>-0.00533015</td><td>5.39995e-05</td><td>medication for cholesterol, blood pressure, diabetes, or take exogenous hormones: cholesterol loweri</td><td>risperidone </td></tr>
-	<tr><th scope=row>15</th><td>Hypothyroidism                  </td><td>0</td><td>DRD4  </td><td>cortex    </td><td>-0.00287405</td><td>4.39997e-09</td><td>hypothyroidism                                                                                      </td><td>aripiprazole</td></tr>
-	<tr><th scope=row>16</th><td>Hypothyroidism                  </td><td>0</td><td>DRD4  </td><td>cortex    </td><td>-0.00264714</td><td>3.89996e-08</td><td>hypothyroidism or myxedema                                                                          </td><td>aripiprazole</td></tr>
-	<tr><th scope=row>17</th><td>Hypothyroidism                  </td><td>0</td><td>DRD4  </td><td>cortex    </td><td>-0.00170659</td><td>2.50000e-07</td><td>diagnoses - secondary icd10: e03.9 hypothyroidism, unspecified                                      </td><td>aripiprazole</td></tr>
-	<tr><th scope=row>18</th><td>Hypothyroidism                  </td><td>0</td><td>DRD4  </td><td>cortex    </td><td>-0.06550000</td><td>2.02502e-08</td><td>hypothyroidism                                                                                      </td><td>aripiprazole</td></tr>
-	<tr><th scope=row>46</th><td>Hypothyroidism                  </td><td>0</td><td>DRD4  </td><td>cortex    </td><td>-0.00287405</td><td>4.39997e-09</td><td>hypothyroidism                                                                                      </td><td>clozapine   </td></tr>
-	<tr><th scope=row>47</th><td>Hypothyroidism                  </td><td>0</td><td>DRD4  </td><td>cortex    </td><td>-0.00170659</td><td>2.50000e-07</td><td>diagnoses - secondary icd10: e03.9 hypothyroidism, unspecified                                      </td><td>clozapine   </td></tr>
-	<tr><th scope=row>48</th><td>Hypothyroidism                  </td><td>0</td><td>DRD4  </td><td>cortex    </td><td>-0.06550000</td><td>2.02502e-08</td><td>hypothyroidism                                                                                      </td><td>clozapine   </td></tr>
-	<tr><th scope=row>49</th><td>Hypothyroidism                  </td><td>0</td><td>DRD4  </td><td>cortex    </td><td>-0.00264714</td><td>3.89996e-08</td><td>hypothyroidism or myxedema                                                                          </td><td>clozapine   </td></tr>
-	<tr><th scope=row>68</th><td>Hypothyroidism                  </td><td>0</td><td>DRD4  </td><td>cortex    </td><td>-0.06550000</td><td>2.02502e-08</td><td>hypothyroidism                                                                                      </td><td>olanzapine  </td></tr>
-	<tr><th scope=row>69</th><td>Hypothyroidism                  </td><td>0</td><td>DRD4  </td><td>cortex    </td><td>-0.00264714</td><td>3.89996e-08</td><td>hypothyroidism or myxedema                                                                          </td><td>olanzapine  </td></tr>
-	<tr><th scope=row>70</th><td>Hypothyroidism                  </td><td>0</td><td>DRD4  </td><td>cortex    </td><td>-0.00287405</td><td>4.39997e-09</td><td>hypothyroidism                                                                                      </td><td>olanzapine  </td></tr>
-	<tr><th scope=row>71</th><td>Hypothyroidism                  </td><td>0</td><td>DRD4  </td><td>cortex    </td><td>-0.00170659</td><td>2.50000e-07</td><td>diagnoses - secondary icd10: e03.9 hypothyroidism, unspecified                                      </td><td>olanzapine  </td></tr>
-	<tr><th scope=row>96</th><td>Hypothyroidism                  </td><td>0</td><td>DRD4  </td><td>cortex    </td><td>-0.00287405</td><td>4.39997e-09</td><td>hypothyroidism                                                                                      </td><td>paliperidone</td></tr>
-	<tr><th scope=row>97</th><td>Hypothyroidism                  </td><td>0</td><td>DRD4  </td><td>cortex    </td><td>-0.06550000</td><td>2.02502e-08</td><td>hypothyroidism                                                                                      </td><td>paliperidone</td></tr>
-	<tr><th scope=row>98</th><td>Hypothyroidism                  </td><td>0</td><td>DRD4  </td><td>cortex    </td><td>-0.00170659</td><td>2.50000e-07</td><td>diagnoses - secondary icd10: e03.9 hypothyroidism, unspecified                                      </td><td>paliperidone</td></tr>
-	<tr><th scope=row>99</th><td>Hypothyroidism                  </td><td>0</td><td>DRD4  </td><td>cortex    </td><td>-0.00264714</td><td>3.89996e-08</td><td>hypothyroidism or myxedema                                                                          </td><td>paliperidone</td></tr>
-	<tr><th scope=row>121</th><td>Hypothyroidism                  </td><td>1</td><td>DRD4  </td><td>cortex    </td><td>-0.00170659</td><td>2.50000e-07</td><td>diagnoses - secondary icd10: e03.9 hypothyroidism, unspecified                                      </td><td>quetiapine  </td></tr>
-	<tr><th scope=row>122</th><td>Hypothyroidism                  </td><td>1</td><td>DRD4  </td><td>cortex    </td><td>-0.00264714</td><td>3.89996e-08</td><td>hypothyroidism or myxedema                                                                          </td><td>quetiapine  </td></tr>
-	<tr><th scope=row>123</th><td>Hypothyroidism                  </td><td>1</td><td>DRD4  </td><td>cortex    </td><td>-0.00287405</td><td>4.39997e-09</td><td>hypothyroidism                                                                                      </td><td>quetiapine  </td></tr>
-	<tr><th scope=row>124</th><td>Hypothyroidism                  </td><td>1</td><td>DRD4  </td><td>cortex    </td><td>-0.06550000</td><td>2.02502e-08</td><td>hypothyroidism                                                                                      </td><td>quetiapine  </td></tr>
-	<tr><th scope=row>19</th><td>Irritability                    </td><td>1</td><td>DRD2  </td><td>cerebellum</td><td>-0.00533958</td><td>2.09320e-06</td><td>irritability                                                                                        </td><td>aripiprazole</td></tr>
-	<tr><th scope=row>20</th><td>Irritability                    </td><td>1</td><td>DRD2  </td><td>cerebellum</td><td>-0.00446467</td><td>3.50002e-06</td><td>irritability                                                                                        </td><td>aripiprazole</td></tr>
-	<tr><th scope=row>50</th><td>Irritability                    </td><td>0</td><td>DRD2  </td><td>cerebellum</td><td>-0.00533958</td><td>2.09320e-06</td><td>irritability                                                                                        </td><td>clozapine   </td></tr>
-	<tr><th scope=row>51</th><td>Irritability                    </td><td>0</td><td>DRD2  </td><td>cerebellum</td><td>-0.00446467</td><td>3.50002e-06</td><td>irritability                                                                                        </td><td>clozapine   </td></tr>
-	<tr><th scope=row>72</th><td>Irritability                    </td><td>0</td><td>DRD2  </td><td>cerebellum</td><td>-0.00446467</td><td>3.50002e-06</td><td>irritability                                                                                        </td><td>olanzapine  </td></tr>
-	<tr><th scope=row>73</th><td>Irritability                    </td><td>0</td><td>DRD2  </td><td>cerebellum</td><td>-0.00533958</td><td>2.09320e-06</td><td>irritability                                                                                        </td><td>olanzapine  </td></tr>
-	<tr><th scope=row>100</th><td>Irritability                    </td><td>0</td><td>DRD2  </td><td>cerebellum</td><td>-0.00533958</td><td>2.09320e-06</td><td>irritability                                                                                        </td><td>paliperidone</td></tr>
-	<tr><th scope=row>101</th><td>Irritability                    </td><td>0</td><td>DRD2  </td><td>cerebellum</td><td>-0.00446467</td><td>3.50002e-06</td><td>irritability                                                                                        </td><td>paliperidone</td></tr>
-	<tr><th scope=row>125</th><td>Irritability                    </td><td>1</td><td>DRD2  </td><td>cerebellum</td><td>-0.00446467</td><td>3.50002e-06</td><td>irritability                                                                                        </td><td>quetiapine  </td></tr>
-	<tr><th scope=row>126</th><td>Irritability                    </td><td>1</td><td>DRD2  </td><td>cerebellum</td><td>-0.00533958</td><td>2.09320e-06</td><td>irritability                                                                                        </td><td>quetiapine  </td></tr>
-	<tr><th scope=row>144</th><td>Irritability                    </td><td>0</td><td>DRD2  </td><td>cerebellum</td><td>-0.00533958</td><td>2.09320e-06</td><td>irritability                                                                                        </td><td>risperidone </td></tr>
-	<tr><th scope=row>145</th><td>Irritability                    </td><td>0</td><td>DRD2  </td><td>cerebellum</td><td>-0.00446467</td><td>3.50002e-06</td><td>irritability                                                                                        </td><td>risperidone </td></tr>
-	<tr><th scope=row>21</th><td>Manic psychosis                 </td><td>0</td><td>DRD2  </td><td>cortex    </td><td> 0.00372940</td><td>6.69993e-05</td><td>ever manic/hyper for 2 days                                                                         </td><td>aripiprazole</td></tr>
-	<tr><th scope=row>22</th><td>Manic psychosis                 </td><td>0</td><td>DRD2  </td><td>cortex    </td><td> 0.00413442</td><td>1.11774e-04</td><td>ever manic/hyper for 2 days                                                                         </td><td>aripiprazole</td></tr>
-	<tr><th scope=row>52</th><td>Manic psychosis                 </td><td>0</td><td>DRD2  </td><td>cortex    </td><td> 0.00413442</td><td>1.11774e-04</td><td>ever manic/hyper for 2 days                                                                         </td><td>clozapine   </td></tr>
-	<tr><th scope=row>53</th><td>Manic psychosis                 </td><td>0</td><td>DRD2  </td><td>cortex    </td><td> 0.00372940</td><td>6.69993e-05</td><td>ever manic/hyper for 2 days                                                                         </td><td>clozapine   </td></tr>
-	<tr><th scope=row>74</th><td>Manic psychosis                 </td><td>0</td><td>DRD2  </td><td>cortex    </td><td> 0.00413442</td><td>1.11774e-04</td><td>ever manic/hyper for 2 days                                                                         </td><td>olanzapine  </td></tr>
-	<tr><th scope=row>75</th><td>Manic psychosis                 </td><td>0</td><td>DRD2  </td><td>cortex    </td><td> 0.00372940</td><td>6.69993e-05</td><td>ever manic/hyper for 2 days                                                                         </td><td>olanzapine  </td></tr>
-	<tr><th scope=row>127</th><td>Manic psychosis                 </td><td>0</td><td>DRD2  </td><td>cortex    </td><td> 0.00372940</td><td>6.69993e-05</td><td>ever manic/hyper for 2 days                                                                         </td><td>quetiapine  </td></tr>
-	<tr><th scope=row>128</th><td>Manic psychosis                 </td><td>0</td><td>DRD2  </td><td>cortex    </td><td> 0.00413442</td><td>1.11774e-04</td><td>ever manic/hyper for 2 days                                                                         </td><td>quetiapine  </td></tr>
-	<tr><th scope=row>23</th><td>Micturition urgency             </td><td>0</td><td>DRD2  </td><td>cerebellum</td><td>-0.00714309</td><td>2.15263e-05</td><td>urinary albumin excretion                                                                           </td><td>aripiprazole</td></tr>
-	<tr><th scope=row>24</th><td>Micturition urgency             </td><td>0</td><td>DRD1  </td><td>cortex    </td><td> 0.01222170</td><td>1.92331e-06</td><td>urinary sodium-potassium ratio                                                                      </td><td>aripiprazole</td></tr>
-	<tr><th scope=row>54</th><td>Micturition urgency             </td><td>1</td><td>DRD2  </td><td>cerebellum</td><td>-0.00714309</td><td>2.15263e-05</td><td>urinary albumin excretion                                                                           </td><td>clozapine   </td></tr>
-	<tr><th scope=row>55</th><td>Micturition urgency             </td><td>1</td><td>DRD1  </td><td>cortex    </td><td> 0.01222170</td><td>1.92331e-06</td><td>urinary sodium-potassium ratio                                                                      </td><td>clozapine   </td></tr>
-	<tr><th scope=row>76</th><td>Micturition urgency             </td><td>0</td><td>DRD1  </td><td>cortex    </td><td> 0.01222170</td><td>1.92331e-06</td><td>urinary sodium-potassium ratio                                                                      </td><td>olanzapine  </td></tr>
-	<tr><th scope=row>77</th><td>Micturition urgency             </td><td>0</td><td>DRD2  </td><td>cerebellum</td><td>-0.00714309</td><td>2.15263e-05</td><td>urinary albumin excretion                                                                           </td><td>olanzapine  </td></tr>
-	<tr><th scope=row>102</th><td>Micturition urgency             </td><td>0</td><td>DRD1  </td><td>cortex    </td><td> 0.01222170</td><td>1.92331e-06</td><td>urinary sodium-potassium ratio                                                                      </td><td>paliperidone</td></tr>
-	<tr><th scope=row>103</th><td>Micturition urgency             </td><td>0</td><td>DRD2  </td><td>cerebellum</td><td>-0.00714309</td><td>2.15263e-05</td><td>urinary albumin excretion                                                                           </td><td>paliperidone</td></tr>
-	<tr><th scope=row>129</th><td>Micturition urgency             </td><td>0</td><td>DRD2  </td><td>cerebellum</td><td>-0.00714309</td><td>2.15263e-05</td><td>urinary albumin excretion                                                                           </td><td>quetiapine  </td></tr>
-	<tr><th scope=row>130</th><td>Micturition urgency             </td><td>0</td><td>DRD1  </td><td>cortex    </td><td> 0.01222170</td><td>1.92331e-06</td><td>urinary sodium-potassium ratio                                                                      </td><td>quetiapine  </td></tr>
-	<tr><th scope=row>146</th><td>Micturition urgency             </td><td>0</td><td>DRD2  </td><td>cerebellum</td><td>-0.00714309</td><td>2.15263e-05</td><td>urinary albumin excretion                                                                           </td><td>risperidone </td></tr>
-	<tr><th scope=row>147</th><td>Micturition urgency             </td><td>0</td><td>DRD1  </td><td>cortex    </td><td> 0.01222170</td><td>1.92331e-06</td><td>urinary sodium-potassium ratio                                                                      </td><td>risperidone </td></tr>
-	<tr><th scope=row>25</th><td>Neutropenia                     </td><td>0</td><td>HTR1D </td><td>cortex    </td><td>-0.01473140</td><td>4.95199e-05</td><td>neutrophil percentage of granulocytes                                                               </td><td>aripiprazole</td></tr>
-	<tr><th scope=row>56</th><td>Neutropenia                     </td><td>1</td><td>HTR1D </td><td>cortex    </td><td>-0.01473140</td><td>4.95199e-05</td><td>neutrophil percentage of granulocytes                                                               </td><td>clozapine   </td></tr>
-	<tr><th scope=row>104</th><td>Neutropenia                     </td><td>0</td><td>HTR1D </td><td>cortex    </td><td>-0.01473140</td><td>4.95199e-05</td><td>neutrophil percentage of granulocytes                                                               </td><td>paliperidone</td></tr>
-	<tr><th scope=row>131</th><td>Neutropenia                     </td><td>0</td><td>HTR1D </td><td>cortex    </td><td>-0.01473140</td><td>4.95199e-05</td><td>neutrophil percentage of granulocytes                                                               </td><td>quetiapine  </td></tr>
-	<tr><th scope=row>148</th><td>Neutropenia                     </td><td>0</td><td>HTR1D </td><td>cortex    </td><td>-0.01473140</td><td>4.95199e-05</td><td>neutrophil percentage of granulocytes                                                               </td><td>risperidone </td></tr>
-	<tr><th scope=row>26</th><td>Oedema peripheral               </td><td>1</td><td>DRD4  </td><td>cortex    </td><td>-0.00283408</td><td>1.00749e-06</td><td>non-cancer illness code  self-reported: hypothyroidism/myxoedema                                    </td><td>aripiprazole</td></tr>
-	<tr><th scope=row>27</th><td>Oedema peripheral               </td><td>1</td><td>DRD4  </td><td>cortex    </td><td>-0.00280397</td><td>1.50000e-08</td><td>non-cancer illness code, self-reported: hypothyroidism/myxoedema                                    </td><td>aripiprazole</td></tr>
-	<tr><th scope=row>57</th><td>Oedema peripheral               </td><td>0</td><td>DRD4  </td><td>cortex    </td><td>-0.00280397</td><td>1.50000e-08</td><td>non-cancer illness code, self-reported: hypothyroidism/myxoedema                                    </td><td>clozapine   </td></tr>
-	<tr><th scope=row>58</th><td>Oedema peripheral               </td><td>0</td><td>DRD4  </td><td>cortex    </td><td>-0.00283408</td><td>1.00749e-06</td><td>non-cancer illness code  self-reported: hypothyroidism/myxoedema                                    </td><td>clozapine   </td></tr>
-	<tr><th scope=row>78</th><td>Oedema peripheral               </td><td>1</td><td>DRD4  </td><td>cortex    </td><td>-0.00283408</td><td>1.00749e-06</td><td>non-cancer illness code  self-reported: hypothyroidism/myxoedema                                    </td><td>olanzapine  </td></tr>
-	<tr><th scope=row>79</th><td>Oedema peripheral               </td><td>1</td><td>DRD4  </td><td>cortex    </td><td>-0.00280397</td><td>1.50000e-08</td><td>non-cancer illness code, self-reported: hypothyroidism/myxoedema                                    </td><td>olanzapine  </td></tr>
-	<tr><th scope=row>105</th><td>Oedema peripheral               </td><td>0</td><td>DRD4  </td><td>cortex    </td><td>-0.00280397</td><td>1.50000e-08</td><td>non-cancer illness code, self-reported: hypothyroidism/myxoedema                                    </td><td>paliperidone</td></tr>
-	<tr><th scope=row>106</th><td>Oedema peripheral               </td><td>0</td><td>DRD4  </td><td>cortex    </td><td>-0.00283408</td><td>1.00749e-06</td><td>non-cancer illness code  self-reported: hypothyroidism/myxoedema                                    </td><td>paliperidone</td></tr>
-	<tr><th scope=row>132</th><td>Oedema peripheral               </td><td>1</td><td>DRD4  </td><td>cortex    </td><td>-0.00280397</td><td>1.50000e-08</td><td>non-cancer illness code, self-reported: hypothyroidism/myxoedema                                    </td><td>quetiapine  </td></tr>
-	<tr><th scope=row>133</th><td>Oedema peripheral               </td><td>1</td><td>DRD4  </td><td>cortex    </td><td>-0.00283408</td><td>1.00749e-06</td><td>non-cancer illness code  self-reported: hypothyroidism/myxoedema                                    </td><td>quetiapine  </td></tr>
-	<tr><th scope=row>28</th><td>Seasonal allergy                </td><td>0</td><td>DRD2  </td><td>cortex    </td><td> 0.07000000</td><td>1.29101e-04</td><td>use of eye-antiallergens (taken as indicator of allergic/atopic conjunctivitis)                     </td><td>aripiprazole</td></tr>
-	<tr><th scope=row>59</th><td>Seasonal allergy                </td><td>0</td><td>DRD2  </td><td>cortex    </td><td> 0.07000000</td><td>1.29101e-04</td><td>use of eye-antiallergens (taken as indicator of allergic/atopic conjunctivitis)                     </td><td>clozapine   </td></tr>
-	<tr><th scope=row>149</th><td>Seasonal allergy                </td><td>0</td><td>DRD2  </td><td>cortex    </td><td> 0.07000000</td><td>1.29101e-04</td><td>use of eye-antiallergens (taken as indicator of allergic/atopic conjunctivitis)                     </td><td>risperidone </td></tr>
-	<tr><th scope=row>29</th><td>Urinary abnormalities           </td><td>0</td><td>DRD1  </td><td>cortex    </td><td> 0.01222170</td><td>1.92331e-06</td><td>urinary sodium-potassium ratio                                                                      </td><td>aripiprazole</td></tr>
-	<tr><th scope=row>30</th><td>Urinary abnormalities           </td><td>0</td><td>DRD2  </td><td>cerebellum</td><td>-0.00714309</td><td>2.15263e-05</td><td>urinary albumin excretion                                                                           </td><td>aripiprazole</td></tr>
-	<tr><th scope=row>60</th><td>Urinary abnormalities           </td><td>1</td><td>DRD2  </td><td>cerebellum</td><td>-0.00714309</td><td>2.15263e-05</td><td>urinary albumin excretion                                                                           </td><td>clozapine   </td></tr>
-	<tr><th scope=row>61</th><td>Urinary abnormalities           </td><td>1</td><td>DRD1  </td><td>cortex    </td><td> 0.01222170</td><td>1.92331e-06</td><td>urinary sodium-potassium ratio                                                                      </td><td>clozapine   </td></tr>
-	<tr><th scope=row>80</th><td>Urinary abnormalities           </td><td>0</td><td>DRD2  </td><td>cerebellum</td><td>-0.00714309</td><td>2.15263e-05</td><td>urinary albumin excretion                                                                           </td><td>olanzapine  </td></tr>
-	<tr><th scope=row>81</th><td>Urinary abnormalities           </td><td>0</td><td>DRD1  </td><td>cortex    </td><td> 0.01222170</td><td>1.92331e-06</td><td>urinary sodium-potassium ratio                                                                      </td><td>olanzapine  </td></tr>
-	<tr><th scope=row>134</th><td>Urinary abnormalities           </td><td>0</td><td>DRD2  </td><td>cerebellum</td><td>-0.00714309</td><td>2.15263e-05</td><td>urinary albumin excretion                                                                           </td><td>quetiapine  </td></tr>
-	<tr><th scope=row>135</th><td>Urinary abnormalities           </td><td>0</td><td>DRD1  </td><td>cortex    </td><td> 0.01222170</td><td>1.92331e-06</td><td>urinary sodium-potassium ratio                                                                      </td><td>quetiapine  </td></tr>
-	<tr><th scope=row>31</th><td>White blood cell count decreased</td><td>0</td><td>ADRA1B</td><td>cortex    </td><td>-0.00784375</td><td>3.50002e-05</td><td>white blood cell count (monocyte)                                                                   </td><td>aripiprazole</td></tr>
-	<tr><th scope=row>62</th><td>White blood cell count decreased</td><td>1</td><td>ADRA1B</td><td>cortex    </td><td>-0.00784375</td><td>3.50002e-05</td><td>white blood cell count (monocyte)                                                                   </td><td>clozapine   </td></tr>
-	<tr><th scope=row>82</th><td>White blood cell count decreased</td><td>0</td><td>ADRA1B</td><td>cortex    </td><td>-0.00784375</td><td>3.50002e-05</td><td>white blood cell count (monocyte)                                                                   </td><td>olanzapine  </td></tr>
-	<tr><th scope=row>107</th><td>White blood cell count decreased</td><td>0</td><td>ADRA1B</td><td>cortex    </td><td>-0.00784375</td><td>3.50002e-05</td><td>white blood cell count (monocyte)                                                                   </td><td>paliperidone</td></tr>
-	<tr><th scope=row>136</th><td>White blood cell count decreased</td><td>0</td><td>ADRA1B</td><td>cortex    </td><td>-0.00784375</td><td>3.50002e-05</td><td>white blood cell count (monocyte)                                                                   </td><td>quetiapine  </td></tr>
-	<tr><th scope=row>150</th><td>White blood cell count decreased</td><td>0</td><td>ADRA1B</td><td>cortex    </td><td>-0.00784375</td><td>3.50002e-05</td><td>white blood cell count (monocyte)                                                                   </td><td>risperidone </td></tr>
-</tbody>
-</table>
 
 </div>
 
