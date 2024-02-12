@@ -14607,7 +14607,7 @@ $$\forall IV \in R,  b(𝛽_{𝐼𝑉} * pKi) * A * D$$<p>Where</p>
 </ul>
 </li>
 <li>b() is a bootsrapped estimate of the two different effects of 𝛽𝐼𝑉 and pKI</li>
-<li>A = action of drug against receptor (antagonist, ligand,  = 1, agonist, partial agonist = -1)</li>
+<li>A = action of drug against receptor</li>
 <li>D = directionality of effect of eQTL vs. protein</li>
 </ul>
 <p>NOTES and CAVEATS:</p>
@@ -14615,7 +14615,7 @@ $$\forall IV \in R,  b(𝛽_{𝐼𝑉} * pKi) * A * D$$<p>Where</p>
 <li>Some receptors did not have binding affinity data.  I defaulted to a pKI score of 0.5 ( =~ 3000 ki), which is a very modest effect</li>
 <li>D in the above was not used (ie. defaulted to 1) due to lack of data</li>
 <li>A -&gt; antagonist=1, ligand=1, inhibitor=1, agonist=-1, &quot;partial agonist&quot;=-1, &quot;positive modulator&quot;=-1</li>
-<li>The score, b(𝛽_{𝐼𝑉} * pKi) can change betwee colocalisation filters, as it includes different PheWAS results depending on that coloc cutoff</li>
+<li>The score, b(𝛽_{𝐼𝑉} * pKi) can change between colocalisation thresholds, as it includes different PheWAS results depending on that coloc cutoff</li>
 </ol>
 <h4 id="BIG-CAVEAT:-There-are-about-double-the-results-for-h4-%3E-60%25-vs.-h4-%3E-80%25">BIG CAVEAT: There are about double the results for h4 &gt; 60% vs. h4 &gt; 80%<a class="anchor-link" href="#BIG-CAVEAT:-There-are-about-double-the-results-for-h4-%3E-60%25-vs.-h4-%3E-80%25">&#182;</a></h4>
 </div>
@@ -14688,6 +14688,10 @@ $$\forall IV \in R,  b(𝛽_{𝐼𝑉} * pKi) * A * D$$<p>Where</p>
 <tr>
   <td><img src="scratch/results/plots/GABBR1_vs_side_effects_h4_60.png" alt="alt" /></td>
   <td><img src="scratch/results/plots/GABBR1_vs_side_effects_h4_80.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/GABRA1_vs_side_effects_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/GABRA1_vs_side_effects_h4_80.png" alt="alt" /></td>
 </tr>
 <tr>
   <td><img src="scratch/results/plots/GRIN2A_vs_side_effects_h4_60.png" alt="alt" /></td>
