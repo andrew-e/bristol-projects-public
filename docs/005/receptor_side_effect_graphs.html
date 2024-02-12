@@ -3,7 +3,7 @@
 <head><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>effect_x_binding_affinities</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>receptor_side_effect_graphs</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 
 
 
@@ -14590,864 +14590,164 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
     </script>
     <!-- End of mathjax configuration --></head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell  jp-mod-noInput ">
 
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
-<h3 id="Target-and-pKi-of-drug">Target and pKi of drug<a class="anchor-link" href="#Target-and-pKi-of-drug">&#182;</a></h3>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Receptor-Side-Effect-Graphs">Receptor Side Effect Graphs<a class="anchor-link" href="#Receptor-Side-Effect-Graphs">&#182;</a></h2><p>Calculating effect per receptor:</p>
+$$\forall IV \in R,  b(𝛽_{𝐼𝑉} * pKi) * A * D$$<p>Where</p>
+<ul>
+<li>R = list of receptors known to the drug</li>
+<li>𝛽𝐼𝑉 = wald BETA and SE of metabrain qtl vs. phewas result</li>
+<li>pKi = -log10(kiM) - 4, where kiM is the inhibition constant, calculated as a trimmed MEAN and SE of ki values (per molar)<ul>
+<li>subtract 4 so pKi has a value range is 0 - 5, and can be multiplied by 𝛽𝐼𝑉 more easily</li>
+</ul>
+</li>
+<li>b() is a bootsrapped estimate of the two different effects of 𝛽𝐼𝑉 and pKI</li>
+<li>A = action of drug against receptor (antagonist, ligand,  = 1, agonist, partial agonist = -1)</li>
+<li>D = directionality of effect of eQTL vs. protein</li>
+</ul>
+<p>NOTES and CAVEATS:</p>
+<ol>
+<li>Some receptors did not have binding affinity data.  I defaulted to a pKI score of 0.5 ( =~ 3000 ki), which is a very modest effect</li>
+<li>D in the above was not used (ie. defaulted to 1) due to lack of data</li>
+<li>A -&gt; antagonist=1, ligand=1, inhibitor=1, agonist=-1, &quot;partial agonist&quot;=-1, &quot;positive modulator&quot;=-1</li>
+<li>The score, b(𝛽_{𝐼𝑉} * pKi) can change betwee colocalisation filters, as it includes different PheWAS results depending on that coloc cutoff</li>
+</ol>
+<h4 id="BIG-CAVEAT:-There-are-about-double-the-results-for-h4-%3E-60%25-vs.-h4-%3E-80%25">BIG CAVEAT: There are about double the results for h4 &gt; 60% vs. h4 &gt; 80%<a class="anchor-link" href="#BIG-CAVEAT:-There-are-about-double-the-results-for-h4-%3E-60%25-vs.-h4-%3E-80%25">&#182;</a></h4>
 </div>
-
 </div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
-<table class="dataframe">
-<caption>A tibble: 68 × 7</caption>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Cumulative-Effect-Per-Receptor">Cumulative Effect Per Receptor<a class="anchor-link" href="#Cumulative-Effect-Per-Receptor">&#182;</a></h3><table>
 <thead>
-	<tr><th scope=col>target</th><th scope=col>aripiprazole_pki</th><th scope=col>clozapine_pki</th><th scope=col>olanzapine_pki</th><th scope=col>paliperidone_pki</th><th scope=col>quetiapine_pki</th><th scope=col>risperidone_pki</th></tr>
-	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+<tr>
+  <th>h4 &gt; 60%</th>
+  <th>h4 &gt; 80%</th>
+</tr>
 </thead>
 <tbody>
-	<tr><td>ADRA1A </td><td>2.59006688</td><td>3.7958800</td><td> 1.9507820</td><td>3.6020600</td><td>2.6575773</td><td> 3.30103000</td></tr>
-	<tr><td>ADRA1B </td><td>2.45842076</td><td>3.1549020</td><td> 1.5800443</td><td>4.1549020</td><td>2.0457575</td><td> 3.04575749</td></tr>
-	<tr><td>ADRA1C </td><td>        NA</td><td>       NA</td><td>        NA</td><td>       NA</td><td>       NA</td><td>         NA</td></tr>
-	<tr><td>ADRA1D </td><td>        NA</td><td>       NA</td><td>        NA</td><td>       NA</td><td>       NA</td><td>         NA</td></tr>
-	<tr><td>ADRA2A </td><td>2.12988884</td><td>1.8477117</td><td> 1.5029321</td><td>2.5228787</td><td>0.4400934</td><td> 2.73636393</td></tr>
-	<tr><td>ADRA2B </td><td>1.99139983</td><td>2.5767541</td><td> 2.0861861</td><td>2.4788619</td><td>1.1269120</td><td> 1.96818773</td></tr>
-	<tr><td>ADRA2C </td><td>2.42078822</td><td>2.6055483</td><td> 2.2557070</td><td>3.1337127</td><td>2.5376020</td><td> 3.21112488</td></tr>
-	<tr><td>ADRB1  </td><td>1.85078089</td><td>0.1249387</td><td> 0.1249387</td><td>0.1249387</td><td>       NA</td><td> 0.12493874</td></tr>
-	<tr><td>ADRB2  </td><td>1.78781240</td><td>0.2347041</td><td> 0.0000000</td><td>0.1249387</td><td>       NA</td><td> 0.12493874</td></tr>
-	<tr><td>ADRB3  </td><td>        NA</td><td>       NA</td><td>        NA</td><td>       NA</td><td>       NA</td><td>         NA</td></tr>
-	<tr><td>CALM1  </td><td>        NA</td><td>       NA</td><td>        NA</td><td>       NA</td><td>       NA</td><td>         NA</td></tr>
-	<tr><td>CALY   </td><td>        NA</td><td>       NA</td><td>        NA</td><td>       NA</td><td>       NA</td><td>         NA</td></tr>
-	<tr><td>CHRM1  </td><td>0.16877031</td><td>3.7400000</td><td> 3.3279022</td><td>       NA</td><td>1.9208188</td><td> 0.08074052</td></tr>
-	<tr><td>CHRM2  </td><td>0.45469288</td><td>2.1831744</td><td> 2.0579919</td><td>       NA</td><td>1.2000000</td><td> 0.09242876</td></tr>
-	<tr><td>CHRM3  </td><td>0.33003263</td><td>2.6020600</td><td> 2.1079054</td><td>       NA</td><td>0.7874129</td><td> 0.00000000</td></tr>
-	<tr><td>CHRM4  </td><td>0.81801358</td><td>2.7212464</td><td> 2.4948500</td><td>       NA</td><td>1.2211255</td><td> 0.00000000</td></tr>
-	<tr><td>CHRM5  </td><td>0.63292376</td><td>2.7304871</td><td> 3.0457575</td><td>       NA</td><td>0.5243288</td><td> 0.00000000</td></tr>
-	<tr><td>DRD1   </td><td>1.41228903</td><td>1.7077439</td><td> 2.2839967</td><td>2.3868456</td><td>1.1300000</td><td> 1.40340290</td></tr>
-	<tr><td>DRD2   </td><td>3.83865527</td><td>1.8601209</td><td> 2.6777807</td><td>3.4621809</td><td>1.3010300</td><td> 3.56863624</td></tr>
-	<tr><td>DRD3   </td><td>3.50863831</td><td>1.6161846</td><td> 2.3500000</td><td>4.0457575</td><td>1.4685211</td><td> 3.09017861</td></tr>
-	<tr><td>DRD4   </td><td>1.34724850</td><td>2.4145393</td><td> 2.5528420</td><td>2.3752024</td><td>0.6994847</td><td> 3.07000000</td></tr>
-	<tr><td>DRD5   </td><td>0.77572599</td><td>1.6020600</td><td> 2.0861861</td><td>2.5376020</td><td>0.7599502</td><td> 1.53835143</td></tr>
-	<tr><td>GABBR1 </td><td>        NA</td><td>       NA</td><td>        NA</td><td>       NA</td><td>       NA</td><td>         NA</td></tr>
-	<tr><td>GABBR2 </td><td>        NA</td><td>       NA</td><td>        NA</td><td>       NA</td><td>       NA</td><td>         NA</td></tr>
-	<tr><td>GABRA1 </td><td>        NA</td><td>       NA</td><td>        NA</td><td>       NA</td><td>       NA</td><td>         NA</td></tr>
-	<tr><td>GABRA2 </td><td>        NA</td><td>       NA</td><td>        NA</td><td>       NA</td><td>       NA</td><td>         NA</td></tr>
-	<tr><td>GABRA3 </td><td>        NA</td><td>       NA</td><td>        NA</td><td>       NA</td><td>       NA</td><td>         NA</td></tr>
-	<tr><td>GABRA5 </td><td>        NA</td><td>       NA</td><td>        NA</td><td>       NA</td><td>       NA</td><td>         NA</td></tr>
-	<tr><td>GABRB1 </td><td>        NA</td><td>       NA</td><td>        NA</td><td>       NA</td><td>       NA</td><td>         NA</td></tr>
-	<tr><td>GABRG1 </td><td>        NA</td><td>       NA</td><td>        NA</td><td>       NA</td><td>       NA</td><td>         NA</td></tr>
-	<tr><td>GABRG2 </td><td>        NA</td><td>       NA</td><td>        NA</td><td>       NA</td><td>       NA</td><td>         NA</td></tr>
-	<tr><td>GABRG3 </td><td>        NA</td><td>       NA</td><td>        NA</td><td>       NA</td><td>       NA</td><td>         NA</td></tr>
-	<tr><td>GRIN1  </td><td>        NA</td><td>       NA</td><td>        NA</td><td>       NA</td><td>       NA</td><td>         NA</td></tr>
-	<tr><td>GRIN2A </td><td>        NA</td><td>       NA</td><td>        NA</td><td>       NA</td><td>       NA</td><td>         NA</td></tr>
-	<tr><td>GRIN2B </td><td>        NA</td><td>       NA</td><td>        NA</td><td>       NA</td><td>       NA</td><td>         NA</td></tr>
-	<tr><td>GRIN2C </td><td>        NA</td><td>       NA</td><td>        NA</td><td>       NA</td><td>       NA</td><td>         NA</td></tr>
-	<tr><td>GRIN2D </td><td>        NA</td><td>       NA</td><td>        NA</td><td>       NA</td><td>       NA</td><td>         NA</td></tr>
-	<tr><td>GRIN3A </td><td>        NA</td><td>       NA</td><td>        NA</td><td>       NA</td><td>       NA</td><td>         NA</td></tr>
-	<tr><td>GRIN3B </td><td>        NA</td><td>       NA</td><td>        NA</td><td>       NA</td><td>       NA</td><td>         NA</td></tr>
-	<tr><td>GSTP1  </td><td>        NA</td><td>       NA</td><td>        NA</td><td>       NA</td><td>       NA</td><td>         NA</td></tr>
-	<tr><td>HRH1   </td><td>2.57969525</td><td>3.7423573</td><td> 3.6239499</td><td>3.2510371</td><td>3.0600000</td><td> 2.72124640</td></tr>
-	<tr><td>HRH2   </td><td>0.00000000</td><td>1.8153086</td><td> 2.3565473</td><td>1.9164974</td><td>0.2809589</td><td> 1.92081875</td></tr>
-	<tr><td>HRH3   </td><td>0.00000000</td><td>0.0000000</td><td>-1.0000000</td><td>       NA</td><td>       NA</td><td>-1.00000000</td></tr>
-	<tr><td>HRH4   </td><td>0.00000000</td><td>1.2924298</td><td>-0.1300512</td><td>0.0605806</td><td>       NA</td><td>-0.74036269</td></tr>
-	<tr><td>HTR1A  </td><td>3.25181197</td><td>1.8538720</td><td> 0.6855008</td><td>1.2291480</td><td>1.5100000</td><td> 1.37986395</td></tr>
-	<tr><td>HTR1B  </td><td>1.07935500</td><td>1.2814983</td><td> 1.1804561</td><td>2.1814442</td><td>0.8014804</td><td> 2.43409318</td></tr>
-	<tr><td>HTR1D  </td><td>2.16749109</td><td>1.2781894</td><td> 1.0963675</td><td>2.7212464</td><td>0.3010300</td><td> 2.74328225</td></tr>
-	<tr><td>HTR1E  </td><td>0.09691001</td><td>1.0150229</td><td> 0.6558043</td><td>0.2588484</td><td>0.7384992</td><td> 0.24718357</td></tr>
-	<tr><td>HTR1F  </td><td>        NA</td><td>1.8860566</td><td> 1.5086383</td><td>       NA</td><td>0.6497520</td><td> 0.90657831</td></tr>
-	<tr><td>HTR2A  </td><td>3.06048075</td><td>3.1453904</td><td> 3.4814861</td><td>4.0000000</td><td>1.6989700</td><td> 4.53760201</td></tr>
-	<tr><td>HTR2B  </td><td>4.44369750</td><td>3.1331222</td><td> 2.9281180</td><td>2.3987007</td><td>2.0655015</td><td> 2.45593196</td></tr>
-	<tr><td>HTR2C  </td><td>2.12493874</td><td>2.7695511</td><td> 2.9740201</td><td>2.3665315</td><td>0.8500000</td><td> 2.61978876</td></tr>
-	<tr><td>HTR3A  </td><td>1.20204036</td><td>2.0900000</td><td> 1.9030900</td><td>0.0000000</td><td>0.3635121</td><td> 0.03816053</td></tr>
-	<tr><td>HTR5A  </td><td>0.90657831</td><td>0.6146619</td><td> 0.8899156</td><td>1.4522868</td><td>0.5670307</td><td> 1.69814563</td></tr>
-	<tr><td>HTR6   </td><td>1.40671393</td><td>2.9800000</td><td> 3.0705811</td><td>0.8103693</td><td>0.7398093</td><td> 0.74712810</td></tr>
-	<tr><td>HTR7   </td><td>2.98716278</td><td>2.6480105</td><td> 1.6830556</td><td>3.5606673</td><td>1.5114493</td><td> 3.40893539</td></tr>
-	<tr><td>KCNH2  </td><td>        NA</td><td>       NA</td><td>        NA</td><td>       NA</td><td>       NA</td><td>         NA</td></tr>
-	<tr><td>MCHR1  </td><td>        NA</td><td>       NA</td><td>        NA</td><td>       NA</td><td>       NA</td><td>         NA</td></tr>
-	<tr><td>OPRD1  </td><td>        NA</td><td>1.8961963</td><td>        NA</td><td>       NA</td><td>       NA</td><td>         NA</td></tr>
-	<tr><td>OPRK1  </td><td>0.00000000</td><td>       NA</td><td>        NA</td><td>       NA</td><td>       NA</td><td>         NA</td></tr>
-	<tr><td>OPRM1  </td><td>0.00000000</td><td>       NA</td><td>        NA</td><td>       NA</td><td>       NA</td><td>         NA</td></tr>
-	<tr><td>ORM1   </td><td>        NA</td><td>       NA</td><td>        NA</td><td>       NA</td><td>       NA</td><td>         NA</td></tr>
-	<tr><td>ORM2   </td><td>        NA</td><td>       NA</td><td>        NA</td><td>       NA</td><td>       NA</td><td>         NA</td></tr>
-	<tr><td>SIGMAR1</td><td>        NA</td><td>       NA</td><td>        NA</td><td>       NA</td><td>       NA</td><td>         NA</td></tr>
-	<tr><td>SLC18A2</td><td>        NA</td><td>       NA</td><td>        NA</td><td>       NA</td><td>       NA</td><td>         NA</td></tr>
-	<tr><td>SLC6A3 </td><td>0.49214413</td><td>0.0000000</td><td>        NA</td><td>       NA</td><td>       NA</td><td>         NA</td></tr>
-	<tr><td>SLC6A4 </td><td>0.96657624</td><td>0.7894140</td><td> 0.4346245</td><td>0.6273641</td><td>       NA</td><td> 0.85387196</td></tr>
-	<tr><td>SMPD1  </td><td>        NA</td><td>       NA</td><td>        NA</td><td>       NA</td><td>       NA</td><td>         NA</td></tr>
+<tr>
+  <td><img src="scratch/results/plots/effect_size_by_receptor_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/effect_size_by_receptor_h4_80.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/effect_size_by_receptor_heatmap_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/effect_size_by_receptor_heatmap_h4_80.png" alt="alt" /></td>
+</tr>
 </tbody>
 </table>
 
 </div>
-
 </div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
-<h3 id="aripiprazole-side-effects">aripiprazole side effects<a class="anchor-link" href="#aripiprazole-side-effects">&#182;</a></h3>
 </div>
-
 </div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
-<table class="dataframe">
-<caption>A data.frame: 58 × 8</caption>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Specific-Effects-Per-Receptor">Specific Effects Per Receptor<a class="anchor-link" href="#Specific-Effects-Per-Receptor">&#182;</a></h3><table>
 <thead>
-	<tr><th></th><th scope=col>exposure</th><th scope=col>side_effect</th><th scope=col>wald_ratio_b</th><th scope=col>h4</th><th scope=col>source</th><th scope=col>aripiprazole_target</th><th scope=col>aripiprazole_pki</th><th scope=col>aripiprazole_target_action</th></tr>
-	<tr><th></th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+<tr>
+  <th>h4 &gt; 60%</th>
+  <th>h4 &gt; 80%</th>
+</tr>
 </thead>
 <tbody>
-	<tr><th scope=row>1</th><td>ADRB1 </td><td>Alanine aminotransferase increased </td><td>-0.1717406739</td><td>0.6588027</td><td>metabrain</td><td>TRUE</td><td>1.85078089</td><td>ligand                           </td></tr>
-	<tr><th scope=row>2</th><td>HTR1B </td><td>Anorexia                           </td><td> 0.0369941407</td><td>0.8103582</td><td>metabrain</td><td>TRUE</td><td>1.07935500</td><td>antagonist,ligand                </td></tr>
-	<tr><th scope=row>3</th><td>ADRA2B</td><td>Anxiety                            </td><td>-0.0327698047</td><td>0.9038248</td><td>metabrain</td><td>TRUE</td><td>1.99139983</td><td>antagonist,ligand                </td></tr>
-	<tr><th scope=row>4</th><td>HTR2A </td><td>Back pain                          </td><td>-0.2313794023</td><td>0.6316502</td><td>metabrain</td><td>TRUE</td><td>3.06048075</td><td>antagonist                       </td></tr>
-	<tr><th scope=row>5</th><td>HTR5A </td><td>Bilirubin total low/decreased      </td><td> 0.0709022980</td><td>0.9036885</td><td>metabrain</td><td>TRUE</td><td>0.90657831</td><td>ligand                           </td></tr>
-	<tr><th scope=row>7</th><td>HTR3A </td><td>Bundle branch block right          </td><td>-0.9026216544</td><td>0.6372883</td><td>metabrain</td><td>TRUE</td><td>1.20204036</td><td>antagonist                       </td></tr>
-	<tr><th scope=row>9</th><td>ADRA2B</td><td>Cardiovascular disorder            </td><td>-0.0101609259</td><td>0.7449742</td><td>metabrain</td><td>TRUE</td><td>1.99139983</td><td>antagonist,ligand                </td></tr>
-	<tr><th scope=row>10</th><td>HRH4  </td><td>Cellulitis                         </td><td>-0.4575571204</td><td>0.7666522</td><td>metabrain</td><td>TRUE</td><td>0.00000000</td><td>ligand                           </td></tr>
-	<tr><th scope=row>11</th><td>DRD2  </td><td>Conjunctivitis                     </td><td>-0.2132098994</td><td>0.7258976</td><td>metabrain</td><td>TRUE</td><td>3.83865527</td><td>NA                               </td></tr>
-	<tr><th scope=row>13</th><td>GRIN2A</td><td>Constipation                       </td><td>-0.4133313623</td><td>0.7528450</td><td>metabrain</td><td>TRUE</td><td>        NA</td><td>NA                               </td></tr>
-	<tr><th scope=row>15</th><td>HTR1D </td><td>Corneal lesion                     </td><td> 0.0386511955</td><td>0.9112980</td><td>metabrain</td><td>TRUE</td><td>2.16749109</td><td>antagonist,ligand                </td></tr>
-	<tr><th scope=row>16</th><td>ADRB2 </td><td>Eosinophilia                       </td><td> 0.0455306902</td><td>0.7661205</td><td>eqtl_gen </td><td>TRUE</td><td>1.78781240</td><td>ligand                           </td></tr>
-	<tr><th scope=row>21</th><td>HTR1D </td><td>Eosinophilia                       </td><td>-0.0307384669</td><td>0.8901870</td><td>metabrain</td><td>TRUE</td><td>2.16749109</td><td>antagonist,ligand                </td></tr>
-	<tr><th scope=row>25</th><td>HTR1E </td><td>Eosinophilia                       </td><td>-0.0328479974</td><td>0.6444513</td><td>metabrain</td><td>TRUE</td><td>0.09691001</td><td>antagonist,ligand                </td></tr>
-	<tr><th scope=row>30</th><td>HTR6  </td><td>Eosinophilia                       </td><td> 0.2095169475</td><td>0.8278197</td><td>metabrain</td><td>TRUE</td><td>1.40671393</td><td>antagonist                       </td></tr>
-	<tr><th scope=row>31</th><td>DRD4  </td><td>Erythema                           </td><td> 0.4915727126</td><td>0.9565907</td><td>metabrain</td><td>TRUE</td><td>1.34724850</td><td>antagonist,partial agonist       </td></tr>
-	<tr><th scope=row>32</th><td>ADRB1 </td><td>Gamma-glutamyltransferase increased</td><td>-0.0538527677</td><td>0.7341346</td><td>eqtl_gen </td><td>TRUE</td><td>1.85078089</td><td>ligand                           </td></tr>
-	<tr><th scope=row>34</th><td>HRH3  </td><td>Gamma-glutamyltransferase increased</td><td> 0.0822641020</td><td>0.7006114</td><td>metabrain</td><td>TRUE</td><td>0.00000000</td><td>ligand                           </td></tr>
-	<tr><th scope=row>35</th><td>DRD1  </td><td>Headache                           </td><td>-0.1214793439</td><td>0.7811732</td><td>metabrain</td><td>TRUE</td><td>1.41228903</td><td>antagonist,partial agonist,ligand</td></tr>
-	<tr><th scope=row>38</th><td>ADRA2B</td><td>Hypertension                       </td><td>-0.0110313962</td><td>0.9075700</td><td>metabrain</td><td>TRUE</td><td>1.99139983</td><td>antagonist,ligand                </td></tr>
-	<tr><th scope=row>40</th><td>HRH1  </td><td>Hypertension                       </td><td> 1.4960506837</td><td>0.7972029</td><td>metabrain</td><td>TRUE</td><td>2.57969525</td><td>antagonist                       </td></tr>
-	<tr><th scope=row>41</th><td>ADRA1A</td><td>Hypotension                        </td><td> 0.0443714744</td><td>0.9023105</td><td>metabrain</td><td>TRUE</td><td>2.59006688</td><td>antagonist                       </td></tr>
-	<tr><th scope=row>45</th><td>ADRA2B</td><td>Hypotension                        </td><td>-0.0591580916</td><td>0.7001531</td><td>metabrain</td><td>TRUE</td><td>1.99139983</td><td>antagonist,ligand                </td></tr>
-	<tr><th scope=row>48</th><td>ADRB1 </td><td>Hypotension                        </td><td> 0.0230071281</td><td>0.9989253</td><td>eqtl_gen </td><td>TRUE</td><td>1.85078089</td><td>ligand                           </td></tr>
-	<tr><th scope=row>52</th><td>HRH1  </td><td>Hypotension                        </td><td> 1.7489172712</td><td>0.6235118</td><td>metabrain</td><td>TRUE</td><td>2.57969525</td><td>antagonist                       </td></tr>
-	<tr><th scope=row>54</th><td>HTR1B </td><td>Hypotension                        </td><td> 0.0170803940</td><td>0.8190243</td><td>metabrain</td><td>TRUE</td><td>1.07935500</td><td>antagonist,ligand                </td></tr>
-	<tr><th scope=row>55</th><td>DRD4  </td><td>Hypothyroidism                     </td><td> 0.0039811555</td><td>0.9494566</td><td>metabrain</td><td>TRUE</td><td>1.34724850</td><td>antagonist,partial agonist       </td></tr>
-	<tr><th scope=row>64</th><td>HTR1E </td><td>Hypothyroidism                     </td><td>-0.0046059535</td><td>0.7079806</td><td>metabrain</td><td>TRUE</td><td>0.09691001</td><td>antagonist,ligand                </td></tr>
-	<tr><th scope=row>65</th><td>HTR6  </td><td>Incontinence                       </td><td> 0.1056302009</td><td>0.6981074</td><td>eqtl_gen </td><td>TRUE</td><td>1.40671393</td><td>antagonist                       </td></tr>
-	<tr><th scope=row>70</th><td>HTR5A </td><td>Infection                          </td><td>-0.1033991845</td><td>0.6695637</td><td>metabrain</td><td>TRUE</td><td>0.90657831</td><td>ligand                           </td></tr>
-	<tr><th scope=row>71</th><td>HTR7  </td><td>Infection                          </td><td>-0.0021617092</td><td>0.7484923</td><td>metabrain</td><td>TRUE</td><td>2.98716278</td><td>antagonist,partial agonist       </td></tr>
-	<tr><th scope=row>72</th><td>ADRA2B</td><td>Lymphadenopathy                    </td><td> 0.0257822278</td><td>0.6637104</td><td>metabrain</td><td>TRUE</td><td>1.99139983</td><td>antagonist,ligand                </td></tr>
-	<tr><th scope=row>73</th><td>HRH4  </td><td>Malnutrition                       </td><td>-1.7202959266</td><td>0.6886816</td><td>metabrain</td><td>TRUE</td><td>0.00000000</td><td>ligand                           </td></tr>
-	<tr><th scope=row>74</th><td>DRD2  </td><td>Manic psychosis                    </td><td>-0.0121396183</td><td>0.8782281</td><td>metabrain</td><td>TRUE</td><td>3.83865527</td><td>NA                               </td></tr>
-	<tr><th scope=row>76</th><td>DRD1  </td><td>Micturition urgency                </td><td>-0.0618757594</td><td>0.9937155</td><td>metabrain</td><td>TRUE</td><td>1.41228903</td><td>antagonist,partial agonist,ligand</td></tr>
-	<tr><th scope=row>77</th><td>HTR6  </td><td>Micturition urgency                </td><td> 0.1056302009</td><td>0.6981074</td><td>eqtl_gen </td><td>TRUE</td><td>1.40671393</td><td>antagonist                       </td></tr>
-	<tr><th scope=row>82</th><td>HTR6  </td><td>Nasal congestion                   </td><td> 0.0010350581</td><td>0.6164910</td><td>eqtl_gen </td><td>TRUE</td><td>1.40671393</td><td>antagonist                       </td></tr>
-	<tr><th scope=row>83</th><td>ADRB2 </td><td>Neutropenia                        </td><td> 0.0234449234</td><td>0.9860806</td><td>eqtl_gen </td><td>TRUE</td><td>1.78781240</td><td>ligand                           </td></tr>
-	<tr><th scope=row>88</th><td>HTR1B </td><td>Neutropenia                        </td><td>-0.4256745028</td><td>0.8449493</td><td>metabrain</td><td>TRUE</td><td>1.07935500</td><td>antagonist,ligand                </td></tr>
-	<tr><th scope=row>89</th><td>HTR1D </td><td>Neutropenia                        </td><td> 0.0293549499</td><td>0.8227733</td><td>metabrain</td><td>TRUE</td><td>2.16749109</td><td>antagonist,ligand                </td></tr>
-	<tr><th scope=row>90</th><td>HTR6  </td><td>Neutropenia                        </td><td>-0.0205996237</td><td>0.7454622</td><td>eqtl_gen </td><td>TRUE</td><td>1.40671393</td><td>antagonist                       </td></tr>
-	<tr><th scope=row>92</th><td>DRD4  </td><td>Oedema peripheral                  </td><td> 0.0066113790</td><td>0.9471645</td><td>metabrain</td><td>TRUE</td><td>1.34724850</td><td>antagonist,partial agonist       </td></tr>
-	<tr><th scope=row>96</th><td>HTR1D </td><td>Pneumonia                          </td><td>-0.0009638468</td><td>0.7314315</td><td>metabrain</td><td>TRUE</td><td>2.16749109</td><td>antagonist,ligand                </td></tr>
-	<tr><th scope=row>97</th><td>DRD2  </td><td>Seasonal allergy                   </td><td>-0.2278579078</td><td>0.8354514</td><td>metabrain</td><td>TRUE</td><td>3.83865527</td><td>NA                               </td></tr>
-	<tr><th scope=row>99</th><td>HTR1E </td><td>Seasonal allergy                   </td><td>-0.0959763537</td><td>0.6054784</td><td>metabrain</td><td>TRUE</td><td>0.09691001</td><td>antagonist,ligand                </td></tr>
-	<tr><th scope=row>100</th><td>ADRA2B</td><td>Sleep disorder                     </td><td>-0.0327698047</td><td>0.9038248</td><td>metabrain</td><td>TRUE</td><td>1.99139983</td><td>antagonist,ligand                </td></tr>
-	<tr><th scope=row>101</th><td>DRD1  </td><td>Urinary abnormalities              </td><td>-0.0618757594</td><td>0.9937155</td><td>metabrain</td><td>TRUE</td><td>1.41228903</td><td>antagonist,partial agonist,ligand</td></tr>
-	<tr><th scope=row>102</th><td>HTR6  </td><td>Urinary abnormalities              </td><td> 0.1056302009</td><td>0.6981074</td><td>eqtl_gen </td><td>TRUE</td><td>1.40671393</td><td>antagonist                       </td></tr>
-	<tr><th scope=row>107</th><td>HTR6  </td><td>Urinary incontinence               </td><td> 0.1056302009</td><td>0.6981074</td><td>eqtl_gen </td><td>TRUE</td><td>1.40671393</td><td>antagonist                       </td></tr>
-	<tr><th scope=row>112</th><td>CHRM3 </td><td>Weight increased                   </td><td>-0.1066044459</td><td>0.7153882</td><td>metabrain</td><td>TRUE</td><td>0.33003263</td><td>ligand                           </td></tr>
-	<tr><th scope=row>114</th><td>GRIN3A</td><td>Weight increased                   </td><td>-0.0410035803</td><td>0.8765458</td><td>metabrain</td><td>TRUE</td><td>        NA</td><td>NA                               </td></tr>
-	<tr><th scope=row>123</th><td>HRH1  </td><td>Weight increased                   </td><td>-0.0222713696</td><td>0.7197419</td><td>metabrain</td><td>TRUE</td><td>2.57969525</td><td>antagonist                       </td></tr>
-	<tr><th scope=row>126</th><td>HTR1B </td><td>Weight increased                   </td><td> 0.0283796566</td><td>0.8947490</td><td>metabrain</td><td>TRUE</td><td>1.07935500</td><td>antagonist,ligand                </td></tr>
-	<tr><th scope=row>135</th><td>ADRA1B</td><td>White blood cell count decreased   </td><td>-0.0524676758</td><td>0.6013782</td><td>metabrain</td><td>TRUE</td><td>2.45842076</td><td>antagonist                       </td></tr>
-	<tr><th scope=row>137</th><td>ADRB2 </td><td>White blood cell count decreased   </td><td> 0.0188613763</td><td>0.9835043</td><td>eqtl_gen </td><td>TRUE</td><td>1.78781240</td><td>ligand                           </td></tr>
-	<tr><th scope=row>143</th><td>HRH1  </td><td>White blood cell count decreased   </td><td> 0.2750388495</td><td>0.6574516</td><td>metabrain</td><td>TRUE</td><td>2.57969525</td><td>antagonist                       </td></tr>
-	<tr><th scope=row>144</th><td>HTR1E </td><td>White blood cell count decreased   </td><td>-0.0303741709</td><td>0.7334934</td><td>metabrain</td><td>TRUE</td><td>0.09691001</td><td>antagonist,ligand                </td></tr>
-	<tr><th scope=row>145</th><td>HTR6  </td><td>White blood cell count decreased   </td><td>-0.0230082592</td><td>0.6095982</td><td>eqtl_gen </td><td>TRUE</td><td>1.40671393</td><td>antagonist                       </td></tr>
+<tr>
+  <td><img src="scratch/results/plots/HRH1_vs_side_effects_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/HRH1_vs_side_effects_h4_80.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/HRH4_vs_side_effects_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/HRH4_vs_side_effects_h4_80.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/HTR6_vs_side_effects_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/HTR6_vs_side_effects_h4_80.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/HTR1B_vs_side_effects_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/HTR1B_vs_side_effects_h4_80.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/DRD2_vs_side_effects_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/DRD2_vs_side_effects_h4_80.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/GABBR1_vs_side_effects_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/GABBR1_vs_side_effects_h4_80.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/GRIN2A_vs_side_effects_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/GRIN2A_vs_side_effects_h4_80.png" alt="alt" /></td>
+</tr>
 </tbody>
 </table>
 
 </div>
-
 </div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
-<h3 id="clozapine-side-effects">clozapine side effects<a class="anchor-link" href="#clozapine-side-effects">&#182;</a></h3>
 </div>
-
 </div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
-<table class="dataframe">
-<caption>A data.frame: 70 × 8</caption>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Side-Effect-Per-Receptor-vs-Drug">Side Effect Per Receptor vs Drug<a class="anchor-link" href="#Side-Effect-Per-Receptor-vs-Drug">&#182;</a></h3><table>
 <thead>
-	<tr><th></th><th scope=col>exposure</th><th scope=col>side_effect</th><th scope=col>wald_ratio_b</th><th scope=col>h4</th><th scope=col>source</th><th scope=col>clozapine_target</th><th scope=col>clozapine_pki</th><th scope=col>clozapine_target_action</th></tr>
-	<tr><th></th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+<tr>
+  <th>h4 &gt; 60%</th>
+  <th>h4 &gt; 80%</th>
+</tr>
 </thead>
 <tbody>
-	<tr><th scope=row>1</th><td>ADRB1 </td><td>Alanine aminotransferase increased </td><td>-0.1717406739</td><td>0.6588027</td><td>metabrain</td><td>TRUE</td><td>0.1249387</td><td>NA                </td></tr>
-	<tr><th scope=row>2</th><td>GABBR1</td><td>Alanine aminotransferase increased </td><td>-0.0813465559</td><td>0.9281301</td><td>eqtl_gen </td><td>TRUE</td><td>       NA</td><td>positive modulator</td></tr>
-	<tr><th scope=row>4</th><td>HTR1B </td><td>Anorexia                           </td><td> 0.0369941407</td><td>0.8103582</td><td>metabrain</td><td>TRUE</td><td>1.2814983</td><td>antagonist        </td></tr>
-	<tr><th scope=row>5</th><td>ADRA2B</td><td>Anxiety                            </td><td>-0.0327698047</td><td>0.9038248</td><td>metabrain</td><td>TRUE</td><td>2.5767541</td><td>antagonist        </td></tr>
-	<tr><th scope=row>6</th><td>GABBR1</td><td>Arthropathy                        </td><td>-0.4377533123</td><td>0.9954915</td><td>eqtl_gen </td><td>TRUE</td><td>       NA</td><td>positive modulator</td></tr>
-	<tr><th scope=row>10</th><td>HTR2A </td><td>Back pain                          </td><td>-0.2313794023</td><td>0.6316502</td><td>metabrain</td><td>TRUE</td><td>3.1453904</td><td>antagonist        </td></tr>
-	<tr><th scope=row>11</th><td>HTR5A </td><td>Bilirubin total low/decreased      </td><td> 0.0623441054</td><td>0.9691620</td><td>metabrain</td><td>TRUE</td><td>0.6146619</td><td>antagonist        </td></tr>
-	<tr><th scope=row>13</th><td>HTR3A </td><td>Bundle branch block right          </td><td>-0.9026216544</td><td>0.6372883</td><td>metabrain</td><td>TRUE</td><td>2.0900000</td><td>antagonist        </td></tr>
-	<tr><th scope=row>15</th><td>ADRA2B</td><td>Cardiovascular disorder            </td><td>-0.0101609259</td><td>0.7449742</td><td>metabrain</td><td>TRUE</td><td>2.5767541</td><td>antagonist        </td></tr>
-	<tr><th scope=row>16</th><td>HRH4  </td><td>Cellulitis                         </td><td>-0.4575571204</td><td>0.7666522</td><td>metabrain</td><td>TRUE</td><td>1.2924298</td><td>antagonist        </td></tr>
-	<tr><th scope=row>17</th><td>DRD2  </td><td>Conjunctivitis                     </td><td>-0.2278579078</td><td>0.8354514</td><td>metabrain</td><td>TRUE</td><td>1.8601209</td><td>antagonist        </td></tr>
-	<tr><th scope=row>19</th><td>HTR1D </td><td>Corneal lesion                     </td><td> 0.0386511955</td><td>0.9112980</td><td>metabrain</td><td>TRUE</td><td>1.2781894</td><td>antagonist        </td></tr>
-	<tr><th scope=row>20</th><td>ADRB2 </td><td>Eosinophilia                       </td><td> 0.0455306902</td><td>0.7661205</td><td>eqtl_gen </td><td>TRUE</td><td>0.2347041</td><td>NA                </td></tr>
-	<tr><th scope=row>25</th><td>HTR1D </td><td>Eosinophilia                       </td><td>-0.0307384669</td><td>0.8901870</td><td>metabrain</td><td>TRUE</td><td>1.2781894</td><td>antagonist        </td></tr>
-	<tr><th scope=row>29</th><td>HTR1E </td><td>Eosinophilia                       </td><td>-0.0328479974</td><td>0.6444513</td><td>metabrain</td><td>TRUE</td><td>1.0150229</td><td>antagonist        </td></tr>
-	<tr><th scope=row>34</th><td>HTR6  </td><td>Eosinophilia                       </td><td> 0.2095169475</td><td>0.8278197</td><td>metabrain</td><td>TRUE</td><td>2.9800000</td><td>antagonist        </td></tr>
-	<tr><th scope=row>35</th><td>DRD4  </td><td>Erythema                           </td><td> 0.4915727126</td><td>0.9565907</td><td>metabrain</td><td>TRUE</td><td>2.4145393</td><td>antagonist        </td></tr>
-	<tr><th scope=row>36</th><td>ADRB1 </td><td>Gamma-glutamyltransferase increased</td><td>-0.0538527677</td><td>0.7341346</td><td>eqtl_gen </td><td>TRUE</td><td>0.1249387</td><td>NA                </td></tr>
-	<tr><th scope=row>38</th><td>HRH3  </td><td>Gamma-glutamyltransferase increased</td><td> 0.0822641020</td><td>0.7006114</td><td>metabrain</td><td>TRUE</td><td>0.0000000</td><td>NA                </td></tr>
-	<tr><th scope=row>39</th><td>DRD1  </td><td>Headache                           </td><td>-0.1214793439</td><td>0.7811732</td><td>metabrain</td><td>TRUE</td><td>1.7077439</td><td>antagonist        </td></tr>
-	<tr><th scope=row>42</th><td>GABBR1</td><td>Hepatic enzyme increased           </td><td>-0.0813465559</td><td>0.9281301</td><td>eqtl_gen </td><td>TRUE</td><td>       NA</td><td>positive modulator</td></tr>
-	<tr><th scope=row>44</th><td>ADRA2B</td><td>Hypertension                       </td><td>-0.0110086051</td><td>0.8993120</td><td>metabrain</td><td>TRUE</td><td>2.5767541</td><td>antagonist        </td></tr>
-	<tr><th scope=row>46</th><td>HRH1  </td><td>Hypertension                       </td><td> 1.4960506837</td><td>0.7972029</td><td>metabrain</td><td>TRUE</td><td>3.7423573</td><td>antagonist        </td></tr>
-	<tr><th scope=row>47</th><td>ADRA1A</td><td>Hypotension                        </td><td> 0.0443714744</td><td>0.9023105</td><td>metabrain</td><td>TRUE</td><td>3.7958800</td><td>antagonist        </td></tr>
-	<tr><th scope=row>51</th><td>ADRA2B</td><td>Hypotension                        </td><td>-0.0591580916</td><td>0.7001531</td><td>metabrain</td><td>TRUE</td><td>2.5767541</td><td>antagonist        </td></tr>
-	<tr><th scope=row>54</th><td>ADRB1 </td><td>Hypotension                        </td><td> 0.0230071281</td><td>0.9989253</td><td>eqtl_gen </td><td>TRUE</td><td>0.1249387</td><td>NA                </td></tr>
-	<tr><th scope=row>58</th><td>GABBR1</td><td>Hypotension                        </td><td>-0.0027679039</td><td>0.8787680</td><td>eqtl_gen </td><td>TRUE</td><td>       NA</td><td>positive modulator</td></tr>
-	<tr><th scope=row>59</th><td>HRH1  </td><td>Hypotension                        </td><td> 0.0245057608</td><td>0.8334084</td><td>metabrain</td><td>TRUE</td><td>3.7423573</td><td>antagonist        </td></tr>
-	<tr><th scope=row>61</th><td>HTR1B </td><td>Hypotension                        </td><td> 0.0170803940</td><td>0.8190243</td><td>metabrain</td><td>TRUE</td><td>1.2814983</td><td>antagonist        </td></tr>
-	<tr><th scope=row>62</th><td>DRD4  </td><td>Hypothyroidism                     </td><td> 0.0039811555</td><td>0.9494566</td><td>metabrain</td><td>TRUE</td><td>2.4145393</td><td>antagonist        </td></tr>
-	<tr><th scope=row>71</th><td>HTR1E </td><td>Hypothyroidism                     </td><td>-0.0046059535</td><td>0.7079806</td><td>metabrain</td><td>TRUE</td><td>1.0150229</td><td>antagonist        </td></tr>
-	<tr><th scope=row>72</th><td>HTR6  </td><td>Incontinence                       </td><td> 0.1056302009</td><td>0.6981074</td><td>eqtl_gen </td><td>TRUE</td><td>2.9800000</td><td>antagonist        </td></tr>
-	<tr><th scope=row>77</th><td>HTR5A </td><td>Infection                          </td><td>-0.1033991845</td><td>0.6695637</td><td>metabrain</td><td>TRUE</td><td>0.6146619</td><td>antagonist        </td></tr>
-	<tr><th scope=row>78</th><td>HTR7  </td><td>Infection                          </td><td>-0.0021617092</td><td>0.7484923</td><td>metabrain</td><td>TRUE</td><td>2.6480105</td><td>antagonist        </td></tr>
-	<tr><th scope=row>79</th><td>GABRA1</td><td>Insomnia                           </td><td> 0.0243550896</td><td>0.9429139</td><td>metabrain</td><td>TRUE</td><td>       NA</td><td>antagonist        </td></tr>
-	<tr><th scope=row>80</th><td>GSTP1 </td><td>Insomnia                           </td><td> 0.0063938147</td><td>0.6673621</td><td>metabrain</td><td>TRUE</td><td>       NA</td><td>unknown           </td></tr>
-	<tr><th scope=row>81</th><td>GSTP1 </td><td>Irritability                       </td><td> 0.0034258828</td><td>0.6342340</td><td>metabrain</td><td>TRUE</td><td>       NA</td><td>unknown           </td></tr>
-	<tr><th scope=row>82</th><td>ADRA2B</td><td>Lymphadenopathy                    </td><td> 0.0257822278</td><td>0.6637104</td><td>metabrain</td><td>TRUE</td><td>2.5767541</td><td>antagonist        </td></tr>
-	<tr><th scope=row>83</th><td>HRH4  </td><td>Malnutrition                       </td><td>-1.7202959266</td><td>0.6886816</td><td>metabrain</td><td>TRUE</td><td>1.2924298</td><td>antagonist        </td></tr>
-	<tr><th scope=row>84</th><td>DRD2  </td><td>Manic psychosis                    </td><td>-0.0134580042</td><td>0.8376495</td><td>metabrain</td><td>TRUE</td><td>1.8601209</td><td>antagonist        </td></tr>
-	<tr><th scope=row>86</th><td>DRD1  </td><td>Micturition urgency                </td><td>-0.0618757594</td><td>0.9937155</td><td>metabrain</td><td>TRUE</td><td>1.7077439</td><td>antagonist        </td></tr>
-	<tr><th scope=row>87</th><td>HTR6  </td><td>Micturition urgency                </td><td> 0.1056302009</td><td>0.6981074</td><td>eqtl_gen </td><td>TRUE</td><td>2.9800000</td><td>antagonist        </td></tr>
-	<tr><th scope=row>92</th><td>HTR6  </td><td>Nasal congestion                   </td><td> 0.0010350581</td><td>0.6164910</td><td>eqtl_gen </td><td>TRUE</td><td>2.9800000</td><td>antagonist        </td></tr>
-	<tr><th scope=row>93</th><td>ADRB2 </td><td>Neutropenia                        </td><td> 0.0234449234</td><td>0.9860806</td><td>eqtl_gen </td><td>TRUE</td><td>0.2347041</td><td>NA                </td></tr>
-	<tr><th scope=row>98</th><td>GABBR1</td><td>Neutropenia                        </td><td> 0.0296379059</td><td>1.0000000</td><td>eqtl_gen </td><td>TRUE</td><td>       NA</td><td>positive modulator</td></tr>
-	<tr><th scope=row>100</th><td>GABRA1</td><td>Neutropenia                        </td><td> 0.0405679336</td><td>0.6142971</td><td>metabrain</td><td>TRUE</td><td>       NA</td><td>antagonist        </td></tr>
-	<tr><th scope=row>104</th><td>HTR1B </td><td>Neutropenia                        </td><td>-0.4256745028</td><td>0.8449493</td><td>metabrain</td><td>TRUE</td><td>1.2814983</td><td>antagonist        </td></tr>
-	<tr><th scope=row>105</th><td>HTR1D </td><td>Neutropenia                        </td><td> 0.0293549499</td><td>0.8227733</td><td>metabrain</td><td>TRUE</td><td>1.2781894</td><td>antagonist        </td></tr>
-	<tr><th scope=row>106</th><td>HTR6  </td><td>Neutropenia                        </td><td>-0.0205996237</td><td>0.7454622</td><td>eqtl_gen </td><td>TRUE</td><td>2.9800000</td><td>antagonist        </td></tr>
-	<tr><th scope=row>108</th><td>DRD4  </td><td>Oedema peripheral                  </td><td> 0.0066113790</td><td>0.9471645</td><td>metabrain</td><td>TRUE</td><td>2.4145393</td><td>antagonist        </td></tr>
-	<tr><th scope=row>112</th><td>HTR1D </td><td>Pneumonia                          </td><td>-0.0009638468</td><td>0.7314315</td><td>metabrain</td><td>TRUE</td><td>1.2781894</td><td>antagonist        </td></tr>
-	<tr><th scope=row>113</th><td>GABRA1</td><td>Rhinitis                           </td><td> 0.8588903451</td><td>0.8586897</td><td>metabrain</td><td>TRUE</td><td>       NA</td><td>antagonist        </td></tr>
-	<tr><th scope=row>114</th><td>DRD2  </td><td>Seasonal allergy                   </td><td>-0.2132098994</td><td>0.7258976</td><td>metabrain</td><td>TRUE</td><td>1.8601209</td><td>antagonist        </td></tr>
-	<tr><th scope=row>116</th><td>HTR1E </td><td>Seasonal allergy                   </td><td>-0.0959763537</td><td>0.6054784</td><td>metabrain</td><td>TRUE</td><td>1.0150229</td><td>antagonist        </td></tr>
-	<tr><th scope=row>117</th><td>ADRA2B</td><td>Sleep disorder                     </td><td>-0.0327698047</td><td>0.9038248</td><td>metabrain</td><td>TRUE</td><td>2.5767541</td><td>antagonist        </td></tr>
-	<tr><th scope=row>118</th><td>GABRA1</td><td>Sleep disorder                     </td><td> 0.0243550896</td><td>0.9429139</td><td>metabrain</td><td>TRUE</td><td>       NA</td><td>antagonist        </td></tr>
-	<tr><th scope=row>119</th><td>GSTP1 </td><td>Sleep disorder                     </td><td> 0.0063938147</td><td>0.6673621</td><td>metabrain</td><td>TRUE</td><td>       NA</td><td>unknown           </td></tr>
-	<tr><th scope=row>120</th><td>DRD1  </td><td>Urinary abnormalities              </td><td>-0.0618757594</td><td>0.9937155</td><td>metabrain</td><td>TRUE</td><td>1.7077439</td><td>antagonist        </td></tr>
-	<tr><th scope=row>121</th><td>HTR6  </td><td>Urinary abnormalities              </td><td> 0.1056302009</td><td>0.6981074</td><td>eqtl_gen </td><td>TRUE</td><td>2.9800000</td><td>antagonist        </td></tr>
-	<tr><th scope=row>126</th><td>HTR6  </td><td>Urinary incontinence               </td><td> 0.1056302009</td><td>0.6981074</td><td>eqtl_gen </td><td>TRUE</td><td>2.9800000</td><td>antagonist        </td></tr>
-	<tr><th scope=row>131</th><td>CHRM3 </td><td>Weight increased                   </td><td>-0.0830659882</td><td>0.6110848</td><td>metabrain</td><td>TRUE</td><td>2.6020600</td><td>antagonist        </td></tr>
-	<tr><th scope=row>133</th><td>GABBR1</td><td>Weight increased                   </td><td>-0.0267257169</td><td>0.6013708</td><td>metabrain</td><td>TRUE</td><td>       NA</td><td>positive modulator</td></tr>
-	<tr><th scope=row>134</th><td>HRH1  </td><td>Weight increased                   </td><td>-0.0248011234</td><td>0.6822293</td><td>metabrain</td><td>TRUE</td><td>3.7423573</td><td>antagonist        </td></tr>
-	<tr><th scope=row>137</th><td>HTR1B </td><td>Weight increased                   </td><td> 0.0283796566</td><td>0.8947490</td><td>metabrain</td><td>TRUE</td><td>1.2814983</td><td>antagonist        </td></tr>
-	<tr><th scope=row>146</th><td>ADRA1B</td><td>White blood cell count decreased   </td><td>-0.0524676758</td><td>0.6013782</td><td>metabrain</td><td>TRUE</td><td>3.1549020</td><td>antagonist        </td></tr>
-	<tr><th scope=row>148</th><td>ADRB2 </td><td>White blood cell count decreased   </td><td> 0.0188613763</td><td>0.9835043</td><td>eqtl_gen </td><td>TRUE</td><td>0.2347041</td><td>NA                </td></tr>
-	<tr><th scope=row>154</th><td>GABRA1</td><td>White blood cell count decreased   </td><td> 0.0423765837</td><td>0.8787997</td><td>metabrain</td><td>TRUE</td><td>       NA</td><td>antagonist        </td></tr>
-	<tr><th scope=row>162</th><td>HRH1  </td><td>White blood cell count decreased   </td><td> 0.2750388495</td><td>0.6574516</td><td>metabrain</td><td>TRUE</td><td>3.7423573</td><td>antagonist        </td></tr>
-	<tr><th scope=row>163</th><td>HTR1E </td><td>White blood cell count decreased   </td><td>-0.0303741709</td><td>0.7334934</td><td>metabrain</td><td>TRUE</td><td>1.0150229</td><td>antagonist        </td></tr>
-	<tr><th scope=row>164</th><td>HTR6  </td><td>White blood cell count decreased   </td><td>-0.0230082592</td><td>0.6095982</td><td>eqtl_gen </td><td>TRUE</td><td>2.9800000</td><td>antagonist        </td></tr>
+<tr>
+  <td><img src="scratch/results/plots/Hypotension_vs_drug_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/Hypotension_vs_drug_h4_80.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/Hypertension_vs_drug_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/Hypertension_vs_drug_h4_80.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/White_blood_cell_count_decreased_vs_drug_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/White_blood_cell_count_decreased_vs_drug_h4_80.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/Neutropenia_vs_drug_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/Neutropenia_vs_drug_h4_80.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/Eosinophilia_vs_drug_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/Eosinophilia_vs_drug_h4_80.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/Weight_increased_vs_drug_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/Weight_increased_vs_drug_h4_80.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/Sleep_disorder_vs_drug_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/Sleep_disorder_vs_drug_h4_80.png" alt="alt" /></td>
+</tr>
 </tbody>
 </table>
 
 </div>
-
 </div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
-<h3 id="olanzapine-side-effects">olanzapine side effects<a class="anchor-link" href="#olanzapine-side-effects">&#182;</a></h3>
 </div>
-
-</div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
-<table class="dataframe">
-<caption>A data.frame: 60 × 8</caption>
-<thead>
-	<tr><th></th><th scope=col>exposure</th><th scope=col>side_effect</th><th scope=col>wald_ratio_b</th><th scope=col>h4</th><th scope=col>source</th><th scope=col>olanzapine_target</th><th scope=col>olanzapine_pki</th><th scope=col>olanzapine_target_action</th></tr>
-	<tr><th></th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
-</thead>
-<tbody>
-	<tr><th scope=row>1</th><td>ADRB1 </td><td>Alanine aminotransferase increased </td><td>-0.1717406739</td><td>0.6588027</td><td>metabrain</td><td>TRUE</td><td> 0.1249387</td><td>inhibitor </td></tr>
-	<tr><th scope=row>2</th><td>HTR1B </td><td>Anorexia                           </td><td> 0.0369941407</td><td>0.8103582</td><td>metabrain</td><td>TRUE</td><td> 1.1804561</td><td>inhibitor </td></tr>
-	<tr><th scope=row>3</th><td>ADRA2B</td><td>Anxiety                            </td><td>-0.0327698047</td><td>0.9038248</td><td>metabrain</td><td>TRUE</td><td> 2.0861861</td><td>FALSE     </td></tr>
-	<tr><th scope=row>4</th><td>HTR2A </td><td>Back pain                          </td><td>-0.2313794023</td><td>0.6316502</td><td>metabrain</td><td>TRUE</td><td> 3.4814861</td><td>antagonist</td></tr>
-	<tr><th scope=row>5</th><td>HTR5A </td><td>Bilirubin total low/decreased      </td><td> 0.0623441054</td><td>0.9691620</td><td>metabrain</td><td>TRUE</td><td> 0.8899156</td><td>FALSE     </td></tr>
-	<tr><th scope=row>7</th><td>HTR3A </td><td>Bundle branch block right          </td><td>-0.9026216544</td><td>0.6372883</td><td>metabrain</td><td>TRUE</td><td> 1.9030900</td><td>antagonist</td></tr>
-	<tr><th scope=row>9</th><td>ADRA2B</td><td>Cardiovascular disorder            </td><td>-0.0101609259</td><td>0.7449742</td><td>metabrain</td><td>TRUE</td><td> 2.0861861</td><td>FALSE     </td></tr>
-	<tr><th scope=row>10</th><td>HRH4  </td><td>Cellulitis                         </td><td>-0.4575571204</td><td>0.7666522</td><td>metabrain</td><td>TRUE</td><td>-0.1300512</td><td>FALSE     </td></tr>
-	<tr><th scope=row>11</th><td>DRD2  </td><td>Conjunctivitis                     </td><td>-0.2132098994</td><td>0.7258976</td><td>metabrain</td><td>TRUE</td><td> 2.6777807</td><td>antagonist</td></tr>
-	<tr><th scope=row>13</th><td>HTR1D </td><td>Corneal lesion                     </td><td> 0.0386511955</td><td>0.9112980</td><td>metabrain</td><td>TRUE</td><td> 1.0963675</td><td>inhibitor </td></tr>
-	<tr><th scope=row>14</th><td>ADRB2 </td><td>Eosinophilia                       </td><td> 0.0455306902</td><td>0.7661205</td><td>eqtl_gen </td><td>TRUE</td><td> 0.0000000</td><td>inhibitor </td></tr>
-	<tr><th scope=row>19</th><td>HTR1D </td><td>Eosinophilia                       </td><td>-0.0307384669</td><td>0.8901870</td><td>metabrain</td><td>TRUE</td><td> 1.0963675</td><td>inhibitor </td></tr>
-	<tr><th scope=row>23</th><td>HTR1E </td><td>Eosinophilia                       </td><td>-0.0328479974</td><td>0.6444513</td><td>metabrain</td><td>TRUE</td><td> 0.6558043</td><td>inhibitor </td></tr>
-	<tr><th scope=row>28</th><td>HTR6  </td><td>Eosinophilia                       </td><td> 0.2095169475</td><td>0.8278197</td><td>metabrain</td><td>TRUE</td><td> 3.0705811</td><td>antagonist</td></tr>
-	<tr><th scope=row>29</th><td>DRD4  </td><td>Erythema                           </td><td> 0.4915727126</td><td>0.9565907</td><td>metabrain</td><td>TRUE</td><td> 2.5528420</td><td>antagonist</td></tr>
-	<tr><th scope=row>30</th><td>ADRB1 </td><td>Gamma-glutamyltransferase increased</td><td>-0.0538527677</td><td>0.7341346</td><td>eqtl_gen </td><td>TRUE</td><td> 0.1249387</td><td>inhibitor </td></tr>
-	<tr><th scope=row>32</th><td>HRH3  </td><td>Gamma-glutamyltransferase increased</td><td> 0.0822641020</td><td>0.7006114</td><td>metabrain</td><td>TRUE</td><td>-1.0000000</td><td>FALSE     </td></tr>
-	<tr><th scope=row>33</th><td>DRD1  </td><td>Headache                           </td><td>-0.1214793439</td><td>0.7811732</td><td>metabrain</td><td>TRUE</td><td> 2.2839967</td><td>antagonist</td></tr>
-	<tr><th scope=row>36</th><td>ADRA2B</td><td>Hypertension                       </td><td>-0.0110086051</td><td>0.8993120</td><td>metabrain</td><td>TRUE</td><td> 2.0861861</td><td>FALSE     </td></tr>
-	<tr><th scope=row>38</th><td>HRH1  </td><td>Hypertension                       </td><td> 1.4960506837</td><td>0.7972029</td><td>metabrain</td><td>TRUE</td><td> 3.6239499</td><td>antagonist</td></tr>
-	<tr><th scope=row>39</th><td>ADRA1A</td><td>Hypotension                        </td><td> 0.0443714744</td><td>0.9023105</td><td>metabrain</td><td>TRUE</td><td> 1.9507820</td><td>antagonist</td></tr>
-	<tr><th scope=row>43</th><td>ADRA2B</td><td>Hypotension                        </td><td>-0.0591580916</td><td>0.7001531</td><td>metabrain</td><td>TRUE</td><td> 2.0861861</td><td>FALSE     </td></tr>
-	<tr><th scope=row>46</th><td>ADRB1 </td><td>Hypotension                        </td><td> 0.0230071281</td><td>0.9989253</td><td>eqtl_gen </td><td>TRUE</td><td> 0.1249387</td><td>inhibitor </td></tr>
-	<tr><th scope=row>50</th><td>HRH1  </td><td>Hypotension                        </td><td> 0.0245057608</td><td>0.8334084</td><td>metabrain</td><td>TRUE</td><td> 3.6239499</td><td>antagonist</td></tr>
-	<tr><th scope=row>52</th><td>HTR1B </td><td>Hypotension                        </td><td> 0.0170803940</td><td>0.8190243</td><td>metabrain</td><td>TRUE</td><td> 1.1804561</td><td>inhibitor </td></tr>
-	<tr><th scope=row>53</th><td>DRD4  </td><td>Hypothyroidism                     </td><td> 0.0039811555</td><td>0.9494566</td><td>metabrain</td><td>TRUE</td><td> 2.5528420</td><td>antagonist</td></tr>
-	<tr><th scope=row>62</th><td>HTR1E </td><td>Hypothyroidism                     </td><td>-0.0046059535</td><td>0.7079806</td><td>metabrain</td><td>TRUE</td><td> 0.6558043</td><td>inhibitor </td></tr>
-	<tr><th scope=row>63</th><td>HTR6  </td><td>Incontinence                       </td><td> 0.1056302009</td><td>0.6981074</td><td>eqtl_gen </td><td>TRUE</td><td> 3.0705811</td><td>antagonist</td></tr>
-	<tr><th scope=row>68</th><td>HTR5A </td><td>Infection                          </td><td>-0.1033991845</td><td>0.6695637</td><td>metabrain</td><td>TRUE</td><td> 0.8899156</td><td>FALSE     </td></tr>
-	<tr><th scope=row>69</th><td>GABRA1</td><td>Insomnia                           </td><td> 0.0243550896</td><td>0.9429139</td><td>metabrain</td><td>TRUE</td><td>        NA</td><td>inhibitor </td></tr>
-	<tr><th scope=row>70</th><td>ADRA2B</td><td>Lymphadenopathy                    </td><td> 0.0257822278</td><td>0.6637104</td><td>metabrain</td><td>TRUE</td><td> 2.0861861</td><td>FALSE     </td></tr>
-	<tr><th scope=row>71</th><td>HRH4  </td><td>Malnutrition                       </td><td>-1.7202959266</td><td>0.6886816</td><td>metabrain</td><td>TRUE</td><td>-0.1300512</td><td>FALSE     </td></tr>
-	<tr><th scope=row>72</th><td>DRD2  </td><td>Manic psychosis                    </td><td>-0.0121396183</td><td>0.8782281</td><td>metabrain</td><td>TRUE</td><td> 2.6777807</td><td>antagonist</td></tr>
-	<tr><th scope=row>74</th><td>DRD1  </td><td>Micturition urgency                </td><td>-0.0618757594</td><td>0.9937155</td><td>metabrain</td><td>TRUE</td><td> 2.2839967</td><td>antagonist</td></tr>
-	<tr><th scope=row>75</th><td>HTR6  </td><td>Micturition urgency                </td><td> 0.1056302009</td><td>0.6981074</td><td>eqtl_gen </td><td>TRUE</td><td> 3.0705811</td><td>antagonist</td></tr>
-	<tr><th scope=row>80</th><td>HTR6  </td><td>Nasal congestion                   </td><td> 0.0010350581</td><td>0.6164910</td><td>eqtl_gen </td><td>TRUE</td><td> 3.0705811</td><td>antagonist</td></tr>
-	<tr><th scope=row>81</th><td>ADRB2 </td><td>Neutropenia                        </td><td> 0.0234449234</td><td>0.9860806</td><td>eqtl_gen </td><td>TRUE</td><td> 0.0000000</td><td>inhibitor </td></tr>
-	<tr><th scope=row>86</th><td>GABRA1</td><td>Neutropenia                        </td><td> 0.0405679336</td><td>0.6142971</td><td>metabrain</td><td>TRUE</td><td>        NA</td><td>inhibitor </td></tr>
-	<tr><th scope=row>90</th><td>HTR1B </td><td>Neutropenia                        </td><td>-0.4256745028</td><td>0.8449493</td><td>metabrain</td><td>TRUE</td><td> 1.1804561</td><td>inhibitor </td></tr>
-	<tr><th scope=row>91</th><td>HTR1D </td><td>Neutropenia                        </td><td> 0.0293549499</td><td>0.8227733</td><td>metabrain</td><td>TRUE</td><td> 1.0963675</td><td>inhibitor </td></tr>
-	<tr><th scope=row>92</th><td>HTR6  </td><td>Neutropenia                        </td><td>-0.0205996237</td><td>0.7454622</td><td>eqtl_gen </td><td>TRUE</td><td> 3.0705811</td><td>antagonist</td></tr>
-	<tr><th scope=row>94</th><td>DRD4  </td><td>Oedema peripheral                  </td><td> 0.0066113790</td><td>0.9471645</td><td>metabrain</td><td>TRUE</td><td> 2.5528420</td><td>antagonist</td></tr>
-	<tr><th scope=row>98</th><td>HTR1D </td><td>Pneumonia                          </td><td>-0.0009638468</td><td>0.7314315</td><td>metabrain</td><td>TRUE</td><td> 1.0963675</td><td>inhibitor </td></tr>
-	<tr><th scope=row>99</th><td>GABRA1</td><td>Rhinitis                           </td><td> 0.8588903451</td><td>0.8586897</td><td>metabrain</td><td>TRUE</td><td>        NA</td><td>inhibitor </td></tr>
-	<tr><th scope=row>100</th><td>DRD2  </td><td>Seasonal allergy                   </td><td>-0.2132098994</td><td>0.7258976</td><td>metabrain</td><td>TRUE</td><td> 2.6777807</td><td>antagonist</td></tr>
-	<tr><th scope=row>102</th><td>HTR1E </td><td>Seasonal allergy                   </td><td>-0.0959763537</td><td>0.6054784</td><td>metabrain</td><td>TRUE</td><td> 0.6558043</td><td>inhibitor </td></tr>
-	<tr><th scope=row>103</th><td>ADRA2B</td><td>Sleep disorder                     </td><td>-0.0327698047</td><td>0.9038248</td><td>metabrain</td><td>TRUE</td><td> 2.0861861</td><td>FALSE     </td></tr>
-	<tr><th scope=row>104</th><td>GABRA1</td><td>Sleep disorder                     </td><td> 0.0243550896</td><td>0.9429139</td><td>metabrain</td><td>TRUE</td><td>        NA</td><td>inhibitor </td></tr>
-	<tr><th scope=row>105</th><td>DRD1  </td><td>Urinary abnormalities              </td><td>-0.0618757594</td><td>0.9937155</td><td>metabrain</td><td>TRUE</td><td> 2.2839967</td><td>antagonist</td></tr>
-	<tr><th scope=row>106</th><td>HTR6  </td><td>Urinary abnormalities              </td><td> 0.1056302009</td><td>0.6981074</td><td>eqtl_gen </td><td>TRUE</td><td> 3.0705811</td><td>antagonist</td></tr>
-	<tr><th scope=row>111</th><td>HTR6  </td><td>Urinary incontinence               </td><td> 0.1056302009</td><td>0.6981074</td><td>eqtl_gen </td><td>TRUE</td><td> 3.0705811</td><td>antagonist</td></tr>
-	<tr><th scope=row>116</th><td>CHRM3 </td><td>Weight increased                   </td><td>-0.0830659882</td><td>0.6110848</td><td>metabrain</td><td>TRUE</td><td> 2.1079054</td><td>antagonist</td></tr>
-	<tr><th scope=row>118</th><td>HRH1  </td><td>Weight increased                   </td><td>-0.0248011234</td><td>0.6822293</td><td>metabrain</td><td>TRUE</td><td> 3.6239499</td><td>antagonist</td></tr>
-	<tr><th scope=row>121</th><td>HTR1B </td><td>Weight increased                   </td><td> 0.0322022612</td><td>0.8683135</td><td>metabrain</td><td>TRUE</td><td> 1.1804561</td><td>inhibitor </td></tr>
-	<tr><th scope=row>130</th><td>ADRA1B</td><td>White blood cell count decreased   </td><td>-0.0524676758</td><td>0.6013782</td><td>metabrain</td><td>TRUE</td><td> 1.5800443</td><td>antagonist</td></tr>
-	<tr><th scope=row>132</th><td>ADRB2 </td><td>White blood cell count decreased   </td><td> 0.0188613763</td><td>0.9835043</td><td>eqtl_gen </td><td>TRUE</td><td> 0.0000000</td><td>inhibitor </td></tr>
-	<tr><th scope=row>138</th><td>GABRA1</td><td>White blood cell count decreased   </td><td> 0.0437833115</td><td>0.9290417</td><td>metabrain</td><td>TRUE</td><td>        NA</td><td>inhibitor </td></tr>
-	<tr><th scope=row>146</th><td>HRH1  </td><td>White blood cell count decreased   </td><td> 0.2750388495</td><td>0.6574516</td><td>metabrain</td><td>TRUE</td><td> 3.6239499</td><td>antagonist</td></tr>
-	<tr><th scope=row>147</th><td>HTR1E </td><td>White blood cell count decreased   </td><td>-0.0303741709</td><td>0.7334934</td><td>metabrain</td><td>TRUE</td><td> 0.6558043</td><td>inhibitor </td></tr>
-	<tr><th scope=row>148</th><td>HTR6  </td><td>White blood cell count decreased   </td><td>-0.0230082592</td><td>0.6095982</td><td>eqtl_gen </td><td>TRUE</td><td> 3.0705811</td><td>antagonist</td></tr>
-</tbody>
-</table>
-
-</div>
-
-</div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
-<h3 id="paliperidone-side-effects">paliperidone side effects<a class="anchor-link" href="#paliperidone-side-effects">&#182;</a></h3>
-</div>
-
-</div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
-<table class="dataframe">
-<caption>A data.frame: 54 × 8</caption>
-<thead>
-	<tr><th></th><th scope=col>exposure</th><th scope=col>side_effect</th><th scope=col>wald_ratio_b</th><th scope=col>h4</th><th scope=col>source</th><th scope=col>paliperidone_target</th><th scope=col>paliperidone_pki</th><th scope=col>paliperidone_target_action</th></tr>
-	<tr><th></th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
-</thead>
-<tbody>
-	<tr><th scope=row>1</th><td>ADRB1 </td><td>Alanine aminotransferase increased </td><td>-0.1717406739</td><td>0.6588027</td><td>metabrain</td><td>TRUE</td><td>0.1249387</td><td>NA        </td></tr>
-	<tr><th scope=row>2</th><td>HTR1B </td><td>Anorexia                           </td><td> 0.0369941407</td><td>0.8103582</td><td>metabrain</td><td>TRUE</td><td>2.1814442</td><td>NA        </td></tr>
-	<tr><th scope=row>3</th><td>ADRA2B</td><td>Anxiety                            </td><td>-0.0327698047</td><td>0.9038248</td><td>metabrain</td><td>TRUE</td><td>2.4788619</td><td>antagonist</td></tr>
-	<tr><th scope=row>4</th><td>HTR2A </td><td>Back pain                          </td><td>-0.2313794023</td><td>0.6316502</td><td>metabrain</td><td>TRUE</td><td>4.0000000</td><td>antagonist</td></tr>
-	<tr><th scope=row>5</th><td>HTR5A </td><td>Bilirubin total low/decreased      </td><td> 0.0709022980</td><td>0.9036885</td><td>metabrain</td><td>TRUE</td><td>1.4522868</td><td>NA        </td></tr>
-	<tr><th scope=row>7</th><td>HTR3A </td><td>Bundle branch block right          </td><td>-0.9026216544</td><td>0.6372883</td><td>metabrain</td><td>TRUE</td><td>0.0000000</td><td>NA        </td></tr>
-	<tr><th scope=row>9</th><td>ADRA2B</td><td>Cardiovascular disorder            </td><td>-0.0101609259</td><td>0.7449742</td><td>metabrain</td><td>TRUE</td><td>2.4788619</td><td>antagonist</td></tr>
-	<tr><th scope=row>10</th><td>HRH4  </td><td>Cellulitis                         </td><td>-0.4575571204</td><td>0.7666522</td><td>metabrain</td><td>TRUE</td><td>0.0605806</td><td>NA        </td></tr>
-	<tr><th scope=row>11</th><td>DRD2  </td><td>Conjunctivitis                     </td><td>-0.2132098994</td><td>0.7258976</td><td>metabrain</td><td>TRUE</td><td>3.4621809</td><td>antagonist</td></tr>
-	<tr><th scope=row>13</th><td>HTR1D </td><td>Corneal lesion                     </td><td> 0.0386511955</td><td>0.9112980</td><td>metabrain</td><td>TRUE</td><td>2.7212464</td><td>antagonist</td></tr>
-	<tr><th scope=row>14</th><td>ADRB2 </td><td>Eosinophilia                       </td><td> 0.0455306902</td><td>0.7661205</td><td>eqtl_gen </td><td>TRUE</td><td>0.1249387</td><td>NA        </td></tr>
-	<tr><th scope=row>19</th><td>HTR1D </td><td>Eosinophilia                       </td><td>-0.0358741982</td><td>0.8544239</td><td>metabrain</td><td>TRUE</td><td>2.7212464</td><td>antagonist</td></tr>
-	<tr><th scope=row>23</th><td>HTR1E </td><td>Eosinophilia                       </td><td>-0.0328479974</td><td>0.6444513</td><td>metabrain</td><td>TRUE</td><td>0.2588484</td><td>NA        </td></tr>
-	<tr><th scope=row>28</th><td>HTR6  </td><td>Eosinophilia                       </td><td> 0.2095169475</td><td>0.8278197</td><td>metabrain</td><td>TRUE</td><td>0.8103693</td><td>NA        </td></tr>
-	<tr><th scope=row>29</th><td>DRD4  </td><td>Erythema                           </td><td> 0.4915727126</td><td>0.9565907</td><td>metabrain</td><td>TRUE</td><td>2.3752024</td><td>antagonist</td></tr>
-	<tr><th scope=row>30</th><td>ADRB1 </td><td>Gamma-glutamyltransferase increased</td><td>-0.0538527677</td><td>0.9361999</td><td>metabrain</td><td>TRUE</td><td>0.1249387</td><td>NA        </td></tr>
-	<tr><th scope=row>32</th><td>DRD1  </td><td>Headache                           </td><td>-0.1214793439</td><td>0.7811732</td><td>metabrain</td><td>TRUE</td><td>2.3868456</td><td>antagonist</td></tr>
-	<tr><th scope=row>35</th><td>ADRA2B</td><td>Hypertension                       </td><td>-0.0110313962</td><td>0.9075700</td><td>metabrain</td><td>TRUE</td><td>2.4788619</td><td>antagonist</td></tr>
-	<tr><th scope=row>37</th><td>HRH1  </td><td>Hypertension                       </td><td> 1.4960506837</td><td>0.7972029</td><td>metabrain</td><td>TRUE</td><td>3.2510371</td><td>antagonist</td></tr>
-	<tr><th scope=row>38</th><td>ADRA1A</td><td>Hypotension                        </td><td> 0.0443714744</td><td>0.9023105</td><td>metabrain</td><td>TRUE</td><td>3.6020600</td><td>antagonist</td></tr>
-	<tr><th scope=row>42</th><td>ADRA2B</td><td>Hypotension                        </td><td>-0.0112522706</td><td>0.9115393</td><td>metabrain</td><td>TRUE</td><td>2.4788619</td><td>antagonist</td></tr>
-	<tr><th scope=row>45</th><td>ADRB1 </td><td>Hypotension                        </td><td> 0.0230071281</td><td>0.9989253</td><td>eqtl_gen </td><td>TRUE</td><td>0.1249387</td><td>NA        </td></tr>
-	<tr><th scope=row>49</th><td>HRH1  </td><td>Hypotension                        </td><td> 0.0245057608</td><td>0.8334084</td><td>metabrain</td><td>TRUE</td><td>3.2510371</td><td>antagonist</td></tr>
-	<tr><th scope=row>51</th><td>HTR1B </td><td>Hypotension                        </td><td> 0.0170803940</td><td>0.8190243</td><td>metabrain</td><td>TRUE</td><td>2.1814442</td><td>NA        </td></tr>
-	<tr><th scope=row>52</th><td>DRD4  </td><td>Hypothyroidism                     </td><td> 0.0039811555</td><td>0.9494566</td><td>metabrain</td><td>TRUE</td><td>2.3752024</td><td>antagonist</td></tr>
-	<tr><th scope=row>61</th><td>HTR1E </td><td>Hypothyroidism                     </td><td>-0.0046059535</td><td>0.7079806</td><td>metabrain</td><td>TRUE</td><td>0.2588484</td><td>NA        </td></tr>
-	<tr><th scope=row>62</th><td>HTR6  </td><td>Incontinence                       </td><td> 0.1056302009</td><td>0.6981074</td><td>eqtl_gen </td><td>TRUE</td><td>0.8103693</td><td>NA        </td></tr>
-	<tr><th scope=row>67</th><td>HTR5A </td><td>Infection                          </td><td>-0.1033991845</td><td>0.6695637</td><td>metabrain</td><td>TRUE</td><td>1.4522868</td><td>NA        </td></tr>
-	<tr><th scope=row>68</th><td>HTR7  </td><td>Infection                          </td><td>-0.0021617092</td><td>0.7484923</td><td>metabrain</td><td>TRUE</td><td>3.5606673</td><td>antagonist</td></tr>
-	<tr><th scope=row>69</th><td>ADRA2B</td><td>Lymphadenopathy                    </td><td> 0.0257822278</td><td>0.6637104</td><td>metabrain</td><td>TRUE</td><td>2.4788619</td><td>antagonist</td></tr>
-	<tr><th scope=row>70</th><td>HRH4  </td><td>Malnutrition                       </td><td>-1.7202959266</td><td>0.6886816</td><td>metabrain</td><td>TRUE</td><td>0.0605806</td><td>NA        </td></tr>
-	<tr><th scope=row>71</th><td>DRD2  </td><td>Manic psychosis                    </td><td>-0.0121396183</td><td>0.8782281</td><td>metabrain</td><td>TRUE</td><td>3.4621809</td><td>antagonist</td></tr>
-	<tr><th scope=row>73</th><td>DRD1  </td><td>Micturition urgency                </td><td>-0.0618757594</td><td>0.9937155</td><td>metabrain</td><td>TRUE</td><td>2.3868456</td><td>antagonist</td></tr>
-	<tr><th scope=row>74</th><td>HTR6  </td><td>Micturition urgency                </td><td> 0.1056302009</td><td>0.6981074</td><td>eqtl_gen </td><td>TRUE</td><td>0.8103693</td><td>NA        </td></tr>
-	<tr><th scope=row>79</th><td>HTR6  </td><td>Nasal congestion                   </td><td> 0.0010350581</td><td>0.6164910</td><td>eqtl_gen </td><td>TRUE</td><td>0.8103693</td><td>NA        </td></tr>
-	<tr><th scope=row>80</th><td>ADRB2 </td><td>Neutropenia                        </td><td> 0.0234449234</td><td>0.9860806</td><td>eqtl_gen </td><td>TRUE</td><td>0.1249387</td><td>NA        </td></tr>
-	<tr><th scope=row>85</th><td>HTR1B </td><td>Neutropenia                        </td><td>-0.4256745028</td><td>0.8449493</td><td>metabrain</td><td>TRUE</td><td>2.1814442</td><td>NA        </td></tr>
-	<tr><th scope=row>86</th><td>HTR1D </td><td>Neutropenia                        </td><td> 0.0293549499</td><td>0.8227733</td><td>metabrain</td><td>TRUE</td><td>2.7212464</td><td>antagonist</td></tr>
-	<tr><th scope=row>87</th><td>HTR6  </td><td>Neutropenia                        </td><td>-0.0205996237</td><td>0.7454622</td><td>eqtl_gen </td><td>TRUE</td><td>0.8103693</td><td>NA        </td></tr>
-	<tr><th scope=row>89</th><td>DRD4  </td><td>Oedema peripheral                  </td><td> 0.1481462301</td><td>0.9244266</td><td>metabrain</td><td>TRUE</td><td>2.3752024</td><td>antagonist</td></tr>
-	<tr><th scope=row>93</th><td>HTR1D </td><td>Pneumonia                          </td><td>-0.0009638468</td><td>0.7314315</td><td>metabrain</td><td>TRUE</td><td>2.7212464</td><td>antagonist</td></tr>
-	<tr><th scope=row>94</th><td>DRD2  </td><td>Seasonal allergy                   </td><td>-0.2278579078</td><td>0.8354514</td><td>metabrain</td><td>TRUE</td><td>3.4621809</td><td>antagonist</td></tr>
-	<tr><th scope=row>96</th><td>HTR1E </td><td>Seasonal allergy                   </td><td>-0.0959763537</td><td>0.6054784</td><td>metabrain</td><td>TRUE</td><td>0.2588484</td><td>NA        </td></tr>
-	<tr><th scope=row>97</th><td>ADRA2B</td><td>Sleep disorder                     </td><td>-0.0327698047</td><td>0.9038248</td><td>metabrain</td><td>TRUE</td><td>2.4788619</td><td>antagonist</td></tr>
-	<tr><th scope=row>98</th><td>DRD1  </td><td>Urinary abnormalities              </td><td>-0.0618757594</td><td>0.9937155</td><td>metabrain</td><td>TRUE</td><td>2.3868456</td><td>antagonist</td></tr>
-	<tr><th scope=row>99</th><td>HTR6  </td><td>Urinary abnormalities              </td><td> 0.1056302009</td><td>0.6981074</td><td>eqtl_gen </td><td>TRUE</td><td>0.8103693</td><td>NA        </td></tr>
-	<tr><th scope=row>104</th><td>HTR6  </td><td>Urinary incontinence               </td><td> 0.1056302009</td><td>0.6981074</td><td>eqtl_gen </td><td>TRUE</td><td>0.8103693</td><td>NA        </td></tr>
-	<tr><th scope=row>109</th><td>HRH1  </td><td>Weight increased                   </td><td>-0.0222713696</td><td>0.7197419</td><td>metabrain</td><td>TRUE</td><td>3.2510371</td><td>antagonist</td></tr>
-	<tr><th scope=row>112</th><td>HTR1B </td><td>Weight increased                   </td><td> 0.0322022612</td><td>0.8683135</td><td>metabrain</td><td>TRUE</td><td>2.1814442</td><td>NA        </td></tr>
-	<tr><th scope=row>121</th><td>ADRA1B</td><td>White blood cell count decreased   </td><td>-0.0524676758</td><td>0.6013782</td><td>metabrain</td><td>TRUE</td><td>4.1549020</td><td>antagonist</td></tr>
-	<tr><th scope=row>123</th><td>ADRB2 </td><td>White blood cell count decreased   </td><td> 0.0188613763</td><td>0.9835043</td><td>eqtl_gen </td><td>TRUE</td><td>0.1249387</td><td>NA        </td></tr>
-	<tr><th scope=row>129</th><td>HRH1  </td><td>White blood cell count decreased   </td><td> 0.2750388495</td><td>0.6574516</td><td>metabrain</td><td>TRUE</td><td>3.2510371</td><td>antagonist</td></tr>
-	<tr><th scope=row>130</th><td>HTR1E </td><td>White blood cell count decreased   </td><td>-0.0303741709</td><td>0.7334934</td><td>metabrain</td><td>TRUE</td><td>0.2588484</td><td>NA        </td></tr>
-	<tr><th scope=row>131</th><td>HTR6  </td><td>White blood cell count decreased   </td><td>-0.0230082592</td><td>0.6095982</td><td>eqtl_gen </td><td>TRUE</td><td>0.8103693</td><td>NA        </td></tr>
-</tbody>
-</table>
-
-</div>
-
-</div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
-<h3 id="quetiapine-side-effects">quetiapine side effects<a class="anchor-link" href="#quetiapine-side-effects">&#182;</a></h3>
-</div>
-
-</div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
-<table class="dataframe">
-<caption>A data.frame: 46 × 8</caption>
-<thead>
-	<tr><th></th><th scope=col>exposure</th><th scope=col>side_effect</th><th scope=col>wald_ratio_b</th><th scope=col>h4</th><th scope=col>source</th><th scope=col>quetiapine_target</th><th scope=col>quetiapine_pki</th><th scope=col>quetiapine_target_action</th></tr>
-	<tr><th></th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
-</thead>
-<tbody>
-	<tr><th scope=row>1</th><td>HTR1B </td><td>Anorexia                        </td><td> 0.0369941407</td><td>0.8103582</td><td>metabrain</td><td>TRUE</td><td>0.8014804</td><td>ligand    </td></tr>
-	<tr><th scope=row>2</th><td>ADRA2B</td><td>Anxiety                         </td><td>-0.0327698047</td><td>0.9038248</td><td>metabrain</td><td>TRUE</td><td>1.1269120</td><td>antagonist</td></tr>
-	<tr><th scope=row>3</th><td>HTR2A </td><td>Back pain                       </td><td>-0.2313794023</td><td>0.6316502</td><td>metabrain</td><td>TRUE</td><td>1.6989700</td><td>antagonist</td></tr>
-	<tr><th scope=row>4</th><td>HTR5A </td><td>Bilirubin total low/decreased   </td><td> 0.0623441054</td><td>0.9691620</td><td>metabrain</td><td>TRUE</td><td>0.5670307</td><td>NA        </td></tr>
-	<tr><th scope=row>6</th><td>HTR3A </td><td>Bundle branch block right       </td><td>-0.9026216544</td><td>0.6372883</td><td>metabrain</td><td>TRUE</td><td>0.3635121</td><td>ligand    </td></tr>
-	<tr><th scope=row>8</th><td>ADRA2B</td><td>Cardiovascular disorder         </td><td>-0.0101609259</td><td>0.7449742</td><td>metabrain</td><td>TRUE</td><td>1.1269120</td><td>antagonist</td></tr>
-	<tr><th scope=row>9</th><td>DRD2  </td><td>Conjunctivitis                  </td><td>-0.2278579078</td><td>0.8354514</td><td>metabrain</td><td>TRUE</td><td>1.3010300</td><td>antagonist</td></tr>
-	<tr><th scope=row>11</th><td>HTR1D </td><td>Corneal lesion                  </td><td> 0.0386511955</td><td>0.9112980</td><td>metabrain</td><td>TRUE</td><td>0.3010300</td><td>ligand    </td></tr>
-	<tr><th scope=row>12</th><td>HTR1D </td><td>Eosinophilia                    </td><td>-0.0307384669</td><td>0.8901870</td><td>metabrain</td><td>TRUE</td><td>0.3010300</td><td>ligand    </td></tr>
-	<tr><th scope=row>16</th><td>HTR1E </td><td>Eosinophilia                    </td><td>-0.0328479974</td><td>0.6444513</td><td>metabrain</td><td>TRUE</td><td>0.7384992</td><td>ligand    </td></tr>
-	<tr><th scope=row>21</th><td>HTR6  </td><td>Eosinophilia                    </td><td> 0.2095169475</td><td>0.8278197</td><td>metabrain</td><td>TRUE</td><td>0.7398093</td><td>antagonist</td></tr>
-	<tr><th scope=row>22</th><td>DRD4  </td><td>Erythema                        </td><td> 0.4915727126</td><td>0.9565907</td><td>metabrain</td><td>TRUE</td><td>0.6994847</td><td>ligand    </td></tr>
-	<tr><th scope=row>23</th><td>DRD1  </td><td>Headache                        </td><td>-0.1214793439</td><td>0.7811732</td><td>metabrain</td><td>TRUE</td><td>1.1300000</td><td>antagonist</td></tr>
-	<tr><th scope=row>26</th><td>ADRA2B</td><td>Hypertension                    </td><td>-0.0110086051</td><td>0.8993120</td><td>metabrain</td><td>TRUE</td><td>1.1269120</td><td>antagonist</td></tr>
-	<tr><th scope=row>28</th><td>HRH1  </td><td>Hypertension                    </td><td> 1.4960506837</td><td>0.7972029</td><td>metabrain</td><td>TRUE</td><td>3.0600000</td><td>antagonist</td></tr>
-	<tr><th scope=row>29</th><td>ADRA1A</td><td>Hypotension                     </td><td> 0.0443714744</td><td>0.9023105</td><td>metabrain</td><td>TRUE</td><td>2.6575773</td><td>antagonist</td></tr>
-	<tr><th scope=row>33</th><td>ADRA2B</td><td>Hypotension                     </td><td>-0.0590782252</td><td>0.7010885</td><td>metabrain</td><td>TRUE</td><td>1.1269120</td><td>antagonist</td></tr>
-	<tr><th scope=row>36</th><td>HRH1  </td><td>Hypotension                     </td><td> 1.7489172712</td><td>0.6235118</td><td>metabrain</td><td>TRUE</td><td>3.0600000</td><td>antagonist</td></tr>
-	<tr><th scope=row>38</th><td>HTR1B </td><td>Hypotension                     </td><td> 0.0170803940</td><td>0.8190243</td><td>metabrain</td><td>TRUE</td><td>0.8014804</td><td>ligand    </td></tr>
-	<tr><th scope=row>39</th><td>DRD4  </td><td>Hypothyroidism                  </td><td> 0.0066113790</td><td>0.9471645</td><td>metabrain</td><td>TRUE</td><td>0.6994847</td><td>ligand    </td></tr>
-	<tr><th scope=row>48</th><td>HTR1E </td><td>Hypothyroidism                  </td><td>-0.0046059535</td><td>0.7079806</td><td>metabrain</td><td>TRUE</td><td>0.7384992</td><td>ligand    </td></tr>
-	<tr><th scope=row>49</th><td>HTR6  </td><td>Incontinence                    </td><td> 0.1056302009</td><td>0.6981074</td><td>eqtl_gen </td><td>TRUE</td><td>0.7398093</td><td>antagonist</td></tr>
-	<tr><th scope=row>54</th><td>HTR5A </td><td>Infection                       </td><td>-0.1033991845</td><td>0.6695637</td><td>metabrain</td><td>TRUE</td><td>0.5670307</td><td>NA        </td></tr>
-	<tr><th scope=row>55</th><td>ADRA2B</td><td>Lymphadenopathy                 </td><td> 0.0257822278</td><td>0.6637104</td><td>metabrain</td><td>TRUE</td><td>1.1269120</td><td>antagonist</td></tr>
-	<tr><th scope=row>56</th><td>DRD2  </td><td>Manic psychosis                 </td><td>-0.0121396183</td><td>0.8782281</td><td>metabrain</td><td>TRUE</td><td>1.3010300</td><td>antagonist</td></tr>
-	<tr><th scope=row>58</th><td>DRD1  </td><td>Micturition urgency             </td><td>-0.0618757594</td><td>0.9937155</td><td>metabrain</td><td>TRUE</td><td>1.1300000</td><td>antagonist</td></tr>
-	<tr><th scope=row>59</th><td>HTR6  </td><td>Micturition urgency             </td><td> 0.1056302009</td><td>0.6981074</td><td>eqtl_gen </td><td>TRUE</td><td>0.7398093</td><td>antagonist</td></tr>
-	<tr><th scope=row>64</th><td>HTR6  </td><td>Nasal congestion                </td><td> 0.0010350581</td><td>0.6164910</td><td>eqtl_gen </td><td>TRUE</td><td>0.7398093</td><td>antagonist</td></tr>
-	<tr><th scope=row>65</th><td>HTR1B </td><td>Neutropenia                     </td><td>-0.4256745028</td><td>0.8449493</td><td>metabrain</td><td>TRUE</td><td>0.8014804</td><td>ligand    </td></tr>
-	<tr><th scope=row>66</th><td>HTR1D </td><td>Neutropenia                     </td><td> 0.0293549499</td><td>0.8227733</td><td>metabrain</td><td>TRUE</td><td>0.3010300</td><td>ligand    </td></tr>
-	<tr><th scope=row>67</th><td>HTR6  </td><td>Neutropenia                     </td><td>-0.0205996237</td><td>0.7454622</td><td>eqtl_gen </td><td>TRUE</td><td>0.7398093</td><td>antagonist</td></tr>
-	<tr><th scope=row>69</th><td>DRD4  </td><td>Oedema peripheral               </td><td> 0.0066113790</td><td>0.9471645</td><td>metabrain</td><td>TRUE</td><td>0.6994847</td><td>ligand    </td></tr>
-	<tr><th scope=row>73</th><td>HTR1D </td><td>Pneumonia                       </td><td>-0.0009638468</td><td>0.7314315</td><td>metabrain</td><td>TRUE</td><td>0.3010300</td><td>ligand    </td></tr>
-	<tr><th scope=row>74</th><td>DRD2  </td><td>Seasonal allergy                </td><td>-0.2132098994</td><td>0.7258976</td><td>metabrain</td><td>TRUE</td><td>1.3010300</td><td>antagonist</td></tr>
-	<tr><th scope=row>76</th><td>HTR1E </td><td>Seasonal allergy                </td><td>-0.0959763537</td><td>0.6054784</td><td>metabrain</td><td>TRUE</td><td>0.7384992</td><td>ligand    </td></tr>
-	<tr><th scope=row>77</th><td>ADRA2B</td><td>Sleep disorder                  </td><td>-0.0327698047</td><td>0.9038248</td><td>metabrain</td><td>TRUE</td><td>1.1269120</td><td>antagonist</td></tr>
-	<tr><th scope=row>78</th><td>DRD1  </td><td>Urinary abnormalities           </td><td>-0.0618757594</td><td>0.9937155</td><td>metabrain</td><td>TRUE</td><td>1.1300000</td><td>antagonist</td></tr>
-	<tr><th scope=row>79</th><td>HTR6  </td><td>Urinary abnormalities           </td><td> 0.1056302009</td><td>0.6981074</td><td>eqtl_gen </td><td>TRUE</td><td>0.7398093</td><td>antagonist</td></tr>
-	<tr><th scope=row>84</th><td>HTR6  </td><td>Urinary incontinence            </td><td> 0.1056302009</td><td>0.6981074</td><td>eqtl_gen </td><td>TRUE</td><td>0.7398093</td><td>antagonist</td></tr>
-	<tr><th scope=row>89</th><td>CHRM3 </td><td>Weight increased                </td><td>-0.0830659882</td><td>0.6110848</td><td>metabrain</td><td>TRUE</td><td>0.7874129</td><td>antagonist</td></tr>
-	<tr><th scope=row>91</th><td>HRH1  </td><td>Weight increased                </td><td>-0.0248011234</td><td>0.6822293</td><td>metabrain</td><td>TRUE</td><td>3.0600000</td><td>antagonist</td></tr>
-	<tr><th scope=row>94</th><td>HTR1B </td><td>Weight increased                </td><td> 0.0337901635</td><td>0.8811928</td><td>metabrain</td><td>TRUE</td><td>0.8014804</td><td>ligand    </td></tr>
-	<tr><th scope=row>103</th><td>ADRA1B</td><td>White blood cell count decreased</td><td>-0.0524676758</td><td>0.6013782</td><td>metabrain</td><td>TRUE</td><td>2.0457575</td><td>antagonist</td></tr>
-	<tr><th scope=row>105</th><td>HRH1  </td><td>White blood cell count decreased</td><td> 0.2750388495</td><td>0.6574516</td><td>metabrain</td><td>TRUE</td><td>3.0600000</td><td>antagonist</td></tr>
-	<tr><th scope=row>106</th><td>HTR1E </td><td>White blood cell count decreased</td><td>-0.0303741709</td><td>0.7334934</td><td>metabrain</td><td>TRUE</td><td>0.7384992</td><td>ligand    </td></tr>
-	<tr><th scope=row>107</th><td>HTR6  </td><td>White blood cell count decreased</td><td>-0.0230082592</td><td>0.6095982</td><td>eqtl_gen </td><td>TRUE</td><td>0.7398093</td><td>antagonist</td></tr>
-</tbody>
-</table>
-
-</div>
-
-</div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
-<h3 id="risperidone-side-effects">risperidone side effects<a class="anchor-link" href="#risperidone-side-effects">&#182;</a></h3>
-</div>
-
-</div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
-<table class="dataframe">
-<caption>A data.frame: 46 × 8</caption>
-<thead>
-	<tr><th></th><th scope=col>exposure</th><th scope=col>side_effect</th><th scope=col>wald_ratio_b</th><th scope=col>h4</th><th scope=col>source</th><th scope=col>risperidone_target</th><th scope=col>risperidone_pki</th><th scope=col>risperidone_target_action</th></tr>
-	<tr><th></th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
-</thead>
-<tbody>
-	<tr><th scope=row>1</th><td>HTR1B </td><td>Anorexia                        </td><td> 0.0369941407</td><td>0.8103582</td><td>metabrain</td><td>TRUE</td><td>2.43409318</td><td>NA        </td></tr>
-	<tr><th scope=row>2</th><td>ADRA2B</td><td>Anxiety                         </td><td>-0.0327698047</td><td>0.9038248</td><td>metabrain</td><td>TRUE</td><td>1.96818773</td><td>antagonist</td></tr>
-	<tr><th scope=row>3</th><td>HTR2A </td><td>Back pain                       </td><td>-0.2313794023</td><td>0.6316502</td><td>metabrain</td><td>TRUE</td><td>4.53760201</td><td>antagonist</td></tr>
-	<tr><th scope=row>4</th><td>HTR5A </td><td>Bilirubin total low/decreased   </td><td> 0.0623441054</td><td>0.9691620</td><td>metabrain</td><td>TRUE</td><td>1.69814563</td><td>NA        </td></tr>
-	<tr><th scope=row>6</th><td>HTR3A </td><td>Bundle branch block right       </td><td>-0.9026216544</td><td>0.6372883</td><td>metabrain</td><td>TRUE</td><td>0.03816053</td><td>NA        </td></tr>
-	<tr><th scope=row>8</th><td>ADRA2B</td><td>Cardiovascular disorder         </td><td>-0.0101609259</td><td>0.7449742</td><td>metabrain</td><td>TRUE</td><td>1.96818773</td><td>antagonist</td></tr>
-	<tr><th scope=row>9</th><td>DRD2  </td><td>Conjunctivitis                  </td><td>-0.2278579078</td><td>0.8354514</td><td>metabrain</td><td>TRUE</td><td>3.56863624</td><td>antagonist</td></tr>
-	<tr><th scope=row>11</th><td>HTR1D </td><td>Corneal lesion                  </td><td> 0.0386511955</td><td>0.9112980</td><td>metabrain</td><td>TRUE</td><td>2.74328225</td><td>antagonist</td></tr>
-	<tr><th scope=row>12</th><td>HTR1D </td><td>Eosinophilia                    </td><td>-0.0307384669</td><td>0.8901870</td><td>metabrain</td><td>TRUE</td><td>2.74328225</td><td>antagonist</td></tr>
-	<tr><th scope=row>16</th><td>HTR1E </td><td>Eosinophilia                    </td><td>-0.0328479974</td><td>0.6444513</td><td>metabrain</td><td>TRUE</td><td>0.24718357</td><td>NA        </td></tr>
-	<tr><th scope=row>21</th><td>HTR6  </td><td>Eosinophilia                    </td><td> 0.2095169475</td><td>0.8278197</td><td>metabrain</td><td>TRUE</td><td>0.74712810</td><td>NA        </td></tr>
-	<tr><th scope=row>22</th><td>DRD4  </td><td>Erythema                        </td><td> 0.4915727126</td><td>0.9565907</td><td>metabrain</td><td>TRUE</td><td>3.07000000</td><td>NA        </td></tr>
-	<tr><th scope=row>23</th><td>DRD1  </td><td>Headache                        </td><td>-0.1214793439</td><td>0.7811732</td><td>metabrain</td><td>TRUE</td><td>1.40340290</td><td>antagonist</td></tr>
-	<tr><th scope=row>26</th><td>ADRA2B</td><td>Hypertension                    </td><td>-0.0110086051</td><td>0.8993120</td><td>metabrain</td><td>TRUE</td><td>1.96818773</td><td>antagonist</td></tr>
-	<tr><th scope=row>28</th><td>HRH1  </td><td>Hypertension                    </td><td> 1.4960506837</td><td>0.7972029</td><td>metabrain</td><td>TRUE</td><td>2.72124640</td><td>antagonist</td></tr>
-	<tr><th scope=row>29</th><td>ADRA1A</td><td>Hypotension                     </td><td> 0.0443714744</td><td>0.9023105</td><td>metabrain</td><td>TRUE</td><td>3.30103000</td><td>antagonist</td></tr>
-	<tr><th scope=row>33</th><td>ADRA2B</td><td>Hypotension                     </td><td>-0.0590782252</td><td>0.7010885</td><td>metabrain</td><td>TRUE</td><td>1.96818773</td><td>antagonist</td></tr>
-	<tr><th scope=row>36</th><td>HRH1  </td><td>Hypotension                     </td><td> 0.0245057608</td><td>0.8334084</td><td>metabrain</td><td>TRUE</td><td>2.72124640</td><td>antagonist</td></tr>
-	<tr><th scope=row>38</th><td>HTR1B </td><td>Hypotension                     </td><td> 0.0170803940</td><td>0.8190243</td><td>metabrain</td><td>TRUE</td><td>2.43409318</td><td>NA        </td></tr>
-	<tr><th scope=row>39</th><td>DRD4  </td><td>Hypothyroidism                  </td><td> 0.0066113790</td><td>0.9471645</td><td>metabrain</td><td>TRUE</td><td>3.07000000</td><td>NA        </td></tr>
-	<tr><th scope=row>48</th><td>HTR1E </td><td>Hypothyroidism                  </td><td>-0.0046059535</td><td>0.7079806</td><td>metabrain</td><td>TRUE</td><td>0.24718357</td><td>NA        </td></tr>
-	<tr><th scope=row>49</th><td>HTR6  </td><td>Incontinence                    </td><td> 0.1056302009</td><td>0.6981074</td><td>eqtl_gen </td><td>TRUE</td><td>0.74712810</td><td>NA        </td></tr>
-	<tr><th scope=row>54</th><td>HTR5A </td><td>Infection                       </td><td>-0.1033991845</td><td>0.6695637</td><td>metabrain</td><td>TRUE</td><td>1.69814563</td><td>NA        </td></tr>
-	<tr><th scope=row>55</th><td>HTR7  </td><td>Infection                       </td><td>-0.0021617092</td><td>0.7484923</td><td>metabrain</td><td>TRUE</td><td>3.40893539</td><td>antagonist</td></tr>
-	<tr><th scope=row>56</th><td>ADRA2B</td><td>Lymphadenopathy                 </td><td> 0.0257822278</td><td>0.6637104</td><td>metabrain</td><td>TRUE</td><td>1.96818773</td><td>antagonist</td></tr>
-	<tr><th scope=row>57</th><td>DRD2  </td><td>Manic psychosis                 </td><td>-0.0121396183</td><td>0.8782281</td><td>metabrain</td><td>TRUE</td><td>3.56863624</td><td>antagonist</td></tr>
-	<tr><th scope=row>59</th><td>DRD1  </td><td>Micturition urgency             </td><td>-0.0618757594</td><td>0.9937155</td><td>metabrain</td><td>TRUE</td><td>1.40340290</td><td>antagonist</td></tr>
-	<tr><th scope=row>60</th><td>HTR6  </td><td>Micturition urgency             </td><td> 0.1056302009</td><td>0.6981074</td><td>eqtl_gen </td><td>TRUE</td><td>0.74712810</td><td>NA        </td></tr>
-	<tr><th scope=row>65</th><td>HTR6  </td><td>Nasal congestion                </td><td> 0.0010350581</td><td>0.6164910</td><td>eqtl_gen </td><td>TRUE</td><td>0.74712810</td><td>NA        </td></tr>
-	<tr><th scope=row>66</th><td>HTR1B </td><td>Neutropenia                     </td><td>-0.4256745028</td><td>0.8449493</td><td>metabrain</td><td>TRUE</td><td>2.43409318</td><td>NA        </td></tr>
-	<tr><th scope=row>67</th><td>HTR1D </td><td>Neutropenia                     </td><td> 0.0293549499</td><td>0.8227733</td><td>metabrain</td><td>TRUE</td><td>2.74328225</td><td>antagonist</td></tr>
-	<tr><th scope=row>68</th><td>HTR6  </td><td>Neutropenia                     </td><td>-0.0205996237</td><td>0.7454622</td><td>eqtl_gen </td><td>TRUE</td><td>0.74712810</td><td>NA        </td></tr>
-	<tr><th scope=row>70</th><td>DRD4  </td><td>Oedema peripheral               </td><td> 0.0066113790</td><td>0.9471645</td><td>metabrain</td><td>TRUE</td><td>3.07000000</td><td>NA        </td></tr>
-	<tr><th scope=row>74</th><td>HTR1D </td><td>Pneumonia                       </td><td>-0.0009638468</td><td>0.7314315</td><td>metabrain</td><td>TRUE</td><td>2.74328225</td><td>antagonist</td></tr>
-	<tr><th scope=row>75</th><td>DRD2  </td><td>Seasonal allergy                </td><td>-0.2278579078</td><td>0.8354514</td><td>metabrain</td><td>TRUE</td><td>3.56863624</td><td>antagonist</td></tr>
-	<tr><th scope=row>77</th><td>HTR1E </td><td>Seasonal allergy                </td><td>-0.0959763537</td><td>0.6054784</td><td>metabrain</td><td>TRUE</td><td>0.24718357</td><td>NA        </td></tr>
-	<tr><th scope=row>78</th><td>ADRA2B</td><td>Sleep disorder                  </td><td>-0.0327698047</td><td>0.9038248</td><td>metabrain</td><td>TRUE</td><td>1.96818773</td><td>antagonist</td></tr>
-	<tr><th scope=row>79</th><td>DRD1  </td><td>Urinary abnormalities           </td><td>-0.0618757594</td><td>0.9937155</td><td>metabrain</td><td>TRUE</td><td>1.40340290</td><td>antagonist</td></tr>
-	<tr><th scope=row>80</th><td>HTR6  </td><td>Urinary abnormalities           </td><td> 0.1056302009</td><td>0.6981074</td><td>eqtl_gen </td><td>TRUE</td><td>0.74712810</td><td>NA        </td></tr>
-	<tr><th scope=row>85</th><td>HTR6  </td><td>Urinary incontinence            </td><td> 0.1056302009</td><td>0.6981074</td><td>eqtl_gen </td><td>TRUE</td><td>0.74712810</td><td>NA        </td></tr>
-	<tr><th scope=row>90</th><td>HRH1  </td><td>Weight increased                </td><td>-0.0255451451</td><td>0.7656288</td><td>metabrain</td><td>TRUE</td><td>2.72124640</td><td>antagonist</td></tr>
-	<tr><th scope=row>93</th><td>HTR1B </td><td>Weight increased                </td><td> 0.0337901635</td><td>0.8811928</td><td>metabrain</td><td>TRUE</td><td>2.43409318</td><td>NA        </td></tr>
-	<tr><th scope=row>102</th><td>ADRA1B</td><td>White blood cell count decreased</td><td>-0.0524676758</td><td>0.6013782</td><td>metabrain</td><td>TRUE</td><td>3.04575749</td><td>antagonist</td></tr>
-	<tr><th scope=row>104</th><td>HRH1  </td><td>White blood cell count decreased</td><td> 0.2750388495</td><td>0.6574516</td><td>metabrain</td><td>TRUE</td><td>2.72124640</td><td>antagonist</td></tr>
-	<tr><th scope=row>105</th><td>HTR1E </td><td>White blood cell count decreased</td><td>-0.0303741709</td><td>0.7334934</td><td>metabrain</td><td>TRUE</td><td>0.24718357</td><td>NA        </td></tr>
-	<tr><th scope=row>106</th><td>HTR6  </td><td>White blood cell count decreased</td><td>-0.0230082592</td><td>0.6095982</td><td>eqtl_gen </td><td>TRUE</td><td>0.74712810</td><td>NA        </td></tr>
-</tbody>
-</table>
-
-</div>
-
-</div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
-<h3 id="Results-of-a-'score'-multipier-per-side-effect">Results of a 'score' multipier per side effect<a class="anchor-link" href="#Results-of-a-'score'-multipier-per-side-effect">&#182;</a></h3>
-</div>
-
-</div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
-<span style=white-space:pre-wrap>'Warning: bad science.  Direction of effect not taken into account, filtered by h4 &gt; 0.6 (not 0.8)'</span>
-</div>
-
-</div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
-'Direction *should* include ligand target (antagonist, agonist, etc.) and eQTL -&gt; pQTL direction'
-</div>
-
-</div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
-<table class="dataframe">
-<caption>A data.frame: 39 × 6</caption>
-<thead>
-	<tr><th></th><th scope=col>aripiprazole</th><th scope=col>clozapine</th><th scope=col>olanzapine</th><th scope=col>paliperidone</th><th scope=col>quetiapine</th><th scope=col>risperidone</th></tr>
-	<tr><th></th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
-</thead>
-<tbody>
-	<tr><th scope=row>Alanine aminotransferase increased</th><td>0.317854357</td><td>0.102803619</td><td>0.02145706</td><td>0.0214570628</td><td>          NA</td><td>         NA</td></tr>
-	<tr><th scope=row>Anorexia</th><td>0.039929811</td><td>0.047407929</td><td>0.04366996</td><td>0.0807006544</td><td>0.0296500776</td><td>0.090047185</td></tr>
-	<tr><th scope=row>Anxiety</th><td>0.065257783</td><td>0.084439729</td><td>0.06836391</td><td>0.0812318208</td><td>0.0369286866</td><td>0.064497127</td></tr>
-	<tr><th scope=row>Arthropathy</th><td>         NA</td><td>0.437753312</td><td>        NA</td><td>          NA</td><td>          NA</td><td>         NA</td></tr>
-	<tr><th scope=row>Back pain</th><td>0.708132206</td><td>0.727778542</td><td>0.80554416</td><td>0.9255176093</td><td>0.3931066642</td><td>1.049907641</td></tr>
-	<tr><th scope=row>Bilirubin total low/decreased</th><td>0.064278486</td><td>0.038320546</td><td>0.05548099</td><td>0.1029704724</td><td>0.0353510223</td><td>0.105869370</td></tr>
-	<tr><th scope=row>Bundle branch block right</th><td>1.084987655</td><td>1.886479258</td><td>1.71777023</td><td>0.0000000000</td><td>0.3281138964</td><td>0.034444521</td></tr>
-	<tr><th scope=row>Cardiovascular disorder</th><td>0.020234466</td><td>0.026182208</td><td>0.02119758</td><td>0.0251875322</td><td>0.0114504694</td><td>0.019998610</td></tr>
-	<tr><th scope=row>Cellulitis</th><td>0.000000000</td><td>0.591360468</td><td>0.05950584</td><td>0.0277190834</td><td>          NA</td><td>         NA</td></tr>
-	<tr><th scope=row>Conjunctivitis</th><td>0.818439304</td><td>0.423843260</td><td>0.57092935</td><td>0.7381712426</td><td>0.2964499728</td><td>0.813141986</td></tr>
-	<tr><th scope=row>Constipation</th><td>0.413331362</td><td>         NA</td><td>        NA</td><td>          NA</td><td>          NA</td><td>         NA</td></tr>
-	<tr><th scope=row>Corneal lesion</th><td>0.083776122</td><td>0.049403548</td><td>0.04237591</td><td>0.1051794266</td><td>0.0116351692</td><td>0.106031139</td></tr>
-	<tr><th scope=row>Eosinophilia</th><td>0.445939394</td><td>0.707677793</td><td>0.69858129</td><td>0.2815998422</td><td>0.1885140110</td><td>0.248979776</td></tr>
-	<tr><th scope=row>Erythema</th><td>0.662270598</td><td>1.186921619</td><td>1.25490745</td><td>1.1675846971</td><td>0.3438475899</td><td>1.509128228</td></tr>
-	<tr><th scope=row>Gamma-glutamyltransferase increased</th><td>0.099669673</td><td>0.006728297</td><td>0.08899240</td><td>0.0067282968</td><td>          NA</td><td>         NA</td></tr>
-	<tr><th scope=row>Headache</th><td>0.171563945</td><td>0.207455612</td><td>0.27745842</td><td>0.2899524328</td><td>0.1372716586</td><td>0.170484464</td></tr>
-	<tr><th scope=row>Hepatic enzyme increased</th><td>         NA</td><td>0.081346556</td><td>        NA</td><td>          NA</td><td>          NA</td><td>         NA</td></tr>
-	<tr><th scope=row>Hypertension</th><td>3.881322758</td><td>5.627122688</td><td>5.44457876</td><td>4.8910616421</td><td>4.5903208213</td><td>4.092789537</td></tr>
-	<tr><th scope=row>Hypotension</th><td>4.805423033</td><td>0.440104844</td><td>0.32181865</td><td>0.3075250841</td><td>5.5498730361</td><td>0.371010089</td></tr>
-	<tr><th scope=row>Hypothyroidism</th><td>0.005809969</td><td>0.014287804</td><td>0.01318386</td><td>0.0106482940</td><td>0.0080260515</td><td>0.021435450</td></tr>
-	<tr><th scope=row>Incontinence</th><td>0.148591475</td><td>0.314777999</td><td>0.32434610</td><td>0.0855994764</td><td>0.0781462068</td><td>0.078919292</td></tr>
-	<tr><th scope=row>Infection</th><td>0.100196836</td><td>0.069279767</td><td>0.09201654</td><td>0.1578623996</td><td>0.0586305129</td><td>0.182956000</td></tr>
-	<tr><th scope=row>Insomnia</th><td>         NA</td><td>0.030748904</td><td>0.02435509</td><td>          NA</td><td>          NA</td><td>         NA</td></tr>
-	<tr><th scope=row>Irritability</th><td>         NA</td><td>0.003425883</td><td>        NA</td><td>          NA</td><td>          NA</td><td>         NA</td></tr>
-	<tr><th scope=row>Lymphadenopathy</th><td>0.051342724</td><td>0.066434462</td><td>0.05378653</td><td>0.0639105826</td><td>0.0290543022</td><td>0.050744264</td></tr>
-	<tr><th scope=row>Malnutrition</th><td>0.000000000</td><td>2.223361761</td><td>0.22372650</td><td>0.1042165537</td><td>          NA</td><td>         NA</td></tr>
-	<tr><th scope=row>Manic psychosis</th><td>0.046599810</td><td>0.025033515</td><td>0.03250724</td><td>0.0420295547</td><td>0.0157940076</td><td>0.043321882</td></tr>
-	<tr><th scope=row>Micturition urgency</th><td>0.235977932</td><td>0.420445951</td><td>0.46567012</td><td>0.2332873582</td><td>0.1480658149</td><td>0.165755912</td></tr>
-	<tr><th scope=row>Nasal congestion</th><td>0.001456031</td><td>0.003084473</td><td>0.00317823</td><td>0.0008387794</td><td>0.0007657456</td><td>0.000773321</td></tr>
-	<tr><th scope=row>Neutropenia</th><td>0.593973397</td><td>0.720117679</td><td>0.63849461</td><td>1.0280897184</td><td>0.3652462719</td><td>1.132050874</td></tr>
-	<tr><th scope=row>Oedema peripheral</th><td>0.008907170</td><td>0.015963434</td><td>0.01687781</td><td>0.3518772843</td><td>0.0046245584</td><td>0.020296934</td></tr>
-	<tr><th scope=row>Pneumonia</th><td>0.002089129</td><td>0.001231979</td><td>0.00105673</td><td>0.0026228647</td><td>0.0002901468</td><td>0.002644104</td></tr>
-	<tr><th scope=row>Rhinitis</th><td>         NA</td><td>0.858890345</td><td>0.85889035</td><td>          NA</td><td>          NA</td><td>         NA</td></tr>
-	<tr><th scope=row>Seasonal allergy</th><td>0.883969028</td><td>0.494014387</td><td>0.63387106</td><td>0.8137286231</td><td>0.3482709375</td><td>0.836865764</td></tr>
-	<tr><th scope=row>Sleep disorder</th><td>0.065257783</td><td>0.115188634</td><td>0.09271900</td><td>0.0812318208</td><td>0.0369286866</td><td>0.064497127</td></tr>
-	<tr><th scope=row>Urinary abnormalities</th><td>0.235977932</td><td>0.420445951</td><td>0.46567012</td><td>0.2332873582</td><td>0.1480658149</td><td>0.165755912</td></tr>
-	<tr><th scope=row>Urinary incontinence</th><td>0.148591475</td><td>0.314777999</td><td>0.32434610</td><td>0.0855994764</td><td>0.0781462068</td><td>0.078919292</td></tr>
-	<tr><th scope=row>Weight increased</th><td>0.164271596</td><td>0.372051549</td><td>0.30298663</td><td>0.1426524862</td><td>0.1683808230</td><td>0.151763041</td></tr>
-	<tr><th scope=row>White blood cell count decreased</th><td>0.907534238</td><td>1.341022540</td><td>1.21397982</td><td>1.1410235735</td><td>0.9884080466</td><td>0.932950409</td></tr>
-</tbody>
-</table>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell  jp-mod-noInput ">
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
-<h3 id="Direction-of-effect,-comparing-brain-eQTL-+-pQTL-data">Direction of effect, comparing brain eQTL + pQTL data<a class="anchor-link" href="#Direction-of-effect,-comparing-brain-eQTL-+-pQTL-data">&#182;</a></h3>
-</div>
-
-</div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
-'Data is quite incomplete'
-</div>
-
-</div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
-84
-</div>
-
-</div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
-59
-</div>
-
-</div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
-<table class="dataframe">
-<caption>A data.frame: 48 × 5</caption>
-<thead>
-	<tr><th scope=col>SNP</th><th scope=col>GENE_ID</th><th scope=col>BETA.x</th><th scope=col>BETA.y</th><th scope=col>direction</th></tr>
-	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
-</thead>
-<tbody>
-	<tr><td>1:239868130_A_G </td><td>CHRM3  </td><td>-0.0137400</td><td>-0.0433400</td><td>same    </td></tr>
-	<tr><td>10:112966896_A_C</td><td>ADRA2A </td><td>-0.0228600</td><td>-0.1656000</td><td>same    </td></tr>
-	<tr><td>10:112969177_A_G</td><td>ADRA2A </td><td>-0.0410100</td><td>-0.0762400</td><td>same    </td></tr>
-	<tr><td>10:113044352_C_T</td><td>ADRA2A </td><td> 0.0246000</td><td>-0.0143500</td><td>opposite</td></tr>
-	<tr><td>11:46422237_A_G </td><td>CHRM4  </td><td>-0.0001078</td><td> 0.0121300</td><td>opposite</td></tr>
-	<tr><td>11:62663535_G_T </td><td>CHRM1  </td><td> 0.0001115</td><td> 0.0718400</td><td>same    </td></tr>
-	<tr><td>11:6415392_C_T  </td><td>SMPD1  </td><td> 0.0319600</td><td> 0.1649000</td><td>same    </td></tr>
-	<tr><td>11:6415882_A_G  </td><td>SMPD1  </td><td>-0.0290900</td><td>-0.1741000</td><td>same    </td></tr>
-	<tr><td>11:67226097_C_T </td><td>GSTP1  </td><td> 0.0610300</td><td> 0.2041000</td><td>same    </td></tr>
-	<tr><td>11:67342580_A_G </td><td>GSTP1  </td><td>-0.1135000</td><td>-0.8160000</td><td>same    </td></tr>
-	<tr><td>12:13466353_C_T </td><td>GRIN2B </td><td> 0.0008093</td><td>-0.0065910</td><td>opposite</td></tr>
-	<tr><td>12:13664080_C_T </td><td>GRIN2B </td><td>-0.0502400</td><td> 0.0013470</td><td>opposite</td></tr>
-	<tr><td>13:47371408_G_T </td><td>HTR2A  </td><td>-0.0455000</td><td>-0.0672200</td><td>same    </td></tr>
-	<tr><td>13:47710297_A_G </td><td>HTR2A  </td><td>-0.0086410</td><td>-0.0785400</td><td>same    </td></tr>
-	<tr><td>16:10066021_A_G </td><td>GRIN2A </td><td>-0.0473500</td><td>-0.0181900</td><td>same    </td></tr>
-	<tr><td>16:10190189_C_G </td><td>GRIN2A </td><td>-0.0039490</td><td>-0.0201400</td><td>same    </td></tr>
-	<tr><td>3:11196516_C_G  </td><td>HRH1   </td><td>-0.0211700</td><td>-0.3404000</td><td>same    </td></tr>
-	<tr><td>3:11376080_C_G  </td><td>HRH1   </td><td> 0.0557300</td><td> 0.0959200</td><td>same    </td></tr>
-	<tr><td>3:11596348_C_T  </td><td>HRH1   </td><td> 0.0563600</td><td> 0.1252000</td><td>same    </td></tr>
-	<tr><td>4:46293809_C_T  </td><td>GABRA2 </td><td>-0.0254000</td><td> 0.0173600</td><td>opposite</td></tr>
-	<tr><td>4:46293809_C_T  </td><td>GABRG1 </td><td>-0.0458800</td><td>-0.1007000</td><td>same    </td></tr>
-	<tr><td>4:47084047_C_T  </td><td>GABRB1 </td><td>-0.0109000</td><td>-0.0035380</td><td>same    </td></tr>
-	<tr><td>4:47124092_A_G  </td><td>GABRB1 </td><td>-0.0117300</td><td> 0.0489100</td><td>opposite</td></tr>
-	<tr><td>4:47410245_C_G  </td><td>GABRB1 </td><td>-0.0586200</td><td>-0.2785000</td><td>same    </td></tr>
-	<tr><td>5:158975663_A_G </td><td>ADRA1B </td><td> 0.0426900</td><td> 0.1855000</td><td>same    </td></tr>
-	<tr><td>5:159329009_A_G </td><td>ADRA1B </td><td>-0.0178400</td><td> 0.0005930</td><td>opposite</td></tr>
-	<tr><td>5:159601092_C_T </td><td>ADRA1B </td><td> 0.0072910</td><td>-0.1594000</td><td>opposite</td></tr>
-	<tr><td>5:159866993_A_G </td><td>ADRA1B </td><td> 0.0106600</td><td>-0.2519000</td><td>opposite</td></tr>
-	<tr><td>5:161124464_C_T </td><td>GABRA1 </td><td>-0.0103200</td><td> 0.0425400</td><td>opposite</td></tr>
-	<tr><td>5:161124464_C_T </td><td>GABRG2 </td><td>-0.0133300</td><td> 0.0163400</td><td>opposite</td></tr>
-	<tr><td>5:161337873_C_T </td><td>GABRA1 </td><td>-0.0428100</td><td> 0.0369900</td><td>opposite</td></tr>
-	<tr><td>5:161337873_C_T </td><td>GABRG2 </td><td>-0.0056680</td><td>-0.0008387</td><td>same    </td></tr>
-	<tr><td>5:161541508_C_T </td><td>GABRA1 </td><td> 0.0016450</td><td> 0.0120900</td><td>same    </td></tr>
-	<tr><td>5:161541508_C_T </td><td>GABRG2 </td><td>-0.0138500</td><td>-0.0135300</td><td>same    </td></tr>
-	<tr><td>5:63176231_G_T  </td><td>HTR1A  </td><td>-0.0541600</td><td>-0.2524000</td><td>same    </td></tr>
-	<tr><td>6:29354809_A_C  </td><td>GABBR1 </td><td>-0.0339300</td><td>-0.0208800</td><td>same    </td></tr>
-	<tr><td>6:29580265_G_T  </td><td>GABBR1 </td><td>-0.1629000</td><td>-0.0278100</td><td>same    </td></tr>
-	<tr><td>6:29594449_A_C  </td><td>GABBR1 </td><td>-0.1585000</td><td>-0.0300100</td><td>same    </td></tr>
-	<tr><td>6:30063496_A_C  </td><td>GABBR1 </td><td>-0.0242500</td><td>-0.0139000</td><td>same    </td></tr>
-	<tr><td>8:26778519_A_T  </td><td>ADRA1A </td><td> 0.0745200</td><td> 0.2270000</td><td>same    </td></tr>
-	<tr><td>8:26883003_C_T  </td><td>ADRA1A </td><td>-0.0652200</td><td>-0.0561400</td><td>same    </td></tr>
-	<tr><td>8:54158144_G_T  </td><td>OPRK1  </td><td> 0.0783300</td><td> 0.4385000</td><td>same    </td></tr>
-	<tr><td>8:54160092_C_T  </td><td>OPRK1  </td><td>-0.0149600</td><td>-0.2053000</td><td>same    </td></tr>
-	<tr><td>9:101030586_C_T </td><td>GABBR2 </td><td> 0.0333200</td><td>-0.0263300</td><td>opposite</td></tr>
-	<tr><td>9:101424605_A_G </td><td>GABBR2 </td><td>-0.0027450</td><td>-0.0569800</td><td>same    </td></tr>
-	<tr><td>9:101633312_C_T </td><td>GABBR2 </td><td>-0.0007803</td><td>-0.0144500</td><td>same    </td></tr>
-	<tr><td>9:104476262_C_T </td><td>GRIN3A </td><td> 0.0161700</td><td>        NA</td><td>NA      </td></tr>
-	<tr><td>9:34596678_A_G  </td><td>SIGMAR1</td><td> 0.0189600</td><td> 0.2006000</td><td>same    </td></tr>
-</tbody>
-</table>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
 </div>
 </body>
 
