@@ -14597,6 +14597,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Scz-Side-Effect-Investigation-Flowchart">Scz Side Effect Investigation Flowchart<a class="anchor-link" href="#Scz-Side-Effect-Investigation-Flowchart">&#182;</a></h2><p><img src="scratch/results/plots/scz_side_effect_flowchart.png" alt="" /></p>
 <h2 id="Receptor-Side-Effect-Graphs">Receptor Side Effect Graphs<a class="anchor-link" href="#Receptor-Side-Effect-Graphs">&#182;</a></h2><p>Calculating effect per receptor:</p>
 $$\forall IV \in R,  b(𝛽_{𝐼𝑉} * pKi) * A * D$$<p>Where</p>
 <ul>
@@ -14610,14 +14611,27 @@ $$\forall IV \in R,  b(𝛽_{𝐼𝑉} * pKi) * A * D$$<p>Where</p>
 <li>A = action of drug against receptor</li>
 <li>D = directionality of effect of eQTL vs. protein</li>
 </ul>
-<p>NOTES and CAVEATS:</p>
+<p>CAVEATS:</p>
 <ol>
-<li>Some receptors did not have binding affinity data.  I defaulted to a pKI score of 0.5 ( =~ 3000 ki), which is a very modest effect</li>
+<li>Some receptors did not have binding affinity data.  I defaulted to a pKI score of 0.69 ( =~ 2000 ki), which is less than the average over all measurements (1500)</li>
 <li>D in the above was not used (ie. defaulted to 1) due to lack of data</li>
-<li>A -&gt; antagonist=1, ligand=1, inhibitor=1, agonist=-1, &quot;partial agonist&quot;=-1, &quot;positive modulator&quot;=-1</li>
-<li>The score, b(𝛽_{𝐼𝑉} * pKi) can change between colocalisation thresholds, as it includes different PheWAS results depending on that coloc cutoff</li>
+<li>Therefore, I'm focussing on cumulative effects</li>
+<li>I used a coloc threshold of h4 &gt; 60% &amp;&amp; h3 &lt; 10%, in order to include many more data points while keeping results due to low power, and filtering results due to different putative causal variants</li>
 </ol>
-<h4 id="BIG-CAVEAT:-There-are-about-double-the-results-for-h4-%3E-60%25-vs.-h4-%3E-80%25">BIG CAVEAT: There are about double the results for h4 &gt; 60% vs. h4 &gt; 80%<a class="anchor-link" href="#BIG-CAVEAT:-There-are-about-double-the-results-for-h4-%3E-60%25-vs.-h4-%3E-80%25">&#182;</a></h4>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Total-Found-Cumulative-Effects-Per-Drug">Total Found Cumulative Effects Per Drug<a class="anchor-link" href="#Total-Found-Cumulative-Effects-Per-Drug">&#182;</a></h2><p><img src="scratch/results/plots/effect_size_by_drug_h4_60.png" alt="" />
+<img src="scratch/results/plots/effect_size_by_drug_heatmap_h4_60.png" alt="" /></p>
+
 </div>
 </div>
 </div>
@@ -14631,71 +14645,14 @@ $$\forall IV \in R,  b(𝛽_{𝐼𝑉} * pKi) * A * D$$<p>Where</p>
 <h3 id="Cumulative-Effect-Per-Receptor">Cumulative Effect Per Receptor<a class="anchor-link" href="#Cumulative-Effect-Per-Receptor">&#182;</a></h3><table>
 <thead>
 <tr>
-  <th>h4 &gt; 60%</th>
-  <th>h4 &gt; 80%</th>
+  <th>Effect Size By Receptor Bar Chart</th>
+  <th>Effect Size by Receptor Heatmap</th>
 </tr>
 </thead>
 <tbody>
 <tr>
   <td><img src="scratch/results/plots/effect_size_by_receptor_h4_60.png" alt="alt" /></td>
-  <td><img src="scratch/results/plots/effect_size_by_receptor_h4_80.png" alt="alt" /></td>
-</tr>
-<tr>
-  <td><img src="scratch/results/plots/effect_size_by_receptor_heatmap_h4_60.png" alt="alt" /></td>
-  <td><img src="scratch/results/plots/effect_size_by_receptor_heatmap_h4_80.png" alt="alt" /></td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Specific-Effects-Per-Receptor">Specific Effects Per Receptor<a class="anchor-link" href="#Specific-Effects-Per-Receptor">&#182;</a></h3><table>
-<thead>
-<tr>
-  <th>h4 &gt; 60%</th>
-  <th>h4 &gt; 80%</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-  <td><img src="scratch/results/plots/HRH1_vs_side_effects_h4_60.png" alt="alt" /></td>
-  <td><img src="scratch/results/plots/HRH1_vs_side_effects_h4_80.png" alt="alt" /></td>
-</tr>
-<tr>
-  <td><img src="scratch/results/plots/HRH4_vs_side_effects_h4_60.png" alt="alt" /></td>
-  <td><img src="scratch/results/plots/HRH4_vs_side_effects_h4_80.png" alt="alt" /></td>
-</tr>
-<tr>
-  <td><img src="scratch/results/plots/HTR6_vs_side_effects_h4_60.png" alt="alt" /></td>
-  <td><img src="scratch/results/plots/HTR6_vs_side_effects_h4_80.png" alt="alt" /></td>
-</tr>
-<tr>
-  <td><img src="scratch/results/plots/HTR1B_vs_side_effects_h4_60.png" alt="alt" /></td>
-  <td><img src="scratch/results/plots/HTR1B_vs_side_effects_h4_80.png" alt="alt" /></td>
-</tr>
-<tr>
-  <td><img src="scratch/results/plots/DRD2_vs_side_effects_h4_60.png" alt="alt" /></td>
-  <td><img src="scratch/results/plots/DRD2_vs_side_effects_h4_80.png" alt="alt" /></td>
-</tr>
-<tr>
-  <td><img src="scratch/results/plots/GABBR1_vs_side_effects_h4_60.png" alt="alt" /></td>
-  <td><img src="scratch/results/plots/GABBR1_vs_side_effects_h4_80.png" alt="alt" /></td>
-</tr>
-<tr>
-  <td><img src="scratch/results/plots/GABRA1_vs_side_effects_h4_60.png" alt="alt" /></td>
-  <td><img src="scratch/results/plots/GABRA1_vs_side_effects_h4_80.png" alt="alt" /></td>
-</tr>
-<tr>
-  <td><img src="scratch/results/plots/GRIN2A_vs_side_effects_h4_60.png" alt="alt" /></td>
-  <td><img src="scratch/results/plots/GRIN2A_vs_side_effects_h4_80.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/effect_size_by_receptor_including_empty_heatmap_h4_60.png" alt="alt" /></td>
 </tr>
 </tbody>
 </table>
@@ -14713,38 +14670,287 @@ $$\forall IV \in R,  b(𝛽_{𝐼𝑉} * pKi) * A * D$$<p>Where</p>
 <h3 id="Side-Effect-Per-Receptor-vs-Drug">Side Effect Per Receptor vs Drug<a class="anchor-link" href="#Side-Effect-Per-Receptor-vs-Drug">&#182;</a></h3><table>
 <thead>
 <tr>
-  <th>h4 &gt; 60%</th>
-  <th>h4 &gt; 80%</th>
+  <th>Effects with (incomplete) directionality</th>
+  <th>Cumulative Effects</th>
 </tr>
 </thead>
 <tbody>
 <tr>
   <td><img src="scratch/results/plots/Hypotension_vs_drug_h4_60.png" alt="alt" /></td>
-  <td><img src="scratch/results/plots/Hypotension_vs_drug_h4_80.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/Hypotension_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
 </tr>
 <tr>
   <td><img src="scratch/results/plots/Hypertension_vs_drug_h4_60.png" alt="alt" /></td>
-  <td><img src="scratch/results/plots/Hypertension_vs_drug_h4_80.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/Hypertension_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/Malnutrition_vs_drug_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/Malnutrition_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/Bundle_branch_block_right_vs_drug_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/Bundle_branch_block_right_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/Erythema_vs_drug_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/Erythema_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
 </tr>
 <tr>
   <td><img src="scratch/results/plots/White_blood_cell_count_decreased_vs_drug_h4_60.png" alt="alt" /></td>
-  <td><img src="scratch/results/plots/White_blood_cell_count_decreased_vs_drug_h4_80.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/White_blood_cell_count_decreased_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
 </tr>
 <tr>
   <td><img src="scratch/results/plots/Neutropenia_vs_drug_h4_60.png" alt="alt" /></td>
-  <td><img src="scratch/results/plots/Neutropenia_vs_drug_h4_80.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/Neutropenia_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/Back_pain_vs_drug_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/Back_pain_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/Seasonal_allergy_vs_drug_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/Seasonal_allergy_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/Conjunctivitis_vs_drug_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/Conjunctivitis_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/Constipation_vs_drug_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/Constipation_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
 </tr>
 <tr>
   <td><img src="scratch/results/plots/Eosinophilia_vs_drug_h4_60.png" alt="alt" /></td>
-  <td><img src="scratch/results/plots/Eosinophilia_vs_drug_h4_80.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/Eosinophilia_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/Hypothyroidism_vs_drug_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/Hypothyroidism_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/Cellulitis_vs_drug_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/Cellulitis_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/Rhinitis_vs_drug_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/Rhinitis_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/Oedema_peripheral_vs_drug_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/Oedema_peripheral_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/Micturition_urgency_vs_drug_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/Micturition_urgency_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/Urinary_abnormalities_vs_drug_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/Urinary_abnormalities_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
 </tr>
 <tr>
   <td><img src="scratch/results/plots/Weight_increased_vs_drug_h4_60.png" alt="alt" /></td>
-  <td><img src="scratch/results/plots/Weight_increased_vs_drug_h4_80.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/Weight_increased_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/Incontinence_vs_drug_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/Incontinence_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/Urinary_incontinence_vs_drug_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/Urinary_incontinence_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/Alanine_aminotransferase_increased_vs_drug_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/Alanine_aminotransferase_increased_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/Arthropathy_vs_drug_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/Arthropathy_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/Headache_vs_drug_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/Headache_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/Infection_vs_drug_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/Infection_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/Gamma-glutamyltransferase_increased_vs_drug_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/Gamma-glutamyltransferase_increased_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/Bilirubin_total_low_decreased_vs_drug_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/Bilirubin_total_low_decreased_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
 </tr>
 <tr>
   <td><img src="scratch/results/plots/Sleep_disorder_vs_drug_h4_60.png" alt="alt" /></td>
-  <td><img src="scratch/results/plots/Sleep_disorder_vs_drug_h4_80.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/Sleep_disorder_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/Corneal_lesion_vs_drug_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/Corneal_lesion_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/Anorexia_vs_drug_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/Anorexia_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/Anxiety_vs_drug_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/Anxiety_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/Lymphadenopathy_vs_drug_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/Lymphadenopathy_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/Hepatic_enzyme_increased_vs_drug_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/Hepatic_enzyme_increased_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/Manic_psychosis_vs_drug_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/Manic_psychosis_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/Cardiovascular_disorder_vs_drug_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/Cardiovascular_disorder_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/Insomnia_vs_drug_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/Insomnia_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/Nasal_congestion_vs_drug_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/Nasal_congestion_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/Pneumonia_vs_drug_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/Pneumonia_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/Irritability_vs_drug_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/Irritability_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Specific-Effects-Per-Receptor">Specific Effects Per Receptor<a class="anchor-link" href="#Specific-Effects-Per-Receptor">&#182;</a></h3><table>
+<thead>
+<tr>
+  <th>Effects with (incomplete) directionality</th>
+  <th>Cumulative Effects</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><img src="scratch/results/plots/HRH1_vs_side_effects_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/HRH1_vs_side_effects_cumulative_h4_60.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/HRH4_vs_side_effects_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/HRH4_vs_side_effects_cumulative_h4_60.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/DRD4_vs_side_effects_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/DRD4_vs_side_effects_cumulative_h4_60.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/HTR6_vs_side_effects_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/HTR6_vs_side_effects_cumulative_h4_60.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/HTR3A_vs_side_effects_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/HTR3A_vs_side_effects_cumulative_h4_60.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/DRD2_vs_side_effects_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/DRD2_vs_side_effects_cumulative_h4_60.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/HTR1B_vs_side_effects_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/HTR1B_vs_side_effects_cumulative_h4_60.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/HTR2A_vs_side_effects_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/HTR2A_vs_side_effects_cumulative_h4_60.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/GRIN2A_vs_side_effects_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/GRIN2A_vs_side_effects_cumulative_h4_60.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/GABRA1_vs_side_effects_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/GABRA1_vs_side_effects_cumulative_h4_60.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/DRD1_vs_side_effects_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/DRD1_vs_side_effects_cumulative_h4_60.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/GABBR1_vs_side_effects_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/GABBR1_vs_side_effects_cumulative_h4_60.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/ADRB1_vs_side_effects_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/ADRB1_vs_side_effects_cumulative_h4_60.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/ADRA2B_vs_side_effects_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/ADRA2B_vs_side_effects_cumulative_h4_60.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/HTR5A_vs_side_effects_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/HTR5A_vs_side_effects_cumulative_h4_60.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/HTR1D_vs_side_effects_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/HTR1D_vs_side_effects_cumulative_h4_60.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/CHRM3_vs_side_effects_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/CHRM3_vs_side_effects_cumulative_h4_60.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/ADRB2_vs_side_effects_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/ADRB2_vs_side_effects_cumulative_h4_60.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/ADRA1A_vs_side_effects_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/ADRA1A_vs_side_effects_cumulative_h4_60.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/ADRA1B_vs_side_effects_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/ADRA1B_vs_side_effects_cumulative_h4_60.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/HTR1E_vs_side_effects_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/HTR1E_vs_side_effects_cumulative_h4_60.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/HRH3_vs_side_effects_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/HRH3_vs_side_effects_cumulative_h4_60.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/GRIN3A_vs_side_effects_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/GRIN3A_vs_side_effects_cumulative_h4_60.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/GSTP1_vs_side_effects_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/GSTP1_vs_side_effects_cumulative_h4_60.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/HTR7_vs_side_effects_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/HTR7_vs_side_effects_cumulative_h4_60.png" alt="alt" /></td>
 </tr>
 </tbody>
 </table>
