@@ -14611,12 +14611,16 @@ $$\forall IV \in R,  b(𝛽_{𝐼𝑉} * pKi) * A * D$$<p>Where</p>
 <li>A = action of drug against receptor</li>
 <li>D = directionality of effect of eQTL vs. protein</li>
 </ul>
+<p>FILTERS:</p>
+<ul>
+<li>coloc results: threshold of h4 &gt; 60% &amp;&amp; h3 &lt; 10%, in order to include many more data points (this keeps results dipping below 80% due to low power, but still filtering out results due to different putative causal variants)</li>
+<li>MR results: filtered all metabrain QTL results where f statistic &lt; 10 and adjusted p-value &lt; 0.05</li>
+</ul>
 <p>CAVEATS:</p>
 <ol>
 <li>Some receptors did not have binding affinity data.  I defaulted to a pKI score of 0.69 ( =~ 2000 ki), which is less than the average over all measurements (1500)</li>
-<li>D in the above was not used (ie. defaulted to 1) due to lack of data</li>
+<li>D in the above was not used (ie. defaulted to 1) due to lack of data, which makes the MR direction and A unreliable</li>
 <li>Therefore, I'm focussing on cumulative effects</li>
-<li>I used a coloc threshold of h4 &gt; 60% &amp;&amp; h3 &lt; 10%, in order to include many more data points (this keeps results dipping below 80% due to low power, but still filtering out results due to different putative causal variants)</li>
 </ol>
 
 </div>
