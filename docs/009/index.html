@@ -14555,21 +14555,123 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 }
 </style>
 
-<h1>
-Andrew's Ongoing Bristol Uni Projects
-</h1>
+<!-- Load mathjax -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS_CHTML-full,Safe"> </script>
+    <!-- MathJax configuration -->
+    <script type="text/x-mathjax-config">
+    init_mathjax = function() {
+        if (window.MathJax) {
+        // MathJax loaded
+            MathJax.Hub.Config({
+                TeX: {
+                    equationNumbers: {
+                    autoNumber: "AMS",
+                    useLabelIds: true
+                    }
+                },
+                tex2jax: {
+                    inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                    displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+                    processEscapes: true,
+                    processEnvironments: true
+                },
+                displayAlign: 'center',
+                CommonHTML: {
+                    linebreaks: {
+                    automatic: true
+                    }
+                }
+            });
 
-<h3>
-<br/>
-<a href="132/index.html">Stroke Project: Stroke Progression (MACE post incidence) and MR using pQTL data</a> 
-<br/>
-<a href="005/index.html">Schizophrenia Project: Treatment Resistance, Drug Targets, and Drug Side Effects and MR using Metabrain QTLs</a> 
-<br/>
-<a href="009/index.html">Anti-Depressants: Drug Side Effects using MR and QTL data</a> 
-<br/>
-</h3>
+            MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+        }
+    }
+    init_mathjax();
+    </script>
+    <!-- End of mathjax configuration --></head>
+<body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
 
-<br/>
-</h3>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="Anti-Depression-Medications-and-their-Side-effects">Anti-Depression Medications and their Side-effects<a class="anchor-link" href="#Anti-Depression-Medications-and-their-Side-effects">&#182;</a></h1><p>Data Sources:</p>
+<ul>
+<li>PDSP Ki Database and DrugBank for drug information (including receptors and binding affinities)</li>
+<li>MetaBrain QTL</li>
+<li>OpenGWAS for PheWAS results and surrounding area for coloc</li>
+<li>SIDER for side effects</li>
+</ul>
+<h3 id="Results:-Graphs-per-receptor-and-side-effect"><a href="receptor_side_effect_graphs.html">Results: Graphs per receptor and side effect</a><a class="anchor-link" href="#Results:-Graphs-per-receptor-and-side-effect">&#182;</a></h3><hr />
+<h3 id="Drug-types">Drug types<a class="anchor-link" href="#Drug-types">&#182;</a></h3>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell  jp-mod-noInput ">
 
-This is a repository to publicly share data that is currently being worked on.  
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<table class="dataframe">
+<caption>A tibble: 23 × 4</caption>
+<thead>
+	<tr><th scope=col>name</th><th scope=col>family</th><th scope=col>on_target_effects</th><th scope=col>notes</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;list&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>citalopram     </td><td>SSRI     </td><td>SLC6A4</td><td>                                               </td></tr>
+	<tr><td>sertraline     </td><td>SSRI     </td><td>SLC6A4</td><td>                                               </td></tr>
+	<tr><td>fluoxetine     </td><td>SSRI     </td><td></td><td>                                               </td></tr>
+	<tr><td>paroxetine     </td><td>SSRI     </td><td></td><td>                                               </td></tr>
+	<tr><td>dapoxetine     </td><td>SSRI     </td><td></td><td>Not included: Limited side effect info in SIDER</td></tr>
+	<tr><td>escitalopram   </td><td>SSRI     </td><td>SLC6A4</td><td>Not included: Limited side effect info in SIDER</td></tr>
+	<tr><td>isocarboxazid  </td><td>MAOI     </td><td></td><td>Not included: Limited side effect info in SIDER</td></tr>
+	<tr><td>selegiline     </td><td>MAOI     </td><td>MAOB, MAOA</td><td>MAOB and MAOA not present in MetaBrain QTLs    </td></tr>
+	<tr><td>phenelzine     </td><td>MAOI     </td><td></td><td>Not included: Limited side effect info in SIDER</td></tr>
+	<tr><td>tranylcypromine</td><td>MAOI     </td><td>MAOB, MAOA</td><td>Not included: Limited side effect info in SIDER</td></tr>
+	<tr><td>venlafaxine    </td><td>SNRI     </td><td></td><td>                                               </td></tr>
+	<tr><td>desvenlafaxine </td><td>SNRI     </td><td></td><td>                                               </td></tr>
+	<tr><td>levomilnacipran</td><td>SNRI     </td><td></td><td>                                               </td></tr>
+	<tr><td>duloxetine     </td><td>SNRI     </td><td>SLC6A2</td><td>                                               </td></tr>
+	<tr><td>amitriptyline  </td><td>tricyclic</td><td>SLC6A2, SLC6A4, HTR2A </td><td>Not included: Limited side effect info in SIDER</td></tr>
+	<tr><td>nortriptyline  </td><td>tricyclic</td><td></td><td>Not included: Limited side effect info in SIDER</td></tr>
+	<tr><td>clomipramine   </td><td>tricyclic</td><td></td><td>                                               </td></tr>
+	<tr><td>doxepin        </td><td>tricyclic</td><td>HRH1  , HRH2  , SLC6A2, SLC6A4</td><td>                                               </td></tr>
+	<tr><td>trazodone      </td><td>atypical </td><td>HTR2A , HTR2C , SLC6A4, HTR1A </td><td>                                               </td></tr>
+	<tr><td>mirtazapine    </td><td>atypical </td><td>ADRA2A, HTR2A , HTR3*?</td><td>                                               </td></tr>
+	<tr><td>vortioxetine   </td><td>atypical </td><td>SLC6A4</td><td>                                               </td></tr>
+	<tr><td>bupropion      </td><td>atypical </td><td></td><td>                                               </td></tr>
+	<tr><td>vilazodone     </td><td>atypical </td><td></td><td>                                               </td></tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+</body>
+
+
+
+
+
+
+
+</html>

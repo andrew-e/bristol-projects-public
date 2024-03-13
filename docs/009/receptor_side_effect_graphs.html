@@ -3,7 +3,7 @@
 <head><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>index</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>receptor_side_effect_graphs</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 
 
 
@@ -14555,21 +14555,247 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 }
 </style>
 
-<h1>
-Andrew's Ongoing Bristol Uni Projects
-</h1>
+<!-- Load mathjax -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS_CHTML-full,Safe"> </script>
+    <!-- MathJax configuration -->
+    <script type="text/x-mathjax-config">
+    init_mathjax = function() {
+        if (window.MathJax) {
+        // MathJax loaded
+            MathJax.Hub.Config({
+                TeX: {
+                    equationNumbers: {
+                    autoNumber: "AMS",
+                    useLabelIds: true
+                    }
+                },
+                tex2jax: {
+                    inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                    displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+                    processEscapes: true,
+                    processEnvironments: true
+                },
+                displayAlign: 'center',
+                CommonHTML: {
+                    linebreaks: {
+                    automatic: true
+                    }
+                }
+            });
 
-<h3>
-<br/>
-<a href="132/index.html">Stroke Project: Stroke Progression (MACE post incidence) and MR using pQTL data</a> 
-<br/>
-<a href="005/index.html">Schizophrenia Project: Treatment Resistance, Drug Targets, and Drug Side Effects and MR using Metabrain QTLs</a> 
-<br/>
-<a href="009/index.html">Anti-Depressants: Drug Side Effects using MR and QTL data</a> 
-<br/>
-</h3>
+            MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+        }
+    }
+    init_mathjax();
+    </script>
+    <!-- End of mathjax configuration --></head>
+<body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
 
-<br/>
-</h3>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Scz-Side-Effect-Investigation-Flowchart">Scz Side Effect Investigation Flowchart<a class="anchor-link" href="#Scz-Side-Effect-Investigation-Flowchart">&#182;</a></h2><h2 id="Receptor-Side-Effect-Graphs">Receptor Side Effect Graphs<a class="anchor-link" href="#Receptor-Side-Effect-Graphs">&#182;</a></h2><p>Calculating effect per receptor:</p>
+$$\forall IV \in R,  b(𝛽_{𝐼𝑉} * pKi)$$<p>Where</p>
+<ul>
+<li>R = list of receptors known to the drug</li>
+<li>𝛽𝐼𝑉 = wald BETA and SE of metabrain qtl vs. phewas result</li>
+<li>pKi = -log10(kiM) - 4, where kiM is the inhibition constant, calculated as a trimmed MEAN and SE of ki values (per molar)<ul>
+<li>subtract 4 so pKi has a value range is 0 - 5, and can be multiplied by 𝛽𝐼𝑉 more easily</li>
+</ul>
+</li>
+<li>b() is a bootsrapped estimate of the two different effects of 𝛽𝐼𝑉 and pKI</li>
+</ul>
+<p>CAVEATS:</p>
+<ol>
+<li>Some receptors did not have binding affinity data.  I defaulted to a pKI score of 0.84 ( =~ 1430 ki), which is the average of all other measuresments</li>
+<li>I used a coloc threshold of h4 &gt; 60% &amp;&amp; h3 &lt; 10%, in order to include many more data points while keeping results due to low power, and filtering results due to different putative causal variants</li>
+</ol>
 
-This is a repository to publicly share data that is currently being worked on.  
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Total-Found-Cumulative-Effects-Per-Drug">Total Found Cumulative Effects Per Drug<a class="anchor-link" href="#Total-Found-Cumulative-Effects-Per-Drug">&#182;</a></h2><p><img src="scratch/results/plots/cumulative_effects_by_drug_h4_60.png" alt="" />
+<img src="scratch/results/plots/effect_size_by_drug_h4_60.png" alt="" /></p>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Cumulative-Effect-Per-Receptor">Cumulative Effect Per Receptor<a class="anchor-link" href="#Cumulative-Effect-Per-Receptor">&#182;</a></h3><table>
+<thead>
+<tr>
+  <th>Effect Size By Receptor Bar Chart</th>
+  <th>Effect Size by Receptor Heatmap</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><img src="scratch/results/plots/effect_size_by_receptor_heatmap_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/effect_size_by_receptor_including_empty_heatmap_h4_60.png" alt="alt" /></td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Side-Effect-Per-Receptor-vs-Drug">Side Effect Per Receptor vs Drug<a class="anchor-link" href="#Side-Effect-Per-Receptor-vs-Drug">&#182;</a></h3><table>
+<thead>
+<tr>
+  <th>.</th>
+  <th>.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><img src="scratch/results/plots/Hypertension_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/Malnutrition_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td>![alt](scratch/results/plots/Unspecified disorder of skin and subcutaneous tissue_vs_drug_cumulative_h4_60.png)</td>
+  <td></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/Eczema___Dry_skin_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/Constipation_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/Back_pain_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/Cholesterol_serum_elevated_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/Weight_change_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/Conjunctivitis_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/Hypokalaemia_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/Headache_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/Oedema_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/Generalised_oedema___Oedema_peripheral_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/Urinary_Difficulties_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/Irritability_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/Bruxism_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/Rhinitis_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/Anorexia_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/Ear_and_labyrinth_disorders_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/Insomnia___Sleep_Disorder_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/Anxiety_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/Bronchospasm_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/Bronchitis_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/Upset_stomach_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/Abdominal_pain___disorder_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/Sinusitis_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/Shoulder_pain_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/Tinnitus_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
+  <td></td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Specific-Effects-Per-Receptor">Specific Effects Per Receptor<a class="anchor-link" href="#Specific-Effects-Per-Receptor">&#182;</a></h3><table>
+<thead>
+<tr>
+  <th>.</th>
+  <th>.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><img src="scratch/results/plots/DRD2_vs_side_effects_cumulative_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/ADRA2B_vs_side_effects_cumulative_h4_60.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/DRD1_vs_side_effects_cumulative_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/HRH1_vs_side_effects_cumulative_h4_60.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/HTR1B_vs_side_effects_cumulative_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/ADRA2A_vs_side_effects_cumulative_h4_60.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/DRD4_vs_side_effects_cumulative_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/HTR6_vs_side_effects_cumulative_h4_60.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/ADRA1A_vs_side_effects_cumulative_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/HTR1E_vs_side_effects_cumulative_h4_60.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/CHRM3_vs_side_effects_cumulative_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/CHRM5_vs_side_effects_cumulative_h4_60.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/HRH4_vs_side_effects_cumulative_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/HTR2A_vs_side_effects_cumulative_h4_60.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/HRH3_vs_side_effects_cumulative_h4_60.png" alt="alt" /></td>
+  <td></td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+</body>
+
+
+
+
+
+
+
+</html>
