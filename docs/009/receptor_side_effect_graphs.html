@@ -14611,7 +14611,7 @@ $$\forall IV \in R,  b(𝛽_{𝐼𝑉} * pKi)$$<p>Where</p>
 <p>CAVEATS:</p>
 <ol>
 <li>Some receptors did not have binding affinity data.  I defaulted to a pKI score of 0.84 ( =~ 1430 ki), which is the average of all other measuresments</li>
-<li>I used a coloc threshold of h4 &gt; 60% &amp;&amp; h3 &lt; 10%, in order to include many more data points while keeping results due to low power, and filtering results due to different putative causal variants</li>
+<li>I used a coloc threshold of h4 &gt; 60% &amp;&amp; h3 &lt; 20%, in order to include many more data points while keeping results due to low power, and filtering results due to different putative causal variants</li>
 </ol>
 
 </div>
@@ -14649,6 +14649,51 @@ $$\forall IV \in R,  b(𝛽_{𝐼𝑉} * pKi)$$<p>Where</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Highlighted-Side-effects">Highlighted Side-effects<a class="anchor-link" href="#Highlighted-Side-effects">&#182;</a></h3><h4 id="Weight-Gain:">Weight Gain:<a class="anchor-link" href="#Weight-Gain:">&#182;</a></h4><p>Once again, we see CHRM3 show up, and with a high level of matching with existing literature.  There are interesting other markers in both directions.  Weight does seem to be reported as gain and loss amitriptyline, so the confused graph may be accurate.</p>
+<ul>
+<li>High likelihood of weight gain: amitriptyline, doxepine, maprotiline, mirtazapine, trimipramine</li>
+<li>Medium: clomipramine, imipramine, nortriptyline</li>
+<li>Low: agomelatine, citalopram, escitalopram, fluoxetine, fluvoxamine, moclobemide, sertraline, vortioxetine, tranylcypromine.</li>
+</ul>
+<p>2 things:</p>
+<ol>
+<li>the CHRM3 results align with the triciclic results, but NOT the SSRI results.</li>
+<li>If HRH1 is in the wrong direction (which it could be), this would make more sense with tricyclic results AND atypical results.</li>
+</ol>
+<p>I'm gonna guess HRH1 is not pointing in the right direction: Link between HRH1 and Weight (in anti-psychotics): <a href="https://pubmed.ncbi.nlm.nih.gov/21336576/">https://pubmed.ncbi.nlm.nih.gov/21336576/</a></p>
+<p><img src="scratch/results/plots/Weight_change_vs_drug_h4_60.png" alt="alt" /></p>
+<h4 id="Blood-Pressure/Hypertension-and-Cholesterol">Blood Pressure/Hypertension and Cholesterol<a class="anchor-link" href="#Blood-Pressure/Hypertension-and-Cholesterol">&#182;</a></h4><p>I'm not sure whether to include other possible cardiac / heart diseases in the results as well.  Possibly some guidance would be necessary as to what might be included in our 'side-effect' map.  For example, Aws mentioned that cardiac rhythm events and triciclic drugs have some literature around them.</p>
+<p>Also 'Dyslipidaemia', but that might also be mostly covered in the cholesterol chart below</p>
+<table>
+<thead>
+<tr>
+  <th>.</th>
+  <th>.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><img src="scratch/results/plots/Blood_Pressure_vs_drug_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/Cholesterol_vs_drug_h4_60.png" alt="alt" /></td>
+</tr>
+</tbody>
+</table>
+<p>Interestingly, amitriptaline is prescribed for migraines, which might be backed up by this chart:</p>
+<p><img src="scratch/results/plots/Ear_and_labyrinth_disorders_vs_drug_h4_60.png" alt="alt" /></p>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<hr />
+<hr />
+<hr />
 <h3 id="Side-Effect-Per-Receptor-vs-Drug">Side Effect Per Receptor vs Drug<a class="anchor-link" href="#Side-Effect-Per-Receptor-vs-Drug">&#182;</a></h3><table>
 <thead>
 <tr>
@@ -14658,60 +14703,60 @@ $$\forall IV \in R,  b(𝛽_{𝐼𝑉} * pKi)$$<p>Where</p>
 </thead>
 <tbody>
 <tr>
-  <td><img src="scratch/results/plots/Hypertension_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
-  <td><img src="scratch/results/plots/Cholesterol_serum_elevated_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/Blood_Pressure_vs_drug_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/Cholesterol_vs_drug_h4_60.png" alt="alt" /></td>
 </tr>
 <tr>
-  <td><img src="scratch/results/plots/Weight_change_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
-  <td><img src="scratch/results/plots/Hypokalaemia_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/Weight_change_vs_drug_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/Hypokalaemia_vs_drug_h4_60.png" alt="alt" /></td>
 </tr>
 <tr>
-  <td><img src="scratch/results/plots/Urinary_Difficulties_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
-  <td><img src="scratch/results/plots/Constipation_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/Urinary_Difficulties_vs_drug_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/Constipation_vs_drug_h4_60.png" alt="alt" /></td>
 </tr>
 <tr>
-  <td><img src="scratch/results/plots/Back_pain_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
-  <td><img src="scratch/results/plots/Malnutrition_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/Back_pain_vs_drug_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/Malnutrition_vs_drug_h4_60.png" alt="alt" /></td>
 </tr>
 <tr>
-  <td><img src="scratch/results/plots/Unspecified_disorder_of_skin_and_subcutaneous_tissue_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
-  <td><img src="scratch/results/plots/Conjunctivitis_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/Unspecified_disorder_of_skin_and_subcutaneous_tissue_vs_drug_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/Conjunctivitis_vs_drug_h4_60.png" alt="alt" /></td>
 </tr>
 <tr>
-  <td><img src="scratch/results/plots/Tinnitus_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
-  <td><img src="scratch/results/plots/Headache_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/Tinnitus_vs_drug_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/Headache_vs_drug_h4_60.png" alt="alt" /></td>
 </tr>
 <tr>
-  <td><img src="scratch/results/plots/Oedema_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
-  <td><img src="scratch/results/plots/Generalised_oedema___Oedema_peripheral_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/Oedema_vs_drug_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/Generalised_oedema___Oedema_peripheral_vs_drug_h4_60.png" alt="alt" /></td>
 </tr>
 <tr>
-  <td><img src="scratch/results/plots/Eczema___Dry_skin_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
-  <td><img src="scratch/results/plots/Irritability_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/Eczema___Dry_skin_vs_drug_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/Irritability_vs_drug_h4_60.png" alt="alt" /></td>
 </tr>
 <tr>
-  <td><img src="scratch/results/plots/Bruxism_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
-  <td><img src="scratch/results/plots/Rhinitis_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/Bruxism_vs_drug_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/Rhinitis_vs_drug_h4_60.png" alt="alt" /></td>
 </tr>
 <tr>
-  <td><img src="scratch/results/plots/Anorexia_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
-  <td><img src="scratch/results/plots/Ear_and_labyrinth_disorders_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/Anorexia_vs_drug_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/Ear_and_labyrinth_disorders_vs_drug_h4_60.png" alt="alt" /></td>
 </tr>
 <tr>
-  <td><img src="scratch/results/plots/Insomnia___Sleep_Disorder_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
-  <td><img src="scratch/results/plots/Anxiety_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/Insomnia___Sleep_Disorder_vs_drug_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/Anxiety_vs_drug_h4_60.png" alt="alt" /></td>
 </tr>
 <tr>
-  <td><img src="scratch/results/plots/Bronchospasm_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
-  <td><img src="scratch/results/plots/Bronchitis_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/Bronchospasm_vs_drug_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/Bronchitis_vs_drug_h4_60.png" alt="alt" /></td>
 </tr>
 <tr>
-  <td><img src="scratch/results/plots/Upset_stomach_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
-  <td><img src="scratch/results/plots/Abdominal_pain___disorder_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/Upset_stomach_vs_drug_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/Abdominal_pain___disorder_vs_drug_h4_60.png" alt="alt" /></td>
 </tr>
 <tr>
-  <td><img src="scratch/results/plots/Sinusitis_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
-  <td><img src="scratch/results/plots/Shoulder_pain_vs_drug_cumulative_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/Sinusitis_vs_drug_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/Shoulder_pain_vs_drug_h4_60.png" alt="alt" /></td>
 </tr>
 </tbody>
 </table>
@@ -14726,6 +14771,9 @@ $$\forall IV \in R,  b(𝛽_{𝐼𝑉} * pKi)$$<p>Where</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<hr />
+<hr />
+<hr />
 <h3 id="Specific-Effects-Per-Receptor">Specific Effects Per Receptor<a class="anchor-link" href="#Specific-Effects-Per-Receptor">&#182;</a></h3><table>
 <thead>
 <tr>
@@ -14735,35 +14783,43 @@ $$\forall IV \in R,  b(𝛽_{𝐼𝑉} * pKi)$$<p>Where</p>
 </thead>
 <tbody>
 <tr>
-  <td><img src="scratch/results/plots/DRD2_vs_side_effects_cumulative_h4_60.png" alt="alt" /></td>
-  <td><img src="scratch/results/plots/ADRA2B_vs_side_effects_cumulative_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/DRD2_vs_side_effects_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/ADRA2B_vs_side_effects_h4_60.png" alt="alt" /></td>
 </tr>
 <tr>
-  <td><img src="scratch/results/plots/DRD1_vs_side_effects_cumulative_h4_60.png" alt="alt" /></td>
-  <td><img src="scratch/results/plots/HRH1_vs_side_effects_cumulative_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/DRD1_vs_side_effects_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/HRH1_vs_side_effects_h4_60.png" alt="alt" /></td>
 </tr>
 <tr>
-  <td><img src="scratch/results/plots/HTR1B_vs_side_effects_cumulative_h4_60.png" alt="alt" /></td>
-  <td><img src="scratch/results/plots/ADRA2A_vs_side_effects_cumulative_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/HTR1B_vs_side_effects_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/ADRA2A_vs_side_effects_h4_60.png" alt="alt" /></td>
 </tr>
 <tr>
-  <td><img src="scratch/results/plots/DRD4_vs_side_effects_cumulative_h4_60.png" alt="alt" /></td>
-  <td><img src="scratch/results/plots/HTR6_vs_side_effects_cumulative_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/OPRK1_vs_side_effects_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/OPRM1_vs_side_effects_h4_60.png" alt="alt" /></td>
 </tr>
 <tr>
-  <td><img src="scratch/results/plots/ADRA1A_vs_side_effects_cumulative_h4_60.png" alt="alt" /></td>
-  <td><img src="scratch/results/plots/HTR1E_vs_side_effects_cumulative_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/NTRK1_vs_side_effects_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/KCNH2_vs_side_effects_h4_60.png" alt="alt" /></td>
 </tr>
 <tr>
-  <td><img src="scratch/results/plots/CHRM3_vs_side_effects_cumulative_h4_60.png" alt="alt" /></td>
-  <td><img src="scratch/results/plots/CHRM5_vs_side_effects_cumulative_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/DRD4_vs_side_effects_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/HTR6_vs_side_effects_h4_60.png" alt="alt" /></td>
 </tr>
 <tr>
-  <td><img src="scratch/results/plots/HRH4_vs_side_effects_cumulative_h4_60.png" alt="alt" /></td>
-  <td><img src="scratch/results/plots/HTR2A_vs_side_effects_cumulative_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/ADRA1A_vs_side_effects_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/HTR1E_vs_side_effects_h4_60.png" alt="alt" /></td>
 </tr>
 <tr>
-  <td><img src="scratch/results/plots/HRH3_vs_side_effects_cumulative_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/CHRM3_vs_side_effects_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/CHRM5_vs_side_effects_h4_60.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/HRH4_vs_side_effects_h4_60.png" alt="alt" /></td>
+  <td><img src="scratch/results/plots/HTR2A_vs_side_effects_h4_60.png" alt="alt" /></td>
+</tr>
+<tr>
+  <td><img src="scratch/results/plots/HRH3_vs_side_effects_h4_60.png" alt="alt" /></td>
   <td></td>
 </tr>
 </tbody>
