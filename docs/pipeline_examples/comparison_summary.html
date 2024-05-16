@@ -46,11 +46,83 @@ document.addEventListener('DOMContentLoaded', function(e) {
 
 
 <section class="page-header">
-<h1 class="title toc-ignore project-name">Ancestry Comparison
-Results</h1>
-<h4 class="date project-date">12 September, 2023</h4>
+<h1 class="title toc-ignore project-name">GWAS Comparison Results</h1>
+<h4 class="date project-date">12 April, 2024</h4>
 </section>
 
+<section class="main-content">
+<div id="ldsc-result-files" class="section level3">
+<h3>LDSC Result Files</h3>
+<pre><code>## /user/work/wt23152/test/results/ldsc//results_EUR.log
+## 
+## *********************************************************************
+## * LD Score Regression (LDSC)
+## * Version 1.0.1
+## * (C) 2014-2019 Brendan Bulik-Sullivan and Hilary Finucane
+## * Broad Institute of MIT and Harvard / MIT Department of Mathematics
+## * GNU General Public License v3
+## *********************************************************************
+## Call: 
+## ./ldsc.py \
+## --ref-ld-chr /mnt/storage/private/mrcieu/data/LDSCORE/b37_dbsnp156//EUR/ \
+## --out /user/work/wt23152/test/results/ldsc/results_EUR \
+## --rg /user/work/wt23152/test/data/ldsc/test_data_small_std.sumstats.gz,/user/work/wt23152/test/data/ldsc/test_data_small_hg38_std.sumstats.gz \
+## --w-ld-chr /mnt/storage/private/mrcieu/data/LDSCORE/b37_dbsnp156//EUR/ 
+## 
+## Beginning analysis at Tue Apr 30 12:01:21 2024
+## Reading summary statistics from /user/work/wt23152/test/data/ldsc/test_data_small_std.sumstats.gz ...
+## Read summary statistics for 11695 SNPs.
+## Reading reference panel LD Score from /mnt/storage/private/mrcieu/data/LDSCORE/b37_dbsnp156//EUR/[1-22] ... (ldscore_fromlist)
+## Read reference panel LD Scores for 8550110 SNPs.
+## Removing partitioned LD Scores with zero variance.
+## Reading regression weight LD Score from /mnt/storage/private/mrcieu/data/LDSCORE/b37_dbsnp156//EUR/[1-22] ... (ldscore_fromlist)
+## Read regression weight LD Scores for 8550110 SNPs.
+## After merging with reference panel LD, 11616 SNPs remain.
+## After merging with regression SNP LD, 11616 SNPs remain.
+## Computing rg for phenotype 2/2
+## Reading summary statistics from /user/work/wt23152/test/data/ldsc/test_data_small_hg38_std.sumstats.gz ...
+## Read summary statistics for 1204345 SNPs.
+## After merging with summary statistics, 11616 SNPs remain.
+## 11616 SNPs with valid alleles.
+## WARNING: number of SNPs less than 200k; this is almost always bad.
+## 
+## Heritability of phenotype 1
+## ---------------------------
+## Total Observed scale h2: 1.4573 (0.4519)
+## Lambda GC: 1.2201
+## Mean Chi^2: 1.2582
+## Intercept: 1.1081 (0.0472)
+## Ratio: 0.4188 (0.1829)
+## 
+## Heritability of phenotype 2/2
+## -----------------------------
+## Total Observed scale h2: 1.4573 (0.4519)
+## Lambda GC: 1.2201
+## Mean Chi^2: 1.2582
+## Intercept: 1.1081 (0.0472)
+## Ratio: 0.4188 (0.1829)
+## 
+## Genetic Covariance
+## ------------------
+## Total Observed scale gencov: 1.4573 (0.4519)
+## Mean z1*z2: 1.2582
+## Intercept: 1.1081 (0.0472)
+## 
+## Genetic Correlation
+## -------------------
+## Genetic Correlation: 1. (3.5261e-10)
+## Z-score: 2.836e+09
+## P: 0.
+## 
+## 
+## Summary of Genetic Correlation Results
+## p1                                                                      p2   rg          se           z    p  h2_obs  h2_obs_se  h2_int  h2_int_se  gcov_int  gcov_int_se
+## /user/work/wt23152/test/data/ldsc/test_data_small_std.sumstats.gz  /user/work/wt23152/test/data/ldsc/test_data_small_hg38_std.sumstats.gz  1.0  3.5261e-10  2.8360e+09  0.0  1.4573     0.4519  1.1081     0.0472    1.1081       0.0472
+## 
+## Analysis finished at Tue Apr 30 12:02:12 2024
+## Total time elapsed: 50.41s</code></pre>
+</div>
+<div id="plots-comparing-heterogeneity-across-significant-snps" class="section level3">
 
 
 <section class="main-content">
@@ -361,12 +433,19 @@ Results</h1>
 </tbody>
 </table>
 </div>
+<div id="references" class="section level3">
+<h3>References</h3>
+<ul>
+<li>Expected vs Observed doi: 10.1038/nature17671</li>
+<li>LDSC: <a href="https://github.com/bulik/ldsc?tab=readme-ov-file#citation" class="uri">https://github.com/bulik/ldsc?tab=readme-ov-file#citation</a></li>
+</ul>
+</div>
 <div id="additional-info" class="section level3">
 <h3>Additional info</h3>
 <ul>
-<li>This pipeline was run using the github repository: <a href="https://github.com/andrew-e/genepi-pipeline" class="uri">https://github.com/andrew-e/genepi-pipeline</a></li>
+<li>This pipeline was run using the github repository: <a href="https://github.com/MRCIEU/GeneHackman" class="uri">https://github.com/MRCIEU/GeneHackman</a></li>
 <li>and the docker image:
-docker://andrewrrelmore/genepi_pipeline:test</li>
+docker://mrcieu/genehackman:1.0.0</li>
 </ul>
 </div>
 </section>
