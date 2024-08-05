@@ -14621,10 +14621,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
-<ul>
-<li>EBI GWAS Catalog: 100%: 5238</li>
-</ul>
-
+<h3 id="Breakdown-of-studies,-extractions,-finemappings-:">Breakdown of studies, extractions, finemappings :<a class="anchor-link" href="#Breakdown-of-studies,-extractions,-finemappings-:">&#182;</a></h3>
 </div>
 
 </div>
@@ -14634,83 +14631,18 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 
 
-
-<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
-<ul>
-<li>GTEx cis eQTL Catalog: 70% : 822758</li>
-</ul>
-
-</div>
-
-</div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
-<h3 id="Breakdown-of-extracted-regions-in-studies:">Breakdown of extracted regions in studies:<a class="anchor-link" href="#Breakdown-of-extracted-regions-in-studies:">&#182;</a></h3>
-</div>
-
-</div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
-<ul>
-<li>EBI studies: 3259</li>
-</ul>
-
-</div>
-
-</div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
-<ul>
-<li>EBI per extracted + finemapped: 183609</li>
-</ul>
-
-</div>
-
-</div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
-<ul>
-<li>GTEx studies: 76555</li>
-</ul>
-
-</div>
-
-</div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
-<ul>
-<li>GTEx per extracted + finemapped: 96403</li>
-</ul>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<table class="dataframe">
+<caption>A tibble: 2 × 5</caption>
+<thead>
+	<tr><th scope=col>data_source</th><th scope=col>num_studies</th><th scope=col>used_studies</th><th scope=col>num_finemapped</th><th scope=col>num_finemapped_usable</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>EBI GWAS Catalog          </td><td>   5238</td><td>  3359</td><td>197324</td><td>169414</td></tr>
+	<tr><td>GTEx cis eQTL GWAS Catalog</td><td>1137497</td><td>112017</td><td>142071</td><td> 91097</td></tr>
+</tbody>
+</table>
 
 </div>
 
@@ -14736,8 +14668,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
-<p>Number of hyprcoloc results by posterior_prob:</p>
-
+<h3 id="Number-of-hyprcoloc-results-by-posterior_prob:">Number of hyprcoloc results by posterior_prob:<a class="anchor-link" href="#Number-of-hyprcoloc-results-by-posterior_prob:">&#182;</a></h3>
 </div>
 
 </div>
@@ -14748,52 +14679,20 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
-'coloc &gt; 0.6: 30122'
-</div>
+<table class="dataframe">
+<caption>A tibble: 4 × 2</caption>
+<thead>
+	<tr><th scope=col>coloc_threshold</th><th scope=col>num_results</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;int&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td> &gt; 0.6</td><td>27764</td></tr>
+	<tr><td> &gt; 0.7</td><td>24620</td></tr>
+	<tr><td> &gt; 0.8</td><td>21265</td></tr>
+	<tr><td> &gt; 0.9</td><td>16636</td></tr>
+</tbody>
+</table>
 
-</div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
-'coloc &gt; 0.7: 27039'
-</div>
-
-</div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
-'coloc &gt; 0.8: 23596'
-</div>
-
-</div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
-'coloc &gt; 0.9: 18836'
-</div>
-
-</div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
-<h3 id="Coloc-where-%3E-.80:">Coloc where &gt; .80:<a class="anchor-link" href="#Coloc-where-%3E-.80:">&#182;</a></h3>
 </div>
 
 </div>
@@ -14815,19 +14714,12 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 
 
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
-'Mean studies in group 4.73253941345991'
-</div>
 
-</div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
+<ul>
+<li>Mean studies in group: 4.89804843639784</li>
+</ul>
 
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
-'Median studies in group 3'
 </div>
 
 </div>
@@ -14837,8 +14729,27 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 
 
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
-'Max studies in group 395'
+
+<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
+<ul>
+<li>Mean studies in group: 3</li>
+</ul>
+
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
+<ul>
+<li>Mean studies in group: 395</li>
+</ul>
+
 </div>
 
 </div>
@@ -14892,13 +14803,13 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 	<tr><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
 </thead>
 <tbody>
-	<tr><td>  2</td><td>23596</td><td>5812</td><td>0.24631293</td></tr>
-	<tr><td>  5</td><td> 4596</td><td>1911</td><td>0.41579634</td></tr>
-	<tr><td> 10</td><td> 1898</td><td> 969</td><td>0.51053741</td></tr>
-	<tr><td> 50</td><td>   70</td><td>   5</td><td>0.07142857</td></tr>
-	<tr><td>100</td><td>   16</td><td>   2</td><td>0.12500000</td></tr>
-	<tr><td>200</td><td>    6</td><td>   2</td><td>0.33333333</td></tr>
-	<tr><td>300</td><td>    3</td><td>   0</td><td>0.00000000</td></tr>
+	<tr><td>  2</td><td>21265</td><td>6493</td><td>0.3053374</td></tr>
+	<tr><td>  5</td><td> 4201</td><td>1980</td><td>0.4713164</td></tr>
+	<tr><td> 10</td><td> 1817</td><td>1041</td><td>0.5729224</td></tr>
+	<tr><td> 50</td><td>   65</td><td>  12</td><td>0.1846154</td></tr>
+	<tr><td>100</td><td>   13</td><td>   0</td><td>0.0000000</td></tr>
+	<tr><td>200</td><td>    2</td><td>   0</td><td>0.0000000</td></tr>
+	<tr><td>300</td><td>    1</td><td>   0</td><td>0.0000000</td></tr>
 </tbody>
 </table>
 
@@ -14925,7 +14836,9 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
-<p>Total number of coloc pairs: 1008727</p>
+<ul>
+<li>Total number of coloc pairs: 729186</li>
+</ul>
 
 </div>
 
@@ -14938,7 +14851,9 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
-<p>Total number of phenotype &lt;-&gt; phenotype pairs: 789194</p>
+<ul>
+<li>Total number of non-matching gene qtl &lt;-&gt; qtl pairs: 1581</li>
+</ul>
 
 </div>
 
@@ -14951,7 +14866,9 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
-<p>Total number of qtl &lt;-&gt; qtl pairs: 201784</p>
+<ul>
+<li>Total number of &quot;directed&quot; qtl &lt;-&gt; phenotype pairs: 16352</li>
+</ul>
 
 </div>
 
@@ -14964,7 +14881,9 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
-<p>Total number of non-matching gene qtl &lt;-&gt; qtl pairs: 13417</p>
+<ul>
+<li>Total number of phenotype &lt;-&gt; phenotype pairs: 416360</li>
+</ul>
 
 </div>
 
@@ -14977,7 +14896,9 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
-<p>Total number of &quot;directed&quot; qtl &lt;-&gt; phenotype pairs: 17749</p>
+<ul>
+<li>Total number of qtl &lt;-&gt; qtl pairs w/ matching gene: 296400</li>
+</ul>
 
 </div>
 
@@ -15009,36 +14930,36 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 	<tr><th></th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;int&gt;</th></tr>
 </thead>
 <tbody>
-	<tr><th scope=row>1</th><td>EIF5A         </td><td>1893</td></tr>
-	<tr><th scope=row>2</th><td>PSRC1         </td><td>1760</td></tr>
-	<tr><th scope=row>3</th><td>TAPBPL        </td><td>1686</td></tr>
-	<tr><th scope=row>4</th><td>GMPPB         </td><td>1488</td></tr>
-	<tr><th scope=row>5</th><td>RP3-402G11.26 </td><td>1395</td></tr>
-	<tr><th scope=row>6</th><td>ERAP2         </td><td>1332</td></tr>
-	<tr><th scope=row>7</th><td>QRSL1         </td><td> 998</td></tr>
-	<tr><th scope=row>8</th><td>AP003068.23   </td><td> 946</td></tr>
-	<tr><th scope=row>9</th><td>SEC1P         </td><td> 858</td></tr>
-	<tr><th scope=row>10</th><td>SPATA20       </td><td> 835</td></tr>
-	<tr><th scope=row>11</th><td>HMBS          </td><td> 832</td></tr>
-	<tr><th scope=row>12</th><td>CTD-2192J16.21</td><td> 812</td></tr>
-	<tr><th scope=row>13</th><td>RP11-203M5.7  </td><td> 786</td></tr>
-	<tr><th scope=row>14</th><td>DNLZ          </td><td> 777</td></tr>
-	<tr><th scope=row>15</th><td>AP000350.5    </td><td> 768</td></tr>
-	<tr><th scope=row>16</th><td>HYAL3         </td><td> 765</td></tr>
-	<tr><th scope=row>17</th><td>RP11-513M16.8 </td><td> 764</td></tr>
-	<tr><th scope=row>18</th><td>LINC00339     </td><td> 756</td></tr>
-	<tr><th scope=row>19</th><td>CLCN7         </td><td> 739</td></tr>
-	<tr><th scope=row>20</th><td>XRCC6BP1      </td><td> 735</td></tr>
-	<tr><th scope=row>21</th><td>RP11-301O19.1 </td><td> 726</td></tr>
-	<tr><th scope=row>22</th><td>OSGEP         </td><td> 705</td></tr>
-	<tr><th scope=row>23</th><td>JAZF1-AS1     </td><td> 693</td></tr>
-	<tr><th scope=row>24</th><td>SNORD89       </td><td> 675</td></tr>
-	<tr><th scope=row>25</th><td>GNB3          </td><td> 670</td></tr>
-	<tr><th scope=row>26</th><td>ATE1-AS1      </td><td> 665</td></tr>
-	<tr><th scope=row>27</th><td>RPS26         </td><td> 665</td></tr>
-	<tr><th scope=row>28</th><td>AC079922.3    </td><td> 654</td></tr>
-	<tr><th scope=row>29</th><td>SERPINF2      </td><td> 651</td></tr>
-	<tr><th scope=row>30</th><td>LA16c-OS12.2  </td><td> 650</td></tr>
+	<tr><th scope=row>1</th><td>AP000350.6   </td><td>241</td></tr>
+	<tr><th scope=row>2</th><td>IRF5         </td><td>208</td></tr>
+	<tr><th scope=row>3</th><td>EIF5A        </td><td>164</td></tr>
+	<tr><th scope=row>4</th><td>OPRL1        </td><td>158</td></tr>
+	<tr><th scope=row>5</th><td>CTD-2012J19.1</td><td>146</td></tr>
+	<tr><th scope=row>6</th><td>RPS26        </td><td>146</td></tr>
+	<tr><th scope=row>7</th><td>ZNF589       </td><td>143</td></tr>
+	<tr><th scope=row>8</th><td>RP5-1115A15.1</td><td>140</td></tr>
+	<tr><th scope=row>9</th><td>L3MBTL3      </td><td>135</td></tr>
+	<tr><th scope=row>10</th><td>SNHG17       </td><td>134</td></tr>
+	<tr><th scope=row>11</th><td>ITGB3BP      </td><td>129</td></tr>
+	<tr><th scope=row>12</th><td>ZNF718       </td><td>129</td></tr>
+	<tr><th scope=row>13</th><td>CDC16        </td><td>126</td></tr>
+	<tr><th scope=row>14</th><td>PRMT6        </td><td>123</td></tr>
+	<tr><th scope=row>15</th><td>AP003068.23  </td><td>120</td></tr>
+	<tr><th scope=row>16</th><td>SEC1P        </td><td>115</td></tr>
+	<tr><th scope=row>17</th><td>SERBP1P3     </td><td>114</td></tr>
+	<tr><th scope=row>18</th><td>CTSW         </td><td>110</td></tr>
+	<tr><th scope=row>19</th><td>RP11-301O19.1</td><td>109</td></tr>
+	<tr><th scope=row>20</th><td>RP11-513M16.8</td><td>109</td></tr>
+	<tr><th scope=row>21</th><td>ATE1-AS1     </td><td>104</td></tr>
+	<tr><th scope=row>22</th><td>ERAP2        </td><td>104</td></tr>
+	<tr><th scope=row>23</th><td>LA16c-390E6.4</td><td>104</td></tr>
+	<tr><th scope=row>24</th><td>RPS18        </td><td>104</td></tr>
+	<tr><th scope=row>25</th><td>APBB1IP      </td><td>101</td></tr>
+	<tr><th scope=row>26</th><td>ZNF749       </td><td> 99</td></tr>
+	<tr><th scope=row>27</th><td>RP11-661A12.5</td><td> 98</td></tr>
+	<tr><th scope=row>28</th><td>AMH          </td><td> 97</td></tr>
+	<tr><th scope=row>29</th><td>CYP4F11      </td><td> 97</td></tr>
+	<tr><th scope=row>30</th><td>RP11-539L10.3</td><td> 94</td></tr>
 </tbody>
 </table>
 
@@ -15096,8 +15017,8 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
 </thead>
 <tbody>
-	<tr><td>mean </td><td>   147.1023</td><td>   166.5747</td><td>   11.13266</td></tr>
-	<tr><td>total</td><td>247279.0000</td><td>280012.0000</td><td>18714.00000</td></tr>
+	<tr><td>mean </td><td>   119.9923</td><td>   201.541</td><td>   13.67221</td></tr>
+	<tr><td>total</td><td>202067.0000</td><td>339395.000</td><td>23024.00000</td></tr>
 </tbody>
 </table>
 
@@ -15124,32 +15045,22 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
 <table class="dataframe">
-<caption>A spec_tbl_df: 20 × 2</caption>
+<caption>A spec_tbl_df: 10 × 2</caption>
 <thead>
 	<tr><th scope=col>ld_region</th><th scope=col>extracted_regions</th></tr>
 	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
 </thead>
 <tbody>
-	<tr><td>EUR/19/44744108_46102696  </td><td>1577</td></tr>
-	<tr><td>EUR/2/26894985_28598776   </td><td>1218</td></tr>
-	<tr><td>EUR/11/58780549_62223770  </td><td>1185</td></tr>
-	<tr><td>EUR/1/25516845_27401866   </td><td>1078</td></tr>
-	<tr><td>EUR/9/135298842_137041121 </td><td>1058</td></tr>
-	<tr><td>EUR/6/160580497_162169563 </td><td>1055</td></tr>
-	<tr><td>EUR/6/29737971_30798167   </td><td> 997</td></tr>
-	<tr><td>EUR/1/108409665_110303930 </td><td> 955</td></tr>
-	<tr><td>EUR/1/54226262_56413116   </td><td> 922</td></tr>
-	<tr><td>EUR/2/110572432_113921855 </td><td> 917</td></tr>
-	<tr><td>EUR/1/159913048_162346720 </td><td> 905</td></tr>
-	<tr><td>EUR/17/43056905_45876021  </td><td> 904</td></tr>
-	<tr><td>EUR/11/116383348_117747109</td><td> 884</td></tr>
-	<tr><td>EUR/8/144236881_146303866 </td><td> 834</td></tr>
-	<tr><td>EUR/2/21050490_23341382   </td><td> 820</td></tr>
-	<tr><td>EUR/6/25684587_26791232   </td><td> 815</td></tr>
-	<tr><td>EUR/7/71874885_73334601   </td><td> 803</td></tr>
-	<tr><td>EUR/19/9238393_11284027   </td><td> 802</td></tr>
-	<tr><td>EUR/3/11019665_13070798   </td><td> 801</td></tr>
-	<tr><td>EUR/2/43309590_44313802   </td><td> 792</td></tr>
+	<tr><td>EUR/19/44744108_46102696 </td><td>913</td></tr>
+	<tr><td>EUR/6/29737971_30798167  </td><td>892</td></tr>
+	<tr><td>EUR/8/144236881_146303866</td><td>887</td></tr>
+	<tr><td>EUR/16/1207206_2764828   </td><td>817</td></tr>
+	<tr><td>EUR/19/57521335_59118838 </td><td>810</td></tr>
+	<tr><td>EUR/17/43056905_45876021 </td><td>803</td></tr>
+	<tr><td>EUR/19/49282227_51532566 </td><td>770</td></tr>
+	<tr><td>EUR/11/70855_1213589     </td><td>749</td></tr>
+	<tr><td>EUR/11/63804569_65898630 </td><td>743</td></tr>
+	<tr><td>EUR/11/58780549_62223770 </td><td>732</td></tr>
 </tbody>
 </table>
 
@@ -15164,6 +15075,58 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
 <strong>png:</strong> 2
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
+<h3 id="Regions-worst-finemapping-rate">Regions worst finemapping rate<a class="anchor-link" href="#Regions-worst-finemapping-rate">&#182;</a></h3>
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<table class="dataframe">
+<caption>A spec_tbl_df: 20 × 10</caption>
+<thead>
+	<tr><th scope=col>ld_region</th><th scope=col>extracted_regions</th><th scope=col>studies_imputed</th><th scope=col>mean_snps_imputed</th><th scope=col>number_finemapped</th><th scope=col>number_finemapped_above_threshold</th><th scope=col>finemap_failed</th><th scope=col>finemap_no_need</th><th scope=col>finemapped_per_study</th><th scope=col>finemap_fail_rate</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>EUR/9/88109333_88590416   </td><td>  1</td><td>  1</td><td>  63.00000</td><td>  1</td><td>  1</td><td>  1</td><td>  0</td><td>1.0000000</td><td>1.0000000</td></tr>
+	<tr><td>EUR/8/2573279_3392925     </td><td> 13</td><td> 13</td><td> 281.00000</td><td> 12</td><td> 12</td><td> 12</td><td>  0</td><td>0.9230769</td><td>0.9230769</td></tr>
+	<tr><td>EUR/11/49866050_54695472  </td><td> 16</td><td> 16</td><td>2072.40000</td><td> 16</td><td> 16</td><td> 14</td><td>  0</td><td>1.0000000</td><td>0.8750000</td></tr>
+	<tr><td>EUR/22/22357325_23712646  </td><td>286</td><td>286</td><td> 366.14978</td><td>449</td><td>242</td><td>236</td><td> 16</td><td>1.5699301</td><td>0.8251748</td></tr>
+	<tr><td>EUR/7/63641125_65689808   </td><td>508</td><td>508</td><td> 685.87730</td><td>541</td><td>514</td><td>405</td><td> 51</td><td>1.0649606</td><td>0.7972441</td></tr>
+	<tr><td>EUR/1/144977494_148361252 </td><td>185</td><td>185</td><td> 264.42857</td><td>252</td><td>209</td><td>145</td><td> 13</td><td>1.3621622</td><td>0.7837838</td></tr>
+	<tr><td>EUR/6/48391125_50386144   </td><td> 69</td><td> 69</td><td> 240.14634</td><td> 71</td><td> 69</td><td> 54</td><td> 11</td><td>1.0289855</td><td>0.7826087</td></tr>
+	<tr><td>EUR/7/101199253_103197509 </td><td>173</td><td>173</td><td> 275.77778</td><td>212</td><td>196</td><td>128</td><td> 30</td><td>1.2254335</td><td>0.7398844</td></tr>
+	<tr><td>EUR/11/123500117_124495527</td><td> 15</td><td> 15</td><td> 155.33333</td><td> 15</td><td> 15</td><td> 11</td><td>  4</td><td>1.0000000</td><td>0.7333333</td></tr>
+	<tr><td>EUR/22/40545797_42690817  </td><td>591</td><td>591</td><td> 260.58303</td><td>647</td><td>627</td><td>430</td><td>108</td><td>1.0947547</td><td>0.7275804</td></tr>
+	<tr><td>EUR/3/47727212_49316971   </td><td>368</td><td>368</td><td>  93.10811</td><td>468</td><td>395</td><td>266</td><td> 48</td><td>1.2717391</td><td>0.7228261</td></tr>
+	<tr><td>EUR/6/57599465_61880511   </td><td> 94</td><td> 94</td><td> 703.09434</td><td> 94</td><td> 94</td><td> 67</td><td>  5</td><td>1.0000000</td><td>0.7127660</td></tr>
+	<tr><td>EUR/14/106340358_107289453</td><td>156</td><td>156</td><td> 350.66406</td><td>496</td><td>119</td><td>108</td><td>  7</td><td>3.1794872</td><td>0.6923077</td></tr>
+	<tr><td>EUR/2/225840004_228119841 </td><td>282</td><td>282</td><td> 609.52632</td><td>350</td><td>341</td><td>191</td><td> 48</td><td>1.2411348</td><td>0.6773050</td></tr>
+	<tr><td>EUR/18/77149991_78017157  </td><td>161</td><td>161</td><td> 155.44944</td><td>177</td><td>173</td><td>107</td><td> 11</td><td>1.0993789</td><td>0.6645963</td></tr>
+	<tr><td>EUR/21/29125226_31197024  </td><td> 89</td><td> 89</td><td> 262.29412</td><td>104</td><td> 93</td><td> 59</td><td> 20</td><td>1.1685393</td><td>0.6629213</td></tr>
+	<tr><td>EUR/12/10481534_11754845  </td><td>312</td><td>312</td><td> 545.64398</td><td>356</td><td>294</td><td>195</td><td> 72</td><td>1.1410256</td><td>0.6250000</td></tr>
+	<tr><td>EUR/3/75704949_77508834   </td><td> 71</td><td> 71</td><td> 167.97436</td><td> 76</td><td> 66</td><td> 44</td><td> 22</td><td>1.0704225</td><td>0.6197183</td></tr>
+	<tr><td>EUR/20/32813441_34960445  </td><td>328</td><td>328</td><td> 181.47904</td><td>371</td><td>353</td><td>203</td><td> 76</td><td>1.1310976</td><td>0.6189024</td></tr>
+	<tr><td>EUR/22/17674295_18296087  </td><td> 46</td><td> 46</td><td> 125.95652</td><td> 61</td><td> 61</td><td> 27</td><td> 16</td><td>1.3260870</td><td>0.5869565</td></tr>
+</tbody>
+</table>
+
 </div>
 
 </div>
