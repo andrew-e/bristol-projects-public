@@ -14641,6 +14641,70 @@ mean removed: 54</p>
 <li>EUR/6/30798168_31571217/: 4</li>
 <li>EUR/6/31571218_32682663/: 3</li>
 </ul>
+<p>DENTIST running time, running on 1 CPU: maybe 5 minutes?</p>
+<p>With and without dentist:</p>
+<ul>
+<li>wc -l */raw_coloc_results.tsv<ul>
+<li>202 test/coloc_results.tsv</li>
+<li>197 test_dentist_refine/coloc_results.tsv</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Since-fixing-/-changing-LD-reference-panel:">Since fixing / changing LD reference panel:<a class="anchor-link" href="#Since-fixing-/-changing-LD-reference-panel:">&#182;</a></h2><h3 id="Results-with-DENTIST-and-susie-refine-=-T">Results with DENTIST and susie refine = T<a class="anchor-link" href="#Results-with-DENTIST-and-susie-refine-=-T">&#182;</a></h3><p><strong>Imputation</strong>:</p>
+<ul>
+<li>mean(unlist(imputed_per_ld), na.rm=T): 489.6853</li>
+<li>median(unlist(imputed_per_ld), na.rm=T): 469.5</li>
+</ul>
+<p><strong>Susie finemapping and refine</strong>:
+susie refine step:</p>
+<ul>
+<li>What was suggested on the call: <a href="https://stephenslab.github.io/susieR/articles/susie_refine.html">https://stephenslab.github.io/susieR/articles/susie_refine.html</a></li>
+<li>quote: &quot;(which is rare in our experience, but can provide misleading results when it occurs)&quot;</li>
+<li>Used to get out of local optiumum, does it by changing prior weights to 0, then rerunning susie</li>
+<li>From 4 minutes(!) to 47 minutes(!!!!)</li>
+<li>Susie is not converging very often!<ul>
+<li>With refine = T: total finemapped: 1661, total not converging: 1193, total success: 121 (into 455)</li>
+<li>With refine = F: total finemapped: 1695, total not converging: 1166, total success: 135 (into 516)</li>
+</ul>
+</li>
+</ul>
+<p><strong>DENTIST</strong> info: almost always nothing removed, except when A LOT is removed</p>
+<p>median removed: 1
+mean removed: 54</p>
+<ul>
+<li>sum(s$snps_removed_by_qc &gt; 100): 81</li>
+<li>sum(s$snps_removed_by_qc &gt; 200): 51</li>
+<li>sum(s$snps_removed_by_qc &gt; 500): 30</li>
+<li>sum(s$qc_step_succeeded): 1110</li>
+<li>sum(!s$qc_step_succeeded): 204</li>
+</ul>
+<p><strong>Problematic ld regions for DENTIST:</strong></p>
+<ul>
+<li>EUR/6/25684587_26791232/: 14</li>
+<li>EUR/1/153180829_154770402: 6</li>
+<li>EUR/1/63455089_65041703/: 4</li>
+<li>EUR/10/44730075_48760449/: 4</li>
+<li>EUR/11/55082657_58457494/: 2</li>
+<li>EUR/21/34376999_35225464/: 2</li>
+<li>EUR/5/108633934_110821143/: 2</li>
+<li>EUR/5/129519025_132139648/: 2</li>
+<li>EUR/6/134244243_136224176/: 2</li>
+<li>EUR/6/24852275_25684586/: 2</li>
+<li>EUR/6/26791233_28017818/: 3</li>
+<li>EUR/6/30798168_31571217/: 4</li>
+<li>EUR/6/31571218_32682663/: 3</li>
+</ul>
 <p>DENTIST running time, running on 1 CPU: maybe 5.7088 minutes</p>
 
 </div>
@@ -14664,7 +14728,7 @@ mean removed: 54</p>
 
 
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
-<h3 id="Total-coloc-results:-125">Total coloc results: 125<a class="anchor-link" href="#Total-coloc-results:-125">&#182;</a></h3>
+<h2 id="Original-results-(before-changes)">Original results (before changes)<a class="anchor-link" href="#Original-results-(before-changes)">&#182;</a></h2>
 </div>
 
 </div>
@@ -14676,7 +14740,7 @@ mean removed: 54</p>
 
 
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
-<h3 id="All-orig_studies:-2335">All orig_studies: 2335<a class="anchor-link" href="#All-orig_studies:-2335">&#182;</a></h3>
+<h3 id="Total-coloc-results:-125">Total coloc results: 125<a class="anchor-link" href="#Total-coloc-results:-125">&#182;</a></h3>
 </div>
 
 </div>
@@ -14722,6 +14786,18 @@ mean removed: 54</p>
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
 
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
+<h2 id="Updated-results-(new-reference-panel,-DENTIST)">Updated results (new reference panel, DENTIST)<a class="anchor-link" href="#Updated-results-(new-reference-panel,-DENTIST)">&#182;</a></h2>
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
 <pre>Warning message:
 &#34;One or more parsing issues, call `problems()` on your data frame for details,
@@ -14739,7 +14815,7 @@ e.g.:
 
 
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
-<h3 id="Total-coloc-results:-196">Total coloc results: 196<a class="anchor-link" href="#Total-coloc-results:-196">&#182;</a></h3>
+<h3 id="Total-coloc-results:-121">Total coloc results: 121<a class="anchor-link" href="#Total-coloc-results:-121">&#182;</a></h3>
 </div>
 
 </div>
@@ -14800,19 +14876,7 @@ e.g.:
 
 
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
-<h3 id="Total-orig-coloc-results:-125">Total orig coloc results: 125<a class="anchor-link" href="#Total-orig-coloc-results:-125">&#182;</a></h3>
-</div>
-
-</div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
-<h3 id="Total-shared-coloc-results:-121">Total shared coloc results: 121<a class="anchor-link" href="#Total-shared-coloc-results:-121">&#182;</a></h3>
+<h3 id="Original-study-coloc-results">Original study coloc results<a class="anchor-link" href="#Original-study-coloc-results">&#182;</a></h3>
 </div>
 
 </div>
@@ -14862,6 +14926,18 @@ e.g.:
 
 
 
+
+<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
+<h3 id="New-study-coloc-results">New study coloc results<a class="anchor-link" href="#New-study-coloc-results">&#182;</a></h3>
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
 <table class="dataframe">
 <caption>A spec_tbl_df: 20 x 6</caption>
@@ -14901,17 +14977,6 @@ e.g.:
 
 </div>
 
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-
-</div>
-</div>
-</div>
 </div>
 </body>
 
