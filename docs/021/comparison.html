@@ -15043,6 +15043,20 @@ e.g.:
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
 
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>Warning message:
+&#34;One or more parsing issues, call `problems()` on your data frame for details,
+e.g.:
+  dat &lt;- vroom(...)
+  problems(dat)&#34;
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
 
 
 <div class="jp-RenderedText jp-OutputArea-output " data-mime-type="text/plain">
@@ -15098,6 +15112,102 @@ e.g.:
 
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
 <p>Dentist run and snps removed and finemap finds less: 14</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell  jp-mod-noInput ">
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
+<p>Problematic extraction: number of SNPS: 55, finemap goes wild, DENTIST cant do anything with such little info</p>
+
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<table class="dataframe">
+<caption>A spec_tbl_df: 1 x 12</caption>
+<thead>
+	<tr><th scope=col>study</th><th scope=col>file</th><th scope=col>ancestry</th><th scope=col>chr</th><th scope=col>bp</th><th scope=col>p_value_threshold</th><th scope=col>category</th><th scope=col>sample_size</th><th scope=col>cis_trans</th><th scope=col>eaf_from_reference_panel</th><th scope=col>snps_removed_by_reference_panel</th><th scope=col>time_taken</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;hms&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>ebi-a-GCST90000059</td><td>/local-scratch/projects/genotype-phenotype-map/test/data/study/ebi-a-GCST90000059/standardised/EUR_1_16259813.tsv.gz</td><td>EUR</td><td>1</td><td>16259813</td><td>5e-08</td><td>NA</td><td>810865</td><td>NA</td><td>FALSE</td><td>371</td><td>0 secs</td></tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<table class="dataframe">
+<caption>A spec_tbl_df: 1 x 11</caption>
+<thead>
+	<tr><th scope=col>study</th><th scope=col>file</th><th scope=col>ancestry</th><th scope=col>chr</th><th scope=col>bp</th><th scope=col>p_value_threshold</th><th scope=col>category</th><th scope=col>sample_size</th><th scope=col>cis_trans</th><th scope=col>rows_imputed</th><th scope=col>time_taken</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;hms&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>ebi-a-GCST90000059</td><td>/local-scratch/projects/genotype-phenotype-map/test/data/study/ebi-a-GCST90000059/imputed/EUR_1_16259813.tsv.gz</td><td>EUR</td><td>1</td><td>16259813</td><td>5e-08</td><td>NA</td><td>810865</td><td>NA</td><td>0</td><td>1 secs</td></tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<table class="dataframe">
+<caption>A spec_tbl_df: 8 x 17</caption>
+<thead>
+	<tr><th scope=col>study</th><th scope=col>unique_study_id</th><th scope=col>file</th><th scope=col>ancestry</th><th scope=col>chr</th><th scope=col>bp</th><th scope=col>p_value_threshold</th><th scope=col>min_p</th><th scope=col>category</th><th scope=col>sample_size</th><th scope=col>cis_trans</th><th scope=col>finemap_message</th><th scope=col>first_finemap_num_results</th><th scope=col>second_finemap_num_results</th><th scope=col>qc_step_run</th><th scope=col>snps_removed_by_qc</th><th scope=col>time_taken</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;hms&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>ebi-a-GCST90000059</td><td>ebi-a-GCST90000059_EUR_1_16259813_1</td><td>/local-scratch/projects/genotype-phenotype-map/test/data/study/ebi-a-GCST90000059/finemapped/EUR_1_16259813_1.tsv.gz</td><td>EUR</td><td>1</td><td>16259813</td><td>5e-08</td><td>1.659339e-251</td><td>NA</td><td>810865</td><td>NA</td><td>success</td><td>8</td><td>NA</td><td>TRUE</td><td>0</td><td>2 secs</td></tr>
+	<tr><td>ebi-a-GCST90000059</td><td>ebi-a-GCST90000059_EUR_1_16259813_2</td><td>/local-scratch/projects/genotype-phenotype-map/test/data/study/ebi-a-GCST90000059/finemapped/EUR_1_16259813_2.tsv.gz</td><td>EUR</td><td>1</td><td>16299312</td><td>5e-08</td><td>7.242499e-256</td><td>NA</td><td>810865</td><td>NA</td><td>success</td><td>8</td><td>NA</td><td>TRUE</td><td>0</td><td>2 secs</td></tr>
+	<tr><td>ebi-a-GCST90000059</td><td>ebi-a-GCST90000059_EUR_1_16259813_3</td><td>/local-scratch/projects/genotype-phenotype-map/test/data/study/ebi-a-GCST90000059/finemapped/EUR_1_16259813_3.tsv.gz</td><td>EUR</td><td>1</td><td>16255644</td><td>5e-08</td><td>4.525466e-257</td><td>NA</td><td>810865</td><td>NA</td><td>success</td><td>8</td><td>NA</td><td>TRUE</td><td>0</td><td>2 secs</td></tr>
+	<tr><td>ebi-a-GCST90000059</td><td>ebi-a-GCST90000059_EUR_1_16259813_4</td><td>/local-scratch/projects/genotype-phenotype-map/test/data/study/ebi-a-GCST90000059/finemapped/EUR_1_16259813_4.tsv.gz</td><td>EUR</td><td>1</td><td>16356522</td><td>5e-08</td><td> 2.852881e-99</td><td>NA</td><td>810865</td><td>NA</td><td>success</td><td>8</td><td>NA</td><td>TRUE</td><td>0</td><td>2 secs</td></tr>
+	<tr><td>ebi-a-GCST90000059</td><td>ebi-a-GCST90000059_EUR_1_16259813_5</td><td>/local-scratch/projects/genotype-phenotype-map/test/data/study/ebi-a-GCST90000059/finemapped/EUR_1_16259813_5.tsv.gz</td><td>EUR</td><td>1</td><td>15909744</td><td>5e-08</td><td> 1.284730e-78</td><td>NA</td><td>810865</td><td>NA</td><td>success</td><td>8</td><td>NA</td><td>TRUE</td><td>0</td><td>2 secs</td></tr>
+	<tr><td>ebi-a-GCST90000059</td><td>ebi-a-GCST90000059_EUR_1_16259813_6</td><td>/local-scratch/projects/genotype-phenotype-map/test/data/study/ebi-a-GCST90000059/finemapped/EUR_1_16259813_6.tsv.gz</td><td>EUR</td><td>1</td><td>16042766</td><td>5e-08</td><td> 7.287106e-99</td><td>NA</td><td>810865</td><td>NA</td><td>success</td><td>8</td><td>NA</td><td>TRUE</td><td>0</td><td>2 secs</td></tr>
+	<tr><td>ebi-a-GCST90000059</td><td>ebi-a-GCST90000059_EUR_1_16259813_7</td><td>/local-scratch/projects/genotype-phenotype-map/test/data/study/ebi-a-GCST90000059/finemapped/EUR_1_16259813_7.tsv.gz</td><td>EUR</td><td>1</td><td>16349137</td><td>5e-08</td><td> 3.757900e-44</td><td>NA</td><td>810865</td><td>NA</td><td>success</td><td>8</td><td>NA</td><td>TRUE</td><td>0</td><td>2 secs</td></tr>
+	<tr><td>ebi-a-GCST90000059</td><td>ebi-a-GCST90000059_EUR_1_16259813_8</td><td>/local-scratch/projects/genotype-phenotype-map/test/data/study/ebi-a-GCST90000059/finemapped/EUR_1_16259813_8.tsv.gz</td><td>EUR</td><td>1</td><td>16371067</td><td>5e-08</td><td> 2.013006e-35</td><td>NA</td><td>810865</td><td>NA</td><td>success</td><td>8</td><td>NA</td><td>TRUE</td><td>0</td><td>2 secs</td></tr>
+</tbody>
+</table>
 
 </div>
 
