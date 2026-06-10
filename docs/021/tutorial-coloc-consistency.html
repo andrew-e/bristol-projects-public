@@ -571,14 +571,29 @@ only a handful of loci with strong negative effects.</p>
 KEGG, and HP pathway databases via the GPMap API. We use numeric
 <code>gene_id</code> values here, but the API also accepts gene
 names.</p>
-<p>Why can this be useful? - We are asking slightly different questions
-here. - Among my input genes, is overlap with this pathway larger than
-expected by chance, given pathway size and background? - it can provide
-different results due to: - a. how many genes you are testing against -
-b. which genes you are testing - In a big mixed list, many genes hit
-many pathways weakly - In a small coherent LPA list, overlap with the
-“right” pathway can be a higher fraction of the input set - That can
-produce stronger p-values for those specific pathways</p>
+<p>Why can this be useful?</p>
+<ul>
+<li>We are asking slightly different questions here.
+<ul>
+<li>Among my input genes, is overlap with this pathway larger than
+expected by chance, given pathway size and background?</li>
+</ul></li>
+<li>it can provide different results due to:
+<ul>
+<li><ol style="list-style-type: lower-alpha">
+<li>how many genes you are testing against</li>
+</ol></li>
+<li><ol start="2" style="list-style-type: lower-alpha">
+<li>which genes you are testing</li>
+</ol></li>
+</ul></li>
+<li>In a big mixed list, many genes hit many pathways weakly</li>
+<li>In a small coherent LPA list, overlap with the “right” pathway can
+be a higher fraction of the input set
+<ul>
+<li>That can produce stronger p-values for those specific pathways</li>
+</ul></li>
+</ul>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a>locus_genes <span class="ot">&lt;-</span> cg <span class="sc">|&gt;</span></span>
 <span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">distinct</span>(coloc_group_id, gene_id, gene) <span class="sc">|&gt;</span></span>
 <span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(gene_id))</span>
