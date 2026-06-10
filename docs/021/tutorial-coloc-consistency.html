@@ -1,0 +1,1216 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+
+<title>Colocalisation consistency, latent blocks, and pathway enrichment</title>
+
+<script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
+// be compatible with the behavior of Pandoc < 2.8).
+document.addEventListener('DOMContentLoaded', function(e) {
+  var hs = document.querySelectorAll("div.section[class*='level'] > :first-child");
+  var i, h, a;
+  for (i = 0; i < hs.length; i++) {
+    h = hs[i];
+    if (!/^h[1-6]$/i.test(h.tagName)) continue;  // it should be a header h1-h6
+    a = h.attributes;
+    while (a.length > 0) h.removeAttribute(a[0].name);
+  }
+});
+</script>
+
+<style type="text/css">
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
+
+
+
+<style type="text/css">
+code {
+white-space: pre;
+}
+.sourceCode {
+overflow: visible;
+}
+</style>
+<style type="text/css" data-origin="pandoc">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    var j = 0;
+    while (j < rules.length) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">Colocalisation consistency, latent blocks,
+and pathway enrichment</h1>
+
+
+
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">library</span>(gpmapr)</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span></code></pre></div>
+<p>This vignette walks through three complementary layers of
+colocalisation analysis in <strong>gpmapr</strong>:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Pleiotropic Consistency Score (PCS)</strong> and <strong>Net
+Directionality Score (NDS)</strong> — quantify locus overlap and effect
+concordance between traits.</li>
+<li><strong>Latent causal blocks</strong> — cluster loci with similar
+multi-trait effect profiles using Latent Profile Analysis (LPA).</li>
+<li><strong>Pathway enrichment</strong> — test whether genes mapped to
+those loci are enriched for biological pathways, and compare LPA-refined
+gene sets with broader colocalisation blocks.</li>
+</ol>
+<p>We use <strong>LDL cholesterol</strong> (trait id <code>1486</code>)
+and <strong>HDL cholesterol levels</strong> (trait id <code>1630</code>)
+as an illustrative pair of lipid traits that share some, but not all,
+causal loci.</p>
+<div id="fetch-colocalisation-data" class="section level2">
+<h2>Fetch colocalisation data</h2>
+<p>We fetch both traits in a single call and retain association
+statistics (<code>beta</code>, <code>se</code>) for directionality and
+z-score construction.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a>ldl_id <span class="ot">&lt;-</span> <span class="dv">1486</span></span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>hdl_id <span class="ot">&lt;-</span> <span class="dv">1630</span></span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a>lipid_traits <span class="ot">&lt;-</span> <span class="fu">traits</span>(</span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a>  <span class="fu">c</span>(ldl_id, hdl_id),</span>
+<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a>  <span class="at">include_associations =</span> <span class="cn">TRUE</span></span>
+<span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a>)</span>
+<span id="cb2-8"><a href="#cb2-8" tabindex="-1"></a>cg <span class="ot">&lt;-</span> lipid_traits<span class="sc">$</span>coloc_groups</span></code></pre></div>
+</div>
+<div id="pleiotropic-consistency-pcs" class="section level2">
+<h2>Pleiotropic consistency (PCS)</h2>
+<p><code>pleiotropic_consistency_score()</code> measures how much two
+traits colocalise at the same LD blocks versus having trait-specific
+signals. The score is a Jaccard-style ratio:</p>
+<p><span class="math display">\[\text{PCS} = \frac{n}{n + m_1 +
+m_2}\]</span></p>
+<p>where <span class="math inline">\(n\)</span> is the number of shared
+loci, <span class="math inline">\(m_1\)</span> are loci unique to trait
+1, and <span class="math inline">\(m_2\)</span> are loci unique to trait
+2.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>pcs_result <span class="ot">&lt;-</span> <span class="fu">pleiotropic_consistency_score</span>(</span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>  ldl_id, hdl_id,</span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a>  <span class="at">coloc_groups =</span> cg</span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a>)</span>
+<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a>pcs_result</span>
+<span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a><span class="co">#&gt; $pcs</span></span>
+<span id="cb3-8"><a href="#cb3-8" tabindex="-1"></a><span class="co">#&gt; [1] 0.049217</span></span>
+<span id="cb3-9"><a href="#cb3-9" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb3-10"><a href="#cb3-10" tabindex="-1"></a><span class="co">#&gt; $n_shared</span></span>
+<span id="cb3-11"><a href="#cb3-11" tabindex="-1"></a><span class="co">#&gt; [1] 44</span></span>
+<span id="cb3-12"><a href="#cb3-12" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb3-13"><a href="#cb3-13" tabindex="-1"></a><span class="co">#&gt; $m1</span></span>
+<span id="cb3-14"><a href="#cb3-14" tabindex="-1"></a><span class="co">#&gt; [1] 183</span></span>
+<span id="cb3-15"><a href="#cb3-15" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb3-16"><a href="#cb3-16" tabindex="-1"></a><span class="co">#&gt; $m2</span></span>
+<span id="cb3-17"><a href="#cb3-17" tabindex="-1"></a><span class="co">#&gt; [1] 667</span></span>
+<span id="cb3-18"><a href="#cb3-18" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb3-19"><a href="#cb3-19" tabindex="-1"></a><span class="co">#&gt; $trait_1_loci</span></span>
+<span id="cb3-20"><a href="#cb3-20" tabindex="-1"></a><span class="co">#&gt; [1] 227</span></span>
+<span id="cb3-21"><a href="#cb3-21" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb3-22"><a href="#cb3-22" tabindex="-1"></a><span class="co">#&gt; $trait_2_loci</span></span>
+<span id="cb3-23"><a href="#cb3-23" tabindex="-1"></a><span class="co">#&gt; [1] 711</span></span></code></pre></div>
+<p>LDL and HDL share a modest fraction of colocalising loci: most
+signals are trait-specific. This low PCS motivates splitting loci into
+blocks before interpreting shared biology.</p>
+<p><code>pcs_matrix()</code> extends this to all pairs when comparing
+more than two traits:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>pcs_mat <span class="ot">&lt;-</span> <span class="fu">pcs_matrix</span>(<span class="fu">c</span>(ldl_id, hdl_id), <span class="at">coloc_groups =</span> cg)</span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>pcs_mat</span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a><span class="co">#&gt;          1486     1630</span></span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a><span class="co">#&gt; 1486 1.000000 0.049217</span></span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a><span class="co">#&gt; 1630 0.049217 1.000000</span></span></code></pre></div>
+</div>
+<div id="net-directionality-nds" class="section level2">
+<h2>Net directionality (NDS)</h2>
+<p>At loci where both traits colocalise,
+<code>net_directionality_score()</code> asks whether effect directions
+agree:</p>
+<p><span class="math display">\[\text{NDS} = \frac{n_+ - n_-}{n_+ +
+n_-}\]</span></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>nds_result <span class="ot">&lt;-</span> <span class="fu">net_directionality_score</span>(</span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a>  ldl_id, hdl_id,</span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a>  <span class="at">coloc_groups =</span> cg</span>
+<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a>)</span>
+<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" tabindex="-1"></a>nds_result</span>
+<span id="cb5-7"><a href="#cb5-7" tabindex="-1"></a><span class="co">#&gt; $nds</span></span>
+<span id="cb5-8"><a href="#cb5-8" tabindex="-1"></a><span class="co">#&gt; [1] 0.2727273</span></span>
+<span id="cb5-9"><a href="#cb5-9" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb5-10"><a href="#cb5-10" tabindex="-1"></a><span class="co">#&gt; $n_pos</span></span>
+<span id="cb5-11"><a href="#cb5-11" tabindex="-1"></a><span class="co">#&gt; [1] 21</span></span>
+<span id="cb5-12"><a href="#cb5-12" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb5-13"><a href="#cb5-13" tabindex="-1"></a><span class="co">#&gt; $n_neg</span></span>
+<span id="cb5-14"><a href="#cb5-14" tabindex="-1"></a><span class="co">#&gt; [1] 12</span></span>
+<span id="cb5-15"><a href="#cb5-15" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb5-16"><a href="#cb5-16" tabindex="-1"></a><span class="co">#&gt; $n_total</span></span>
+<span id="cb5-17"><a href="#cb5-17" tabindex="-1"></a><span class="co">#&gt; [1] 33</span></span></code></pre></div>
+<p>A positive NDS means concordant effect directions predominate at
+shared loci (here, slightly more concordant than discordant pairs).</p>
+</div>
+<div id="latent-causal-blocks" class="section level2">
+<h2>Latent causal blocks</h2>
+<p>PCS splits loci by <em>presence</em> of colocalisation per trait.
+<strong>Latent Profile Analysis</strong> instead groups loci by their
+<em>multi-trait effect profile</em> — the pattern of z-scores across
+traits at each locus.</p>
+<div id="build-the-z-score-matrix" class="section level3">
+<h3>Build the z-score matrix</h3>
+<p><code>build_locus_zscore_matrix()</code> constructs a loci x traits
+matrix of z-scores (<code>beta / se</code>). Loci without a genome-wide
+signal for a trait are set to 0. Only loci with signals in at least two
+traits are retained.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>z_data <span class="ot">&lt;-</span> <span class="fu">build_locus_zscore_matrix</span>(</span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>  <span class="fu">c</span>(ldl_id, hdl_id),</span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a>  <span class="at">coloc_groups =</span> cg</span>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a>)</span>
+<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a><span class="fu">dim</span>(z_data<span class="sc">$</span>z_matrix)</span>
+<span id="cb6-7"><a href="#cb6-7" tabindex="-1"></a><span class="co">#&gt; [1] 33  2</span></span></code></pre></div>
+</div>
+<div id="fit-lpa-profiles" class="section level3">
+<h3>Fit LPA profiles</h3>
+<p><code>latent_causal_blocks()</code> fits LPA models via
+<strong>tidyLPA</strong> and returns profile assignments for each locus.
+We search over 2-4 profiles and use model 1 (equal variances, zero
+covariances) for speed.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a>lpa_result <span class="ot">&lt;-</span> <span class="fu">latent_causal_blocks</span>(</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a>  z_data<span class="sc">$</span>z_matrix</span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a>)</span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a>lpa_result<span class="sc">$</span>best_model</span>
+<span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a><span class="co">#&gt; # A tibble: 1 × 20</span></span>
+<span id="cb7-7"><a href="#cb7-7" tabindex="-1"></a><span class="co">#&gt;   Model Classes LogLik parameters     n   AIC   AWE   BIC  CAIC   CLC   KIC</span></span>
+<span id="cb7-8"><a href="#cb7-8" tabindex="-1"></a><span class="co">#&gt;   &lt;dbl&gt;   &lt;int&gt;  &lt;dbl&gt;      &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span id="cb7-9"><a href="#cb7-9" tabindex="-1"></a><span class="co">#&gt; 1     1       3  -252.         10    33  524.  602.  539.  549.  506.  537.</span></span>
+<span id="cb7-10"><a href="#cb7-10" tabindex="-1"></a><span class="co">#&gt; # ℹ 9 more variables: SABIC &lt;dbl&gt;, ICL &lt;dbl&gt;, Entropy &lt;dbl&gt;, prob_min &lt;dbl&gt;,</span></span>
+<span id="cb7-11"><a href="#cb7-11" tabindex="-1"></a><span class="co">#&gt; #   prob_max &lt;dbl&gt;, n_min &lt;dbl&gt;, n_max &lt;dbl&gt;, BLRT_val &lt;dbl&gt;, BLRT_p &lt;dbl&gt;</span></span>
+<span id="cb7-12"><a href="#cb7-12" tabindex="-1"></a><span class="fu">table</span>(lpa_result<span class="sc">$</span>assignments<span class="sc">$</span>profile)</span>
+<span id="cb7-13"><a href="#cb7-13" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb7-14"><a href="#cb7-14" tabindex="-1"></a><span class="co">#&gt;  1  2  3 </span></span>
+<span id="cb7-15"><a href="#cb7-15" tabindex="-1"></a><span class="co">#&gt; 12 20  1</span></span></code></pre></div>
+</div>
+<div id="summarise-profile-biology" class="section level3">
+<h3>Summarise profile biology</h3>
+<p><code>summarise_latent_blocks()</code> reports mean z-scores per
+trait within each profile — the signature of each latent block.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a>block_summary <span class="ot">&lt;-</span> <span class="fu">summarise_latent_blocks</span>(</span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a>  z_data<span class="sc">$</span>z_matrix,</span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a>  lpa_result<span class="sc">$</span>assignments,</span>
+<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a>  <span class="at">trait_info =</span> z_data<span class="sc">$</span>trait_info</span>
+<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a>)</span>
+<span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
+<span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a>  block_summary <span class="sc">|&gt;</span></span>
+<span id="cb8-9"><a href="#cb8-9" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">select</span>(profile, trait_name, mean_z, sd_z, n_loci) <span class="sc">|&gt;</span></span>
+<span id="cb8-10"><a href="#cb8-10" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">arrange</span>(profile, trait_name),</span>
+<span id="cb8-11"><a href="#cb8-11" tabindex="-1"></a>  <span class="at">digits =</span> <span class="dv">2</span></span>
+<span id="cb8-12"><a href="#cb8-12" tabindex="-1"></a>)</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="right">profile</th>
+<th align="left">trait_name</th>
+<th align="right">mean_z</th>
+<th align="right">sd_z</th>
+<th align="right">n_loci</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="left">HDL cholesterol levels</td>
+<td align="right">5.56</td>
+<td align="right">19.82</td>
+<td align="right">12</td>
+</tr>
+<tr class="even">
+<td align="right">1</td>
+<td align="left">LDL cholesterol</td>
+<td align="right">8.07</td>
+<td align="right">3.62</td>
+<td align="right">12</td>
+</tr>
+<tr class="odd">
+<td align="right">2</td>
+<td align="left">HDL cholesterol levels</td>
+<td align="right">-2.56</td>
+<td align="right">20.00</td>
+<td align="right">20</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="left">LDL cholesterol</td>
+<td align="right">-7.85</td>
+<td align="right">2.76</td>
+<td align="right">20</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="left">HDL cholesterol levels</td>
+<td align="right">-11.05</td>
+<td align="right">NA</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="right">3</td>
+<td align="left">LDL cholesterol</td>
+<td align="right">-20.63</td>
+<td align="right">NA</td>
+<td align="right">1</td>
+</tr>
+</tbody>
+</table>
+<p>Profile 1 loci tend toward positive LDL and HDL z-scores; profile 2
+loci tend toward negative values for both traits. Profile 3 contains
+only a handful of loci with strong negative effects.</p>
+</div>
+</div>
+<div id="pathway-enrichment-comparison" class="section level2">
+<h2>Pathway enrichment comparison</h2>
+<p><code>pathway_enrichment()</code> tests a gene set against Reactome,
+KEGG, and HP pathway databases via the GPMap API. We use numeric
+<code>gene_id</code> values here, but the API also accepts gene
+names.</p>
+<p>Why can this be useful? - We are asking slightly different questions
+here. - Among my input genes, is overlap with this pathway larger than
+expected by chance, given pathway size and background? - it can provide
+different results due to: - a. how many genes you are testing against -
+b. which genes you are testing - In a big mixed list, many genes hit
+many pathways weakly - In a small coherent LPA list, overlap with the
+“right” pathway can be a higher fraction of the input set - That can
+produce stronger p-values for those specific pathways</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a>locus_genes <span class="ot">&lt;-</span> cg <span class="sc">|&gt;</span></span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">distinct</span>(coloc_group_id, gene_id, gene) <span class="sc">|&gt;</span></span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(gene_id))</span>
+<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a>assignments <span class="ot">&lt;-</span> lpa_result<span class="sc">$</span>assignments <span class="sc">|&gt;</span></span>
+<span id="cb9-6"><a href="#cb9-6" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">coloc_group_id =</span> <span class="fu">as.integer</span>(locus_id))</span>
+<span id="cb9-7"><a href="#cb9-7" tabindex="-1"></a></span>
+<span id="cb9-8"><a href="#cb9-8" tabindex="-1"></a>genes_for_loci <span class="ot">&lt;-</span> <span class="cf">function</span>(locus_ids) {</span>
+<span id="cb9-9"><a href="#cb9-9" tabindex="-1"></a>  <span class="fu">unique</span>(locus_genes<span class="sc">$</span>gene_id[locus_genes<span class="sc">$</span>coloc_group_id <span class="sc">%in%</span> locus_ids])</span>
+<span id="cb9-10"><a href="#cb9-10" tabindex="-1"></a>}</span>
+<span id="cb9-11"><a href="#cb9-11" tabindex="-1"></a></span>
+<span id="cb9-12"><a href="#cb9-12" tabindex="-1"></a>ldl_loci <span class="ot">&lt;-</span> cg <span class="sc">|&gt;</span></span>
+<span id="cb9-13"><a href="#cb9-13" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(trait_id <span class="sc">==</span> ldl_id, min_p <span class="sc">&lt;=</span> <span class="fl">5e-8</span>) <span class="sc">|&gt;</span></span>
+<span id="cb9-14"><a href="#cb9-14" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">distinct</span>(coloc_group_id) <span class="sc">|&gt;</span></span>
+<span id="cb9-15"><a href="#cb9-15" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">pull</span>(coloc_group_id)</span>
+<span id="cb9-16"><a href="#cb9-16" tabindex="-1"></a></span>
+<span id="cb9-17"><a href="#cb9-17" tabindex="-1"></a>hdl_loci <span class="ot">&lt;-</span> cg <span class="sc">|&gt;</span></span>
+<span id="cb9-18"><a href="#cb9-18" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(trait_id <span class="sc">==</span> hdl_id, min_p <span class="sc">&lt;=</span> <span class="fl">5e-8</span>) <span class="sc">|&gt;</span></span>
+<span id="cb9-19"><a href="#cb9-19" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">distinct</span>(coloc_group_id) <span class="sc">|&gt;</span></span>
+<span id="cb9-20"><a href="#cb9-20" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">pull</span>(coloc_group_id)</span>
+<span id="cb9-21"><a href="#cb9-21" tabindex="-1"></a></span>
+<span id="cb9-22"><a href="#cb9-22" tabindex="-1"></a>ldl_only_loci <span class="ot">&lt;-</span> <span class="fu">setdiff</span>(ldl_loci, hdl_loci)</span>
+<span id="cb9-23"><a href="#cb9-23" tabindex="-1"></a>hdl_only_loci <span class="ot">&lt;-</span> <span class="fu">setdiff</span>(hdl_loci, ldl_loci)</span>
+<span id="cb9-24"><a href="#cb9-24" tabindex="-1"></a></span>
+<span id="cb9-25"><a href="#cb9-25" tabindex="-1"></a>lpa_genes <span class="ot">&lt;-</span> <span class="fu">genes_for_loci</span>(assignments<span class="sc">$</span>coloc_group_id)</span>
+<span id="cb9-26"><a href="#cb9-26" tabindex="-1"></a>ldl_only_genes <span class="ot">&lt;-</span> <span class="fu">genes_for_loci</span>(ldl_only_loci)</span>
+<span id="cb9-27"><a href="#cb9-27" tabindex="-1"></a>hdl_only_genes <span class="ot">&lt;-</span> <span class="fu">genes_for_loci</span>(hdl_only_loci)</span>
+<span id="cb9-28"><a href="#cb9-28" tabindex="-1"></a></span>
+<span id="cb9-29"><a href="#cb9-29" tabindex="-1"></a>gene_sets <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb9-30"><a href="#cb9-30" tabindex="-1"></a>  <span class="at">all_ldl =</span> <span class="fu">genes_for_loci</span>(ldl_loci),</span>
+<span id="cb9-31"><a href="#cb9-31" tabindex="-1"></a>  <span class="at">all_hdl =</span> <span class="fu">genes_for_loci</span>(hdl_loci),</span>
+<span id="cb9-32"><a href="#cb9-32" tabindex="-1"></a>  <span class="at">ldl_only_minus_lpa =</span> <span class="fu">setdiff</span>(ldl_only_genes, lpa_genes),</span>
+<span id="cb9-33"><a href="#cb9-33" tabindex="-1"></a>  <span class="at">hdl_only_minus_lpa =</span> <span class="fu">setdiff</span>(hdl_only_genes, lpa_genes)</span>
+<span id="cb9-34"><a href="#cb9-34" tabindex="-1"></a>)</span>
+<span id="cb9-35"><a href="#cb9-35" tabindex="-1"></a></span>
+<span id="cb9-36"><a href="#cb9-36" tabindex="-1"></a><span class="cf">for</span> (profile_id <span class="cf">in</span> <span class="fu">sort</span>(<span class="fu">unique</span>(assignments<span class="sc">$</span>profile))) {</span>
+<span id="cb9-37"><a href="#cb9-37" tabindex="-1"></a>  loci <span class="ot">&lt;-</span> assignments<span class="sc">$</span>coloc_group_id[assignments<span class="sc">$</span>profile <span class="sc">==</span> profile_id]</span>
+<span id="cb9-38"><a href="#cb9-38" tabindex="-1"></a>  gene_sets[[<span class="fu">paste0</span>(<span class="st">&quot;lpa_profile_&quot;</span>, profile_id)]] <span class="ot">&lt;-</span> <span class="fu">genes_for_loci</span>(loci)</span>
+<span id="cb9-39"><a href="#cb9-39" tabindex="-1"></a>}</span>
+<span id="cb9-40"><a href="#cb9-40" tabindex="-1"></a></span>
+<span id="cb9-41"><a href="#cb9-41" tabindex="-1"></a>gene_set_sizes <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb9-42"><a href="#cb9-42" tabindex="-1"></a>  <span class="at">gene_set =</span> <span class="fu">names</span>(gene_sets),</span>
+<span id="cb9-43"><a href="#cb9-43" tabindex="-1"></a>  <span class="at">n_genes =</span> <span class="fu">vapply</span>(gene_sets, length, <span class="fu">integer</span>(<span class="dv">1</span>)),</span>
+<span id="cb9-44"><a href="#cb9-44" tabindex="-1"></a>  <span class="at">row.names =</span> <span class="cn">NULL</span></span>
+<span id="cb9-45"><a href="#cb9-45" tabindex="-1"></a>)</span>
+<span id="cb9-46"><a href="#cb9-46" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(gene_set_sizes)</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">gene_set</th>
+<th align="right">n_genes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">all_ldl</td>
+<td align="right">444</td>
+</tr>
+<tr class="even">
+<td align="left">all_hdl</td>
+<td align="right">1316</td>
+</tr>
+<tr class="odd">
+<td align="left">ldl_only_minus_lpa</td>
+<td align="right">340</td>
+</tr>
+<tr class="even">
+<td align="left">hdl_only_minus_lpa</td>
+<td align="right">1214</td>
+</tr>
+<tr class="odd">
+<td align="left">lpa_profile_1</td>
+<td align="right">35</td>
+</tr>
+<tr class="even">
+<td align="left">lpa_profile_2</td>
+<td align="right">45</td>
+</tr>
+<tr class="odd">
+<td align="left">lpa_profile_3</td>
+<td align="right">3</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a>run_pathway_enrichment <span class="ot">&lt;-</span> <span class="cf">function</span>(gene_ids, label) {</span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">length</span>(gene_ids) <span class="sc">==</span> <span class="dv">0</span>) {</span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a>    <span class="fu">return</span>(<span class="cn">NULL</span>)</span>
+<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a>  }</span>
+<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a>  n_input_genes <span class="ot">&lt;-</span> <span class="fu">length</span>(gene_ids)</span>
+<span id="cb10-6"><a href="#cb10-6" tabindex="-1"></a>  pe <span class="ot">&lt;-</span> <span class="fu">pathway_enrichment</span>(</span>
+<span id="cb10-7"><a href="#cb10-7" tabindex="-1"></a>    gene_ids,</span>
+<span id="cb10-8"><a href="#cb10-8" tabindex="-1"></a>    <span class="at">p_value_threshold =</span> <span class="fl">0.05</span>,</span>
+<span id="cb10-9"><a href="#cb10-9" tabindex="-1"></a>    <span class="at">minimum_count_in_network =</span> <span class="dv">2</span></span>
+<span id="cb10-10"><a href="#cb10-10" tabindex="-1"></a>  )</span>
+<span id="cb10-11"><a href="#cb10-11" tabindex="-1"></a>  results <span class="ot">&lt;-</span> pe<span class="sc">$</span>results</span>
+<span id="cb10-12"><a href="#cb10-12" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">is.null</span>(results) <span class="sc">||</span> <span class="sc">!</span><span class="fu">is.data.frame</span>(results) <span class="sc">||</span> <span class="fu">nrow</span>(results) <span class="sc">==</span> <span class="dv">0</span>) {</span>
+<span id="cb10-13"><a href="#cb10-13" tabindex="-1"></a>    <span class="fu">return</span>(<span class="cn">NULL</span>)</span>
+<span id="cb10-14"><a href="#cb10-14" tabindex="-1"></a>  }</span>
+<span id="cb10-15"><a href="#cb10-15" tabindex="-1"></a>  results <span class="sc">|&gt;</span></span>
+<span id="cb10-16"><a href="#cb10-16" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
+<span id="cb10-17"><a href="#cb10-17" tabindex="-1"></a>      <span class="at">gene_set =</span> label,</span>
+<span id="cb10-18"><a href="#cb10-18" tabindex="-1"></a>      <span class="at">n_genes =</span> n_input_genes,</span>
+<span id="cb10-19"><a href="#cb10-19" tabindex="-1"></a>      <span class="at">n_pathway_genes =</span> <span class="fu">vapply</span>(pathway_gene_ids, length, <span class="fu">integer</span>(<span class="dv">1</span>)),</span>
+<span id="cb10-20"><a href="#cb10-20" tabindex="-1"></a>      <span class="at">pathway_key =</span> <span class="fu">paste</span>(source, term_id, <span class="at">sep =</span> <span class="st">&quot;:&quot;</span>)</span>
+<span id="cb10-21"><a href="#cb10-21" tabindex="-1"></a>    )</span>
+<span id="cb10-22"><a href="#cb10-22" tabindex="-1"></a>}</span>
+<span id="cb10-23"><a href="#cb10-23" tabindex="-1"></a></span>
+<span id="cb10-24"><a href="#cb10-24" tabindex="-1"></a>pathway_results_full <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">bind_rows</span>(</span>
+<span id="cb10-25"><a href="#cb10-25" tabindex="-1"></a>  <span class="fu">lapply</span>(<span class="fu">names</span>(gene_sets), <span class="cf">function</span>(nm) {</span>
+<span id="cb10-26"><a href="#cb10-26" tabindex="-1"></a>    <span class="fu">run_pathway_enrichment</span>(gene_sets[[nm]], nm)</span>
+<span id="cb10-27"><a href="#cb10-27" tabindex="-1"></a>  })</span>
+<span id="cb10-28"><a href="#cb10-28" tabindex="-1"></a>)</span>
+<span id="cb10-29"><a href="#cb10-29" tabindex="-1"></a></span>
+<span id="cb10-30"><a href="#cb10-30" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">nrow</span>(pathway_results_full) <span class="sc">==</span> <span class="dv">0</span>) {</span>
+<span id="cb10-31"><a href="#cb10-31" tabindex="-1"></a>  <span class="fu">stop</span>(</span>
+<span id="cb10-32"><a href="#cb10-32" tabindex="-1"></a>    <span class="st">&quot;No pathway enrichment results were returned. &quot;</span>,</span>
+<span id="cb10-33"><a href="#cb10-33" tabindex="-1"></a>    <span class="st">&quot;Reinstall or reload gpmapr (devtools::load_all()) so the API uses the &#39;genes&#39; parameter.&quot;</span></span>
+<span id="cb10-34"><a href="#cb10-34" tabindex="-1"></a>  )</span>
+<span id="cb10-35"><a href="#cb10-35" tabindex="-1"></a>}</span>
+<span id="cb10-36"><a href="#cb10-36" tabindex="-1"></a></span>
+<span id="cb10-37"><a href="#cb10-37" tabindex="-1"></a>pathway_comparison <span class="ot">&lt;-</span> pathway_results_full <span class="sc">|&gt;</span></span>
+<span id="cb10-38"><a href="#cb10-38" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">group_by</span>(gene_set) <span class="sc">|&gt;</span></span>
+<span id="cb10-39"><a href="#cb10-39" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">slice_min</span>(fdr, <span class="at">n =</span> <span class="dv">5</span>, <span class="at">with_ties =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span></span>
+<span id="cb10-40"><a href="#cb10-40" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">ungroup</span>()</span>
+<span id="cb10-41"><a href="#cb10-41" tabindex="-1"></a></span>
+<span id="cb10-42"><a href="#cb10-42" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
+<span id="cb10-43"><a href="#cb10-43" tabindex="-1"></a>  pathway_comparison <span class="sc">|&gt;</span></span>
+<span id="cb10-44"><a href="#cb10-44" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">arrange</span>(gene_set, fdr) <span class="sc">|&gt;</span></span>
+<span id="cb10-45"><a href="#cb10-45" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">fdr =</span> <span class="fu">sprintf</span>(<span class="st">&quot;%.1e&quot;</span>, fdr)) <span class="sc">|&gt;</span></span>
+<span id="cb10-46"><a href="#cb10-46" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">select</span>(gene_set, n_genes, source, description, overlap, n_pathway_genes, fdr)</span>
+<span id="cb10-47"><a href="#cb10-47" tabindex="-1"></a>)</span></code></pre></div>
+<table>
+<colgroup>
+<col width="12%" />
+<col width="5%" />
+<col width="6%" />
+<col width="54%" />
+<col width="5%" />
+<col width="10%" />
+<col width="5%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">gene_set</th>
+<th align="right">n_genes</th>
+<th align="left">source</th>
+<th align="left">description</th>
+<th align="right">overlap</th>
+<th align="right">n_pathway_genes</th>
+<th align="left">fdr</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">all_hdl</td>
+<td align="right">1316</td>
+<td align="left">HP</td>
+<td align="left">Apolipoprotein A 1 measurement</td>
+<td align="right">63</td>
+<td align="right">129</td>
+<td align="left">5.2e-05</td>
+</tr>
+<tr class="even">
+<td align="left">all_ldl</td>
+<td align="right">444</td>
+<td align="left">HP</td>
+<td align="left">Apolipoprotein B measurement</td>
+<td align="right">37</td>
+<td align="right">124</td>
+<td align="left">1.1e-08</td>
+</tr>
+<tr class="odd">
+<td align="left">all_ldl</td>
+<td align="right">444</td>
+<td align="left">HP</td>
+<td align="left">Low density lipoprotein cholesterol measurement</td>
+<td align="right">49</td>
+<td align="right">211</td>
+<td align="left">5.7e-08</td>
+</tr>
+<tr class="even">
+<td align="left">all_ldl</td>
+<td align="right">444</td>
+<td align="left">HP</td>
+<td align="left">Total cholesterol measurement</td>
+<td align="right">42</td>
+<td align="right">180</td>
+<td align="left">7.6e-07</td>
+</tr>
+<tr class="odd">
+<td align="left">all_ldl</td>
+<td align="right">444</td>
+<td align="left">KEGG</td>
+<td align="left">Cholesterol metabolism</td>
+<td align="right">16</td>
+<td align="right">50</td>
+<td align="left">2.4e-06</td>
+</tr>
+<tr class="even">
+<td align="left">all_ldl</td>
+<td align="right">444</td>
+<td align="left">HP</td>
+<td align="left">HMG CoA reductase inhibitor use measurement</td>
+<td align="right">10</td>
+<td align="right">23</td>
+<td align="left">2.5e-03</td>
+</tr>
+<tr class="odd">
+<td align="left">ldl_only_minus_lpa</td>
+<td align="right">340</td>
+<td align="left">HP</td>
+<td align="left">Low density lipoprotein cholesterol measurement</td>
+<td align="right">33</td>
+<td align="right">211</td>
+<td align="left">1.3e-03</td>
+</tr>
+<tr class="even">
+<td align="left">ldl_only_minus_lpa</td>
+<td align="right">340</td>
+<td align="left">HP</td>
+<td align="left">Apolipoprotein B measurement</td>
+<td align="right">24</td>
+<td align="right">124</td>
+<td align="left">1.3e-03</td>
+</tr>
+<tr class="odd">
+<td align="left">ldl_only_minus_lpa</td>
+<td align="right">340</td>
+<td align="left">HP</td>
+<td align="left">Total cholesterol measurement</td>
+<td align="right">26</td>
+<td align="right">180</td>
+<td align="left">3.6e-02</td>
+</tr>
+<tr class="even">
+<td align="left">lpa_profile_1</td>
+<td align="right">35</td>
+<td align="left">KEGG</td>
+<td align="left">Caffeine metabolism</td>
+<td align="right">2</td>
+<td align="right">6</td>
+<td align="left">1.0e-03</td>
+</tr>
+<tr class="odd">
+<td align="left">lpa_profile_1</td>
+<td align="right">35</td>
+<td align="left">KEGG</td>
+<td align="left">Retinol metabolism</td>
+<td align="right">4</td>
+<td align="right">59</td>
+<td align="left">1.0e-03</td>
+</tr>
+<tr class="even">
+<td align="left">lpa_profile_1</td>
+<td align="right">35</td>
+<td align="left">KEGG</td>
+<td align="left">Metabolism of xenobiotics by cytochrome P450</td>
+<td align="right">4</td>
+<td align="right">70</td>
+<td align="left">1.0e-03</td>
+</tr>
+<tr class="odd">
+<td align="left">lpa_profile_1</td>
+<td align="right">35</td>
+<td align="left">KEGG</td>
+<td align="left">Drug metabolism - cytochrome P450</td>
+<td align="right">4</td>
+<td align="right">63</td>
+<td align="left">1.0e-03</td>
+</tr>
+<tr class="even">
+<td align="left">lpa_profile_1</td>
+<td align="right">35</td>
+<td align="left">KEGG</td>
+<td align="left">Chemical carcinogenesis - DNA adducts</td>
+<td align="right">4</td>
+<td align="right">65</td>
+<td align="left">1.0e-03</td>
+</tr>
+<tr class="odd">
+<td align="left">lpa_profile_2</td>
+<td align="right">45</td>
+<td align="left">HP</td>
+<td align="left">Total cholesterol measurement</td>
+<td align="right">14</td>
+<td align="right">180</td>
+<td align="left">8.9e-08</td>
+</tr>
+<tr class="even">
+<td align="left">lpa_profile_2</td>
+<td align="right">45</td>
+<td align="left">HP</td>
+<td align="left">Apolipoprotein A 1 measurement</td>
+<td align="right">12</td>
+<td align="right">129</td>
+<td align="left">1.4e-07</td>
+</tr>
+<tr class="odd">
+<td align="left">lpa_profile_2</td>
+<td align="right">45</td>
+<td align="left">HP</td>
+<td align="left">Low density lipoprotein cholesterol measurement</td>
+<td align="right">13</td>
+<td align="right">211</td>
+<td align="left">2.6e-06</td>
+</tr>
+<tr class="even">
+<td align="left">lpa_profile_2</td>
+<td align="right">45</td>
+<td align="left">Reactome</td>
+<td align="left">NR1H3 &amp; NR1H2 regulate gene expression linked to
+cholesterol transport and efflux</td>
+<td align="right">5</td>
+<td align="right">13</td>
+<td align="left">3.9e-06</td>
+</tr>
+<tr class="odd">
+<td align="left">lpa_profile_2</td>
+<td align="right">45</td>
+<td align="left">Reactome</td>
+<td align="left">Plasma lipoprotein assembly</td>
+<td align="right">5</td>
+<td align="right">15</td>
+<td align="left">4.5e-06</td>
+</tr>
+</tbody>
+</table>
+<div id="all-ldl-vs-all-hdl-and-lpa-novelty" class="section level3">
+<h3>All LDL vs all HDL, and LPA novelty</h3>
+<p>Finally, we enrich all genome-wide colocalisation genes for each
+trait and ask whether LPA profiles recover pathways that the full trait
+gene sets do not.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a>lpa_pathways <span class="ot">&lt;-</span> pathway_results_full <span class="sc">|&gt;</span></span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="fu">grepl</span>(<span class="st">&quot;^lpa_profile_&quot;</span>, gene_set)) <span class="sc">|&gt;</span></span>
+<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">distinct</span>(pathway_key, source, term_id, description)</span>
+<span id="cb11-4"><a href="#cb11-4" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" tabindex="-1"></a>all_ldl_pathways <span class="ot">&lt;-</span> pathway_results_full <span class="sc">|&gt;</span></span>
+<span id="cb11-6"><a href="#cb11-6" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(gene_set <span class="sc">==</span> <span class="st">&quot;all_ldl&quot;</span>) <span class="sc">|&gt;</span></span>
+<span id="cb11-7"><a href="#cb11-7" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">distinct</span>(pathway_key, source, term_id, description, fdr)</span>
+<span id="cb11-8"><a href="#cb11-8" tabindex="-1"></a></span>
+<span id="cb11-9"><a href="#cb11-9" tabindex="-1"></a>all_hdl_pathways <span class="ot">&lt;-</span> pathway_results_full <span class="sc">|&gt;</span></span>
+<span id="cb11-10"><a href="#cb11-10" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(gene_set <span class="sc">==</span> <span class="st">&quot;all_hdl&quot;</span>) <span class="sc">|&gt;</span></span>
+<span id="cb11-11"><a href="#cb11-11" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">distinct</span>(pathway_key, source, term_id, description, fdr)</span>
+<span id="cb11-12"><a href="#cb11-12" tabindex="-1"></a></span>
+<span id="cb11-13"><a href="#cb11-13" tabindex="-1"></a>full_trait_pathways <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">bind_rows</span>(all_ldl_pathways, all_hdl_pathways) <span class="sc">|&gt;</span></span>
+<span id="cb11-14"><a href="#cb11-14" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">distinct</span>(pathway_key, source, term_id, description)</span>
+<span id="cb11-15"><a href="#cb11-15" tabindex="-1"></a></span>
+<span id="cb11-16"><a href="#cb11-16" tabindex="-1"></a>lpa_novel_pathways <span class="ot">&lt;-</span> lpa_pathways <span class="sc">|&gt;</span></span>
+<span id="cb11-17"><a href="#cb11-17" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="sc">!</span>(pathway_key <span class="sc">%in%</span> full_trait_pathways<span class="sc">$</span>pathway_key))</span>
+<span id="cb11-18"><a href="#cb11-18" tabindex="-1"></a></span>
+<span id="cb11-19"><a href="#cb11-19" tabindex="-1"></a>ldl_not_hdl <span class="ot">&lt;-</span> all_ldl_pathways <span class="sc">|&gt;</span></span>
+<span id="cb11-20"><a href="#cb11-20" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="sc">!</span>(pathway_key <span class="sc">%in%</span> all_hdl_pathways<span class="sc">$</span>pathway_key))</span>
+<span id="cb11-21"><a href="#cb11-21" tabindex="-1"></a></span>
+<span id="cb11-22"><a href="#cb11-22" tabindex="-1"></a>hdl_not_ldl <span class="ot">&lt;-</span> all_hdl_pathways <span class="sc">|&gt;</span></span>
+<span id="cb11-23"><a href="#cb11-23" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="sc">!</span>(pathway_key <span class="sc">%in%</span> all_ldl_pathways<span class="sc">$</span>pathway_key))</span>
+<span id="cb11-24"><a href="#cb11-24" tabindex="-1"></a></span>
+<span id="cb11-25"><a href="#cb11-25" tabindex="-1"></a>pathway_novelty_summary <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb11-26"><a href="#cb11-26" tabindex="-1"></a>  <span class="at">comparison =</span> <span class="fu">c</span>(</span>
+<span id="cb11-27"><a href="#cb11-27" tabindex="-1"></a>    <span class="st">&quot;All LDL pathways&quot;</span>,</span>
+<span id="cb11-28"><a href="#cb11-28" tabindex="-1"></a>    <span class="st">&quot;All HDL pathways&quot;</span>,</span>
+<span id="cb11-29"><a href="#cb11-29" tabindex="-1"></a>    <span class="st">&quot;LDL pathways not in all HDL&quot;</span>,</span>
+<span id="cb11-30"><a href="#cb11-30" tabindex="-1"></a>    <span class="st">&quot;HDL pathways not in all LDL&quot;</span>,</span>
+<span id="cb11-31"><a href="#cb11-31" tabindex="-1"></a>    <span class="st">&quot;LPA pathways not in all LDL or all HDL&quot;</span></span>
+<span id="cb11-32"><a href="#cb11-32" tabindex="-1"></a>  ),</span>
+<span id="cb11-33"><a href="#cb11-33" tabindex="-1"></a>  <span class="at">n_pathways =</span> <span class="fu">c</span>(</span>
+<span id="cb11-34"><a href="#cb11-34" tabindex="-1"></a>    <span class="fu">nrow</span>(all_ldl_pathways),</span>
+<span id="cb11-35"><a href="#cb11-35" tabindex="-1"></a>    <span class="fu">nrow</span>(all_hdl_pathways),</span>
+<span id="cb11-36"><a href="#cb11-36" tabindex="-1"></a>    <span class="fu">nrow</span>(ldl_not_hdl),</span>
+<span id="cb11-37"><a href="#cb11-37" tabindex="-1"></a>    <span class="fu">nrow</span>(hdl_not_ldl),</span>
+<span id="cb11-38"><a href="#cb11-38" tabindex="-1"></a>    <span class="fu">nrow</span>(lpa_novel_pathways)</span>
+<span id="cb11-39"><a href="#cb11-39" tabindex="-1"></a>  ),</span>
+<span id="cb11-40"><a href="#cb11-40" tabindex="-1"></a>  <span class="at">row.names =</span> <span class="cn">NULL</span></span>
+<span id="cb11-41"><a href="#cb11-41" tabindex="-1"></a>)</span>
+<span id="cb11-42"><a href="#cb11-42" tabindex="-1"></a></span>
+<span id="cb11-43"><a href="#cb11-43" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(pathway_novelty_summary)</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">comparison</th>
+<th align="right">n_pathways</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">All LDL pathways</td>
+<td align="right">8</td>
+</tr>
+<tr class="even">
+<td align="left">All HDL pathways</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="left">LDL pathways not in all HDL</td>
+<td align="right">8</td>
+</tr>
+<tr class="even">
+<td align="left">HDL pathways not in all LDL</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="left">LPA pathways not in all LDL or all HDL</td>
+<td align="right">151</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a></span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">nrow</span>(lpa_novel_pathways) <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a>  lpa_novel_with_fdr <span class="ot">&lt;-</span> pathway_results_full <span class="sc">|&gt;</span></span>
+<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">filter</span>(</span>
+<span id="cb12-5"><a href="#cb12-5" tabindex="-1"></a>      <span class="fu">grepl</span>(<span class="st">&quot;^lpa_profile_&quot;</span>, gene_set),</span>
+<span id="cb12-6"><a href="#cb12-6" tabindex="-1"></a>      pathway_key <span class="sc">%in%</span> lpa_novel_pathways<span class="sc">$</span>pathway_key</span>
+<span id="cb12-7"><a href="#cb12-7" tabindex="-1"></a>    ) <span class="sc">|&gt;</span></span>
+<span id="cb12-8"><a href="#cb12-8" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">group_by</span>(pathway_key) <span class="sc">|&gt;</span></span>
+<span id="cb12-9"><a href="#cb12-9" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">slice_min</span>(fdr, <span class="at">n =</span> <span class="dv">1</span>, <span class="at">with_ties =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span></span>
+<span id="cb12-10"><a href="#cb12-10" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">ungroup</span>() <span class="sc">|&gt;</span></span>
+<span id="cb12-11"><a href="#cb12-11" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">arrange</span>(fdr) <span class="sc">|&gt;</span></span>
+<span id="cb12-12"><a href="#cb12-12" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">10</span>)</span>
+<span id="cb12-13"><a href="#cb12-13" tabindex="-1"></a></span>
+<span id="cb12-14"><a href="#cb12-14" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
+<span id="cb12-15"><a href="#cb12-15" tabindex="-1"></a>    lpa_novel_with_fdr <span class="sc">|&gt;</span></span>
+<span id="cb12-16"><a href="#cb12-16" tabindex="-1"></a>      dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">fdr =</span> <span class="fu">sprintf</span>(<span class="st">&quot;%.1e&quot;</span>, fdr)) <span class="sc">|&gt;</span></span>
+<span id="cb12-17"><a href="#cb12-17" tabindex="-1"></a>      dplyr<span class="sc">::</span><span class="fu">select</span>(gene_set, source, description, fdr),</span>
+<span id="cb12-18"><a href="#cb12-18" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">&quot;Pathways enriched in LPA profiles but not in full LDL or HDL gene sets&quot;</span></span>
+<span id="cb12-19"><a href="#cb12-19" tabindex="-1"></a>  )</span>
+<span id="cb12-20"><a href="#cb12-20" tabindex="-1"></a>}</span></code></pre></div>
+<table>
+<caption>Pathways enriched in LPA profiles but not in full LDL or HDL
+gene sets</caption>
+<colgroup>
+<col width="17%" />
+<col width="11%" />
+<col width="61%" />
+<col width="10%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">gene_set</th>
+<th align="left">source</th>
+<th align="left">description</th>
+<th align="left">fdr</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">lpa_profile_2</td>
+<td align="left">Reactome</td>
+<td align="left">NR1H2 and NR1H3-mediated signaling</td>
+<td align="left">8.4e-06</td>
+</tr>
+<tr class="even">
+<td align="left">lpa_profile_2</td>
+<td align="left">HP</td>
+<td align="left">Liver disease biomarker</td>
+<td align="left">3.2e-05</td>
+</tr>
+<tr class="odd">
+<td align="left">lpa_profile_2</td>
+<td align="left">HP</td>
+<td align="left">Esterified cholesterol measurement</td>
+<td align="left">4.2e-05</td>
+</tr>
+<tr class="even">
+<td align="left">lpa_profile_2</td>
+<td align="left">HP</td>
+<td align="left">High density lipoprotein cholesterol measurement</td>
+<td align="left">4.7e-05</td>
+</tr>
+<tr class="odd">
+<td align="left">lpa_profile_2</td>
+<td align="left">HP</td>
+<td align="left">Alkaline phosphatase measurement</td>
+<td align="left">5.1e-05</td>
+</tr>
+<tr class="even">
+<td align="left">lpa_profile_2</td>
+<td align="left">HP</td>
+<td align="left">C-reactive protein measurement</td>
+<td align="left">1.2e-04</td>
+</tr>
+<tr class="odd">
+<td align="left">lpa_profile_2</td>
+<td align="left">HP</td>
+<td align="left">Sphingolipid measurement</td>
+<td align="left">1.2e-04</td>
+</tr>
+<tr class="even">
+<td align="left">lpa_profile_2</td>
+<td align="left">HP</td>
+<td align="left">Inflammatory biomarker measurement</td>
+<td align="left">1.6e-04</td>
+</tr>
+<tr class="odd">
+<td align="left">lpa_profile_2</td>
+<td align="left">HP</td>
+<td align="left">Sleep duration</td>
+<td align="left">1.9e-04</td>
+</tr>
+<tr class="even">
+<td align="left">lpa_profile_2</td>
+<td align="left">HP</td>
+<td align="left">Lipoprotein measurement</td>
+<td align="left">2.4e-04</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="interpreting-the-comparison" class="section level3">
+<h3>Interpreting the comparison</h3>
+<p>Several patterns emerge from the LDL vs HDL comparison:</p>
+<ul>
+<li><strong>LPA profiles</strong> enrich for pathways driven by loci
+with shared multi-trait effect directions (e.g. lipid metabolism in
+concordant-negative blocks, xenobiotic metabolism in concordant-positive
+blocks).</li>
+<li><strong>LDL-only / HDL-only minus LPA</strong> reveal trait-specific
+biology in colocalisation loci <em>not</em> tagged by any latent
+profile. Pathways shared with the LPA union are consistent with
+pleiotropic blocks; pathways <strong>not</strong> in the LPA union are
+candidates for trait-specific mechanisms.</li>
+<li><strong>All LDL vs all HDL</strong> show the broad trait-level
+pathway landscape. Differences between these sets reflect trait-specific
+colocalisation architecture at genome-wide significance.</li>
+<li><strong>LPA novelty</strong> (pathways in LPA profiles but not in
+either full trait set) indicates that splitting by directional profile
+can surface enriched terms that are diluted when all colocalisation
+genes are pooled — the main justification for the LPA step.</li>
+</ul>
+<p>On gene-level agreement between LPA and pathways:</p>
+<ul>
+<li><strong>Partially similar:</strong> genes driving LPA profile
+enrichment tend to sit in the same profile loci — LPA and pathway
+annotation agree on modular biology.</li>
+<li><strong>Meaningfully different:</strong> pathway overlap genes are a
+small fraction of each profile’s gene list (low Jaccard), and
+<code>pathway_gene_ids</code> are much larger than any LPA gene
+set.</li>
+<li><strong>Complementary:</strong> LPA groups loci by effect profile;
+pathway enrichment maps those genes to curated modules; subtracting LPA
+genes from trait-specific loci separates shared from remainder
+biology.</li>
+</ul>
+</div>
+</div>
+<div id="session-summary" class="section level2">
+<h2>Session summary</h2>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a>summary_table <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a>  <span class="at">metric =</span> <span class="fu">c</span>(</span>
+<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a>    <span class="st">&quot;PCS&quot;</span>,</span>
+<span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a>    <span class="st">&quot;Shared loci (n)&quot;</span>,</span>
+<span id="cb13-5"><a href="#cb13-5" tabindex="-1"></a>    <span class="st">&quot;LDL-only loci (m1)&quot;</span>,</span>
+<span id="cb13-6"><a href="#cb13-6" tabindex="-1"></a>    <span class="st">&quot;HDL-only loci (m2)&quot;</span>,</span>
+<span id="cb13-7"><a href="#cb13-7" tabindex="-1"></a>    <span class="st">&quot;NDS&quot;</span>,</span>
+<span id="cb13-8"><a href="#cb13-8" tabindex="-1"></a>    <span class="st">&quot;LPA profiles (best BIC)&quot;</span>,</span>
+<span id="cb13-9"><a href="#cb13-9" tabindex="-1"></a>    <span class="st">&quot;Loci in z-score matrix&quot;</span></span>
+<span id="cb13-10"><a href="#cb13-10" tabindex="-1"></a>  ),</span>
+<span id="cb13-11"><a href="#cb13-11" tabindex="-1"></a>  <span class="at">value =</span> <span class="fu">c</span>(</span>
+<span id="cb13-12"><a href="#cb13-12" tabindex="-1"></a>    <span class="fu">round</span>(pcs_result<span class="sc">$</span>pcs, <span class="dv">3</span>),</span>
+<span id="cb13-13"><a href="#cb13-13" tabindex="-1"></a>    pcs_result<span class="sc">$</span>n_shared,</span>
+<span id="cb13-14"><a href="#cb13-14" tabindex="-1"></a>    pcs_result<span class="sc">$</span>m1,</span>
+<span id="cb13-15"><a href="#cb13-15" tabindex="-1"></a>    pcs_result<span class="sc">$</span>m2,</span>
+<span id="cb13-16"><a href="#cb13-16" tabindex="-1"></a>    <span class="fu">round</span>(nds_result<span class="sc">$</span>nds, <span class="dv">3</span>),</span>
+<span id="cb13-17"><a href="#cb13-17" tabindex="-1"></a>    lpa_result<span class="sc">$</span>best_model<span class="sc">$</span>Classes,</span>
+<span id="cb13-18"><a href="#cb13-18" tabindex="-1"></a>    <span class="fu">nrow</span>(z_data<span class="sc">$</span>z_matrix)</span>
+<span id="cb13-19"><a href="#cb13-19" tabindex="-1"></a>  ),</span>
+<span id="cb13-20"><a href="#cb13-20" tabindex="-1"></a>  <span class="at">row.names =</span> <span class="cn">NULL</span></span>
+<span id="cb13-21"><a href="#cb13-21" tabindex="-1"></a>)</span>
+<span id="cb13-22"><a href="#cb13-22" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(summary_table)</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">metric</th>
+<th align="right">value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">PCS</td>
+<td align="right">0.049</td>
+</tr>
+<tr class="even">
+<td align="left">Shared loci (n)</td>
+<td align="right">44.000</td>
+</tr>
+<tr class="odd">
+<td align="left">LDL-only loci (m1)</td>
+<td align="right">183.000</td>
+</tr>
+<tr class="even">
+<td align="left">HDL-only loci (m2)</td>
+<td align="right">667.000</td>
+</tr>
+<tr class="odd">
+<td align="left">NDS</td>
+<td align="right">0.273</td>
+</tr>
+<tr class="even">
+<td align="left">LPA profiles (best BIC)</td>
+<td align="right">3.000</td>
+</tr>
+<tr class="odd">
+<td align="left">Loci in z-score matrix</td>
+<td align="right">33.000</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="further-reading" class="section level2">
+<h2>Further reading</h2>
+<ul>
+<li><code>?pleiotropic_consistency_score</code>,
+<code>?net_directionality_score</code></li>
+<li><code>?build_locus_zscore_matrix</code>,
+<code>?latent_causal_blocks</code>,
+<code>?summarise_latent_blocks</code></li>
+<li><code>?pathway_enrichment</code></li>
+</ul>
+</div>
+
+
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
