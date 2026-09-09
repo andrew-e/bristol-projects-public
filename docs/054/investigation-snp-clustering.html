@@ -1519,8 +1519,8 @@ validation checks below controls the final program count.</li>
 than one biological program. EBMF produces soft factor loadings, so
 membership is per-SNP-per- program rather than a single hard label.</li>
 </ol>
-<div class="grViz html-widget html-fill-item" id="htmlwidget-29a56e939b13f92b7856" style="width:100%;height:768px;"></div>
-<script type="application/json" data-for="htmlwidget-29a56e939b13f92b7856">{"x":{"diagram":"\ndigraph workflow {\n  graph [rankdir=TB bgcolor=transparent fontname=Helvetica nodesep=0.35 ranksep=0.45]\n  node [shape=box style=filled fontname=Helvetica fontsize=10 margin=0.12\n        fillcolor=\"#e1f5fe\" color=\"#01579b\"]\n  S1 [label=\"1. Pleiotropy matrix\\n(study-level rows x SNPs)\"]\n  S2 [label=\"2. Orient by sign(z_target)\\noptional asinh compression\"]\n  S3 [label=\"3. EBMF factorization Y = L F^T + E\\nlFSR + magnitude program gates\"]\n  S4 [label=\"4. Validate programs\\ncoherence on SNP-SNP S, stability, factor strength\"]\n  S5 [label=\"5. Interpret valid programs\\ntraits, tissues, pathways\"]\n  S1 -> S2 -> S3 -> S4 -> S5\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-457827ab1876f7c57926" style="width:100%;height:768px;"></div>
+<script type="application/json" data-for="htmlwidget-457827ab1876f7c57926">{"x":{"diagram":"\ndigraph workflow {\n  graph [rankdir=TB bgcolor=transparent fontname=Helvetica nodesep=0.35 ranksep=0.45]\n  node [shape=box style=filled fontname=Helvetica fontsize=10 margin=0.12\n        fillcolor=\"#e1f5fe\" color=\"#01579b\"]\n  S1 [label=\"1. Pleiotropy matrix\\n(study-level rows x SNPs)\"]\n  S2 [label=\"2. Orient by sign(z_target)\\noptional asinh compression\"]\n  S3 [label=\"3. EBMF factorization Y = L F^T + E\\nlFSR + magnitude program gates\"]\n  S4 [label=\"4. Validate programs\\ncoherence on SNP-SNP S, stability, factor strength\"]\n  S5 [label=\"5. Interpret valid programs\\ntraits, tissues, pathways\"]\n  S1 -> S2 -> S3 -> S4 -> S5\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <div id="steps" class="section level2">
@@ -2031,22 +2031,23 @@ or <code>random</code>). A driver trait is a row whose associations are
 the input, and they differ in where the structure (or mess) they add
 lives:</p>
 <ol style="list-style-type: decimal">
-<li><p>Background effect parameters (p_active_background,
-background_sparsity_sd, background_effect_scale) — the unstructured
-noise floor. Every background SNP association is an independent draw:
-p_active_background sets how often a background trait is observed at a
-SNP (density), background_sparsity_sd makes per-trait density
-heavy-tailed (most traits observed at a handful of SNPs, with a tail of
-denser traits), and background_effect_scale sets the magnitude of the
-hits relative to effect_size. Unlike modules, the background has no
-shared structure; it makes recovery harder by reducing the contrast
+<li><p><strong>Background effect parameters</strong>
+(<code>p_active_background</code>, <code>background_sparsity_sd</code>,
+<code>background_effect_scale</code>) — the unstructured noise floor.
+Every background SNP association is an independent draw:
+<code>p_active_background</code> sets how often a background trait is
+observed at a SNP (density), <code>background_sparsity_sd</code> makes
+per-trait density heavy-tailed (most traits observed at a handful of
+SNPs, with a tail of denser traits), and
+<code>background_effect_scale</code> sets the magnitude of the hits
+relative to <code>effect_size</code>. Unlike modules, the background has
+no shared structure; it makes recovery harder by reducing the contrast
 between coherent module signal and unrelated associations.</p></li>
-<li><p>SNP driver groups and driver sharing (snp_driver_groups,
-driver_sharing) — the internal and cross-module SNP architecture of the
-planted modules. These parameters introduce additional structured
-complexity, rather than unstructured noise, but they act in different
-ways.</p></li>
-</ol>
+<li><p><strong>SNP driver groups and driver sharing</strong>
+(<code>snp_driver_groups</code>, <code>driver_sharing</code>) — the
+internal and cross-module SNP architecture of the planted modules. These
+parameters introduce additional structured complexity, rather than
+unstructured noise, but they act in different ways.</p>
 <p>snp_driver_groups partitions each module’s SNPs into groups and
 assigns each driver trait to only one corresponding SNP group. Thus,
 increasing snp_driver_groups progressively changes a planted module from
@@ -2067,17 +2068,17 @@ driver trait nominally associated with one module can also generate
 signal among SNPs belonging to another module. This differs from both
 trait_overlap, which makes modules share driver traits themselves, and
 the background parameters, which generate associations without coherent
-shared structure.</p>
-<ol start="3" style="list-style-type: decimal">
-<li>Module trait overlap (trait_overlap, trait_effect_corr) — the
-overlap of trait signatures between modules. trait_overlap determines
-the proportion of each module’s driver traits that are shared with other
-modules. As trait overlap increases, different modules are defined by
-increasingly similar sets of traits, reducing the distinction between
-their pleiotropic signatures. trait_effect_corr determines how similar
-the corresponding effects are when traits are shared: shared drivers can
-have correlated but non-identical effects across modules.</li>
-</ol>
+shared structure.</p></li>
+<li><p><strong>Module trait overlap</strong>
+(<code>trait_overlap</code>, <code>trait_effect_corr</code>) — the
+overlap of trait signatures between modules. <code>trait_overlap</code>
+determines the proportion of each module’s driver traits that are shared
+with other modules. As trait overlap increases, different modules are
+defined by increasingly similar sets of traits, reducing the distinction
+between their pleiotropic signatures. <code>trait_effect_corr</code>
+determines how similar the corresponding effects are when traits are
+shared: shared drivers can have correlated but non-identical effects
+across modules.</p>
 <p>This manipulation is distinct from driver_sharing. trait_overlap
 changes which traits define each module, whereas driver_sharing changes
 which SNPs are affected by particular driver traits. At high trait
@@ -2085,59 +2086,15 @@ overlap, modules may become difficult to separate because their trait
 signatures are genuinely similar, even when their SNP sets remain
 distinct. The parameter therefore tests the resolution limit of the
 method when biologically distinct SNP groups have increasingly
-overlapping pleiotropic profiles.</p>
-<ol start="4" style="list-style-type: decimal">
-<li>Spurious hits (p_spurious) — contamination of the driver signal.
-p_spurious adds background-scale off-module associations to driver
-traits, introducing associations outside their intended structured SNP
-patterns. Unlike snp_driver_groups or driver_sharing, these hits do not
-represent additional coherent latent structure. They instead test
-robustness to isolated or weak associations that partially obscure the
-intended module boundaries.</li>
-</ol>
-<p><strong>How we control the simulations.</strong> The parameters shape
-the input, and they differ in <em>where</em> the structure (or mess)
-they add lives:</p>
-<ol style="list-style-type: decimal">
-<li><p><strong>Background effect parameters</strong>
-(<code>p_active_background</code>, <code>background_sparsity_sd</code>,
-<code>background_effect_scale</code>) — the <em>unstructured noise
-floor</em>. Every background SNP association is an independent draw:
-<code>p_active_background</code> sets how often a background trait is
-observed at a SNP (density), <code>background_sparsity_sd</code> makes
-per-trait density heavy-tailed (most traits observed at a handful of
-SNPs, a tail dense), and <code>background_effect_scale</code> sets the
-magnitude of the hits relative to <code>effect_size</code>. Unlike
-modules, the background has <strong>no shared structure at all</strong>;
-it makes recovery harder purely by diluting the contrast between signal
-and noise.</p></li>
-<li><p><strong>SNP driver groups and sharing</strong>
-(<code>snp_driver_groups</code>, <code>driver_sharing</code>) — The key
-idea is that driver sharing and SNP driver groups introduce
-heterogeneity within a true program. They test whether your method can
-recognise a biological program when its SNPs are similar, but not
-identical.<br />
-Tries to ask the question “How much heterogeneity can exist within a
-biological program before EBMF and the subsequent clustering treat it as
-multiple programs?” The <em>internal SNP architecture of the
-modules</em>. <code>snp_driver_groups</code> splits each module’s SNP
-set into contiguous groups and makes each driver trait act on only its
-own group, so a module’s drivers are compartmentalised and a driver’s
-signal is recoverable only from its SNP subgroup.
-<code>driver_sharing</code> makes the first
-<code>floor(n_traits_per_module * driver_sharing)</code> driver traits
-of module <code>m</code> active at the <em>previous</em> module’s SNP
-set as well, creating SNP-space overlap between adjacent modules. These
-differ from <code>trait_overlap</code> (which shares <em>trait
-signatures</em> between modules) and from the background (which is
-noise): they add <em>structured</em> SNP usage that is not confined to
-one module’s own block.</p></li>
-<li><p><strong>Module Trait Overlap</strong>: <code>trait_overlap</code>
-/ <code>trait_effect_corr</code> share driver traits between modules
-(trait-signature overlap)</p></li>
-<li><p><strong>Spurious Hits</strong>: <code>p_spurious</code> adds
-background-scale off-module hits to the driver rows
-(contamination).</p></li>
+overlapping pleiotropic profiles.</p></li>
+<li><p><strong>Spurious hits</strong> (<code>p_spurious</code>) —
+contamination of the driver signal. <code>p_spurious</code> adds
+background-scale off-module associations to driver traits, introducing
+associations outside their intended structured SNP patterns. Unlike
+<code>snp_driver_groups</code> or <code>driver_sharing</code>, these
+hits do not represent additional coherent latent structure. They instead
+test robustness to isolated or weak associations that partially obscure
+the intended module boundaries.</p></li>
 </ol>
 <p>The module simulations are scored against ground truth by
 <code>evaluate_univariate_simulation()</code>:</p>
