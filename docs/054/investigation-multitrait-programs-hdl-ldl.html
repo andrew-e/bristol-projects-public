@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+
+<title>Investigation of multi-trait EBMF program correspondence</title>
+
+<script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
+// be compatible with the behavior of Pandoc < 2.8).
+document.addEventListener('DOMContentLoaded', function(e) {
+  var hs = document.querySelectorAll("div.section[class*='level'] > :first-child");
+  var i, h, a;
+  for (i = 0; i < hs.length; i++) {
+    h = hs[i];
+    if (!/^h[1-6]$/i.test(h.tagName)) continue;  // it should be a header h1-h6
+    a = h.attributes;
+    while (a.length > 0) h.removeAttribute(a[0].name);
+  }
+});
+</script>
+<style type="text/css">
+body {
+max-width: 95% !important;
+margin: 1em auto !important;
+}
+</style>
+
+<style type="text/css">
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
+
+
+
+
+
+
+
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">Investigation of multi-trait EBMF program
+correspondence</h1>
+
+
+
+<p>This vignette extends the single-trait investigation
+(<code>investigation-univariate-analysis.html</code>) to
+<strong>multiple traits</strong>, and asks one question: <strong>which
+programs are shared between traits, and do they push the two traits the
+same way or opposite ways?</strong></p>
+<p>EBMF programs are discovered independently for each target trait, so
+each trait’s architecture is described in its own terms first. Every
+cross-trait pair of programs is then scored by <strong>loading-weighted
+locus concordance</strong>: across the loci both traits carry, how much
+of the same signal do the two programs load on, and with what sign. No
+hard locus cutoff is applied — every shared locus contributes in
+proportion to how strongly both programs load on it, so the evidence
+grows with the amount of shared architecture rather than with how
+tightly a handful of loci happen to align. A permutation null calibrated
+per program turns that into significance, linked programs are joined
+into <strong>multi-trait families</strong>, and each link is then given
+a direction two independent ways: the sign of the concordance, and
+<code>module_rg()</code>, the correlation of the two traits’ own SNP
+effects across the module’s loci.</p>
+<p>Traits are supplied as an array in <code>params$trait_ids</code>. We
+use <strong>HDL cholesterol</strong> (trait id 1485), <strong>LDL
+cholesterol</strong> (trait id 1486).</p>
+<table style="width:100%;">
+<caption>Active run parameters</caption>
+<colgroup>
+<col width="2%" />
+<col width="3%" />
+<col width="4%" />
+<col width="5%" />
+<col width="5%" />
+<col width="5%" />
+<col width="5%" />
+<col width="4%" />
+<col width="7%" />
+<col width="7%" />
+<col width="8%" />
+<col width="4%" />
+<col width="4%" />
+<col width="6%" />
+<col width="6%" />
+<col width="2%" />
+<col width="2%" />
+<col width="2%" />
+<col width="4%" />
+<col width="4%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">api</th>
+<th align="left">trait_ids</th>
+<th align="left">trait_subset</th>
+<th align="right">min_snp_signals</th>
+<th align="right">min_module_size</th>
+<th align="left">compress_method</th>
+<th align="right">compress_scale</th>
+<th align="left">include_trans</th>
+<th align="right">similarity_threshold</th>
+<th align="right">ebmf_lfsr_threshold</th>
+<th align="right">ebmf_magnitude_threshold</th>
+<th align="left">ebmf_prior</th>
+<th align="left">ebmf_backfit</th>
+<th align="right">min_mean_internal</th>
+<th align="right">min_connectedness</th>
+<th align="right">n_null</th>
+<th align="right">n_rep</th>
+<th align="right">n_perm</th>
+<th align="right">fdr_threshold</th>
+<th align="left">associations</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">local</td>
+<td align="left">1485, 1486</td>
+<td align="left">phenotypic</td>
+<td align="right">2</td>
+<td align="right">3</td>
+<td align="left">asinh</td>
+<td align="right">5</td>
+<td align="left">FALSE</td>
+<td align="right">0.2</td>
+<td align="right">0.02</td>
+<td align="right">0.5</td>
+<td align="left">point_laplace</td>
+<td align="left">TRUE</td>
+<td align="right">0.3</td>
+<td align="right">0.5</td>
+<td align="right">5</td>
+<td align="right">2</td>
+<td align="right">3000</td>
+<td align="right">0.05</td>
+<td align="left">coloc</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Target traits compared</caption>
+<thead>
+<tr class="header">
+<th align="left">trait_id</th>
+<th align="left">trait_name</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">1485</td>
+<td align="left">HDL cholesterol</td>
+</tr>
+<tr class="even">
+<td align="left">1486</td>
+<td align="left">LDL cholesterol</td>
+</tr>
+</tbody>
+</table>
+<div id="step-1-univariate-ebmf-per-trait" class="section level2">
+<h2>Step 1: Univariate EBMF per trait</h2>
+<p>The existing single-trait pipeline is run independently for each
+target trait: <code>run_univariate_clustering()</code> (EBMF) followed
+by <code>summarise_ebmf_programs()</code>. Programs are kept when they
+pass the validation filters (<code>status == &quot;valid&quot;</code>). Each
+program’s posterior-mean SNP loadings (<code>F_pm</code>), lFSR, and
+high-confidence SNP membership are then extracted, with loadings
+sign-oriented to the target trait (see
+<code>extract_program_loadings()</code>).</p>
+<table>
+<caption>Per-trait EBMF programs (valid = passes size, internal
+coherence, stability, and redundancy filters; stability is not checked
+when n_rep = 0)</caption>
+<thead>
+<tr class="header">
+<th align="left">trait_id</th>
+<th align="left">trait_name</th>
+<th align="right">n_programs</th>
+<th align="right">n_valid</th>
+<th align="right">n_valid_snps</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">1485</td>
+<td align="left">HDL cholesterol</td>
+<td align="right">50</td>
+<td align="right">8</td>
+<td align="right">251</td>
+</tr>
+<tr class="even">
+<td align="left">1486</td>
+<td align="left">LDL cholesterol</td>
+<td align="right">50</td>
+<td align="right">4</td>
+<td align="right">23</td>
+</tr>
+</tbody>
+</table>
+<table style="width:100%;">
+<caption>Valid programs only – everything downstream uses these.
+<code>n_snps_filtered</code> is how many SNPs pass the program’s
+lFSR/magnitude gate; <code>mean_internal_similarity</code> and
+<code>connectedness</code> say how tightly those SNPs cohere on the
+SNP-similarity graph; <code>factor_strength</code> is the share of
+matrix signal the factor carries (it scales with program size, so small
+programs are not worse for having a small value);
+<code>posterior_evidence</code> is the median -log10(lFSR) of its
+members. Programs that failed validation are not shown – see the
+univariate vignette for that diagnostic view.</caption>
+<colgroup>
+<col width="14%" />
+<col width="7%" />
+<col width="14%" />
+<col width="21%" />
+<col width="12%" />
+<col width="14%" />
+<col width="16%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">trait_name</th>
+<th align="right">program</th>
+<th align="right">n_snps_filtered</th>
+<th align="right">mean_internal_similarity</th>
+<th align="right">connectedness</th>
+<th align="right">factor_strength</th>
+<th align="right">posterior_evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">HDL cholesterol</td>
+<td align="right">43</td>
+<td align="right">56</td>
+<td align="right">0.301</td>
+<td align="right">0.698</td>
+<td align="right">0.032</td>
+<td align="right">50.00</td>
+</tr>
+<tr class="even">
+<td align="left">HDL cholesterol</td>
+<td align="right">34</td>
+<td align="right">46</td>
+<td align="right">0.348</td>
+<td align="right">0.829</td>
+<td align="right">0.042</td>
+<td align="right">50.00</td>
+</tr>
+<tr class="odd">
+<td align="left">HDL cholesterol</td>
+<td align="right">1</td>
+<td align="right">41</td>
+<td align="right">0.442</td>
+<td align="right">0.951</td>
+<td align="right">0.209</td>
+<td align="right">50.00</td>
+</tr>
+<tr class="even">
+<td align="left">HDL cholesterol</td>
+<td align="right">14</td>
+<td align="right">37</td>
+<td align="right">0.359</td>
+<td align="right">0.794</td>
+<td align="right">0.067</td>
+<td align="right">50.00</td>
+</tr>
+<tr class="odd">
+<td align="left">HDL cholesterol</td>
+<td align="right">2</td>
+<td align="right">33</td>
+<td align="right">0.321</td>
+<td align="right">0.708</td>
+<td align="right">0.079</td>
+<td align="right">50.00</td>
+</tr>
+<tr class="even">
+<td align="left">HDL cholesterol</td>
+<td align="right">28</td>
+<td align="right">18</td>
+<td align="right">0.323</td>
+<td align="right">0.634</td>
+<td align="right">0.021</td>
+<td align="right">9.94</td>
+</tr>
+<tr class="odd">
+<td align="left">HDL cholesterol</td>
+<td align="right">37</td>
+<td align="right">14</td>
+<td align="right">0.314</td>
+<td align="right">0.626</td>
+<td align="right">0.012</td>
+<td align="right">7.70</td>
+</tr>
+<tr class="even">
+<td align="left">HDL cholesterol</td>
+<td align="right">16</td>
+<td align="right">6</td>
+<td align="right">0.313</td>
+<td align="right">0.667</td>
+<td align="right">0.019</td>
+<td align="right">30.74</td>
+</tr>
+<tr class="odd">
+<td align="left">LDL cholesterol</td>
+<td align="right">39</td>
+<td align="right">9</td>
+<td align="right">0.393</td>
+<td align="right">0.694</td>
+<td align="right">0.011</td>
+<td align="right">11.35</td>
+</tr>
+<tr class="even">
+<td align="left">LDL cholesterol</td>
+<td align="right">25</td>
+<td align="right">8</td>
+<td align="right">0.308</td>
+<td align="right">0.750</td>
+<td align="right">0.008</td>
+<td align="right">50.00</td>
+</tr>
+<tr class="odd">
+<td align="left">LDL cholesterol</td>
+<td align="right">13</td>
+<td align="right">3</td>
+<td align="right">0.315</td>
+<td align="right">1.000</td>
+<td align="right">0.017</td>
+<td align="right">8.11</td>
+</tr>
+<tr class="even">
+<td align="left">LDL cholesterol</td>
+<td align="right">44</td>
+<td align="right">3</td>
+<td align="right">0.446</td>
+<td align="right">1.000</td>
+<td align="right">0.013</td>
+<td align="right">50.00</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="step-2-common-locus-universe" class="section level2">
+<h2>Step 2: Common locus universe</h2>
+<p>Programs are compared at the level of the
+<strong><code>coloc_group_id</code></strong> (the shared fine-mapped
+locus) rather than the exact <code>variant_id</code>, because each trait
+carries a single candidate SNP per coloc group. The table below counts
+the candidate loci per trait and how many coloc groups the traits
+share.</p>
+<table>
+<caption>Candidate locus (coloc group) universe per trait (across valid
+programs)</caption>
+<thead>
+<tr class="header">
+<th align="left">trait_id</th>
+<th align="left">trait_name</th>
+<th align="right">n_programs</th>
+<th align="right">n_loci_any</th>
+<th align="right">n_high_conf_loci</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">1485</td>
+<td align="left">HDL cholesterol</td>
+<td align="right">8</td>
+<td align="right">425</td>
+<td align="right">102</td>
+</tr>
+<tr class="even">
+<td align="left">1486</td>
+<td align="left">LDL cholesterol</td>
+<td align="right">4</td>
+<td align="right">222</td>
+<td align="right">21</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Shared coloc-group universe across traits</caption>
+<thead>
+<tr class="header">
+<th align="right">n_loci_any</th>
+<th align="right">n_loci_shared_by_traits</th>
+<th align="right">max_traits_per_locus</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">616</td>
+<td align="right">31</td>
+<td align="right">2</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="step-3-loading-weighted-locus-concordance" class="section level2">
+<h2>Step 3: Loading-weighted locus concordance</h2>
+<p>Every cross-trait pair of programs is scored on the <strong>locus
+axis</strong>: the loci that both traits carry a loading for
+(<code>n_loci_axis</code>). No lFSR or magnitude threshold is applied —
+each locus contributes in proportion to how strongly it loads in
+<em>both</em> programs:</p>
+<p><span class="math display">\[\text{locus\_concordance} = \sum_l w_l
+\, f_a(l) \, f_b(l), \qquad
+w_l = (1 - \text{lfsr}_a(l))(1 - \text{lfsr}_b(l))\]</span></p>
+<p>Two programs that load on many of the same loci, in the same
+direction, score highly; a locus that matters to only one of them
+contributes almost nothing on its own. Because
+<code>extract_program_loadings()</code> orients each program so its own
+target trait loads positively, the <strong>sign</strong> is meaningful:
+positive means the two programs rise and fall together, negative means
+they oppose.</p>
+<table>
+<caption>Scale of the comparison. <code>n_loci_axis</code> is how many
+loci each pair is scored on (the two traits’ shared coloc-group
+universe). <code>n_programs_significant</code> counts programs whose
+best partner beats what they would have found by chance. The two link
+tiers are explained in Step 4.</caption>
+<colgroup>
+<col width="8%" />
+<col width="15%" />
+<col width="9%" />
+<col width="17%" />
+<col width="12%" />
+<col width="14%" />
+<col width="10%" />
+<col width="11%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="right">n_programs</th>
+<th align="right">n_cross_trait_pairs</th>
+<th align="right">n_loci_axis</th>
+<th align="right">n_programs_significant</th>
+<th align="right">n_primary_links</th>
+<th align="right">n_candidate_links</th>
+<th align="right">n_concordant</th>
+<th align="right">n_antagonistic</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">12</td>
+<td align="right">32</td>
+<td align="right">31</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">0</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="step-4-what-counts-as-a-link" class="section level2">
+<h2>Step 4: What counts as a link</h2>
+<p>A pair is called a link in one of two tiers.</p>
+<ul>
+<li><strong><code>primary</code></strong> — the two programs are each
+other’s <em>best</em> partner, <strong>and</strong> both are
+individually significant. Program-level significance comes from a
+max-statistic permutation null: it asks whether a program’s best partner
+is better than the best partner it would have found by chance, so it is
+not inflated by searching over many candidates. This is the strict,
+one-to-one reading and is what <code>shared = TRUE</code> marks.</li>
+<li><strong><code>candidate</code></strong> — the pair’s own
+<code>q_concordance</code> clears the FDR threshold but it is not a
+reciprocal best match. These are worth looking at because one program
+can genuinely correspond to two in the other trait (EBMF often splits
+one biological module into several factors), but they are not calibrated
+for the search over partners, so treat them as leads rather than
+conclusions.</li>
+</ul>
+<p>The columns to read, and what each is telling you:</p>
+<table>
+<caption>Linked program pairs, primary tier first then candidates, each
+ordered by |concordance_z|. Read <code>n_eff_loci</code> alongside
+<code>concordance_z</code>: a large z resting on 2-3 effective loci is a
+thin result.</caption>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>column</th>
+<th>what it means</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>concordance_z</code></td>
+<td>the headline statistic: how far the pair’s shared loading is from
+its own permutation null, in SD units. Sign gives the direction. This is
+what ranks and links.</td>
+</tr>
+<tr class="even">
+<td><code>n_loci_shared</code></td>
+<td>how many <em>high-confidence</em> loci the two programs both claim.
+Context only — it no longer gates anything.</td>
+</tr>
+<tr class="odd">
+<td><code>n_eff_loci</code></td>
+<td>how many loci are effectively carrying the score. A value near 2–3
+means a couple of loci are doing all the work, however large
+<code>concordance_z</code> looks.</td>
+</tr>
+<tr class="even">
+<td><code>locus_concordance</code></td>
+<td>the raw weighted sum. Scales with both the number of co-loading loci
+and their magnitude, so it is not comparable across pairs on its
+own.</td>
+</tr>
+<tr class="odd">
+<td><code>cosine_loci</code></td>
+<td>the same quantity fully normalised. Deliberately <em>not</em> used
+to decide links: being scale-free it cannot tell a pair sharing 3 loci
+from one sharing 30. Useful as a “how tight is the alignment”
+readout.</td>
+</tr>
+<tr class="even">
+<td><code>q_concordance</code></td>
+<td>BH-adjusted pair-level p. Defines the <code>candidate</code> tier;
+it does <strong>not</strong> decide <code>primary</code> links.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<colgroup>
+<col width="10%" />
+<col width="10%" />
+<col width="7%" />
+<col width="8%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+<col width="8%" />
+<col width="13%" />
+<col width="9%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">program_id_a</th>
+<th align="left">program_id_b</th>
+<th align="left">link_tier</th>
+<th align="left">direction</th>
+<th align="right">concordance_z</th>
+<th align="right">q_concordance</th>
+<th align="right">n_loci_shared</th>
+<th align="right">n_eff_loci</th>
+<th align="right">locus_concordance</th>
+<th align="right">cosine_loci</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">1485:16</td>
+<td align="left">1486:13</td>
+<td align="left">candidate</td>
+<td align="left">concordant</td>
+<td align="right">5.43</td>
+<td align="right">0.0107</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">114.75</td>
+<td align="right">1</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="step-5-program-families" class="section level2">
+<h2>Step 5: Program families</h2>
+<p>Programs are nodes and <strong>primary</strong> links are edges.
+Because primary links are reciprocal best matches, families are
+one-to-one correspondences rather than transitive chains that collapse
+everything into one component. A program with no primary link forms its
+own family of one.</p>
+<pre><code>#&gt; No families span more than one trait.</code></pre>
+<pre><code>#&gt; No primary links, so every program is a family of one.</code></pre>
+</div>
+<div id="step-6-direction-of-the-shared-effect-module-rg" class="section level2">
+<h2>Step 6: Direction of the shared effect (module rg)</h2>
+<p><code>concordance_z</code> says whether two programs’ <em>loading
+patterns</em> line up. It does not say whether the alleles involved push
+the two traits the same way. <code>module_rg()</code> answers that
+directly: across the module’s loci it correlates the two traits’
+<strong>own</strong> SNP effects, weighting each locus by how strongly
+the module loads on it and by the precision of the two estimates.</p>
+<ul>
+<li><strong><code>rg</code> &gt; 0</strong> — alleles that raise trait A
+also raise trait B across this module.</li>
+<li><strong><code>rg</code> &lt; 0</strong> — they oppose: the module is
+antagonistic between the two traits.</li>
+<li><strong><code>rg_ci_lower</code> / <code>rg_ci_upper</code></strong>
+— percentile bootstrap over loci. <strong>If the interval spans 0, the
+direction is not established</strong>, whatever the point estimate
+says.</li>
+<li><strong><code>n_allele_mismatch</code></strong> — loci dropped
+because the two traits’ <code>variant_id</code> did not agree, which
+would make the sign meaningless. Should be 0.</li>
+</ul>
+<p><code>rg_direction</code> and <code>direction</code> need not agree:
+the first is about observed allele effects, the second about latent
+factor structure. Where they disagree, <code>rg</code> with its CI is
+the more directly interpretable claim.</p>
+<table>
+<caption>Cross-trait effect correlation across each linked module’s
+loci. <code>ci_excludes_zero</code> is the column to filter on before
+believing a direction.</caption>
+<colgroup>
+<col width="9%" />
+<col width="9%" />
+<col width="7%" />
+<col width="7%" />
+<col width="6%" />
+<col width="2%" />
+<col width="8%" />
+<col width="8%" />
+<col width="6%" />
+<col width="12%" />
+<col width="9%" />
+<col width="11%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">program_id_a</th>
+<th align="left">program_id_b</th>
+<th align="left">trait_id_a</th>
+<th align="left">trait_id_b</th>
+<th align="left">link_tier</th>
+<th align="right">rg</th>
+<th align="right">rg_ci_lower</th>
+<th align="right">rg_ci_upper</th>
+<th align="right">n_loci_rg</th>
+<th align="right">n_allele_mismatch</th>
+<th align="left">rg_direction</th>
+<th align="left">ci_excludes_zero</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">1485:16</td>
+<td align="left">1486:13</td>
+<td align="left">1485</td>
+<td align="left">1486</td>
+<td align="left">candidate</td>
+<td align="right">1</td>
+<td align="right">0.597</td>
+<td align="right">1</td>
+<td align="right">31</td>
+<td align="right">0</td>
+<td align="left">concordant</td>
+<td align="left">TRUE</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="step-7-do-linked-programs-recover-the-same-biology" class="section level2">
+<h2>Step 7: Do linked programs recover the same biology?</h2>
+<p>Annotations play no part in forming a link, so agreement here is
+<strong>independent corroboration</strong> rather than a restatement of
+the same evidence. Each program’s high-confidence SNPs are enriched
+separately, against its own trait’s full candidate universe, for trait
+categories and for tissues.</p>
+<p>Read it as: if the two sides of a pair independently surface the same
+category or tissue, the link has support beyond the loading geometry
+that created it. If they surface nothing in common, the link rests on
+the loci alone.</p>
+<p>One caveat: a program holding a large share of its trait’s SNPs is
+being compared against a background that is largely itself, so “none”
+for a dominant program is expected rather than informative.</p>
+<table>
+<caption>Trait-category and tissue enrichment of each side of a linked
+pair, computed independently per trait against that trait’s own SNP
+universe. Matching entries between the <code>_a</code> and
+<code>_b</code> columns are held-out support for the link.</caption>
+<colgroup>
+<col width="15%" />
+<col width="8%" />
+<col width="9%" />
+<col width="10%" />
+<col width="24%" />
+<col width="8%" />
+<col width="24%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">pair</th>
+<th align="left">tier</th>
+<th align="left">direction</th>
+<th align="left">categories_a</th>
+<th align="left">categories_b</th>
+<th align="left">tissues_a</th>
+<th align="left">tissues_b</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">1485:16 ~ 1486:13</td>
+<td align="left">candidate</td>
+<td align="left">concordant</td>
+<td align="left">none</td>
+<td align="left">too few high-confidence SNPs</td>
+<td align="left">none</td>
+<td align="left">too few high-confidence SNPs</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="interpretation-notes" class="section level2">
+<h2>Interpretation notes</h2>
+<ul>
+<li><strong>Direction is anchored, not absolute.</strong> EBMF factor
+signs are not identifiable and are arbitrary across independent fits.
+<code>extract_program_loadings()</code> reflects both <code>F_pm</code>
+and <code>L_pm</code> so each program’s target-trait loading is
+positive, which is what makes a positive <code>concordance_z</code>
+readable as “target-aligned”.</li>
+<li><strong>Evidence scales with shared loading, not with
+tightness.</strong> The statistic is deliberately covariance-like. A
+fully normalised version (<code>cosine_loci</code>) cannot distinguish a
+pair sharing 3 loci from one sharing 30, which is why it is reported but
+not used to decide links.</li>
+<li><strong>Always read <code>n_eff_loci</code>.</strong> A large
+<code>concordance_z</code> resting on 2–3 effective loci is a thin
+result, and the permutation null cannot tell you that on its own.</li>
+<li><strong>Two tiers, two strengths of claim.</strong>
+<code>primary</code> is calibrated for the search over partners and is
+one-to-one. <code>candidate</code> is not, and exists because EBMF
+factor splitting means a single module can appear as several
+programs.</li>
+<li><strong>Sample overlap is not corrected.</strong> When the two
+target traits come from the same cohort, their effect estimates share
+participants, which biases <code>module_rg</code> away from the null.
+Treat rg magnitudes from same-cohort pairs as optimistic.</li>
+<li><strong>Winner’s curse.</strong> Loci enter each trait’s universe
+only by clearing that trait’s own significance and fine-mapping bar, so
+the shared set is doubly selected and effect sizes are inflated.</li>
+<li><strong>Restricted to valid programs.</strong> Only programs passing
+the per-trait validation filters are compared; Step 1 shows exactly
+which survived.</li>
+</ul>
+</div>
+
+
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
