@@ -1542,8 +1542,8 @@ no role in forming a link, so agreement between the two linked programs’
 independently computed enrichment results is genuine support for the
 link, not a restatement of the evidence that created it.</li>
 </ol>
-<div class="grViz html-widget html-fill-item" id="htmlwidget-3b1bc8ffe2850328e4fa" style="width:100%;height:768px;"></div>
-<script type="application/json" data-for="htmlwidget-3b1bc8ffe2850328e4fa">{"x":{"diagram":"\ndigraph workflow {\n  graph [rankdir=TB bgcolor=transparent fontname=Helvetica nodesep=0.35 ranksep=0.45]\n  node [shape=box style=filled fontname=Helvetica fontsize=10 margin=0.12\n        fillcolor=\"#e1f5fe\" color=\"#01579b\"]\n  S1 [label=\"1. Independent EBMF per trait\\nvalid programs only, biological annotation\"]\n  S2 [label=\"2. Comparable traits and shared loci\\nper trait pair, uploads bridged by LD\"]\n  S3 [label=\"3. Measures: phi (same traits?), alignment (same SNPs?)\\nshared / effective loci, q, rg (direction check)\"]\n  S4 [label=\"4. profile_strength x locus_status -> tier\\nlinks = high + medium; direction = sign of phi\"]\n  S5 [label=\"5. Families = communities of links\\nfamily-level rg\"]\n  S1 -> S2 -> S3 -> S4 -> S5\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-85aca7408dc61132c80b" style="width:100%;height:768px;"></div>
+<script type="application/json" data-for="htmlwidget-85aca7408dc61132c80b">{"x":{"diagram":"\ndigraph workflow {\n  graph [rankdir=TB bgcolor=transparent fontname=Helvetica nodesep=0.35 ranksep=0.45]\n  node [shape=box style=filled fontname=Helvetica fontsize=10 margin=0.12\n        fillcolor=\"#e1f5fe\" color=\"#01579b\"]\n  S1 [label=\"1. Independent EBMF per trait\\nvalid programs only, biological annotation\"]\n  S2 [label=\"2. Comparable traits and shared loci\\nper trait pair, uploads bridged by LD\"]\n  S3 [label=\"3. Measures: phi (same traits?), alignment (same SNPs?)\\nshared / effective loci, q, rg (direction check)\"]\n  S4 [label=\"4. profile_strength x locus_status -> tier\\nlinks = high + medium; direction = sign of phi\"]\n  S5 [label=\"5. Families = communities of links\\nfamily-level rg\"]\n  S1 -> S2 -> S3 -> S4 -> S5\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <div id="steps" class="section level2">
@@ -1634,6 +1634,66 @@ short: <strong>φ</strong> asks whether the same background traits drive
 both programs, <strong>alignment</strong> whether the same SNPs carry
 them, and <strong>rg</strong> whether the two traits’ own allele effects
 point the same way.</p>
+<div id="φ-vs-alignment-vs-rg" class="section level4">
+<h4>φ vs alignment vs rg</h4>
+<table>
+<colgroup>
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>φ</th>
+<th>alignment</th>
+<th>rg</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>data</strong></td>
+<td>the EBMF fits: trait loadings (<code>L</code>)</td>
+<td>the EBMF fits: SNP loadings (<code>F</code>)</td>
+<td>the two traits’ own GWAS effects, outside EBMF</td>
+</tr>
+<tr class="even">
+<td><strong>question</strong></td>
+<td>do the same background traits drive both programs?</td>
+<td>do the same SNPs carry both programs?</td>
+<td>do the module’s alleles move the two traits together or apart?</td>
+</tr>
+<tr class="odd">
+<td><strong>the two anchor traits</strong></td>
+<td>left out</td>
+<td>only through their effect on the fit</td>
+<td>the only measure that uses them directly</td>
+</tr>
+<tr class="even">
+<td><strong>direction</strong></td>
+<td>its sign (mirrored profile = antagonistic)</td>
+<td>none</td>
+<td>its sign, in a common allele frame</td>
+</tr>
+<tr class="odd">
+<td><strong>needs</strong></td>
+<td>comparable traits (always 500+)</td>
+<td>at least <code>min_shared_loci</code> shared and
+<code>min_eff_loci</code> effective loci</td>
+<td>at least 10 usable loci and a CI that excludes 0</td>
+</tr>
+<tr class="even">
+<td><strong>role</strong></td>
+<td>gate</td>
+<td>gate (with <code>q_concordance</code>)</td>
+<td>check only</td>
+</tr>
+</tbody>
+</table>
+<p>φ and alignment both describe the decomposition; rg is the only check
+on data the factorisation never saw.</p>
+</div>
 <div id="φ-phi_traits-do-the-same-background-traits-drive-both-programs" class="section level4">
 <h4>φ (<code>phi_traits</code>): do the same background traits drive
 both programs?</h4>
@@ -1746,66 +1806,6 @@ counts loci that could not be aligned). And neither rg nor the locus
 test corrects for <strong>sample overlap</strong> between the two GWAS,
 which biases rg away from zero for same-cohort traits, or for
 <strong>winner’s curse</strong> at loci selected by both traits.</p>
-</div>
-<div id="φ-vs-alignment-vs-rg" class="section level4">
-<h4>φ vs alignment vs rg</h4>
-<table>
-<colgroup>
-<col width="25%" />
-<col width="25%" />
-<col width="25%" />
-<col width="25%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th></th>
-<th>φ</th>
-<th>alignment</th>
-<th>rg</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>data</strong></td>
-<td>the EBMF fits: trait loadings (<code>L</code>)</td>
-<td>the EBMF fits: SNP loadings (<code>F</code>)</td>
-<td>the two traits’ own GWAS effects, outside EBMF</td>
-</tr>
-<tr class="even">
-<td><strong>question</strong></td>
-<td>do the same background traits drive both programs?</td>
-<td>do the same SNPs carry both programs?</td>
-<td>do the module’s alleles move the two traits together or apart?</td>
-</tr>
-<tr class="odd">
-<td><strong>the two anchor traits</strong></td>
-<td>left out</td>
-<td>only through their effect on the fit</td>
-<td>the only measure that uses them directly</td>
-</tr>
-<tr class="even">
-<td><strong>direction</strong></td>
-<td>its sign (mirrored profile = antagonistic)</td>
-<td>none</td>
-<td>its sign, in a common allele frame</td>
-</tr>
-<tr class="odd">
-<td><strong>needs</strong></td>
-<td>comparable traits (always 500+)</td>
-<td>at least <code>min_shared_loci</code> shared and
-<code>min_eff_loci</code> effective loci</td>
-<td>at least 10 usable loci and a CI that excludes 0</td>
-</tr>
-<tr class="even">
-<td><strong>role</strong></td>
-<td>gate</td>
-<td>gate (with <code>q_concordance</code>)</td>
-<td>check only</td>
-</tr>
-</tbody>
-</table>
-<p>φ and alignment both describe the decomposition; rg is the only check
-on data the factorisation never saw.</p>
 </div>
 <div id="duplicate-traits" class="section level4">
 <h4>Duplicate traits</h4>
