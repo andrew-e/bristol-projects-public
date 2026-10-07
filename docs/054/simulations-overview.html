@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+
+<title>Simulation overview</title>
+
+<script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
+// be compatible with the behavior of Pandoc < 2.8).
+document.addEventListener('DOMContentLoaded', function(e) {
+  var hs = document.querySelectorAll("div.section[class*='level'] > :first-child");
+  var i, h, a;
+  for (i = 0; i < hs.length; i++) {
+    h = hs[i];
+    if (!/^h[1-6]$/i.test(h.tagName)) continue;  // it should be a header h1-h6
+    a = h.attributes;
+    while (a.length > 0) h.removeAttribute(a[0].name);
+  }
+});
+</script>
+<style type="text/css">
+body {
+max-width: 95% !important;
+margin: 1em auto !important;
+}
+</style>
+
+<style type="text/css">
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
+
+
+
+
+
+
+
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">Simulation overview</h1>
+
+
+
+<div id="goal" class="section level2">
+<h2>Goal</h2>
+<p>Simulation is one of two checks on the pipeline: the planted ground
+truth is known exactly, so it controls what real data cannot, which SNPs
+belong to which module. The other check, the external benchmark against
+Suzuki et al. (2024), is described in <a href="univariate-overview.html#verification-strategy">SNP biological
+clustering</a>; the two are read together, not as a single
+pass/fail.</p>
+<p>Simulations help with three levels of choice:</p>
+<ol style="list-style-type: decimal">
+<li>What goes into the matrix (data, z-score compression) and the
+lFSR/magnitude membership gates.</li>
+<li>The validation cutoffs that decide a program’s confidence tier.</li>
+<li>Whether programs found separately in two traits can be linked, and
+in the right direction.</li>
+</ol>
+<p><code>simulate_trait()</code> generates a trait object of the same
+shape as <code>trait(id, include_associations = TRUE)</code> and plants
+structure over SNPs. The single-trait simulations come in two families —
+<strong>null</strong> (<code>K = 0</code>, no modules) and
+<strong>module</strong> (<code>K &gt; 0</code>, planted modules) — so
+the same EBMF + validation pipeline can be tested for both
+<em>hallucination</em> (does it invent structure from randomness?) and
+<em>recovery</em> (does it find the structure we planted, and how
+well?). The <strong>multi-trait</strong> simulations, built on
+<code>simulate_trait_pair()</code>, test the linking step that
+follows.</p>
+</div>
+<div id="null-simulations-testing-hallucination" class="section level2">
+<h2>Null simulations: testing hallucination</h2>
+<p>The null family keeps <code>K = 0</code>: no modules and no driver
+traits. The matrix is the dense target row plus unstructured background
+traits. Because there is no planted structure, any program of high or
+medium confidence is a <strong>false discovery</strong>, so the null
+runs measure how often the EBMF + validation battery invents structure
+from randomness.</p>
+<ul>
+<li>The meaningful controls here are the <strong>background
+effect</strong> parameters (below) and <code>noise_sd</code>. The
+driver/module parameters (<code>p_structural_zero</code>,
+<code>p_spurious</code>, <code>effect_tail</code>,
+<code>trait_overlap</code>, <code>snp_driver_groups</code>, …) are inert
+when <code>K = 0</code> because they only act on driver rows.</li>
+<li>Key outputs: <code>n_programs</code> (how many factors EBMF
+proposes), <code>n_valid_programs</code> (how many reach high or medium
+confidence — the false-positive rate), and
+<code>background_absorbed</code> (the fraction of background SNPs pulled
+into valid programs — the SNP-level false-discovery rate).</li>
+<li>The share of null programs in each tier is also reported. Almost
+every null program rests on one trait, so the <code>single_trait</code>
+share is how often noise passes the similarity test and lands in the
+tier that needs a closer look; the rest are <code>low</code>.</li>
+</ul>
+<p>The null simulations, and how the rates change as the background is
+made denser, sparser, or stronger, are documented in <a href="investigation-univariate-null-simulations.html">Null simulation
+study of EBMF programs</a>.</p>
+</div>
+<div id="module-simulations-testing-recovery" class="section level2">
+<h2>Module simulations: testing recovery</h2>
+<p>The module family plants <code>K</code> modules over SNPs and runs
+the identical battery on versions that differ along several axes of
+control. Each axis stresses a different way real data can depart from a
+clean block structure; the versions are generated by iterating the
+generative parameter arrays in the simulations vignette (<a href="investigation-univariate-simulations.html">Simulation study of
+EBMF programs</a>).</p>
+<p><strong>Planted modules.</strong> <code>K</code> modules occupy SNP
+sets (disjoint by default). Each module has
+<code>n_traits_per_module</code> driver traits with
+<code>effect_size</code>-scale effects on its module’s SNPs, under a
+<code>sign_pattern</code> (<code>coherent</code>, <code>flipped</code>,
+or <code>random</code>). A driver trait is a row whose associations are
+<strong>localised to one module’s SNP block</strong> — this is the
+“signal” the EBMF programs are supposed to recover.</p>
+<p><strong>How we control the simulations</strong>. The parameters shape
+the input, and they differ in where the structure (or mess) they add
+lives:</p>
+<ol style="list-style-type: decimal">
+<li><p><strong>Background effect parameters</strong>
+(<code>p_active_background</code>, <code>background_sparsity_sd</code>,
+<code>background_effect_scale</code>) — the unstructured noise floor.
+Every background SNP association is an independent draw:
+<code>p_active_background</code> sets how often a background trait is
+observed at a SNP (density), <code>background_sparsity_sd</code> makes
+per-trait density heavy-tailed (most traits observed at a handful of
+SNPs, with a tail of denser traits), and
+<code>background_effect_scale</code> sets the magnitude of the hits
+relative to <code>effect_size</code>. Unlike modules, the background has
+no shared structure; it makes recovery harder by reducing the contrast
+between coherent module signal and unrelated associations.</p></li>
+<li><p><strong>SNP driver groups and driver sharing</strong>
+(<code>snp_driver_groups</code>, <code>driver_sharing</code>) — the
+internal and cross-module SNP architecture of the planted modules. These
+parameters introduce additional structured complexity, rather than
+unstructured noise, but they act in different ways.</p>
+<p>snp_driver_groups partitions each module’s SNPs into groups and
+assigns each driver trait to only one corresponding SNP group. Thus,
+increasing snp_driver_groups progressively changes a planted module from
+a single coherent SNP-by-trait pattern into several distinct
+subpatterns. This is therefore a relatively strong form of within-module
+heterogeneity: at high values, the simulated data may contain multiple
+statistically distinguishable latent patterns even though all of their
+SNPs are labelled as belonging to the same ground-truth module. The
+parameter consequently tests how many distinct subpatterns can be
+embedded within one nominal biological programme before EBMF and
+subsequent clustering resolve them as separate factors or programs.</p>
+<p>driver_sharing acts differently. It does not control similarity
+between SNP groups within the same module. Instead, the first
+floor(n_traits_per_module * driver_sharing) driver traits of module m
+are also active across the SNP set of the previous module. It therefore
+creates structured overlap in SNP usage between adjacent modules: a
+driver trait nominally associated with one module can also generate
+signal among SNPs belonging to another module. This differs from both
+trait_overlap, which makes modules share driver traits themselves, and
+the background parameters, which generate associations without coherent
+shared structure.</p></li>
+<li><p><strong>Module trait overlap</strong>
+(<code>trait_overlap</code>, <code>trait_effect_corr</code>) — the
+overlap of trait signatures between modules. <code>trait_overlap</code>
+determines the proportion of each module’s driver traits that are shared
+with other modules. As trait overlap increases, different modules are
+defined by increasingly similar sets of traits, reducing the distinction
+between their pleiotropic signatures. <code>trait_effect_corr</code>
+determines how similar the corresponding effects are when traits are
+shared: shared drivers can have correlated but non-identical effects
+across modules.</p>
+<p>This manipulation is distinct from driver_sharing. trait_overlap
+changes which traits define each module, whereas driver_sharing changes
+which SNPs are affected by particular driver traits. At high trait
+overlap, modules may become difficult to separate because their trait
+signatures are genuinely similar, even when their SNP sets remain
+distinct. The parameter therefore tests the resolution limit of the
+method when biologically distinct SNP groups have increasingly
+overlapping pleiotropic profiles.</p></li>
+<li><p><strong>Spurious hits</strong> (<code>p_spurious</code>) —
+contamination of the driver signal. <code>p_spurious</code> adds
+background-scale off-module associations to driver traits, introducing
+associations outside their intended structured SNP patterns. Unlike
+<code>snp_driver_groups</code> or <code>driver_sharing</code>, these
+hits do not represent additional coherent latent structure. They instead
+test robustness to isolated or weak associations that partially obscure
+the intended module boundaries.</p></li>
+</ol>
+<p>The module simulations are scored against ground truth by
+<code>evaluate_univariate_simulation()</code>:</p>
+<ul>
+<li><strong>module_recall</strong> — for each planted module, the
+largest fraction of its SNPs contained in any single predicted program
+(fair to overlapping/merged programs).</li>
+<li><strong>coverage</strong> — fraction of all SNPs placed into valid
+programs.</li>
+<li><strong>background_absorbed</strong> — fraction of unstructured
+background SNPs absorbed into valid programs (higher = more hallucinated
+structure).</li>
+<li><strong>ARI</strong> (<code>ari_all</code>,
+<code>ari_structured</code>) — adjusted Rand index against the planted
+partition, using each SNP’s strongest program as a hard projection.</li>
+</ul>
+<p>The module and null runs are read against each other: the module runs
+show how much planted structure is recovered, and the null runs supply
+<code>background_absorbed</code> as a false-discovery rate — how much of
+what is recovered under no planted structure is invention.</p>
+</div>
+<div id="multi-trait-simulations-testing-correspondence" class="section level2">
+<h2>Multi-trait simulations: testing correspondence</h2>
+<p><strong>The multi-trait analysis</strong> (<a href="multitrait-overview.html">Multi-trait EBMF program
+correspondence</a>). Programs are found separately for each target
+trait, with the single-trait pipeline (<a href="univariate-overview.html">SNP biological clustering</a>), and two
+traits’ programs are linked by the congruence of their trait profiles,
+graded with the alignment of their SNP loadings at the loci the traits
+share (<code>compare_program_pairs_loadings()</code>). <strong>The
+simulation study below was run with an earlier, locus-only link
+rule</strong> (a pair sharing at least 3 high-confidence loci whose
+concordance survives the FDR threshold) and has not yet been re-run with
+the profile-based tiers, nor with the current rule, which grades a
+strong profile match by whether the shared loci agree, disagree or are
+too few to check (<code>locus_status</code>).</p>
+<p><a href="investigation-multitrait-simulations.html">Simulation study
+of multi-trait program correspondence</a> checks this pipeline where the
+answer is known. Its most important aspects:</p>
+<ul>
+<li><strong>Design.</strong> <code>simulate_trait_pair()</code> plants
+<strong>one</strong> program in both traits (<code>K_shared = 1</code>)
+and <code>K_specific</code> programs in each trait alone, over
+unstructured background studies. The shared program has the same driver
+studies in both traits. Two things vary: the <strong>SNP
+overlap</strong>, the fraction of the shared program’s loci that are the
+same locus in both traits (0.1 to 1; at 0.1 the two copies share 4 of 36
+loci), and the <strong>direction</strong>, concordant or antagonistic. A
+null version shares nothing, so every link is false.</li>
+<li><strong>The same pipeline as real data.</strong> Each trait is
+fitted and validated on its own; EBMF never sees the other trait.
+Linking is then run twice, on every fitted program and on the valid
+programs only, so the effect of the validation gates on linking can be
+seen.</li>
+<li><strong>Three questions, scored separately.</strong>
+<ol style="list-style-type: decimal">
+<li><em>Discovery:</em> is the shared program found valid in each trait?
+If not, the status of the best-matching program says which gate removed
+it. Fitted programs are mapped to planted ones by SNP Jaccard (at least
+0.1), and the match is scored by SNP precision, SNP recall and the
+correlation of the loadings with the planted per-locus effects.</li>
+<li><em>Linking:</em> recall (the shared program was linked) and
+precision (the links reported were real). A link is a pair sharing at
+least 3 high-confidence loci whose concordance survives the FDR
+threshold.</li>
+<li><em>Direction:</em> among real links, the share called in the
+planted direction.</li>
+</ol></li>
+<li><strong>Orientation hides antagonism from the loadings.</strong>
+Each trait’s loci are oriented to its own risk allele before fitting, so
+a shared locus loads positively in both traits’ programs whatever the
+direction. The sign of the concordance statistic therefore cannot
+express antagonism; <code>module_rg()</code> can, because it works in a
+common allele frame. It needs at least 10 usable shared loci and a
+confidence interval that excludes 0, so links resting on fewer or weaker
+loci get no direction (<em>undetermined</em>), in simulation and on real
+data.</li>
+<li><strong>Overlap sets a floor on detection.</strong> Links are scored
+on loci only, so a program shared at entirely different variants
+(overlap 0) cannot be linked by design. At overlap 0.1 the copies share
+4 loci, just above the 3 a link needs, which is where recall is expected
+to fall.</li>
+<li><strong>Limits.</strong> Each planted program is isolated (its own
+drivers and loci), and the background is unstructured by default, so the
+fits are easier and the false-link rate more optimistic than on real
+data. Recall is credited per planted program, not per link, so a program
+EBMF splits in two is not rewarded.</li>
+</ul>
+</div>
+
+
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
